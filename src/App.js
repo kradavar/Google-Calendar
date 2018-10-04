@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-//import './App.css';
+import CalendarTable from './Table-components/CalendarTable';
+import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       calendarToRender: "mounth",
-      mounthLength: 31
+      monthLength: 31
     }
   }
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         <header className="App-header">
 
         </header>
+        <CalendarTable calendarToRender={"month"} monthLength={this.state.monthLength} />
       </div>
     );
   }

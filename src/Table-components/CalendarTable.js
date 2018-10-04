@@ -6,16 +6,16 @@ export default class CalendarTable extends Component {
     super(props);
     this.state = {
       column: 7,
-      rows: (this.props.mounthLength / 7),
+      rows: Math.ceil(this.props.monthLength / 7),
     }
   }
 
   chooseTableToCreate() {
     const daysInWeek = 7;
-    switch (calendarToRender) {
-      case 'mounth': this.setState({
+    switch (this.props.calendarToRender) {
+      case 'month': this.setState({
         column: daysInWeek,
-        rows: (this.props.mounthLength / daysInWeek)
+        rows: (this.props.monthLength / daysInWeek)
       });
         break;
       case 'week': this.setState({
@@ -36,35 +36,44 @@ export default class CalendarTable extends Component {
     let day;
     if (this.state.column > 1) {
       switch (id) {
-        case '0': day = "Monday";
+        case 'cell0-0': day = "Monday";
           break;
-        case '1': day = "Tuesday";
+        case 'cell0-1': day = "Tuesday";
           break;
-        case '2': day = "Wednesday";
+        case 'cell0-2': day = "Wednesday";
           break;
-        case '3': day = "Thursday";
+        case 'cell0-3': day = "Thursday";
           break;
-        case '4': day = "Friday";
+        case 'cell0-4': day = "Friday";
           break;
-        case '5': day = "Saturday";
+        case 'cell0-5': day = "Saturday";
           break;
-        case '6': day = "Sunday";
+        case 'cell0-6': day = "Sunday";
           break;
+        default: day = this.props.dayOfWeek;
       }
     }
     else {
       day = this.props.dayOfWeek;
     }
+
+    return day;
   }
 
   render() {
     let rows = [];
+    let monthLength = 0;
     for (let i = 0; i < this.state.rows; i++) {
       let rowID = 'row' + i;
       let columns = [];
       for (let j = 0; j < this.state.column; j++) {
         let cellID = 'cell' + i + '-' + j;
-        columns.push(<Cell date={} dayOfWeek={this.chooseDayOfWeek(cellID)} />);
+        if (monthLength <= this.props.monthLength) {
+
+          columns.push(<Cell date={21} dayOfWeek={this.chooseDayOfWeek(cellID)} key={monthLength} />);
+          monthLength++;
+        }
+
       }
       rows.push(<tr key={i} id={rowID}>{columns}</tr>);
     }
