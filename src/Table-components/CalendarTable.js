@@ -32,7 +32,23 @@ export default class CalendarTable extends Component {
   }
 
   render() {
-
+    let rows = [];
+    for (let i = 0; i < this.state.rows; i++) {
+      let rowID = 'row' + i;
+      let columns = [];
+      for (let j = 0; j < this.state.column; j++) {
+        let cellID = 'cell' + i + '-' + j;
+        columns.push(<Cell date={} />);
+      }
+      rows.push(<tr key={i} id={rowID}>{columns}</tr>);
+    }
+    return (
+      <table>
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
+    );
   }
 
 }

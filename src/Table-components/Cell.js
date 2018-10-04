@@ -6,7 +6,7 @@ export default class Cell extends Component {
     }
 
     render() {
-        <div className="cell">
+        <td className="cell">
             <header>
                 <div className="day-of-week">
 
@@ -14,6 +14,6 @@ export default class Cell extends Component {
                 <div className="day">
                 </div>
             </header>
-        </div>
+        </td>
     };
 }
