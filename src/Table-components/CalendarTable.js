@@ -68,9 +68,8 @@ export default class CalendarTable extends Component {
       let columns = [];
       for (let j = 0; j < this.state.column; j++) {
         let cellID = 'cell' + i + '-' + j;
-        if (monthLength <= this.props.monthLength) {
-
-          columns.push(<Cell date={21} dayOfWeek={this.chooseDayOfWeek(cellID)} key={monthLength} />);
+        if (monthLength < this.props.monthLength) {
+          columns.push(<Cell date={monthLength + 1} dayOfWeek={this.chooseDayOfWeek(cellID)} key={monthLength} />);
           monthLength++;
         }
 
