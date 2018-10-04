@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Cell extends Component {
+export default class Cell extends Component {
     constructor(props) {
         super(props);
     }
@@ -9,6 +9,7 @@ class Cell extends Component {
         <div className="cell">
             <header>
                 <div className="day-of-week">
+
                 </div>
                 <div className="day">
                 </div>
