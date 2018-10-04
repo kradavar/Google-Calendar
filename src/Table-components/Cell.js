@@ -9,9 +9,10 @@ export default class Cell extends Component {
         <td className="cell">
             <header>
                 <div className="day-of-week">
-
+                    {this.props.dayOfWeek}
                 </div>
-                <div className="day">
+                <div className="date">
+                    {this.props.date}
                 </div>
             </header>
         </td>

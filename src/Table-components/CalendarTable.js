@@ -11,14 +11,15 @@ export default class CalendarTable extends Component {
   }
 
   chooseTableToCreate() {
+    const daysInWeek = 7;
     switch (calendarToRender) {
       case 'mounth': this.setState({
-        column: 7,
-        rows: (this.props.mounthLength / 7)
+        column: daysInWeek,
+        rows: (this.props.mounthLength / daysInWeek)
       });
         break;
       case 'week': this.setState({
-        column: 7,
+        column: daysInWeek,
         rows: 1
       });
         break;
@@ -31,6 +32,31 @@ export default class CalendarTable extends Component {
     }
   }
 
+  chooseDayOfWeek(id) {
+    let day;
+    if (this.state.column > 1) {
+      switch (id) {
+        case '0': day = "Monday";
+          break;
+        case '1': day = "Tuesday";
+          break;
+        case '2': day = "Wednesday";
+          break;
+        case '3': day = "Thursday";
+          break;
+        case '4': day = "Friday";
+          break;
+        case '5': day = "Saturday";
+          break;
+        case '6': day = "Sunday";
+          break;
+      }
+    }
+    else {
+      day = this.props.dayOfWeek;
+    }
+  }
+
   render() {
     let rows = [];
     for (let i = 0; i < this.state.rows; i++) {
@@ -38,7 +64,7 @@ export default class CalendarTable extends Component {
       let columns = [];
       for (let j = 0; j < this.state.column; j++) {
         let cellID = 'cell' + i + '-' + j;
-        columns.push(<Cell date={} />);
+        columns.push(<Cell date={} dayOfWeek={this.chooseDayOfWeek(cellID)} />);
       }
       rows.push(<tr key={i} id={rowID}>{columns}</tr>);
     }
