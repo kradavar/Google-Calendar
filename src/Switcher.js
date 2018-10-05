@@ -5,13 +5,17 @@ export default class Switcher extends Component {
     super(props);
   }
 
+  handleRadioChange() {
+
+  }
+
   render() {
     return (
       <tbody>
-        <tr>
-          <td><input type="radio" /></td>
-          <td><input type="radio" /></td>
-          <td><input type="radio" /></td>
+        <tr >
+          <td><input type="radio" value={"month"} >{"month"}</input></td>
+          <td><input type="radio" value={"week"}>{"week"}</input></td>
+          <td><input type="radio" value={"day"}>{"day"}</input></td>
         </tr>
       </tbody>
     );
