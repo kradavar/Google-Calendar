@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import CalendarTable from './Table-components/CalendarTable';
+import CalendarTable from './View/Table-components/CalendarTable';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      calendarToRender: "mounth",
-      monthLength: 31
+      view: "month"
     }
   }
   render() {
@@ -16,7 +15,7 @@ class App extends Component {
         <header className="App-header">
 
         </header>
-        <CalendarTable calendarToRender={"month"} monthLength={this.state.monthLength} />
+        <CalendarTable calendarToRender={this.state.view} />
       </div>
     );
   }
