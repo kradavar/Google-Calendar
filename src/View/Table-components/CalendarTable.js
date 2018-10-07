@@ -1,68 +1,75 @@
-import React, { Component } from 'react';
-
-import moment from 'moment';
-import Cell from './Cell';
+import React, { Component } from "react";
+import moment from "moment";
+import Cell from "./Cell";
+import TableHeader from "./TableHeader";
 
 export default class CalendarTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      column: 0,
-      rows: 0,
-      renderedMonth: 10
-    }
+      columns: 0,
+      rows: 0
+    };
   }
 
-  chooseTableToCreate(date) {
+  componentWillMount() {
     const daysInWeek = 7;
     switch (this.props.calendarToRender) {
-      case 'month': this.setState({
-        column: daysInWeek,
-        rows: (date.daysInMonth() / daysInWeek)
-      });
+      case "month":
+        this.setState({
+          columns: daysInWeek,
+          rows: 5
+        });
         break;
-      case 'week': this.setState({
-        column: daysInWeek,
-        rows: 1
-      });
+      case "week":
+        this.setState({
+          columns: daysInWeek,
+          rows: 1
+        });
         break;
-      case 'day': this.setState({
-        column: 1,
-        rows: 1
-      });
+      case "day":
+        this.setState({
+          columns: 1,
+          rows: 1
+        });
         break;
-      default: break;
+      default:
+        break;
     }
   }
 
   render() {
-
-    let month = this.state.renderedMonth;
-    let date = moment('2018-' + month + '-01');
-    this.chooseTableToCreate(date);
-    console.log(this.state);
     let rows = [];
-    let monthLength = 0;
     for (let i = 0; i < this.state.rows; i++) {
-      let rowID = 'row' + i;
-      let columns = [];
-      for (let j = 0; j < this.state.column; j++) {
-
-        if (monthLength < date.daysInMonth()) {
-          columns.push(<Cell date={date.date()} dayOfWeek={date.day()} key={monthLength} events={[]} />);
-          date.add(1, 'day');
-          monthLength++;
-        }
+      const columns = [];
+      let startDate;
+      if (this.props.renderedDate.isoWeekday() == 1) {
+        startDate = this.props.renderedDate;
+      } else {
+        startDate = this.props.renderedDate.subtract(
+          this.props.renderedDate.isoWeekday() - 1,
+          "day"
+        );
       }
-      rows.push(<tr key={i} id={rowID}>{columns}</tr>);
+      for (let j = 0; j < this.state.columns; j++) {
+        columns.push(
+          <Cell
+            dayOfMonth={startDate.date()}
+            key={startDate.date()}
+            events={[]}
+          />
+        );
+        startDate.add(1, "day");
+      }
+      rows.push(<tr key={i}>{columns}</tr>);
     }
     return (
-      <table>
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
+      <div>
+        <table>
+          <TableHeader />
+          <tbody>{rows}</tbody>
+        </table>
+      </div>
     );
   }
-
 }
