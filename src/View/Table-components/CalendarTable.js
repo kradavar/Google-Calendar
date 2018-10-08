@@ -74,7 +74,10 @@ export default class CalendarTable extends Component {
         <hr />
         <table>
           <tbody>
-            <TableHeader view={this.props.view} />
+            <TableHeader
+              view={this.props.view}
+              renderedDay={this.props.renderedDate.format("ddd")}
+            />
             {rows}
           </tbody>
         </table>
