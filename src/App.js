@@ -4,7 +4,7 @@ import moment from "moment";
 /*import { Provider } from "react-redux";
 import store from "./Model/store/store";*/
 
-import "./App.css";
+import "./Styles/App.css";
 // Calendar
 import CalendarTable from "./View/Table-components/CalendarTable";
 // Switchers
