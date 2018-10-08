@@ -1,62 +1,81 @@
 import React, { Component } from "react";
 import Cell from "./Cell";
 import TableHeader from "./TableHeader";
+import moment from "moment";
 
 export default class CalendarTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
       columns: 7,
-      rows: 5
+      rows: 5,
+      start: moment(this.props.currentDate.year() + '-' + (this.props.currentDate.month() + 1) + '-01')
     }
   }
 
-  /*componentWillUpdate() {
-    if () { }
+  getStartDate() {
+    let startDate;
+    let date = this.props.currentDate;
     switch (this.props.calendarToRender) {
       case "month":
-        this.setState({
-          columns: 7,
-          rows: 5
-        });
+        startDate = moment(date.year() + '-' + (date.month() + 1) + '-01');
         break;
       case "week":
-        this.setState({
-          columns: 7,
-          rows: 1
-        });
+        startDate = date;
         break;
       case "day":
-        this.setState({
-          columns: 1,
-          rows: 1
-        });
-        break;
+        return date;
       default:
         break;
     }
+    if (startDate.isoWeekday() !== 1) {
+      startDate = startDate.subtract(
+        startDate.isoWeekday() - 1,
+        "day"
+      );
+    }
+    return startDate;
   }
-*/
 
   componentDidUpdate(prevProps) {
+    //debugger;
     if (this.props.calendarToRender !== prevProps.calendarToRender) {
+      let startDate;
+      let date = this.props.currentDate;
       switch (this.props.calendarToRender) {
         case "month":
+          startDate = moment(date.year() + '-' + (date.month() + 1) + '-01');
+          if (startDate.isoWeekday() !== 1) {
+            startDate = startDate.subtract(
+              startDate.isoWeekday() - 1,
+              "day"
+            );
+          }
           this.setState({
             columns: 7,
-            rows: 5
+            rows: 5,
+            start: startDate
           });
           break;
         case "week":
+          startDate = date;
+          if (startDate.isoWeekday() !== 1) {
+            startDate = startDate.subtract(
+              startDate.isoWeekday() - 1,
+              "day"
+            );
+          }
           this.setState({
             columns: 7,
-            rows: 1
+            rows: 1,
+            start: startDate
           });
           break;
         case "day":
           this.setState({
             columns: 1,
-            rows: 1
+            rows: 1,
+            start: date
           });
           break;
         default:
@@ -68,28 +87,22 @@ export default class CalendarTable extends Component {
   render() {
 
     let rows = [];
+    //let startDate = this.getStartDate();
     for (let i = 0; i < this.state.rows; i++) {
       const columns = [];
-      let startDate;
-      if (this.props.renderedDate.isoWeekday() === 1) {
-        startDate = this.props.renderedDate;
-      } else {
-        startDate = this.props.renderedDate.subtract(
-          this.props.renderedDate.isoWeekday() - 1,
-          "day"
-        );
-      }
+
       for (let j = 0; j < this.state.columns; j++) {
         columns.push(
           <Cell
-            dayOfMonth={startDate.date()}
-            key={startDate.date()}
+            dayOfMonth={this.state.start.date()}
+            key={this.state.start.date()}
             events={[]}
           />
         );
-        startDate.add(1, "day");
+        this.state.start.add(1, "day");
       }
       rows.push(<tr key={i}>{columns}</tr>);
+
     }
     return (
       <div>

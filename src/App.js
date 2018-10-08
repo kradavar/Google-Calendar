@@ -21,17 +21,14 @@ class App extends Component {
 
   handleSwitcherChange(event) {
 
-    debugger;
     switch (event.target.value) {
       case 'day':
         this.setState({
           view: "day"
         });
-        debugger;
         break;
       case 'week':
         this.setState({
-          ...this.state,
           view: "week"
         });
         console.log(this.state.view);
@@ -55,6 +52,7 @@ class App extends Component {
         <CalendarTable
           calendarToRender={this.state.view}
           renderedDate={this.state.renderedDate}
+          currentDate={this.state.currentDate}
         />
       </div>
     );
