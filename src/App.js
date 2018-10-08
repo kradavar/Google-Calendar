@@ -50,7 +50,7 @@ class App extends Component {
         <div>{`Current date is: ${this.state.currentDate}`}</div>
         <div>{`Rendered date is: ${this.state.renderedDate}`}</div>
         <CalendarTable
-          calendarToRender={this.state.view}
+          view={this.state.view}
           renderedDate={this.state.renderedDate}
           currentDate={this.state.currentDate}
         />

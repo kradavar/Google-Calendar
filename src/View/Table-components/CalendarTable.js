@@ -7,7 +7,7 @@ export default class CalendarTable extends Component {
   getStartDate() {
     let startDate;
     let date = this.props.renderedDate.clone();
-    switch (this.props.calendarToRender) {
+    switch (this.props.view) {
       case "month":
         startDate = moment(date.year() + "-" + (date.month() + 1) + "-01");
         break;
@@ -53,7 +53,7 @@ export default class CalendarTable extends Component {
   render() {
     let rows = [];
     let startDate = this.getStartDate();
-    let tableSize = this.getTableSize(this.props.calendarToRender);
+    let tableSize = this.getTableSize(this.props.view);
     for (let i = 0; i < tableSize.rows; i++) {
       const columns = [];
 
@@ -74,7 +74,7 @@ export default class CalendarTable extends Component {
         <hr />
         <table>
           <tbody>
-            <TableHeader />
+            <TableHeader view={this.props.view} />
             {rows}
           </tbody>
         </table>
