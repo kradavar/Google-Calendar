@@ -6,19 +6,19 @@ export default function TableHeader({ view, renderedDay }) {
   if (isDayView) {
     headers = (
       <tr className="header">
-        <th>{renderedDay}</th>
+        <th scope="col">{renderedDay}</th>
       </tr>
     );
   } else {
     headers = (
       <tr className="header">
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
-        <th>Sun</th>
+        <th scope="col">Mon</th>
+        <th scope="col">Tue</th>
+        <th scope="col">Wed</th>
+        <th scope="col">Thu</th>
+        <th scope="col">Fri</th>
+        <th scope="col">Sat</th>
+        <th scope="col">Sun</th>
       </tr>
     );
   }

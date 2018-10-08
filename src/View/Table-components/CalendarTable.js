@@ -71,9 +71,9 @@ export default class CalendarTable extends Component {
       rows.push(<tr key={i}>{columns}</tr>);
     }
     return (
-      <div>
+      <div className="calendar">
         <hr />
-        <table>
+        <table className="table table-bordered">
           <tbody>
             <TableHeader
               view={this.props.view}
