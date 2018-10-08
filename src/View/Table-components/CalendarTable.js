@@ -6,23 +6,23 @@ export default class CalendarTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      columns: 0,
-      rows: 0
-    };
+      columns: 7,
+      rows: 5
+    }
   }
 
-  componentWillMount() {
-    const daysInWeek = 7;
+  /*componentWillUpdate() {
+    if () { }
     switch (this.props.calendarToRender) {
       case "month":
         this.setState({
-          columns: daysInWeek,
+          columns: 7,
           rows: 5
         });
         break;
       case "week":
         this.setState({
-          columns: daysInWeek,
+          columns: 7,
           rows: 1
         });
         break;
@@ -36,13 +36,42 @@ export default class CalendarTable extends Component {
         break;
     }
   }
+*/
+
+  componentDidUpdate(prevProps) {
+    if (this.props.calendarToRender !== prevProps.calendarToRender) {
+      switch (this.props.calendarToRender) {
+        case "month":
+          this.setState({
+            columns: 7,
+            rows: 5
+          });
+          break;
+        case "week":
+          this.setState({
+            columns: 7,
+            rows: 1
+          });
+          break;
+        case "day":
+          this.setState({
+            columns: 1,
+            rows: 1
+          });
+          break;
+        default:
+          break;
+      }
+    }
+  }
 
   render() {
+
     let rows = [];
     for (let i = 0; i < this.state.rows; i++) {
       const columns = [];
       let startDate;
-      if (this.props.renderedDate.isoWeekday() == 1) {
+      if (this.props.renderedDate.isoWeekday() === 1) {
         startDate = this.props.renderedDate;
       } else {
         startDate = this.props.renderedDate.subtract(

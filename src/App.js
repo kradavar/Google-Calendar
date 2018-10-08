@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import moment from "moment";
 // Redux stuff
-import { Provider } from "react-redux";
-import store from "./Model/store/store";
+/*import { Provider } from "react-redux";
+import store from "./Model/store/store";*/
 
 import CalendarTable from "./View/Table-components/CalendarTable";
 import Switcher from "./View/Switcher";
@@ -16,21 +16,47 @@ class App extends Component {
       currentDate: moment(),
       renderedDate: moment()
     };
+    this.handleSwitcherChange = this.handleSwitcherChange.bind(this);
   }
+
+  handleSwitcherChange(event) {
+
+    debugger;
+    switch (event.target.value) {
+      case 'day':
+        this.setState({
+          view: "day"
+        });
+        debugger;
+        break;
+      case 'week':
+        this.setState({
+          ...this.state,
+          view: "week"
+        });
+        console.log(this.state.view);
+        break;
+      case 'month':
+        this.setState({
+          view: "month"
+        });
+        break;
+    }
+  }
+
+
   render() {
     return (
-      <Provider store={store}>
-        <div className="App">
-          <header className="App-header">Google Calendar</header>
-          <div>
-            <Switcher />
-          </div>
-          <CalendarTable
-            calendarToRender={this.state.view}
-            renderedDate={this.state.renderedDate}
-          />
+      <div className="App">
+        <header className="App-header">Google Calendar</header>
+        <div>
+          <Switcher onChangeView={this.handleSwitcherChange} />
         </div>
-      </Provider>
+        <CalendarTable
+          calendarToRender={this.state.view}
+          renderedDate={this.state.renderedDate}
+        />
+      </div>
     );
   }
 }
