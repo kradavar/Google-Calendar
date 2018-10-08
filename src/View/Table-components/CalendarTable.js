@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import moment from "moment";
 import Cell from "./Cell";
 import TableHeader from "./TableHeader";
 
