@@ -7,6 +7,7 @@ import store from "./Model/store/store";*/
 import CalendarTable from "./View/Table-components/CalendarTable";
 import Switcher from "./View/Switcher";
 import "./App.css";
+import PrevNextDate from "./View/PrevNextDate";
 
 class App extends Component {
   constructor() {
@@ -17,10 +18,10 @@ class App extends Component {
       renderedDate: moment()
     };
     this.handleSwitcherChange = this.handleSwitcherChange.bind(this);
+    this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
   }
 
   handleSwitcherChange(event) {
-
     switch (event.target.value) {
       case 'day':
         this.setState({
@@ -40,6 +41,44 @@ class App extends Component {
         break;
     }
   }
+  handleNavButtonClick(event) {
+    switch (event.target.value) {
+      case 'prev':
+        switch (this.state.view) {
+          case 'month':
+            debugger;
+            this.setState({
+              renderedDate: this.state.renderedDate.subtract(1, 'month')
+            });
+            break;
+          case 'week': this.setState({
+            renderedDate: this.state.renderedDate.subtract(1, 'week')
+          });
+            break;
+          case 'day': this.setState({
+            renderedDate: this.state.renderedDate.subtract(1, 'day')
+          });
+            break;
+        }
+        break;
+      case 'next':
+        switch (this.state.view) {
+          case 'month':
+            this.setState({
+              renderedDate: this.state.renderedDate.add(1, 'month')
+            });
+            break;
+          case 'week': this.setState({
+            renderedDate: this.state.renderedDate.add(1, 'week')
+          });
+            break;
+          case 'day': this.setState({
+            renderedDate: this.state.renderedDate.add(1, 'day')
+          });
+            break;
+        }
+    }
+  }
 
 
   render() {
@@ -54,6 +93,7 @@ class App extends Component {
           renderedDate={this.state.renderedDate}
           currentDate={this.state.currentDate}
         />
+        <PrevNextDate onClickNavButton={this.handleNavButtonClick} />
       </div>
     );
   }

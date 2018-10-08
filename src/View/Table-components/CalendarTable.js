@@ -13,69 +13,69 @@ export default class CalendarTable extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    //debugger;
-    if (this.props.calendarToRender !== prevProps.calendarToRender) {
-      let startDate;
-      let date = moment();
-      switch (this.props.calendarToRender) {
-        case "month":
-          startDate = moment(date.year() + '-' + (date.month() + 1) + '-01');
-          if (startDate.isoWeekday() !== 1) {
-            startDate = startDate.subtract(
-              startDate.isoWeekday() - 1,
-              "day"
-            );
-          }
-          this.setState({
-            columns: 7,
-            rows: 5,
-            start: startDate
-          });
-          break;
-        case "week":
-          startDate = date;
-          if (startDate.isoWeekday() !== 1) {
-            startDate = startDate.subtract(
-              startDate.isoWeekday() - 1,
-              "day"
-            );
-          }
-          this.setState({
-            columns: 7,
-            rows: 1,
-            start: startDate
-          });
-          break;
-        case "day":
-          this.setState({
-            columns: 1,
-            rows: 1,
-            start: date
-          });
-          break;
-        default:
-          break;
-      }
+  getStartDate() {
+    let startDate;
+    let date = this.props.renderedDate;
+    switch (this.props.calendarToRender) {
+      case "month":
+        startDate = moment(date.year() + '-' + (date.month() + 1) + '-01');
+        break;
+      case "week":
+        startDate = date;
+
+        break;
+      case "day": return date;
+      default:
+        break;
+    }
+    if (startDate.isoWeekday() !== 1) {
+      startDate = startDate.subtract(
+        startDate.isoWeekday() - 1,
+        "day"
+      );
+    }
+    return startDate;
+  }
+
+
+
+  getTableSize(viewType) {
+    switch (viewType) {
+      case 'month':
+        return {
+          columns: 7,
+          rows: 5
+        };
+      case 'week':
+        return {
+          columns: 7,
+          rows: 1
+        };
+      case 'day':
+        return {
+          columns: 1,
+          rows: 1
+        };
     }
   }
 
   render() {
 
     let rows = [];
-    //let startDate = this.getStartDate();
-    for (let i = 0; i < this.state.rows; i++) {
+    let startDate = this.getStartDate();
+    let tableSize = this.getTableSize(this.props.calendarToRender);
+    for (let i = 0; i < tableSize.rows; i++) {
       const columns = [];
 
-      for (let j = 0; j < this.state.columns; j++) {
+      for (let j = 0; j < tableSize.columns; j++) {
         columns.push(
           <Cell
-            dayOfMonth={this.state.start.date()}
-            key={this.state.start.date()}
+            dayOfMonth={startDate.date()}
+            key={startDate.date()}
             events={[]}
           />
         );
-        this.state.start.add(1, "day");
+        startDate.add(1, "day");
       }
       rows.push(<tr key={i}>{columns}</tr>);
 
