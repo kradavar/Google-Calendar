@@ -13,35 +13,11 @@ export default class CalendarTable extends Component {
     }
   }
 
-  getStartDate() {
-    let startDate;
-    let date = this.props.currentDate;
-    switch (this.props.calendarToRender) {
-      case "month":
-        startDate = moment(date.year() + '-' + (date.month() + 1) + '-01');
-        break;
-      case "week":
-        startDate = date;
-        break;
-      case "day":
-        return date;
-      default:
-        break;
-    }
-    if (startDate.isoWeekday() !== 1) {
-      startDate = startDate.subtract(
-        startDate.isoWeekday() - 1,
-        "day"
-      );
-    }
-    return startDate;
-  }
-
   componentDidUpdate(prevProps) {
     //debugger;
     if (this.props.calendarToRender !== prevProps.calendarToRender) {
       let startDate;
-      let date = this.props.currentDate;
+      let date = moment();
       switch (this.props.calendarToRender) {
         case "month":
           startDate = moment(date.year() + '-' + (date.month() + 1) + '-01');

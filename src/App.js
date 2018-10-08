@@ -31,7 +31,7 @@ class App extends Component {
         this.setState({
           view: "week"
         });
-        console.log(this.state.view);
+        console.log(this.state.currentDate);
         break;
       case 'month':
         this.setState({
