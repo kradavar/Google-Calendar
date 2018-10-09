@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import moment from "moment";
 // Redux stuff
-/*import { Provider } from "react-redux";
-import store from "./Model/store/store";*/
+import { Provider } from "react-redux";
+import store from "./Model/store/store";
 
 import "./Styles/App.css";
 // Calendar
@@ -44,27 +44,29 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="d-flex flex-column align-items-center justify-content-center">
-          <header className="App-header">Calendar</header>
-          <ViewTypeSwitcher
-            view={this.state.view}
-            onChangeView={this.handleSwitcherChange}
-          />
-          <div className="current-month">
-            {this.state.renderedDate.format("MMMM")}
-          </div>
-          <CalendarTable
-            view={this.state.view}
-            renderedDate={this.state.renderedDate}
-            currentDate={this.state.currentDate}
-          />
-          <div className="container d-flex justify-content-between">
-            <PrevButton onClick={this.handlePrevButtonClick} />
-            <NextButton onClick={this.handleNextButtonClick} />
+      <Provider store={store}>
+        <div className="container">
+          <div className="d-flex flex-column align-items-center justify-content-center">
+            <header className="App-header">Calendar</header>
+            <ViewTypeSwitcher
+              view={this.state.view}
+              onChangeView={this.handleSwitcherChange}
+            />
+            <div className="current-month">
+              {this.state.renderedDate.format("MMMM")}
+            </div>
+            <CalendarTable
+              view={this.state.view}
+              renderedDate={this.state.renderedDate}
+              currentDate={this.state.currentDate}
+            />
+            <div className="container d-flex justify-content-between">
+              <PrevButton onClick={this.handlePrevButtonClick} />
+              <NextButton onClick={this.handleNextButtonClick} />
+            </div>
           </div>
         </div>
-      </div>
+      </Provider>
     );
   }
 }

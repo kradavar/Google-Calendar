@@ -1,5 +1,5 @@
 import { ADD_EVENT, DELETE_EVENT } from "../actions/actions";
-import { combineReducers } from "redux";
+import moment from "moment";
 
 const initialState = {
   events: [],
