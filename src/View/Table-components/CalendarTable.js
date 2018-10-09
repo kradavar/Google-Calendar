@@ -65,6 +65,7 @@ export default class CalendarTable extends Component {
             key={startDate.date()}
             events={[]}
             view={this.props.view}
+            date={startDate}
           />
         );
         startDate.add(1, "day");
