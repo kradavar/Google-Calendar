@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import events from "../actions/actions";
-import Event from "../../View/Event";
+import Event from "../../View/Events/Event";
 import Cell from "../../View/Table-components/CalendarTable";
 import CalendarTable from "../../View/Table-components/CalendarTable";
 
