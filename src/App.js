@@ -44,19 +44,25 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">Google Calendar</header>
-        <ViewTypeSwitcher onChangeView={this.handleSwitcherChange} />
-        <div>{`Current date is: ${this.state.currentDate}`}</div>
-        <div>{`Rendered date is: ${this.state.renderedDate}`}</div>
-        <CalendarTable
-          view={this.state.view}
-          renderedDate={this.state.renderedDate}
-          currentDate={this.state.currentDate}
-        />
-        <div>
-          <PrevButton onClick={this.handlePrevButtonClick} />
-          <NextButton onClick={this.handleNextButtonClick} />
+      <div className="container">
+        <div className="d-flex flex-column align-items-center justify-content-center">
+          <header className="App-header">Calendar</header>
+          <ViewTypeSwitcher
+            view={this.state.view}
+            onChangeView={this.handleSwitcherChange}
+          />
+          <div className="current-month">
+            {this.state.renderedDate.format("MMMM")}
+          </div>
+          <CalendarTable
+            view={this.state.view}
+            renderedDate={this.state.renderedDate}
+            currentDate={this.state.currentDate}
+          />
+          <div className="container d-flex justify-content-between">
+            <PrevButton onClick={this.handlePrevButtonClick} />
+            <NextButton onClick={this.handleNextButtonClick} />
+          </div>
         </div>
       </div>
     );
