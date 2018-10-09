@@ -14,6 +14,7 @@
 .hour-table .hour-cell {
   border-right: none;
   border-left: none;
+  height: 15px !important;
 }
 
 .hour-table {

@@ -1,12 +1,14 @@
 import React from "react";
 
-export default function TableHeader({ view, renderedDay }) {
+export default function TableHeader({ view, renderedDay, day }) {
   const isDayView = view === "day";
   let headers;
   if (isDayView) {
     headers = (
       <tr className="header">
-        <th scope="col">{renderedDay}</th>
+        <th scope="col">
+          {renderedDay},{day}
+        </th>
       </tr>
     );
   } else {
