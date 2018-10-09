@@ -61,7 +61,7 @@ export default class CalendarTable extends Component {
       for (let j = 0; j < tableSize.columns; j++) {
         columns.push(
           <Cell
-            date={startDate}
+            dayOfMonth={startDate.date()}
             key={startDate.date()}
             events={[]}
             view={this.props.view}
