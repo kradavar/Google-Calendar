@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../Styles/CalendarTable.css";
 import Cell from "./Cells/Cell";
 import TableHeader from "./TableHeader";
+import { addEvent } from "../../Model/actions/actions";
 
 export default class CalendarTable extends Component {
   getStartDate() {
@@ -65,6 +66,7 @@ export default class CalendarTable extends Component {
             events={[]}
             view={this.props.view}
             date={startDate}
+            onClick={() => addEvent(startDate)}
           />
         );
         startDate.add(1, "day");
@@ -87,6 +89,8 @@ export default class CalendarTable extends Component {
               day={this.props.renderedDate.date()}
             />
             {rows}
+
+            {this.props.view === "month" ? <OnlyMonth /> : <MonthWithWeeks />}
           </tbody>
         </table>
       </div>
