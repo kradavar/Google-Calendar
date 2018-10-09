@@ -1,8 +1,6 @@
 import { combineReducers } from "redux";
-import tableReducers from '../reducers/tableReducers';
-import viewChanger from "../reducers/viewChanger";
+import events from "./events";
 
-export default combineReducers({
-  tableReducers,
-  viewChanger
-});
+export default (todoApp = combineReducers({
+  events
+}));

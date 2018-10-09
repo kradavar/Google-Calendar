@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "../../Styles/CalendarTable.css";
 import Cell from "./Cells/Cell";
 import TableHeader from "./TableHeader";
-import moment from "moment";
 
 export default class CalendarTable extends Component {
   getStartDate() {
