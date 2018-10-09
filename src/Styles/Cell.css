@@ -6,3 +6,16 @@
   background-color: rgba(104, 170, 255, 0.6);
   color: white;
 }
+
+.cell-with-hour {
+  padding: 0 !important;
+}
+
+.hour-table .hour-cell {
+  border-right: none;
+  border-left: none;
+}
+
+.hour-table {
+  width: 100%;
+}

@@ -26,8 +26,8 @@ export default function Cell({ dayOfMonth, view, date }) {
       wholeDay.add(1, "hour");
     }
     cell = (
-      <td className="cell">
-        <table>
+      <td className="cell-with-hour">
+        <table className="hour-table">
           <tbody>{hours}</tbody>
         </table>
       </td>
