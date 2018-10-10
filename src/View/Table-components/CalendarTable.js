@@ -3,6 +3,9 @@ import "../../Styles/CalendarTable.css";
 import Cell from "./Cells/Cell";
 import TableHeader from "./TableHeader";
 import { addEvent } from "../../Model/actions/actions";
+import MonthView from "../MonthView";
+import MonthWithWeeks from "../WeekDayView";
+import WeekDayView from "../WeekDayView";
 
 export default class CalendarTable extends Component {
   getStartDate() {
@@ -88,9 +91,7 @@ export default class CalendarTable extends Component {
               renderedDay={this.props.renderedDate.format("ddd")}
               day={this.props.renderedDate.date()}
             />
-            {rows}
-
-            {this.props.view === "month" ? <OnlyMonth /> : <MonthWithWeeks />}
+            {this.props.view === "month" ? <MonthView /> : <WeekDayView />}
           </tbody>
         </table>
       </div>
