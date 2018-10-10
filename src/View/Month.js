@@ -1,5 +1,6 @@
 import React from "react";
 import Week from "./Week";
+import { isMoment } from "moment";
 
 export default function Month(props) {
   const getWeekCount = () => {
@@ -16,20 +17,28 @@ export default function Month(props) {
   const renderMonth = () => {
     const start = props.renderedDate.clone().startOf("month");
     const weeks = [];
+    const weeks2 = [];
     const duration = getWeekCount();
-    //debugger;
+    const currentDate = start.clone();
+
     for (let week = 0; week < duration; week++) {
-      weeks.push(
-        <tr>
-          <td>
-            <Week renderedDate={start} view={props.view} key={start.format()} />
-          </td>
-        </tr>
-      );
-      start.add(1, "week");
+      (() => {
+        weeks.push(
+          <tr>
+            <td>
+              <Week renderedDate={currentDate} view={props.view} key={week} />
+            </td>
+          </tr>
+        );
+        weeks2.push(currentDate);
+        currentDate.add(1, "week");
+      })();
     }
+
+    console.warn("AAA", { weeks2 });
+
     return weeks;
   };
-  const weeks = renderMonth();
-  return <tbody>{weeks}</tbody>;
+
+  return <tbody>{renderMonth()}</tbody>;
 }

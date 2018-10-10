@@ -32,13 +32,13 @@ class App extends Component {
 
   handlePrevButtonClick() {
     this.setState({
-      renderedDate: this.state.renderedDate.subtract(1, this.state.view)
+      renderedDate: this.state.renderedDate.clone().subtract(1, this.state.view)
     });
   }
 
   handleNextButtonClick() {
     this.setState({
-      renderedDate: this.state.renderedDate.add(1, this.state.view)
+      renderedDate: this.state.renderedDate.clone().add(1, this.state.view)
     });
   }
 

@@ -16,7 +16,7 @@ export default function Week(props) {
     ) {
       const date = moment(currDate);
       days.push(
-        <Day view={props.view} renderedDate={date} key={date.format()} />
+        <Day view={props.view} renderedDate={date} key={currDate.format()} />
       );
     }
 
