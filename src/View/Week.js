@@ -1,9 +1,10 @@
+import React from "react";
 import Day from "./Day";
 import moment from "moment";
 
 export default function Week(props) {
   const renderWeek = () => {
-    const date = moment(this.props.renderedDate);
+    const date = moment(props.renderedDate);
     const wholeWeekStart = date.clone().startOf("isoWeek");
     const wholeWeekEnd = date.clone().endOf("isoWeek");
     const week = [];

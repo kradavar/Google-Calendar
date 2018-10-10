@@ -1,6 +1,6 @@
 import React from "react";
 import CellHeader from "./Table-components/Cells/CellHeader.js";
-import "../../Styles/Cell.css";
+import "../Styles/Cell.css";
 
 export default function Day(props) {
   let day = <td />;
@@ -8,18 +8,14 @@ export default function Day(props) {
   if (props.view === "month") {
     day = (
       <td className="cell">
-        <CellHeader headerInfo={props.date.date()} />
+        <CellHeader headerInfo={props.renderedDate.date()} />
       </td>
     );
   } else {
-    const wholeDayStart = props.date.clone().startOf("day");
-    const wholeDayEnd = props.date.clone().endOf("day");
+    const wholeDayStart = props.renderedDate.clone().startOf("day");
+    const wholeDayEnd = props.renderedDate.clone().endOf("day");
     const hours = [];
-    for (
-      let hour = wholeDayStart.hour();
-      hour <= wholeDayEnd.hour();
-      hour.add(1, "hour")
-    ) {
+    for (let hour = wholeDayStart.hour(); hour <= wholeDayEnd.hour(); hour++) {
       hours.push(
         <tr>
           <td className="hour-cell">

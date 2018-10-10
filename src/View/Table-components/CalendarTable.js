@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../Styles/CalendarTable.css";
 import TableHeader from "./TableHeader";
 import Month from "../Month";
-import Week from "../WeekDayView";
+import Week from "../Week";
 
 export default class CalendarTable extends Component {
   render() {
@@ -17,7 +17,10 @@ export default class CalendarTable extends Component {
               day={this.props.renderedDate.date()}
             />
             {this.props.view === "month" ? (
-              <Month renderedDate={this.props.renderedDate} />
+              <Month
+                renderedDate={this.props.renderedDate}
+                view={this.props.view}
+              />
             ) : (
               <Week
                 renderedDate={this.props.renderedDate}
