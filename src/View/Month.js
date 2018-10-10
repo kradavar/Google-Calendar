@@ -23,7 +23,6 @@ export default function Month(props) {
     const currentDate = start.clone();
 
     for (let week = 0; week < duration; week++) {
-      (() => {
         weeks.push(
           <tr>
             <td>
