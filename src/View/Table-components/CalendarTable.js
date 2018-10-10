@@ -9,25 +9,19 @@ export default class CalendarTable extends Component {
     return (
       <div className="calendar">
         <hr />
+        <div>{this.props.renderedDate.format()}</div>
         <table className="table table-bordered">
-          <tbody>
-            <TableHeader
+          {this.props.view === "month" ? (
+            <Month
+              renderedDate={this.props.renderedDate}
               view={this.props.view}
-              renderedDay={this.props.renderedDate.format("ddd")}
-              day={this.props.renderedDate.date()}
             />
-            {this.props.view === "month" ? (
-              <Month
-                renderedDate={this.props.renderedDate}
-                view={this.props.view}
-              />
-            ) : (
-              <Week
-                renderedDate={this.props.renderedDate}
-                view={this.props.view}
-              />
-            )}
-          </tbody>
+          ) : (
+            <Week
+              renderedDate={this.props.renderedDate}
+              view={this.props.view}
+            />
+          )}
         </table>
       </div>
     );

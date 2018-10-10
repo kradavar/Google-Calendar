@@ -10,17 +10,26 @@ export default function Month(props) {
     if (duration < 0) {
       return date.isoWeeksInYear() + duration;
     }
-    return duration;
+    return duration + 1;
   };
 
   const renderMonth = () => {
     const start = props.renderedDate.clone().startOf("month");
-    const month = [];
-    for (let week = 0; week < getWeekCount(); week++) {
-      month.push(<Week renderedDate={start} view={props.view} />);
+    const weeks = [];
+    const duration = getWeekCount();
+    //debugger;
+    for (let week = 0; week < duration; week++) {
+      weeks.push(
+        <tr>
+          <td>
+            <Week renderedDate={start} view={props.view} key={start.format()} />
+          </td>
+        </tr>
+      );
+      start.add(1, "week");
     }
-    return month;
+    return weeks;
   };
-  const month = renderMonth();
-  return <div>{month}</div>;
+  const weeks = renderMonth();
+  return <tbody>{weeks}</tbody>;
 }

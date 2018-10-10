@@ -3,31 +3,43 @@ import Day from "./Day";
 import moment from "moment";
 
 export default function Week(props) {
+  let weekToRender;
   const renderWeek = () => {
     const date = moment(props.renderedDate);
     const wholeWeekStart = date.clone().startOf("isoWeek");
     const wholeWeekEnd = date.clone().endOf("isoWeek");
-    const week = [];
+    const days = [];
     for (
       let currDate = wholeWeekStart.clone();
       currDate <= wholeWeekEnd;
       currDate.add(1, "day")
     ) {
-      week.push(<Day view={props.view} date={props.renderedDate} />);
+      const date = moment(currDate);
+      days.push(
+        <Day view={props.view} renderedDate={date} key={date.format()} />
+      );
     }
 
-    return week;
+    return days;
   };
+  const days = renderWeek();
 
-  const week = renderWeek();
-  return (
-    <div>
-      {props.view === "week" ? (
-        { week }
-      ) : (
-        <Day renderedDate={props.renderedDate} view={props.view} />
-      )}
-      )}
-    </div>
-  );
+  switch (props.view) {
+    case "month":
+      return (
+        <table>
+          <tbody>
+            <tr>{days}</tr>
+          </tbody>
+        </table>
+      );
+    case "week":
+      return <tr>{days}</tr>;
+    case "day":
+      return (
+        <tr>
+          <Day renderedDate={props.renderedDate} view={props.view} />
+        </tr>
+      );
+  }
 }
