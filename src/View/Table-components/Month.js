@@ -1,6 +1,6 @@
 import React from "react";
 import Week from "./Week";
-import MonthHeader from "./MonthHeader";
+import TableHeader from "./TableHeader";
 import "../../Styles/Cell.css";
 
 export default function Month(props) {
@@ -24,15 +24,7 @@ export default function Month(props) {
 
     for (let i = 0; i < duration; i++) {
       weeks.push(
-        <tr>
-          <td className="month-cell">
-            <Week
-              renderedDate={currentDate.clone()}
-              view={props.view}
-              key={i}
-            />
-          </td>
-        </tr>
+        <Week renderedDate={currentDate.clone()} view={props.view} key={i} />
       );
       currentDate.add(1, "week");
     }
@@ -40,5 +32,14 @@ export default function Month(props) {
     return weeks;
   };
 
-  return <tbody>{renderMonth()}</tbody>;
+  return (
+    <tbody>
+      <TableHeader
+        view={props.view}
+        renderedDay={props.renderedDate.format("ddd")}
+        day={props.renderedDate.date()}
+      />
+      {renderMonth()}
+    </tbody>
+  );
 }

@@ -11,20 +11,10 @@ export default function CalendarTable(props) {
       <hr />
       <div>{props.renderedDate.format()}</div>
       <table className="table table-bordered">
-        {/* <TableHeader
-          view={props.view}
-          renderedDay={props.renderedDate.format("ddd")}
-          day={props.renderedDate.date()}
-        />*/}
         {props.view === "month" ? (
           <Month renderedDate={props.renderedDate} view={props.view} />
         ) : (
           <tbody>
-            <DayWeekHeadar
-              renderedDate={props.renderedDate.date()}
-              view={props.view}
-              day={props.renderedDate.format("ddd")}
-            />
             <Week renderedDate={props.renderedDate} view={props.view} />
           </tbody>
         )}

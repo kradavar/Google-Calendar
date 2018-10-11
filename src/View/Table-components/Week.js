@@ -26,13 +26,6 @@ export default function Week(props) {
 
   switch (props.view) {
     case "month":
-      return (
-        <table className="week-cell">
-          <tbody>
-            <tr>{days}</tr>
-          </tbody>
-        </table>
-      );
     case "week":
       return <tr>{days}</tr>;
     case "day":
@@ -42,4 +35,14 @@ export default function Week(props) {
         </tr>
       );
   }
+  /*
+  return (
+    <tr>
+      {props.view === "day" ? (
+        <Day renderedDate={props.renderedDate} view={props.view} />
+      ) : (
+        { days }
+      )}
+    </tr>
+  );*/
 }
