@@ -4,9 +4,10 @@ import MonthHeader from "./MonthHeader";
 import "../../Styles/Cell.css";
 
 export default function Month(props) {
-  const getWeekCount = () => {
-    const date = props.renderedDate.clone();
+  const getWeekCount = date => {
+    // week number of 1st day of the month
     const start = date.date(1).isoWeek();
+    // week number of the last day of the month
     const end = date.date(date.daysInMonth()).isoWeek();
     const duration = end - start + 1;
     if (duration < 0) {
