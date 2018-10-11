@@ -7,6 +7,7 @@ export default function Day(props) {
   let day = <td />;
 
   if (props.view === "month") {
+    debugger;
     day = (
       <td
         className="cell day-cell"
@@ -14,14 +15,11 @@ export default function Day(props) {
           alert("add Event for this Day " + props.renderedDate.date())
         }
       >
-        <CellHeader headerInfo={props.renderedDate.date()}>
-          <RenderedEvents />
-        </CellHeader>
+        <CellHeader headerInfo={props.renderedDate.date()} />
+        <RenderedEvents />
       </td>
     );
   } else {
-    const wholeDayStart = props.renderedDate.clone().startOf("day");
-    const wholeDayEnd = props.renderedDate.clone().endOf("day");
     const hours = [];
     for (let hour = 0; hour < 24; hour++) {
       hours.push(

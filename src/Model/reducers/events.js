@@ -1,12 +1,15 @@
 import { ADD_EVENT, DELETE_EVENT } from "../actions/actions";
 import moment from "moment";
 
-const initialState = {
-  events: [],
-  renderedDate: moment()
-};
 let nextEventId = 0;
-export const events = (state = [], action) => {
+const initialState = [
+  {
+    name: "Create redux event",
+    start: moment(),
+    end: moment().add(1, "day")
+  }
+];
+export const events = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EVENT:
       return [
