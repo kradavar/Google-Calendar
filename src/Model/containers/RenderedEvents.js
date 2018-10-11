@@ -5,10 +5,10 @@ import EventList from "../../View/Events/EventList";
 const getRenderedDateEvents = (events, date) => {
   return events.filter(event => event.start === date);
 };
-
-const mapStateToProps = state => {
+/* state.date = underfined */
+const mapStateToProps = (state, props) => {
   return {
-    events: getRenderedDateEvents(state.events, state.renderedDate)
+    events: getRenderedDateEvents(state.events, props.date)
   };
 };
 /*

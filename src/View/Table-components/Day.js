@@ -7,7 +7,6 @@ export default function Day(props) {
   let day = <td />;
 
   if (props.view === "month") {
-    debugger;
     day = (
       <td
         className="cell day-cell"
@@ -16,7 +15,7 @@ export default function Day(props) {
         }
       >
         <CellHeader headerInfo={props.renderedDate.date()} />
-        <RenderedEvents />
+        <RenderedEvents date={props.renderedDate} />
       </td>
     );
   } else {
