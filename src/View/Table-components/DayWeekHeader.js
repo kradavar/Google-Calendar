@@ -1,11 +1,14 @@
 import React from "react";
 
 export default function DayWeekHeadar(props) {
-  return (
-    <tr className="header">
-      <th scope="col">
-        {props.renderedDay},{props.day}
-      </th>
-    </tr>
-  );
+  //debugger;
+  if (props.view === "day") {
+    return (
+      <tr className="header">
+        <th scope="col">
+          {props.renderedDate},{props.day}
+        </th>
+      </tr>
+    );
+  }
 }

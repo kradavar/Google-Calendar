@@ -19,7 +19,14 @@ export default function CalendarTable(props) {
         {props.view === "month" ? (
           <Month renderedDate={props.renderedDate} view={props.view} />
         ) : (
-          <Week renderedDate={props.renderedDate} view={props.view} />
+          <tbody>
+            <DayWeekHeadar
+              renderedDate={props.renderedDate.date()}
+              view={props.view}
+              day={props.renderedDate.format("ddd")}
+            />
+            <Week renderedDate={props.renderedDate} view={props.view} />
+          </tbody>
         )}
       </table>
     </div>
