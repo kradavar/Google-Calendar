@@ -1,21 +1,29 @@
 import React from "react";
 import CellHeader from "./Cells/CellHeader.js";
 import "../../Styles/Cell.css";
+import RenderedEvents from "../../Model/containers/RenderedEvents.js";
 
 export default function Day(props) {
   let day = <td />;
 
   if (props.view === "month") {
     day = (
-      <td className="cell day-cell">
-        <CellHeader headerInfo={props.renderedDate.date()} />
+      <td
+        className="cell day-cell"
+        onClick={() =>
+          alert("add Event for this Day " + props.renderedDate.date())
+        }
+      >
+        <CellHeader headerInfo={props.renderedDate.date()}>
+          <RenderedEvents />
+        </CellHeader>
       </td>
     );
   } else {
     const wholeDayStart = props.renderedDate.clone().startOf("day");
     const wholeDayEnd = props.renderedDate.clone().endOf("day");
     const hours = [];
-    for (let hour = wholeDayStart.hour(); hour <= wholeDayEnd.hour(); hour++) {
+    for (let hour = 0; hour < 24; hour++) {
       hours.push(
         <tr>
           <td className="hour-cell">

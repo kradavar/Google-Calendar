@@ -5,13 +5,14 @@ const initialState = {
   events: [],
   renderedDate: moment()
 };
-
+let nextEventId = 0;
 export const events = (state = [], action) => {
   switch (action.type) {
     case ADD_EVENT:
       return [
         ...state,
         {
+          id: nextEventId++,
           start: action.start,
           end: action.end,
           name: action.name

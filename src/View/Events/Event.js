@@ -1,27 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 
 export default function Event(props) {
-  const getRenderedType = () => {
-    let eventView;
-    if (props.view === "month") {
-      eventView = (
-        <li>
+  return (
+    <li>
+      {props.view === "month" ? (
+        <div>
           {props.start}-{props.name}
-        </li>
-      );
-    } else {
-      eventView = (
-        <li>
-          <div className="event">
-            <div className="event-header">{props.name}</div>
-            <div className="event--time">
-              {props.start} - {props.end}
-            </div>
+        </div>
+      ) : (
+        <div className="event">
+          <div className="event-header">{props.name}</div>
+          <div className="event--time">
+            {props.start} - {props.end}
           </div>
-        </li>
-      );
-    }
-  };
-
-  return eventView;
+        </div>
+      )}
+    </li>
+  );
 }
