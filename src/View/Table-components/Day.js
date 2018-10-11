@@ -1,13 +1,13 @@
 import React from "react";
-import CellHeader from "./Table-components/Cells/CellHeader.js";
-import "../Styles/Cell.css";
+import CellHeader from "./Cells/CellHeader.js";
+import "../../Styles/Cell.css";
 
 export default function Day(props) {
   let day = <td />;
 
   if (props.view === "month") {
     day = (
-      <td className="cell">
+      <td className="cell day-cell">
         <CellHeader headerInfo={props.renderedDate.date()} />
       </td>
     );

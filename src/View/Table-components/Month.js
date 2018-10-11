@@ -1,41 +1,40 @@
 import React from "react";
 import Week from "./Week";
-import { isMoment } from "moment";
+import TableHeader from "./TableHeader";
+import "../../Styles/Cell.css";
 
 export default function Month(props) {
   const getWeekCount = () => {
     const date = props.renderedDate.clone();
     const start = date.date(1).isoWeek();
     const end = date.date(date.daysInMonth()).isoWeek();
-    const duration = end - start;
+    const duration = end - start + 1;
     if (duration < 0) {
       return date.isoWeeksInYear() + duration;
     }
-    return duration + 1;
+    return duration;
   };
 
   const renderMonth = () => {
     const start = props.renderedDate.clone().startOf("month");
     const weeks = [];
-    const weeks2 = [];
-    const duration = getWeekCount();
+    const duration = getWeekCount(props.renderedDate.clone());
     const currentDate = start.clone();
 
-    for (let week = 0; week < duration; week++) {
-      (() => {
-        weeks.push(
-          <tr>
-            <td>
-              <Week renderedDate={currentDate} view={props.view} key={week} />
-            </td>
-          </tr>
-        );
-        weeks2.push(currentDate);
-        currentDate.add(1, "week");
-      })();
+    for (let i = 0; i < duration; i++) {
+      weeks.push(
+        <tr>
+          <td className="month-cell">
+            <Week
+              renderedDate={currentDate.clone()}
+              view={props.view}
+              key={i}
+            />
+          </td>
+        </tr>
+      );
+      currentDate.add(1, "week");
     }
-
-    console.warn("AAA", { weeks2 });
 
     return weeks;
   };

@@ -1,9 +1,9 @@
 import React from "react";
 import Day from "./Day";
 import moment from "moment";
+import "../../Styles/Cell.css";
 
 export default function Week(props) {
-  let weekToRender;
   const renderWeek = () => {
     const date = moment(props.renderedDate);
     const wholeWeekStart = date.clone().startOf("isoWeek");
@@ -27,7 +27,7 @@ export default function Week(props) {
   switch (props.view) {
     case "month":
       return (
-        <table>
+        <table className="week-cell">
           <tbody>
             <tr>{days}</tr>
           </tbody>

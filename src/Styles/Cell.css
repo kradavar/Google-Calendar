@@ -20,3 +20,17 @@
 .hour-table {
   width: 100%;
 }
+
+.week-cell {
+  width: 100%;
+}
+
+.day-cell {
+  width: 14%;
+}
+
+.month-cell {
+  padding: 0 !important;
+  border-bottom: none !important;
+  border-top: none !important;
+}
