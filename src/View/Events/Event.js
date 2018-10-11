@@ -1,9 +1,6 @@
 import React from "react";
 
 export default function Event(props) {
-  console.log(props.start);
-  console.log(props.name);
-
   return (
     <li>
       {props.view === "month" ? (

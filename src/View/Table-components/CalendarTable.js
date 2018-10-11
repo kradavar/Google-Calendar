@@ -14,9 +14,7 @@ export default function CalendarTable(props) {
         {props.view === "month" ? (
           <Month renderedDate={props.renderedDate} view={props.view} />
         ) : (
-          <tbody>
-            <Week renderedDate={props.renderedDate} view={props.view} />
-          </tbody>
+          <Week renderedDate={props.renderedDate} view={props.view} />
         )}
       </table>
     </div>

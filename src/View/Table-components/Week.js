@@ -2,8 +2,10 @@ import React from "react";
 import Day from "./Day";
 import moment from "moment";
 import "../../Styles/Cell.css";
+import DayWeekHeadar from "./DayWeekHeader";
 
 export default function Week(props) {
+  const daysHeader = [];
   const renderWeek = () => {
     const date = moment(props.renderedDate);
     const wholeWeekStart = date.clone().startOf("isoWeek");
@@ -15,8 +17,16 @@ export default function Week(props) {
       currDate.add(1, "day")
     ) {
       const date = moment(currDate);
+
+      daysHeader.push(
+        <DayWeekHeadar
+          renderedDate={date.date()}
+          day={date.format("ddd")}
+          key={date.format()}
+        />
+      );
       days.push(
-        <Day view={props.view} renderedDate={date} key={currDate.format()} />
+        <Day view={props.view} renderedDate={date} key={date.format()} />
       );
     }
 
@@ -24,15 +34,31 @@ export default function Week(props) {
   };
   const days = renderWeek();
 
+  //debugger;
   switch (props.view) {
     case "month":
-    case "week":
       return <tr>{days}</tr>;
-    case "day":
+    case "week":
       return (
-        <tr>
-          <Day renderedDate={props.renderedDate} view={props.view} />
-        </tr>
+        <tbody>
+          <tr>{}</tr>
+          <tr>{days}</tr>
+        </tbody>
+      );
+    case "day":
+      debugger;
+      return (
+        <tbody>
+          <tr>
+            <DayWeekHeadar
+              renderedDate={props.renderedDate.date()}
+              day={props.renderedDate.format("ddd")}
+            />
+          </tr>
+          <tr>
+            <Day renderedDate={props.renderedDate} view={props.view} />
+          </tr>
+        </tbody>
       );
   }
   /*
