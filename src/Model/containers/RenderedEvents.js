@@ -3,7 +3,8 @@ import events, { addEvent } from "../actions/actions";
 import EventList from "../../View/Events/EventList";
 
 const getRenderedDateEvents = (events, date) => {
-  return events.filter(event => event.start === date);
+  //return events.filter(event => event.start === date);
+  return events;
 };
 /* state.date = underfined */
 const mapStateToProps = (state, props) => {
