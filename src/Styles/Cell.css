@@ -15,6 +15,10 @@
   min-height: 1.5rem;
 }
 
+.hout-cell ul {
+  font-size: 0.5rem;
+}
+
 .hour-table .hour-cell {
   border-right: none;
   border-left: none;

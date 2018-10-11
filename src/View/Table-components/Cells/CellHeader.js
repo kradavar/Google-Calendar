@@ -1,4 +1,5 @@
 import React from "react";
+import "../../../Styles/Cell.css";
 
 export default function CellHeader(props) {
   return (

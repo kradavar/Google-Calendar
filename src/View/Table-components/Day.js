@@ -15,7 +15,7 @@ export default function Day(props) {
         }
       >
         <CellHeader headerInfo={props.renderedDate.date()} />
-        <RenderedEvents date={props.renderedDate} />
+        <RenderedEvents />
       </td>
     );
   } else {
@@ -25,6 +25,7 @@ export default function Day(props) {
         <tr>
           <td className="hour-cell">
             <CellHeader headerInfo={hour} />
+            <RenderedEvents />
           </td>
         </tr>
       );
