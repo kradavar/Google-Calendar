@@ -11,6 +11,10 @@
   padding: 0 !important;
 }
 
+.hour-cell .cell-header {
+  min-height: 1.5rem;
+}
+
 .hour-table .hour-cell {
   border-right: none;
   border-left: none;

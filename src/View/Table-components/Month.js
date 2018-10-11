@@ -1,6 +1,6 @@
 import React from "react";
 import Week from "./Week";
-import TableHeader from "./TableHeader";
+import MonthHeader from "./MonthHeader";
 import "../../Styles/Cell.css";
 
 export default function Month(props) {
