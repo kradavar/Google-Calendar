@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
 // Redux stuff
-/*import { Provider } from "react-redux";
-import store from "./Model/store/store";*/
 
 import "./Styles/App.css";
 // Calendar
@@ -32,13 +30,13 @@ class App extends Component {
 
   handlePrevButtonClick() {
     this.setState({
-      renderedDate: this.state.renderedDate.subtract(1, this.state.view)
+      renderedDate: this.state.renderedDate.clone().subtract(1, this.state.view)
     });
   }
 
   handleNextButtonClick() {
     this.setState({
-      renderedDate: this.state.renderedDate.add(1, this.state.view)
+      renderedDate: this.state.renderedDate.clone().add(1, this.state.view)
     });
   }
 

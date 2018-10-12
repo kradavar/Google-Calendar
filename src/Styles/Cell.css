@@ -11,6 +11,14 @@
   padding: 0 !important;
 }
 
+.hour-cell .cell-header {
+  min-height: 1.5rem;
+}
+
+.hout-cell ul {
+  font-size: 0.5rem;
+}
+
 .hour-table .hour-cell {
   border-right: none;
   border-left: none;
@@ -19,4 +27,18 @@
 
 .hour-table {
   width: 100%;
+}
+
+.week-cell {
+  width: 100%;
+}
+
+.day-cell {
+  width: 14%;
+}
+
+.month-cell {
+  padding: 0 !important;
+  border-bottom: none !important;
+  border-top: none !important;
 }
