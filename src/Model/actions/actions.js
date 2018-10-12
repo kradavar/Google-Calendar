@@ -3,8 +3,8 @@ export const DELETE_EVENT = "DELETE_EVENT";
 export const SHOW_EVENT = "SHOW_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 
-export function addEvent(name) {
-  return { type: ADD_EVENT, name };
+export function addEvent(name, start, end) {
+  return { type: ADD_EVENT, name, start, end };
 }
 
 export function deleteEvent(name) {

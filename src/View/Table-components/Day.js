@@ -3,6 +3,7 @@ import CellHeader from "./Cells/CellHeader.js";
 import "../../Styles/Cell.css";
 import RenderedEvents from "../../Model/containers/RenderedEvents.js";
 import { connect } from "react-redux";
+import { addEvent } from "../../Model/actions/actions.js";
 
 function Day(props, { dispatch }) {
   let day = <td />;
@@ -11,9 +12,13 @@ function Day(props, { dispatch }) {
     day = (
       <td
         className="cell day-cell"
-        onClick={() =>
-          alert("add Event for this Day " + props.renderedDate.date())
-        }
+        onClick={e => {
+          e.preventDefault();
+          const name = prompt("Name: ");
+          const end = props.renderedDate.clone().add(1, "hour");
+          debugger;
+          dispatch(addEvent(name, props.renderedDate, end));
+        }}
       >
         <CellHeader headerInfo={props.renderedDate.date()} />
         <RenderedEvents date={props.renderedDate} view={props.view} />
