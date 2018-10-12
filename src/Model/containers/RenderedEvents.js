@@ -16,7 +16,7 @@ const filterByHour = (eventStart, date, hour) => {
     if (hour < 10) {
       hour = `0${hour}`;
     }
-    return getHour(eventStart) === getHour(formatDate(date));
+    return getHour(eventStart) === hour.toString();
   }
 };
 
