@@ -3,7 +3,7 @@ import "../../Styles/Cell.css";
 
 export default function DayWeekHeadar(props) {
   return (
-    <header className="sticky">
+    <header className="">
       {props.renderedDate},{props.day}
     </header>
   );
