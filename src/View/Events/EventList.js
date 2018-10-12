@@ -7,8 +7,8 @@ export default function EventList(props) {
       {props.events.map(event => (
         <Event
           key={event.id}
-          start={event.start.format("kk:mm")}
-          end={event.end.format("kk:mm")}
+          start={event.start}
+          end={event.end}
           name={event.name}
         />
       ))}

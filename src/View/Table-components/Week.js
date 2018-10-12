@@ -41,34 +41,16 @@ export default function Week(props) {
     case "week":
       return (
         <tbody>
-          <tr>{}</tr>
           <tr>{days}</tr>
         </tbody>
       );
     case "day":
-      debugger;
       return (
         <tbody>
-          <tr>
-            <DayWeekHeadar
-              renderedDate={props.renderedDate.date()}
-              day={props.renderedDate.format("ddd")}
-            />
-          </tr>
           <tr>
             <Day renderedDate={props.renderedDate} view={props.view} />
           </tr>
         </tbody>
       );
   }
-  /*
-  return (
-    <tr>
-      {props.view === "day" ? (
-        <Day renderedDate={props.renderedDate} view={props.view} />
-      ) : (
-        { days }
-      )}
-    </tr>
-  );*/
 }

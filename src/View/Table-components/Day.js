@@ -15,17 +15,23 @@ export default function Day(props) {
         }
       >
         <CellHeader headerInfo={props.renderedDate.date()} />
-        <RenderedEvents />
+        <RenderedEvents date={props.renderedDate} view={props.view} />
       </td>
     );
   } else {
     const hours = [];
+
     for (let hour = 0; hour < 24; hour++) {
+      //debugger;
       hours.push(
         <tr>
           <td className="hour-cell">
             <CellHeader headerInfo={hour} />
-            <RenderedEvents />
+            <RenderedEvents
+              date={props.renderedDate}
+              view={props.view}
+              hour={hour}
+            />
           </td>
         </tr>
       );
