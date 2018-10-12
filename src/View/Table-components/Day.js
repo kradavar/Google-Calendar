@@ -2,8 +2,9 @@ import React from "react";
 import CellHeader from "./Cells/CellHeader.js";
 import "../../Styles/Cell.css";
 import RenderedEvents from "../../Model/containers/RenderedEvents.js";
+import { connect } from "react-redux";
 
-export default function Day(props) {
+function Day(props, { dispatch }) {
   let day = <td />;
 
   if (props.view === "month") {
@@ -47,3 +48,5 @@ export default function Day(props) {
 
   return day;
 }
+
+export default connect()(Day);
