@@ -37,20 +37,10 @@ export default function Week(props) {
   //debugger;
   switch (props.view) {
     case "month":
-      return <tr>{days}</tr>;
+      return <div className="week">{days}</div>;
     case "week":
-      return (
-        <tbody>
-          <tr>{days}</tr>
-        </tbody>
-      );
+      return <div className="week content">{days}</div>;
     case "day":
-      return (
-        <tbody>
-          <tr>
-            <Day renderedDate={props.renderedDate} view={props.view} />
-          </tr>
-        </tbody>
-      );
+      return <Day renderedDate={props.renderedDate} view={props.view} />;
   }
 }

@@ -32,14 +32,5 @@ export default function Month(props) {
     return weeks;
   };
 
-  return (
-    <tbody>
-      <TableHeader
-        view={props.view}
-        renderedDay={props.renderedDate.format("ddd")}
-        day={props.renderedDate.date()}
-      />
-      {renderMonth()}
-    </tbody>
-  );
+  return <div className="flex-container month">{renderMonth()}</div>;
 }
