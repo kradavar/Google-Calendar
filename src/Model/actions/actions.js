@@ -1,6 +1,7 @@
 export const ADD_EVENT = "ADD_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const SHOW_EVENT = "SHOW_EVENT";
+export const EDIT_EVENT = "EDIT_EVENT";
 
 export function addEvent(name) {
   return { type: ADD_EVENT, name };
@@ -12,4 +13,8 @@ export function deleteEvent(name) {
 
 export function showEvent(id) {
   return { type: SHOW_EVENT, id };
+}
+
+export function editEvent(id) {
+  return { type: EDIT_EVENT, id };
 }

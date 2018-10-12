@@ -1,5 +1,6 @@
 import React from "react";
 import Event from "./Event";
+import { showEvent } from "../../Model/actions/actions";
 
 export default function EventList(props) {
   return (
@@ -10,6 +11,8 @@ export default function EventList(props) {
           start={event.start}
           end={event.end}
           name={event.name}
+          id={event.id}
+          onClick={() => showEvent(event.id)}
         />
       ))}
     </ul>
