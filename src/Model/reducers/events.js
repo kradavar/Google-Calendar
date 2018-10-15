@@ -33,8 +33,8 @@ export const events = (state = initialState, action) => {
         ...state,
         {
           id: nextEventId++,
-          start: action.start.format("YYYY-MM-DD HH:mm"),
-          end: action.end.format("YYYY-MM-DD HH:mm"),
+          start: action.start,
+          end: action.end,
           name: action.name
         }
       ];
