@@ -7,50 +7,38 @@ import ModalWindow from "../ModalWindow.js";
 export default class Day extends Component {
   constructor(props) {
     super(props);
-
-    console.warn("constructor", { self: this });
-
     this.state = {
-      showModal: false,
-
-      showModalV2: false
+      showModal: false
     };
-    //this.showModal = this.showModal.bind(this);
-    //this.hideModal = this.hideModal.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
-  showModal = event => {
-    console.warn("showModal", { self: this, event });
-
+  showModal() {
     this.setState({
-      showModalV2: true
+      showModal: true
     });
-  };
+  }
 
-  hideModal = e => {
-    console.warn("hideModal", { self: this, e });
-
+  hideModal(e) {
+    console.warn("hideModal", { self: this });
+    e.stopPropagation();
     this.setState({
-      showModalV2: false,
-      test: "test"
+      showModal: false
     });
-
-    e.preventDefault();
-  };
+  }
 
   createDayCell() {
     if (this.props.view === "month") {
       console.warn("createDayCell", { state: this.state });
 
       return (
-        <td
-          className="cell day-cell"
-          onClick={() => this.setState({ showModalV2: true })}
-        >
-          {this.state.showModalV2 && (
+        <td className="cell day-cell" onClick={this.showModal}>
+          {this.state.showModal && (
             <ModalWindow
+              showModal={this.state.showModal}
               renderedDate={this.props.renderedDate}
-              handleClose={() => this.setState({ showModalV2: false })}
+              handleClose={this.hideModal}
             />
           )}
 
@@ -87,22 +75,9 @@ export default class Day extends Component {
       );
     }
   }
-
   render() {
     console.warn("render", { state: this.state });
 
-    return (
-      <td
-        className="cell day-cell"
-        onClick={() => this.setState({ showModalV2: true })}
-      >
-        {this.state.showModalV2 && (
-          <ModalWindow
-            renderedDate={this.props.renderedDate}
-            handleClose={() => this.setState({ showModalV2: false })}
-          />
-        )}
-      </td>
-    );
+    return this.createDayCell();
   }
 }

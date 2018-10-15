@@ -1,13 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { addEvent } from "../Model/actions/actions.js";
 import "../Styles/Modal.css";
 
 function ModalWindow(props) {
-  const showHideClassName = props.showModal
-    ? "modal display-block"
-    : "modal display-none";
   return (
     <div className="modal">
       <section className="modal-main">

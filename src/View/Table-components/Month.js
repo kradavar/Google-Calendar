@@ -31,9 +31,5 @@ export default function Month(props) {
     return weeks;
   };
 
-  return (
-    <tbody>
-      <Week renderedDate={props.renderedDate.clone()} view={props.view} />
-    </tbody>
-  );
+  return <tbody>{renderMonth()}</tbody>;
 }
