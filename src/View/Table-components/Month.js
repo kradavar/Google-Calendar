@@ -1,6 +1,5 @@
 import React from "react";
 import Week from "./Week";
-import TableHeader from "./TableHeader";
 import "../../Styles/Cell.css";
 
 export default function Month(props) {
@@ -34,12 +33,7 @@ export default function Month(props) {
 
   return (
     <tbody>
-      <TableHeader
-        view={props.view}
-        renderedDay={props.renderedDate.format("ddd")}
-        day={props.renderedDate.date()}
-      />
-      {renderMonth()}
+      <Week renderedDate={props.renderedDate.clone()} view={props.view} />
     </tbody>
   );
 }

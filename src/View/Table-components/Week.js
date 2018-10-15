@@ -25,9 +25,7 @@ export default function Week(props) {
           key={date.format()}
         />
       );
-      days.push(
-        <Day view={props.view} renderedDate={date} key={date.format()} />
-      );
+      days.push();
     }
 
     return days;
@@ -37,7 +35,11 @@ export default function Week(props) {
   //debugger;
   switch (props.view) {
     case "month":
-      return <tr>{days}</tr>;
+      return (
+        <tr>
+          <Day view={props.view} renderedDate={moment(props.renderedDate)} />
+        </tr>
+      );
     case "week":
       return (
         <tbody>

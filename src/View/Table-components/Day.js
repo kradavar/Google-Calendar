@@ -1,58 +1,108 @@
-import React from "react";
+import React, { Component } from "react";
 import CellHeader from "./Cells/CellHeader.js";
 import "../../Styles/Cell.css";
 import RenderedEvents from "../../Model/containers/RenderedEvents.js";
-import { connect } from "react-redux";
-import { addEvent } from "../../Model/actions/actions.js";
+import ModalWindow from "../ModalWindow.js";
 
-function Day(props) {
-  let day = <td />;
+export default class Day extends Component {
+  constructor(props) {
+    super(props);
 
-  if (props.view === "month") {
-    day = (
-      <td
-        className="cell day-cell"
-        onClick={e => {
-          e.preventDefault();
-          const name = prompt("Name: ");
-          const end = props.renderedDate.clone().add(1, "hour");
-          const start = props.renderedDate.clone();
+    console.warn("constructor", { self: this });
 
-          props.dispatch(addEvent(name, start, end));
-        }}
-      >
-        <CellHeader headerInfo={props.renderedDate.date()} />
-        <RenderedEvents date={props.renderedDate} view={props.view} />
-      </td>
-    );
-  } else {
-    const hours = [];
+    this.state = {
+      showModal: false,
 
-    for (let hour = 0; hour < 24; hour++) {
-      //debugger;
-      hours.push(
-        <tr>
-          <td className="hour-cell">
-            <CellHeader headerInfo={hour} />
-            <RenderedEvents
-              date={props.renderedDate}
-              view={props.view}
-              hour={hour}
+      showModalV2: false
+    };
+    //this.showModal = this.showModal.bind(this);
+    //this.hideModal = this.hideModal.bind(this);
+  }
+
+  showModal = event => {
+    console.warn("showModal", { self: this, event });
+
+    this.setState({
+      showModalV2: true
+    });
+  };
+
+  hideModal = e => {
+    console.warn("hideModal", { self: this, e });
+
+    this.setState({
+      showModalV2: false,
+      test: "test"
+    });
+
+    e.preventDefault();
+  };
+
+  createDayCell() {
+    if (this.props.view === "month") {
+      console.warn("createDayCell", { state: this.state });
+
+      return (
+        <td
+          className="cell day-cell"
+          onClick={() => this.setState({ showModalV2: true })}
+        >
+          {this.state.showModalV2 && (
+            <ModalWindow
+              renderedDate={this.props.renderedDate}
+              handleClose={() => this.setState({ showModalV2: false })}
             />
-          </td>
-        </tr>
+          )}
+
+          <CellHeader headerInfo={this.props.renderedDate.date()} />
+          <RenderedEvents
+            date={this.props.renderedDate}
+            view={this.props.view}
+          />
+        </td>
+      );
+    } else {
+      const hours = [];
+
+      for (let hour = 0; hour < 24; hour++) {
+        hours.push(
+          <tr>
+            <td className="hour-cell">
+              <CellHeader headerInfo={hour} />
+              <RenderedEvents
+                date={this.props.renderedDate}
+                view={this.props.view}
+                hour={hour}
+              />
+            </td>
+          </tr>
+        );
+      }
+      return (
+        <td className="cell-with-hour">
+          <table className="hour-table">
+            <tbody>{hours}</tbody>
+          </table>
+        </td>
       );
     }
-    day = (
-      <td className="cell-with-hour">
-        <table className="hour-table">
-          <tbody>{hours}</tbody>
-        </table>
+  }
+
+  render() {
+    console.warn("render", { state: this.state });
+
+    return (
+      <td
+        className="cell day-cell"
+        onClick={() => this.setState({ showModalV2: true })}
+      >
+        {this.state.showModalV2 && (
+          <ModalWindow
+            renderedDate={this.props.renderedDate}
+            handleClose={() => this.setState({ showModalV2: false })}
+          />
+        )}
       </td>
     );
   }
-
-  return day;
 }
-
-export default connect()(Day);
