@@ -2,6 +2,7 @@ import React from "react";
 import Week from "./Week";
 import TableHeader from "./TableHeader";
 import "../../Styles/Cell.css";
+import MonthHeader from "./MonthHeader";
 
 export default function Month(props) {
   const getWeekCount = date => {
@@ -32,5 +33,10 @@ export default function Month(props) {
     return weeks;
   };
 
-  return <div className="flex-container month">{renderMonth()}</div>;
+  return (
+    <div className="flex-container month">
+      <MonthHeader />
+      {renderMonth()}
+    </div>
+  );
 }

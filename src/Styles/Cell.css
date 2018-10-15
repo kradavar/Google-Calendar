@@ -45,3 +45,14 @@
   border: 1px solid #8f9dad;
   background-color: #bdddff;
 }
+
+.month-header {
+  display: flex;
+  height: 2rem;
+  justify-content: space-between;
+  background-color: #bdddff;
+}
+.month-header div {
+  border: 1px solid #8f9dad;
+  width: 100%;
+}
