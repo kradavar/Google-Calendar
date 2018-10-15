@@ -3,7 +3,7 @@ import "../../Styles/Cell.css";
 
 export default function DayWeekHeadar(props) {
   return (
-    <header className="">
+    <header className="day-week-header">
       {props.renderedDate},{props.day}
     </header>
   );

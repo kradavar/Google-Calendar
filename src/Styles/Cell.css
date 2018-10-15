@@ -1,5 +1,5 @@
 .cell-header {
-  min-height: 5rem;
+  min-height: 3rem;
 }
 
 .cell:hover {
@@ -39,19 +39,9 @@
   min-height: 50px;
 }
 
-header {
-  height: 5rem;
-  width: 100%; /*
-  background-color: violet;*/
-}
-/* The sticky class is added to the header with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
-  top: 0;
+.day-week-header {
+  height: 2rem;
   width: 100%;
-}
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 4em;
+  border: 1px solid #8f9dad;
+  background-color: #bdddff;
 }
