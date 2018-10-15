@@ -2,9 +2,14 @@
   min-height: 3rem;
 }
 
-.cell:hover {
+.cell:hover,
+.hour:hover {
   background-color: rgba(104, 170, 255, 0.6);
   color: white;
+}
+
+.cell-header-info {
+  font-size: 0.8rem;
 }
 
 .flex-container {
@@ -24,7 +29,7 @@
 }
 .day {
   flex: 1;
-  border: 1px solid #8f9dad;
+  border: 0.25px solid #8f9dad;
 }
 
 .day-flex {
@@ -34,16 +39,19 @@
   flex-basis: auto;
 }
 .hour {
-  border: 0.5px solid #8f9dad;
+  border: 0.25px solid #8f9dad;
   flex: 1;
   min-height: 50px;
 }
 
 .day-week-header {
-  height: 2rem;
+  height: 3rem;
   width: 100%;
-  border: 1px solid #8f9dad;
+  border: 0.25px solid #8f9dad;
   background-color: #bdddff;
+  line-height: 3rem;
+  text-align: center;
+  font-weight: bold;
 }
 
 .month-header {
@@ -51,8 +59,12 @@
   height: 2rem;
   justify-content: space-between;
   background-color: #bdddff;
+  line-height: 3rem;
+  min-height: 3rem;
 }
 .month-header div {
-  border: 1px solid #8f9dad;
+  border: 0.25px solid #8f9dad;
   width: 100%;
+  text-align: center;
+  font-weight: bold;
 }
