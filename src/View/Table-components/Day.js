@@ -5,7 +5,7 @@ import RenderedEvents from "../../Model/containers/RenderedEvents.js";
 import { connect } from "react-redux";
 import { addEvent } from "../../Model/actions/actions.js";
 
-function Day(props, { dispatch }) {
+function Day(props) {
   let day = <td />;
 
   if (props.view === "month") {
@@ -16,8 +16,9 @@ function Day(props, { dispatch }) {
           e.preventDefault();
           const name = prompt("Name: ");
           const end = props.renderedDate.clone().add(1, "hour");
-          debugger;
-          dispatch(addEvent(name, props.renderedDate, end));
+          const start = props.renderedDate.clone();
+
+          props.dispatch(addEvent(name, start, end));
         }}
       >
         <CellHeader headerInfo={props.renderedDate.date()} />
