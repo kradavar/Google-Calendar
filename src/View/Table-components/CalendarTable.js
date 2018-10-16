@@ -1,6 +1,5 @@
 import React from "react";
 import "../../Styles/CalendarTable.css";
-import TableHeader from "./MonthHeader";
 import Month from "./Month";
 import Week from "./Week";
 import DayWeekHeadar from "./DayWeekHeader";

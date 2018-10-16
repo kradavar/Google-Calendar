@@ -1,6 +1,5 @@
 import React from "react";
 import Week from "./Week";
-import TableHeader from "./TableHeader";
 import "../../Styles/Cell.css";
 import MonthHeader from "./MonthHeader";
 

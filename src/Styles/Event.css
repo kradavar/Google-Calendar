@@ -1,0 +1,20 @@
+.event-day {
+  background-color: #acd8ac;
+  font-size: 0.75rem;
+}
+
+.event {
+  font-size: 1rem;
+  padding-left: 3px;
+}
+
+.event::before {
+  content: "▶";
+  padding-right: 6px;
+  color: green;
+}
+
+.event-list {
+  list-style: none;
+  padding: 0;
+}
