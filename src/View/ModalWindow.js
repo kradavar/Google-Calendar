@@ -30,48 +30,50 @@ function ModalWindow(props) {
           </div>
           <div className="modal-body">
             <form>
-              <div class="form-group">
-                <label for="event-start" class="col-form-label">
+              <div className="form-group">
+                <label for="event-start" className="col-form-label">
                   Start:
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="event-start"
-                  value={props.renderedDate.clone().format("YYYY-MM-DD HH:mm")}
+                  defaultValue={props.renderedDate
+                    .clone()
+                    .format("YYYY-MM-DD HH:mm")}
                 />
               </div>
-              <div class="form-group">
-                <label for="event-end" class="col-form-label">
+              <div className="form-group">
+                <label for="event-end" className="col-form-label">
                   End:
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="event-end"
-                  value={props.renderedDate
+                  defaultValue={props.renderedDate
                     .clone()
                     .add(1, "hour")
                     .format("YYYY-MM-DD HH:mm")}
                 />
               </div>
-              <div class="form-group">
-                <label for="event-name" class="col-form-label">
+              <div className="form-group">
+                <label for="event-name" className="col-form-label">
                   Name:
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="event-name"
-                  value="Event Name"
+                  placeholder="Event Name"
                 />
               </div>
             </form>
           </div>
-          <div class="modal-footer">
+          <div className="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              className="btn btn-secondary"
               data-dismiss="modal"
               onClick={props.handleClose}
             >
@@ -79,10 +81,10 @@ function ModalWindow(props) {
             </button>
             <button
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               onClick={createNewEvent}
             >
-              Send message
+              Create Event
             </button>
           </div>
         </div>
