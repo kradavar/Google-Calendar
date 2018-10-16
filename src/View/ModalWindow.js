@@ -31,7 +31,7 @@ function ModalWindow(props) {
           <div className="modal-body">
             <form>
               <div className="form-group">
-                <label for="event-start" className="col-form-label">
+                <label htmlFor="event-start" className="col-form-label">
                   Start:
                 </label>
                 <input
@@ -44,7 +44,7 @@ function ModalWindow(props) {
                 />
               </div>
               <div className="form-group">
-                <label for="event-end" className="col-form-label">
+                <label htmlFor="event-end" className="col-form-label">
                   End:
                 </label>
                 <input
@@ -58,7 +58,7 @@ function ModalWindow(props) {
                 />
               </div>
               <div className="form-group">
-                <label for="event-name" className="col-form-label">
+                <label htmlFor="event-name" className="col-form-label">
                   Name:
                 </label>
                 <input

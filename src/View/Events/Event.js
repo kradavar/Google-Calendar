@@ -10,7 +10,7 @@ export default function Event(props) {
         <div
           className="event"
           onClick={event => {
-            alert("heeey");
+            props.onClick();
             event.stopPropagation();
           }}
         >
