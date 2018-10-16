@@ -1,3 +1,6 @@
 .calendar {
   min-width: 90%;
+  overflow-y: auto;
+  height: 38rem;
+  padding-bottom: 3rem;
 }

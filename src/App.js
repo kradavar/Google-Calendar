@@ -57,7 +57,7 @@ class App extends Component {
             renderedDate={this.state.renderedDate}
             currentDate={this.state.currentDate}
           />
-          <div className="container d-flex justify-content-between">
+          <div className="container d-flex justify-content-between bottom-buttons">
             <PrevButton onClick={this.handlePrevButtonClick} />
             <NextButton onClick={this.handleNextButtonClick} />
           </div>

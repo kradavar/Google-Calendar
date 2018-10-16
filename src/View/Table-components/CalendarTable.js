@@ -6,14 +6,11 @@ import Week from "./Week";
 export default function CalendarTable(props) {
   return (
     <div className="calendar">
-      <hr />
-      <div>
-        {props.view === "month" ? (
-          <Month renderedDate={props.renderedDate} view={props.view} />
-        ) : (
-          <Week renderedDate={props.renderedDate} view={props.view} />
-        )}
-      </div>
+      {props.view === "month" ? (
+        <Month renderedDate={props.renderedDate} view={props.view} />
+      ) : (
+        <Week renderedDate={props.renderedDate} view={props.view} />
+      )}
     </div>
   );
 }
