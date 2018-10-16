@@ -53,10 +53,7 @@ export default class Event extends Component {
                 id={this.props.id}
               />
             )}
-            <div className="event-header">{this.props.name}</div>
-            <div className="event--time">
-              {this.props.start} - {this.props.end}
-            </div>
+            {this.props.name},{this.props.start} - {this.props.end}
           </div>
         )}
       </li>
