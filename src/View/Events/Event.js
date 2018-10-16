@@ -1,14 +1,17 @@
 import React from "react";
 
+import "../../Styles/Event.css";
+
 export default function Event(props) {
+  //debugger;
   return (
     <li>
       {props.view === "month" ? (
-        <div>
-          {props.start}-{props.name}
+        <div className="event" onClick={props.onClick}>
+          {props.start.split(" ")[1]}-{props.name}
         </div>
       ) : (
-        <div className="event">
+        <div className="event-day" onClick={props.onClick}>
           <div className="event-header">{props.name}</div>
           <div className="event--time">
             {props.start} - {props.end}

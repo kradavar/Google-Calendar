@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
-import events, { addEvent } from "../actions/actions";
 import EventList from "../../View/Events/EventList";
-
+/*---------functions for getRenderedDateEvents---------------*/
 const formatDate = date => date.format("YYYY-MM-DD HH:mm");
 
 const getDate = date => date.split(" ")[0];
@@ -19,6 +18,12 @@ const filterByHour = (eventStart, date, hour) => {
     return getHour(eventStart) === hour.toString();
   }
 };
+/*------------------------------------------------------*/
+
+const showEvent = (id, events) => {
+  const event = events.filter(event => event.id === id);
+  alert(event);
+};
 
 const getRenderedDateEvents = (events, date, view, hour) => {
   if (view === "month") {
@@ -27,6 +32,7 @@ const getRenderedDateEvents = (events, date, view, hour) => {
     return events.filter(event => filterByHour(event.start, date, hour));
   }
 };
+
 const mapStateToProps = (state, props) => {
   return {
     events: getRenderedDateEvents(
@@ -37,8 +43,11 @@ const mapStateToProps = (state, props) => {
     )
   };
 };
-/*
-const mapDispatchToProps = dispatch => {
-  onClick: start, name => dispatch(addEvent(start, name));
-};*/
-export default connect(mapStateToProps)(EventList);
+
+const mapDispatchToProps = dispatch => ({
+  onClick: id => dispatch(showEvent(id))
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EventList);
