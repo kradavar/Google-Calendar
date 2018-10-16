@@ -5,6 +5,7 @@ import RenderedEvents from "../../Model/containers/RenderedEvents.js";
 import ModalWindow from "../ModalWindow.js";
 
 import DayWeekHeader from "./DayWeekHeader.js";
+import moment from "moment";
 
 export default class Day extends Component {
   constructor(props) {
@@ -30,9 +31,15 @@ export default class Day extends Component {
   }
 
   createDayCell() {
+    const dayClassName =
+      this.props.renderedDate.format("YYYY-MM-DD") ===
+      moment().format("YYYY-MM-DD")
+        ? "current-day cell day"
+        : "cell day";
+
     if (this.props.view === "month") {
       return (
-        <div className="cell day" onClick={this.showModal}>
+        <div className={dayClassName} onClick={this.showModal}>
           {this.state.showModal && (
             <ModalWindow
               showModal={this.state.showModal}

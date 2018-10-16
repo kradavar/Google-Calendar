@@ -26,7 +26,6 @@ export default class Event extends Component {
     this.getTimeInMitutes(end) - this.getTimeInMitutes(start);
 
   getHeight = () => {
-    //debugger;
     const minutes = this.getEventDuration(this.props.start, this.props.end);
     return (
       minutes * 0.05
