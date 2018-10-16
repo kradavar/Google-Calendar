@@ -14,8 +14,8 @@ export function addEvent(name, start, end) {
   };
 }
 
-export function deleteEvent(name) {
-  return { type: DELETE_EVENT, name };
+export function deleteEvent(id) {
+  return { type: DELETE_EVENT, id };
 }
 
 export function showEvent(id) {

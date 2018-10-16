@@ -1,11 +1,13 @@
 .event-day {
   background-color: #acd8ac;
   font-size: 0.75rem;
+  z-index: 10;
 }
 
 .event {
   font-size: 1rem;
   padding-left: 3px;
+  z-index: 10;
 }
 
 .event::before {

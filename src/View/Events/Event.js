@@ -7,7 +7,13 @@ export default function Event(props) {
   return (
     <li>
       {props.view === "month" ? (
-        <div className="event" onClick={props.onClick}>
+        <div
+          className="event"
+          onClick={event => {
+            alert("heeey");
+            event.stopPropagation();
+          }}
+        >
           {props.start.split(" ")[1]}-{props.name}
         </div>
       ) : (
