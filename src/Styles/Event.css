@@ -10,6 +10,11 @@
   z-index: 10;
 }
 
+.event:hover,
+.event-day:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .event::before {
   content: "▶";
   padding-right: 6px;
