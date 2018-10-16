@@ -1,17 +1,16 @@
 import React from "react";
+import "../../Styles/Cell.css";
 
-export default function MonthHeader({ view, renderedDay, day }) {
+export default function MonthHeader() {
   return (
-    <tr className="header">
-      <th>
-        <th scope="col">Mon</th>
-        <th scope="col">Tue</th>
-        <th scope="col">Wed</th>
-        <th scope="col">Thu</th>
-        <th scope="col">Fri</th>
-        <th scope="col">Sat</th>
-        <th scope="col">Sun</th>
-      </th>
-    </tr>
+    <header className="month-header">
+      <div>Mon</div>
+      <div>Tue</div>
+      <div>Wed</div>
+      <div>Thu</div>
+      <div>Fri</div>
+      <div>Sat</div>
+      <div>Sun</div>
+    </header>
   );
 }

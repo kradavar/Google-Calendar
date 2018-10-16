@@ -4,6 +4,8 @@ import "../../Styles/Cell.css";
 import RenderedEvents from "../../Model/containers/RenderedEvents.js";
 import ModalWindow from "../ModalWindow.js";
 
+import DayWeekHeader from "./DayWeekHeader.js";
+
 export default class Day extends Component {
   constructor(props) {
     super(props);
@@ -30,10 +32,8 @@ export default class Day extends Component {
 
   createDayCell() {
     if (this.props.view === "month") {
-      console.warn("createDayCell", { state: this.state });
-
       return (
-        <td className="cell day-cell" onClick={this.showModal}>
+        <div className="cell day" onClick={this.showModal}>
           {this.state.showModal && (
             <ModalWindow
               showModal={this.state.showModal}
@@ -47,37 +47,35 @@ export default class Day extends Component {
             date={this.props.renderedDate}
             view={this.props.view}
           />
-        </td>
+        </div>
       );
     } else {
       const hours = [];
 
       for (let hour = 0; hour < 24; hour++) {
         hours.push(
-          <tr>
-            <td className="hour-cell">
-              <CellHeader headerInfo={hour} />
-              <RenderedEvents
-                date={this.props.renderedDate}
-                view={this.props.view}
-                hour={hour}
-              />
-            </td>
-          </tr>
+          <div className="hour">
+            <CellHeader headerInfo={hour} />
+            <RenderedEvents
+              date={this.props.renderedDate}
+              view={this.props.view}
+              hour={hour}
+            />
+          </div>
         );
       }
       return (
-        <td className="cell-with-hour">
-          <table className="hour-table">
-            <tbody>{hours}</tbody>
-          </table>
-        </td>
+        <div className="flex-container">
+          <DayWeekHeader
+            renderedDate={this.props.renderedDate.date()}
+            day={this.props.renderedDate.format("ddd")}
+          />
+          <div className="day-flex">{hours}</div>
+        </div>
       );
     }
   }
   render() {
-    console.warn("render", { state: this.state });
-
     return this.createDayCell();
   }
 }

@@ -1,44 +1,70 @@
 .cell-header {
-  min-height: 5rem;
+  min-height: 3rem;
 }
 
-.cell:hover {
+.cell:hover,
+.hour:hover {
   background-color: rgba(104, 170, 255, 0.6);
   color: white;
 }
 
-.cell-with-hour {
-  padding: 0 !important;
+.cell-header-info {
+  font-size: 0.8rem;
 }
 
-.hour-cell .cell-header {
-  min-height: 1.5rem;
-}
-
-.hout-cell ul {
-  font-size: 0.5rem;
-}
-
-.hour-table .hour-cell {
-  border-right: none;
-  border-left: none;
-  height: 15px !important;
-}
-
-.hour-table {
+.flex-container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
-.week-cell {
+.month {
+  border: none !important;
+}
+.week {
+  min-height: 200px;
+  display: flex;
   width: 100%;
+  justify-content: space-around;
+}
+.day {
+  flex: 1;
+  border: 0.25px solid #8f9dad;
 }
 
-.day-cell {
-  width: 14%;
+.day-flex {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+}
+.hour {
+  border: 0.25px solid #8f9dad;
+  flex: 1;
+  min-height: 50px;
 }
 
-.month-cell {
-  padding: 0 !important;
-  border-bottom: none !important;
-  border-top: none !important;
+.day-week-header {
+  height: 3rem;
+  width: 100%;
+  border: 0.25px solid #8f9dad;
+  background-color: #bdddff;
+  line-height: 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.month-header {
+  display: flex;
+  height: 2rem;
+  justify-content: space-between;
+  background-color: #bdddff;
+  line-height: 3rem;
+  min-height: 3rem;
+}
+.month-header div {
+  border: 0.25px solid #8f9dad;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
 }

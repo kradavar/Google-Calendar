@@ -1,11 +1,10 @@
 import React from "react";
+import "../../Styles/Cell.css";
 
 export default function DayWeekHeadar(props) {
-  if (props.view === "day") {
-    return (
-      <th scope="col">
-        {props.renderedDate},{props.day}
-      </th>
-    );
-  }
+  return (
+    <header className="day-week-header">
+      {props.renderedDate},{props.day}
+    </header>
+  );
 }
