@@ -12,6 +12,41 @@ export default class Event extends Component {
     };
   }
 
+  getHourOfEvent = dateString => +dateString.split(" ")[1].split(":")[0];
+
+  getMinutesOfEvent = dateString => +dateString.split(" ")[1].split(":")[1];
+
+  converHoursIntoMinutes = hour => hour * 60;
+
+  getTimeInMitutes = dateString =>
+    this.getMinutesOfEvent(dateString) +
+    this.converHoursIntoMinutes(this.getHourOfEvent(dateString));
+
+  getEventDuration = (start, end) =>
+    this.getTimeInMitutes(end) - this.getTimeInMitutes(start);
+
+  getHeight = () => {
+    //debugger;
+    const minutes = this.getEventDuration(this.props.start, this.props.end);
+    return (
+      minutes * 0.05
+    ); /* 0.05rem - height of 1 minute, 'cause height of hour cell is 3rem  */
+  };
+
+  getTopOfEvent = () => {
+    const startTime = this.getMinutesOfEvent(this.props.start);
+    return 0.05 * startTime - 2.2; /* rise event on the top of its start */
+  };
+
+  getStyles = () => {
+    const heightRem = this.getHeight() + "rem";
+    const topRem = this.getTopOfEvent() + "rem";
+    return {
+      height: heightRem,
+      top: topRem
+    };
+  };
+
   handleClose = e => {
     this.setState({
       showModal: false
@@ -43,7 +78,11 @@ export default class Event extends Component {
             {this.props.start.split(" ")[1]}-{this.props.name}
           </div>
         ) : (
-          <div className="event-day" onClick={this.handleOpen}>
+          <div
+            className="event-day"
+            style={this.getStyles()}
+            onClick={this.handleOpen}
+          >
             {this.state.showModal && (
               <ModalShowEvent
                 handleClose={this.handleClose}

@@ -6,7 +6,7 @@ const initialState = [
     id: nextEventId++,
     name: "Test 1",
     start: "2018-10-12 10:50",
-    end: "2018-10-12 11-50"
+    end: "2018-10-12 11:50"
   },
   {
     id: nextEventId++,
