@@ -7,7 +7,7 @@ export default function CalendarTable(props) {
   return (
     <div className="calendar">
       <hr />
-      <div className="table table-bordered">
+      <div>
         {props.view === "month" ? (
           <Month renderedDate={props.renderedDate} view={props.view} />
         ) : (

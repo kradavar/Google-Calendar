@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "../../Styles/Event.css";
+
 import ModalShowEvent from "../../Model/containers/ModalShowEvent";
 
 export default class Event extends Component {
@@ -32,7 +33,6 @@ export default class Event extends Component {
           <div className="event" onClick={this.handleOpen}>
             {this.state.showModal && (
               <ModalShowEvent
-                showModal={this.state.showModal}
                 handleClose={this.handleClose}
                 start={this.props.start}
                 end={this.props.end}
@@ -46,7 +46,6 @@ export default class Event extends Component {
           <div className="event-day" onClick={this.handleOpen}>
             {this.state.showModal && (
               <ModalShowEvent
-                showModal={this.state.showModal}
                 handleClose={this.handleClose}
                 start={this.props.start}
                 end={this.props.end}

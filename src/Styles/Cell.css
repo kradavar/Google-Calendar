@@ -29,7 +29,7 @@
 }
 .day {
   flex: 1;
-  border: 0.25px solid #8f9dad;
+  border: 0.25px solid #c2cad4;
 }
 
 .day-flex {
@@ -39,7 +39,7 @@
   flex-basis: auto;
 }
 .hour {
-  border: 0.25px solid #8f9dad;
+  border: 0.25px solid #c2cad4;
   flex: 1;
   min-height: 50px;
 }

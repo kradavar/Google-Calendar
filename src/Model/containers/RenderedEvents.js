@@ -19,12 +19,6 @@ const filterByHour = (eventStart, date, hour) => {
   }
 };
 /*------------------------------------------------------*/
-
-const showEvent = (id, events) => {
-  const event = events.filter(event => event.id === id);
-  alert(event);
-};
-
 const getRenderedDateEvents = (events, date, view, hour) => {
   if (view === "month") {
     return events.filter(event => filterByDate(event.start, date));
@@ -44,10 +38,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  onClick: id => dispatch(showEvent(id))
-});
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EventList);
+export default connect(mapStateToProps)(EventList);

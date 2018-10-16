@@ -1,9 +1,4 @@
-import {
-  ADD_EVENT,
-  DELETE_EVENT,
-  SHOW_EVENT,
-  EDIT_EVENT
-} from "../actions/actions";
+import { ADD_EVENT, DELETE_EVENT, EDIT_EVENT } from "../actions/actions";
 
 let nextEventId = 0;
 const initialState = [

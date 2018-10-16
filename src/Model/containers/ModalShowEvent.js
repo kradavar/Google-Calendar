@@ -8,6 +8,9 @@ function ModalShowEvent(props) {
   const deleteCurrentEvent = () => {
     props.dispatch(deleteEvent(props.id));
   };
+  const editCurrentEvent = () => {
+    props.dispatch();
+  };
 
   return (
     <div className="modal" role="dialog">
@@ -18,7 +21,7 @@ function ModalShowEvent(props) {
               {props.name}
             </h5>
             <button onClick={props.handleClose}>close</button>
-            <button>edit</button>
+            <button onClick={editCurrentEvent}>edit</button>
             <button onClick={deleteCurrentEvent}>delete</button>
           </div>
           <div className="modal-body">
