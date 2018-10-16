@@ -1,29 +1,56 @@
-import React from "react";
+import React, { Component } from "react";
 
 import "../../Styles/Event.css";
+import ModalShowEvent from "../../Model/containers/ModalShowEvent";
 
-export default function Event(props) {
-  //debugger;
-  return (
-    <li>
-      {props.view === "month" ? (
-        <div
-          className="event"
-          onClick={event => {
-            props.onClick();
-            event.stopPropagation();
-          }}
-        >
-          {props.start.split(" ")[1]}-{props.name}
-        </div>
-      ) : (
-        <div className="event-day" onClick={props.onClick}>
-          <div className="event-header">{props.name}</div>
-          <div className="event--time">
-            {props.start} - {props.end}
+export default class Event extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false
+    };
+  }
+
+  handleClose = e => {
+    this.setState({
+      showModal: false
+    });
+    e.stopPropagation();
+  };
+
+  handleOpen = e => {
+    this.setState({
+      showModal: true
+    });
+    e.stopPropagation();
+  };
+
+  render() {
+    return (
+      <li>
+        {this.props.view === "month" ? (
+          <div className="event" onClick={this.handleOpen}>
+            {this.state.showModal && (
+              <ModalShowEvent
+                showModal={this.state.showModal}
+                handleClose={this.handleClose}
+                start={this.props.start}
+                end={this.props.end}
+                name={this.props.name}
+                id={this.props.id}
+              />
+            )}
+            {this.props.start.split(" ")[1]}-{this.props.name}
           </div>
-        </div>
-      )}
-    </li>
-  );
+        ) : (
+          <div className="event-day" onClick={this.props.onClick}>
+            <div className="event-header">{this.props.name}</div>
+            <div className="event--time">
+              {this.props.start} - {this.props.end}
+            </div>
+          </div>
+        )}
+      </li>
+    );
+  }
 }

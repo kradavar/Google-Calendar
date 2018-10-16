@@ -23,7 +23,6 @@ export default class Day extends Component {
   }
 
   hideModal(e) {
-    console.warn("hideModal", { self: this });
     e.stopPropagation();
     this.setState({
       showModal: false
