@@ -60,7 +60,7 @@ export default class Day extends Component {
 
       for (let hour = 0; hour < 24; hour++) {
         hours.push(
-          <div className="hour">
+          <div className="hour" key={hour}>
             <CellHeader headerInfo={hour} />
             <RenderedEvents
               date={this.props.renderedDate}

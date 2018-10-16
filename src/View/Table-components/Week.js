@@ -34,7 +34,6 @@ export default function Week(props) {
   };
   const days = renderWeek();
 
-  //debugger;
   switch (props.view) {
     case "month":
       return <div className="week">{days}</div>;
