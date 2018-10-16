@@ -28,7 +28,7 @@ export default class Event extends Component {
 
   render() {
     return (
-      <li>
+      <li className="event-list-item">
         {this.props.view === "month" ? (
           <div className="event" onClick={this.handleOpen}>
             {this.state.showModal && (

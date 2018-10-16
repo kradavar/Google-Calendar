@@ -3,8 +3,10 @@ import Event from "./Event";
 import "../../Styles/Event.css";
 
 export default function EventList(props) {
+  const className =
+    props.view === "month" ? "event-list" : "event-list day-event-list";
   return (
-    <ul className="event-list">
+    <ul className={className}>
       {props.events.map(event => (
         <Event
           key={event.id}
