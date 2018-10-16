@@ -39,10 +39,12 @@ export const events = (state = initialState, action) => {
         }
       ];
     case DELETE_EVENT:
-      return state.events.filter(event => event.name !== action.name);
-    case SHOW_EVENT:
+      return state.filter(event => event.id !== action.id);
     case EDIT_EVENT:
-      return state.events.filter(() => events.id === action.id);
+      return state.filter(event => {
+        if (event.id === action.id) {
+        }
+      });
     default:
       return state;
   }

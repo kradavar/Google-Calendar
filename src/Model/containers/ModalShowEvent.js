@@ -1,9 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+import { deleteEvent } from "../actions/actions.js";
 
 import "../../Styles/Modal.css";
 
 function ModalShowEvent(props) {
+  const deleteCurrentEvent = () => {
+    props.dispatch(deleteEvent(props.id));
+  };
+
   return (
     <div className="modal" role="dialog">
       <div className="modal-dialog" role="document">
@@ -14,7 +19,7 @@ function ModalShowEvent(props) {
             </h5>
             <button onClick={props.handleClose}>close</button>
             <button>edit</button>
-            <button>delete</button>
+            <button onClick={deleteCurrentEvent}>delete</button>
           </div>
           <div className="modal-body">
             <form>
@@ -60,4 +65,4 @@ function ModalShowEvent(props) {
   );
 }
 
-export default ModalShowEvent;
+export default connect()(ModalShowEvent);

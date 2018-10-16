@@ -43,7 +43,17 @@ export default class Event extends Component {
             {this.props.start.split(" ")[1]}-{this.props.name}
           </div>
         ) : (
-          <div className="event-day" onClick={this.props.onClick}>
+          <div className="event-day" onClick={this.handleOpen}>
+            {this.state.showModal && (
+              <ModalShowEvent
+                showModal={this.state.showModal}
+                handleClose={this.handleClose}
+                start={this.props.start}
+                end={this.props.end}
+                name={this.props.name}
+                id={this.props.id}
+              />
+            )}
             <div className="event-header">{this.props.name}</div>
             <div className="event--time">
               {this.props.start} - {this.props.end}
