@@ -41,8 +41,15 @@ export const events = (state = initialState, action) => {
     case DELETE_EVENT:
       return state.filter(event => event.id !== action.id);
     case EDIT_EVENT:
-      return state.filter(event => {
+      return state.map(event => {
         if (event.id === action.id) {
+          event.start = action.start;
+          event.end = action.end;
+          event.name = action.name;
+
+          return event;
+        } else {
+          return event;
         }
       });
     default:
