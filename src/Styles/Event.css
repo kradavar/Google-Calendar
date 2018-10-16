@@ -2,6 +2,7 @@
   background-color: #acd8ac;
   font-size: 0.75rem;
   z-index: 10;
+  position: relative;
 }
 
 .event {

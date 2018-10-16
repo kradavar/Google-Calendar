@@ -42,7 +42,7 @@
 .hour {
   border: 0.25px solid #c2cad4;
   flex: 1;
-  min-height: 2rem;
+  height: 3rem;
 }
 
 .day-week-header {
