@@ -3,11 +3,11 @@ import React from "react";
 export default function InputForm(props) {
   return (
     <div className="form-group">
-      <label htmlFor="event-start" className="col-form-label">
+      <label htmlFor={"event-" + props.type} className="col-form-label">
         {props.name}
       </label>
       <div id={"event-" + props.type}>
-        <div className="form-group">
+        <div className="form-group input-form">
           <label
             htmlFor={"event-" + props.type + "-date"}
             className="col-form-label"

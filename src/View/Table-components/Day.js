@@ -17,10 +17,13 @@ export default class Day extends Component {
     this.hideModal = this.hideModal.bind(this);
   }
 
-  showModal() {
+  getTargetHour = e => e.target.textContent;
+
+  showModal(e) {
     this.setState({
       showModal: true
     });
+    return e.target.textContent;
   }
 
   hideModal(e) {
@@ -61,14 +64,6 @@ export default class Day extends Component {
       for (let hour = 0; hour < 24; hour++) {
         hours.push(
           <div className="hour" key={hour} onClick={this.showModal}>
-            {this.state.showModal && (
-              <ModalWindow
-                showModal={this.state.showModal}
-                renderedDate={this.props.renderedDate}
-                handleClose={this.hideModal}
-                hour={hour}
-              />
-            )}
             <CellHeader headerInfo={hour} />
             <RenderedEvents
               date={this.props.renderedDate}
@@ -78,13 +73,27 @@ export default class Day extends Component {
           </div>
         );
       }
+
+      const target = this.getTargetHour();
+      console.log(target);
       return (
         <div className="flex-container">
           <DayWeekHeader
             renderedDate={this.props.renderedDate.date()}
             day={this.props.renderedDate.format("ddd")}
           />
-          <div className="day-flex">{hours}</div>
+          <div className="day-flex">
+            {hours}
+            {this.state.showModal && (
+              <ModalWindow
+                showModal={this.state.showModal}
+                renderedDate={this.props.renderedDate}
+                handleClose={this.hideModal}
+                target={this.getTargetHour()}
+                view={this.props.view}
+              />
+            )}
+          </div>
         </div>
       );
     }
