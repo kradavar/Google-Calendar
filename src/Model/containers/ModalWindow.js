@@ -3,6 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { addEvent } from "../actions/actions.js";
 import "../../Styles/Modal.css";
+import InputForm from "../../View/InputForm.js";
 
 function ModalWindow(props) {
   const createNewEvent = e => {
@@ -31,33 +32,6 @@ function ModalWindow(props) {
           <div className="modal-body">
             <form>
               <div className="form-group">
-                <label htmlFor="event-start" className="col-form-label">
-                  Start:
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="event-start"
-                  defaultValue={props.renderedDate
-                    .clone()
-                    .format("YYYY-MM-DD HH:mm")}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="event-end" className="col-form-label">
-                  End:
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="event-end"
-                  defaultValue={props.renderedDate
-                    .clone()
-                    .add(1, "hour")
-                    .format("YYYY-MM-DD HH:mm")}
-                />
-              </div>
-              <div className="form-group">
                 <label htmlFor="event-name" className="col-form-label">
                   Name:
                 </label>
@@ -68,6 +42,20 @@ function ModalWindow(props) {
                   placeholder="Event Name"
                 />
               </div>
+              <InputForm
+                type="start"
+                date={props.renderedDate.clone().format("YYYY-MM-DD")}
+                view={props.view}
+                hour={"00:00"}
+                name={"Start: "}
+              />
+              <InputForm
+                type="end"
+                date={props.renderedDate.clone().format("YYYY-MM-DD")}
+                view={props.view}
+                hour={"01:00"}
+                name={"End: "}
+              />
             </form>
           </div>
           <div className="modal-footer">

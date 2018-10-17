@@ -8,3 +8,8 @@
   display: block;
   color: black;
 }
+
+#event-start,
+#event-end {
+  display: flex;
+}

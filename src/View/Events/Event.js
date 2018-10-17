@@ -87,6 +87,7 @@ export default class Event extends Component {
                 end={this.props.end}
                 name={this.props.name}
                 id={this.props.id}
+                view={this.props.view}
               />
             )}
             {this.props.start.split(" ")[1]}-{this.props.name}
