@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CellHeader from "./Cells/CellHeader.js";
 import "../../Styles/Cell.css";
 import RenderedEvents from "../../Model/containers/RenderedEvents.js";
-import ModalWindow from "../ModalWindow.js";
+import ModalWindow from "../../Model/containers/ModalWindow";
 
 import DayWeekHeader from "./DayWeekHeader.js";
 import moment from "moment";

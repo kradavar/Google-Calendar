@@ -1,8 +1,8 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { addEvent } from "../Model/actions/actions.js";
-import "../Styles/Modal.css";
+import { addEvent } from "../actions/actions.js";
+import "../../Styles/Modal.css";
 
 function ModalWindow(props) {
   const createNewEvent = e => {
