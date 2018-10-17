@@ -16,17 +16,32 @@ export default class Event extends Component {
 
   getMinutesOfEvent = dateString => +dateString.split(" ")[1].split(":")[1];
 
-  converHoursIntoMinutes = hour => hour * 60;
+  convertHoursIntoMinutes = hour => hour * 60;
+
+  getDate = date => +date.split(" ")[0].split("-")[2];
+
+  convertDayIntoHours = day => day * 24;
 
   getTimeInMitutes = dateString =>
     this.getMinutesOfEvent(dateString) +
-    this.converHoursIntoMinutes(this.getHourOfEvent(dateString));
+    this.convertHoursIntoMinutes(this.getHourOfEvent(dateString));
 
   getEventDuration = (start, end) =>
     this.getTimeInMitutes(end) - this.getTimeInMitutes(start);
 
+  getDayDifference = (start, end) => this.getDate(end) - this.getDate(start);
+
   getHeight = () => {
-    const minutes = this.getEventDuration(this.props.start, this.props.end);
+    let minutes;
+    if (!this.getDayDifference(this.props.start, this.props.end)) {
+      minutes = this.getEventDuration(this.props.start, this.props.end);
+      alert("ERRORRRRR");
+    } else {
+      minutes =
+        this.getEventDuration(this.props.start, this.props.end) +
+        this.getDayDifference(this.props.start, this.props.end) * 60 * 24;
+    }
+
     return (
       minutes * 0.05
     ); /* 0.05rem - height of 1 minute, 'cause height of hour cell is 3rem  */
