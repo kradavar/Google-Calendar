@@ -64,8 +64,14 @@ export default class Event extends Component {
     });
     e.stopPropagation();
     const headers = document.getElementsByClassName("sticky-top");
+    const events = document.getElementsByClassName(
+      "event-day"
+    ); /* maybe fix this in another way */
     for (let i = 0; i < headers.length; i++) {
       headers[i].style.zIndex = "auto";
+    }
+    for (let i = 0; i < events.length; i++) {
+      events[i].style.zIndex = "auto";
     }
   };
 
