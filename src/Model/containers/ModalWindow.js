@@ -9,8 +9,14 @@ function ModalWindow(props) {
   const createNewEvent = e => {
     e.preventDefault();
     const name = document.getElementById("event-name").value;
-    const end = document.getElementById("event-end").value;
-    const start = document.getElementById("event-start").value;
+    const end =
+      document.getElementById("event-end-date").value +
+      " " +
+      document.getElementById("event-end-time").value;
+    const start =
+      document.getElementById("event-start-date").value +
+      " " +
+      document.getElementById("event-start-time").value;
 
     props.dispatch(addEvent(name, start, end));
 
