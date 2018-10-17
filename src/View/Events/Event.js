@@ -51,6 +51,11 @@ export default class Event extends Component {
       showModal: false
     });
     e.stopPropagation();
+
+    const headers = document.getElementsByClassName("sticky-top");
+    for (let i = 0; i < headers.length; i++) {
+      headers[i].style.zIndex = "30";
+    }
   };
 
   handleOpen = e => {
@@ -58,6 +63,10 @@ export default class Event extends Component {
       showModal: true
     });
     e.stopPropagation();
+    const headers = document.getElementsByClassName("sticky-top");
+    for (let i = 0; i < headers.length; i++) {
+      headers[i].style.zIndex = "auto";
+    }
   };
 
   render() {
