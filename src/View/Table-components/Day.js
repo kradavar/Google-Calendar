@@ -60,7 +60,15 @@ export default class Day extends Component {
 
       for (let hour = 0; hour < 24; hour++) {
         hours.push(
-          <div className="hour" key={hour}>
+          <div className="hour" key={hour} onClick={this.showModal}>
+            {this.state.showModal && (
+              <ModalWindow
+                showModal={this.state.showModal}
+                renderedDate={this.props.renderedDate}
+                handleClose={this.hideModal}
+                hour={hour}
+              />
+            )}
             <CellHeader headerInfo={hour} />
             <RenderedEvents
               date={this.props.renderedDate}
