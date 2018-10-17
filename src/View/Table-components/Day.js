@@ -11,19 +11,18 @@ export default class Day extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false
+      showModal: false,
+      targetHour: 0
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
   }
 
-  getTargetHour = e => e.target.textContent;
-
   showModal(e) {
     this.setState({
-      showModal: true
+      showModal: true,
+      targetHour: e.target.textContent
     });
-    return e.target.textContent;
   }
 
   hideModal(e) {
@@ -74,8 +73,6 @@ export default class Day extends Component {
         );
       }
 
-      const target = this.getTargetHour();
-      console.log(target);
       return (
         <div className="flex-container">
           <DayWeekHeader
@@ -86,10 +83,9 @@ export default class Day extends Component {
             {hours}
             {this.state.showModal && (
               <ModalWindow
-                showModal={this.state.showModal}
                 renderedDate={this.props.renderedDate}
                 handleClose={this.hideModal}
-                target={this.getTargetHour()}
+                target={this.state.targetHour}
                 view={this.props.view}
               />
             )}

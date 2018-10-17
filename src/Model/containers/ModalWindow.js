@@ -25,15 +25,14 @@ function ModalWindow(props) {
     document.getElementById("event-start").value = "";
   };
 
-  const getRenderedHour = () => {
-    debugger;
-    if (props.target === undefined) {
+  const getRenderedHour = hour => {
+    if (hour === undefined) {
       return "00:00";
     } else {
-      if (props.target < 10) {
-        props.target = `0${props.target}`;
+      if (hour < 10) {
+        hour = `0${hour}`;
       }
-      return props.target + ":00";
+      return hour + ":00";
     }
   };
 
@@ -64,14 +63,14 @@ function ModalWindow(props) {
                 type="start"
                 date={props.renderedDate.clone().format("YYYY-MM-DD")}
                 view={props.view}
-                hour={getRenderedHour()}
+                hour={getRenderedHour(+props.target)}
                 name={"Start: "}
               />
               <InputForm
                 type="end"
                 date={props.renderedDate.clone().format("YYYY-MM-DD")}
                 view={props.view}
-                hour={getRenderedHour()}
+                hour={getRenderedHour(+props.target + 1)}
                 name={"End: "}
               />
             </form>
