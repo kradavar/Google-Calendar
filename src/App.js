@@ -15,7 +15,6 @@ class App extends Component {
     super();
     this.state = {
       view: "month",
-      currentDate: moment(),
       renderedDate: moment()
     };
     this.handleSwitcherChange = this.handleSwitcherChange.bind(this);
@@ -55,7 +54,6 @@ class App extends Component {
           <CalendarTable
             view={this.state.view}
             renderedDate={this.state.renderedDate}
-            currentDate={this.state.currentDate}
           />
           <div className="container d-flex justify-content-between bottom-buttons">
             <PrevButton onClick={this.handlePrevButtonClick} />
