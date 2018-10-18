@@ -1,23 +1,58 @@
-import React from "react";
+import React, { Component } from "react";
 import "../Styles/CalendarTable.css";
 import moment from "moment";
 
-export default function TimeLine(props) {
-  const getDayStart = () => moment().startOf("day");
+export default class TimeLine extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      time: moment()
+    };
+  }
 
-  const getMinutes = () => moment().diff(getDayStart(), "minutes");
+  getDayStart = () => moment().startOf("day");
 
-  const getTopOfEvent = () => {
-    const startTime = getMinutes();
+  getMinutes = () => {
+    return this.state.time.diff(this.getDayStart(), "minutes");
+  };
+
+  getTopOfEvent = () => {
+    const startTime = this.getMinutes();
     return 0.05 * startTime; /* rise event on the top of its start */
   };
 
-  const getStyles = () => {
-    const topRem = getTopOfEvent() + "rem";
+  getStyles = () => {
+    const topRem = this.getTopOfEvent() + "rem";
     return {
       top: topRem
     };
   };
 
-  return <div style={getStyles()} className="time-line" />;
+  componentDidMount = () => {
+    this.intervalToken = this.createIntervalUpdater(18000);
+  };
+
+  componentDidUpdate = prevProps => {
+    if (prevProps.interval !== 18000) {
+      clearInterval(this.intervalToken);
+      this.intervalToken = this.createIntervalUpdater(18000);
+    }
+  };
+
+  createIntervalUpdater = interval => {
+    // debugger;
+    return setInterval(() => {
+      this.setState({
+        time: moment()
+      });
+    }, interval);
+  };
+
+  componentWillUnmount = () => {
+    clearInterval(this.intervalToken);
+  };
+
+  render() {
+    return <div style={this.getStyles()} className="time-line" />;
+  }
 }
