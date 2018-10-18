@@ -4,3 +4,10 @@
   height: 37rem;
   padding-bottom: 3rem;
 }
+
+.time-line {
+  height: 0.2rem;
+  background-color: darkgoldenrod;
+  position: relative;
+  z-index: 15;
+}

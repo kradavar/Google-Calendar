@@ -6,6 +6,7 @@ import ModalWindow from "../../Model/containers/ModalWindow";
 
 import DayWeekHeader from "./DayWeekHeader.js";
 import moment from "moment";
+import TimeLine from "../TimeLine.js";
 
 export default class Day extends Component {
   constructor(props) {
@@ -79,6 +80,9 @@ export default class Day extends Component {
             renderedDate={this.props.renderedDate.date()}
             day={this.props.renderedDate.format("ddd")}
           />
+          {this.props.renderedDate.format("YYYY-MM-DD") ===
+            moment().format("YYYY-MM-DD") && <TimeLine />}
+
           <div className="day-flex">
             {hours}
             {this.state.showModal && (
