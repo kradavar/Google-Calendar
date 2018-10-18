@@ -2,25 +2,25 @@ import React from "react";
 import Button from "./Button";
 import "../../Styles/Switchers.css";
 
-export default function ViewTypeSwitcher(props) {
+export default function ViewTypeSwitcher({ onChangeView, view }) {
   return (
     <div className="switcher">
       <Button
-        view={props.view}
+        view={view}
         value="day"
-        onClick={props.onChangeView}
+        onClick={onChangeView}
         classes={"switcher-input"}
       />
       <Button
-        view={props.view}
+        view={view}
         value="week"
-        onClick={props.onChangeView}
+        onClick={onChangeView}
         classes={"switcher-input"}
       />
       <Button
-        view={props.view}
+        view={view}
         value="month"
-        onClick={props.onChangeView}
+        onClick={onChangeView}
         classes={"switcher-input"}
       />
     </div>

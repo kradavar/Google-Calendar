@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Field, reduxForm } from "redux-form";
+
 export default function InputForm(props) {
   return (
     <div className="form-group">
