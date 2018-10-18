@@ -6,17 +6,26 @@ import "../../Styles/Modal.css";
 import InputForm from "../../View/InputForm.js";
 
 function ModalWindow(props) {
+  const getInputValue = id => document.getElementById(id).value;
   const createNewEvent = e => {
     e.preventDefault();
-    const name = document.getElementById("event-name").value;
-    const end =
-      document.getElementById("event-end-date").value +
-      " " +
-      document.getElementById("event-end-time").value;
-    const start =
-      document.getElementById("event-start-date").value +
-      " " +
-      document.getElementById("event-start-time").value;
+    const name = getInputValue("event-name");
+    let end;
+    let start;
+
+    const allDay = document.getElementById("all-day").checked;
+
+    if (allDay) {
+      end = getInputValue("event-end-date") + " 24:00";
+      start = getInputValue("event-start-date") + " 00:00";
+    } else {
+      end =
+        getInputValue("event-end-date") + " " + getInputValue("event-end-time");
+      start =
+        getInputValue("event-start-date") +
+        " " +
+        getInputValue("event-start-time");
+    }
 
     props.dispatch(addEvent(name, start, end));
 
@@ -33,6 +42,16 @@ function ModalWindow(props) {
         hour = `0${hour}`;
       }
       return hour + ":00";
+    }
+  };
+
+  const handleCheckBoxChange = () => {
+    if (document.getElementById("all-day").checked) {
+      document.getElementById("event-start-time").disabled = true;
+      document.getElementById("event-end-time").disabled = true;
+    } else {
+      document.getElementById("event-start-time").disabled = false;
+      document.getElementById("event-end-time").disabled = false;
     }
   };
 
@@ -57,6 +76,18 @@ function ModalWindow(props) {
                   className="form-control"
                   id="event-name"
                   placeholder="Event Name"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="all-day" className="col-form-label">
+                  All day
+                </label>
+                <input
+                  type="checkbox"
+                  id="all-day"
+                  name="event-type"
+                  value="all-day"
+                  onChange={handleCheckBoxChange}
                 />
               </div>
               <InputForm

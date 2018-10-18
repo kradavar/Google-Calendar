@@ -35,7 +35,6 @@ export default class Event extends Component {
     let minutes;
     if (!this.getDayDifference(this.props.start, this.props.end)) {
       minutes = this.getEventDuration(this.props.start, this.props.end);
-      alert("ERRORRRRR");
     } else {
       minutes =
         this.getEventDuration(this.props.start, this.props.end) +
