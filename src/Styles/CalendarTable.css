@@ -10,4 +10,5 @@
   background-color: darkgoldenrod;
   position: relative;
   z-index: 15;
+  margin-top: -0.2rem;
 }
