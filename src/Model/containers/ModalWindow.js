@@ -3,12 +3,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { addEvent } from "../actions/actions.js";
 import "../../Styles/Modal.css";
-import InputForm from "../InputForm.js";
 import Modal from "../../View/Modal";
+import FormDate from "../FormItems/FormDate";
 
 function ModalWindow(props) {
   const getInputValue = id => document.getElementById(id).value;
-  const createNewEvent = e => {
+  const handleFormSubmit = e => {
+    console.log(e);
+    debugger;
     e.preventDefault();
     const name = getInputValue("event-name");
     let end;
@@ -35,17 +37,6 @@ function ModalWindow(props) {
     document.getElementById("event-start").value = "";
   };
 
-  const getRenderedHour = hour => {
-    if (hour === undefined) {
-      return "00:00";
-    } else {
-      if (hour < 10) {
-        hour = `0${hour}`;
-      }
-      return hour + ":00";
-    }
-  };
-
   const handleCheckBoxChange = () => {
     if (document.getElementById("all-day").checked) {
       document.getElementById("event-start-time").disabled = true;
@@ -66,62 +57,13 @@ function ModalWindow(props) {
           <button onClick={props.handleClose}>close</button>
         </div>
         <div className="modal-body">
-          <form>
-            <div className="form-group">
-              <label htmlFor="event-name" className="col-form-label">
-                Name:
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="event-name"
-                placeholder="Event Name"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="all-day" className="col-form-label">
-                All day
-              </label>
-              <input
-                type="checkbox"
-                id="all-day"
-                name="event-type"
-                value="all-day"
-                onChange={handleCheckBoxChange}
-              />
-            </div>
-            <InputForm
-              type="start"
-              date={props.renderedDate.clone().format("YYYY-MM-DD")}
-              view={props.view}
-              hour={getRenderedHour(+props.target)}
-              name={"Start: "}
-            />
-            <InputForm
-              type="end"
-              date={props.renderedDate.clone().format("YYYY-MM-DD")}
-              view={props.view}
-              hour={getRenderedHour(+props.target + 1)}
-              name={"End: "}
-            />
-          </form>
-        </div>
-        <div className="modal-footer">
-          <button
-            type="button"
-            className="btn btn-secondary"
-            data-dismiss="modal"
-            onClick={props.handleClose}
-          >
-            Close
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={createNewEvent}
-          >
-            Create Event
-          </button>
+          <FormDate
+            onSubmit={handleFormSubmit}
+            date={props.renderedDate.clone().format("YYYY-MM-DD")}
+            view={props.view}
+            hour={+props.target}
+            handleCheckBoxChange={handleCheckBoxChange}
+          />
         </div>
       </Modal>
     </div>
