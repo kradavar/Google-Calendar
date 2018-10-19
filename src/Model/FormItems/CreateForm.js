@@ -3,25 +3,7 @@ import { Field, reduxForm, FormSection } from "redux-form";
 import { DateTimeSection } from "./DateTimeSection";
 import { NameInput } from "./NameInput";
 
-let CreateForm = ({
-  handleSubmit,
-  handleCheckBoxChange,
-  handleClose,
-  date,
-  hour,
-  view
-}) => {
-  const getRenderedHour = hour => {
-    if (hour === undefined) {
-      return "00:00";
-    } else {
-      if (hour < 10) {
-        hour = `0${hour}`;
-      }
-      return hour + ":00";
-    }
-  };
-
+let CreateForm = ({ handleSubmit, handleCheckBoxChange, handleClose }) => {
   return (
     <form onSubmit={handleSubmit}>
       <Field
@@ -43,20 +25,10 @@ let CreateForm = ({
         />
       </div>
       <FormSection name="start">
-        <DateTimeSection
-          label="Start: "
-          date={date}
-          hour={getRenderedHour(hour)}
-          view={view}
-        />
+        <DateTimeSection label="Start: " />
       </FormSection>
       <FormSection name="end">
-        <DateTimeSection
-          label="End: "
-          hour={getRenderedHour(hour + 1)}
-          date={date}
-          view={view}
-        />
+        <DateTimeSection label="End: " />
       </FormSection>
       <div className="modal-footer">
         <button

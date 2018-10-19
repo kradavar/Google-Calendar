@@ -11,8 +11,8 @@ export class DateTimeSection extends Component {
           {this.props.label}
         </label>
         <div id="event">
-          <Field name="date" component={DateInput} value={this.props.date} />
-          <Field name="time" component={TimeInput} value={this.props.hour} />
+          <Field name="date" component={DateInput} />
+          <Field name="time" component={TimeInput} />
         </div>
       </div>
     );

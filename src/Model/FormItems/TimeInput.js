@@ -8,7 +8,6 @@ export const TimeInput = field => {
       <input
         {...field.input}
         type="time"
-        defaultValue={field.value}
         id="time-input"
         className="form-control"
       />

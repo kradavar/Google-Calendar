@@ -22,6 +22,17 @@ function ModalWindow(props) {
     }
   };
 
+  const getRenderedHour = hour => {
+    if (hour === undefined) {
+      return "00:00";
+    } else {
+      if (hour < 10) {
+        hour = `0${hour}`;
+      }
+      return hour + ":00";
+    }
+  };
+
   return (
     <div className="modal" role="dialog">
       <Modal>
@@ -34,10 +45,18 @@ function ModalWindow(props) {
         <div className="modal-body">
           <CreateForm
             onSubmit={handleFormSubmit}
-            date={props.renderedDate.clone().format("YYYY-MM-DD")}
-            view={props.view}
-            hour={+props.target}
             handleCheckBoxChange={handleCheckBoxChange}
+            initialValues={{
+              "event-type": false,
+              start: {
+                date: props.renderedDate.clone().format("YYYY-MM-DD"),
+                time: getRenderedHour(+props.target)
+              },
+              end: {
+                date: props.renderedDate.clone().format("YYYY-MM-DD"),
+                time: getRenderedHour(+props.target + 1)
+              }
+            }}
           />
         </div>
       </Modal>

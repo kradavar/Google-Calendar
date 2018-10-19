@@ -9,7 +9,6 @@ export const DateInput = field => {
       <input
         {...field.input}
         type="date"
-        defaultValue={field.value}
         id="date-input"
         className="form-control"
       />
