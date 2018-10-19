@@ -3,17 +3,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { addEvent } from "../actions/actions.js";
 import "../../Styles/Modal.css";
-import Modal from "../../View/Modal";
+import { Modal } from "../../View/Modal";
 import CreateForm from "../FormItems/CreateForm";
 
 function ModalWindow(props) {
   const handleFormSubmit = values => {
-    console.log(values);
     const name = values.name;
     const start = values.start.date + " " + values.start.time;
     const end = values.end.date + " " + values.end.time;
 
-    props.dispatch(addEvent(name, start, end));
+    props.addEvent(name, start, end);
   };
 
   const handleCheckBoxChange = values => {
@@ -45,6 +44,7 @@ function ModalWindow(props) {
         <div className="modal-body">
           <CreateForm
             onSubmit={handleFormSubmit}
+            handleClose={props.handleClose}
             handleCheckBoxChange={handleCheckBoxChange}
             initialValues={{
               "event-type": false,
@@ -64,4 +64,9 @@ function ModalWindow(props) {
   );
 }
 
-export default connect()(ModalWindow);
+export default connect(
+  null,
+  {
+    addEvent
+  }
+)(ModalWindow);
