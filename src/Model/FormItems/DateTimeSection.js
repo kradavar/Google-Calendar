@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { Field, reduxForm, FormSection } from "redux-form";
 import { DateInput } from "./DateInput";
 import { TimeInput } from "./TimeInput";
+
+import "../../Styles/Modal.css";
 export class DateTimeSection extends Component {
   render() {
     return (

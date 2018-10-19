@@ -9,8 +9,7 @@
   color: black;
 }
 
-#event-start,
-#event-end {
+#event {
   display: flex;
   justify-content: space-around;
 }
