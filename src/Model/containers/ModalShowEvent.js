@@ -1,19 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteEvent, editEvent } from "../actions/actions.js";
+import { Modal } from "../../View/Modal";
 
 import "../../Styles/Modal.css";
+import CreateForm from "../FormItems/CreateForm.js";
 
 class ModalShowEvent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editMode: false
-    };
-  }
-
+  state = {
+    editMode: false
+  };
   deleteCurrentEvent = () => {
-    this.props.dispatch(deleteEvent(this.props.id));
+    this.props.deleteEvent(this.props.id);
   };
   editCurrentEvent = () => {
     this.setState({
@@ -23,44 +21,64 @@ class ModalShowEvent extends Component {
     document.getElementById("event-end").removeAttribute("readonly");
   };
 
-  saveChanges = () => {
-    const name = document.getElementById("event-name").value;
-    const start = document.getElementById("event-start").value;
-    const end = document.getElementById("event-end").value;
+  saveChanges = values => {
+    const name = values.name;
+    const start = values.start.date + " " + values.start.time;
+    const end = values.end.date + " " + values.end.time;
+    this.props.editEvent(this.props.id, name, start, end);
+  };
+  handleCheckBoxChange = values => {
+    if (values.allDay) {
+    } else {
+    }
+  };
 
-    this.props.dispatch(editEvent(this.props.id, name, start, end));
+  getRenderedHour = hour => {
+    if (hour === undefined) {
+      return "00:00";
+    } else {
+      if (hour < 10) {
+        hour = `0${hour}`;
+      }
+      return hour + ":00";
+    }
   };
 
   render() {
     return (
       <div className="modal" role="dialog">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="showModalLabel">
-                {this.state.editMode ? "Edit Event" : this.props.name}
-              </h5>
-              <button onClick={this.props.handleClose}>close</button>
-              {this.state.editMode === false && (
-                <button onClick={this.editCurrentEvent}>edit</button>
-              )}
-              <button onClick={this.deleteCurrentEvent}>delete</button>
-            </div>
-            <div className="modal-body">
+        <Modal>
+          <div className="modal-header">
+            <h5 className="modal-title" id="showModalLabel">
+              {this.state.editMode ? "Edit Event" : this.props.name}
+            </h5>
+            <button onClick={this.props.handleClose}>close</button>
+            {this.state.editMode === false && (
+              <button onClick={this.editCurrentEvent}>edit</button>
+            )}
+            <button onClick={this.deleteCurrentEvent}>delete</button>
+          </div>
+
+          <div className="modal-body">
+            {this.state.editMode ? (
+              <CreateForm
+                onSubmit={this.saveChanges}
+                handleCheckBoxChange={this.handleCheckBoxChange}
+                initialValues={{
+                  "event-type": false,
+                  name: this.props.name,
+                  start: {
+                    date: this.props.start.split(" ")[0],
+                    time: this.props.start.split(" ")[1]
+                  },
+                  end: {
+                    date: this.props.end.split(" ")[0],
+                    time: this.props.end.split(" ")[1]
+                  }
+                }}
+              />
+            ) : (
               <form>
-                {this.state.editMode && (
-                  <div className="form-group">
-                    <label htmlFor="event-name" className="col-form-label">
-                      Name:
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="event-name"
-                      defaultValue={this.props.name}
-                    />
-                  </div>
-                )}
                 <div className="form-group">
                   <label htmlFor="event-start" className="col-form-label">
                     Start:
@@ -86,7 +104,9 @@ class ModalShowEvent extends Component {
                   />
                 </div>
               </form>
-            </div>
+            )}
+          </div>
+          {!this.state.editMode && (
             <div className="modal-footer">
               <button
                 type="button"
@@ -96,19 +116,18 @@ class ModalShowEvent extends Component {
               >
                 Close
               </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={this.saveChanges}
-              >
-                Edit
-              </button>
             </div>
-          </div>
-        </div>
+          )}
+        </Modal>
       </div>
     );
   }
 }
 
-export default connect()(ModalShowEvent);
+export default connect(
+  null,
+  {
+    deleteEvent,
+    editEvent
+  }
+)(ModalShowEvent);
