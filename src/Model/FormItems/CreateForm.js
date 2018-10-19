@@ -1,9 +1,9 @@
 import React from "react";
 import { Field, reduxForm, FormSection } from "redux-form";
-import LabeledInput from "./LabeledInput";
-import DateTimeSection from "./DateTimeSection";
+import { DateTimeSection } from "./DateTimeSection";
+import { NameInput } from "./NameInput";
 
-let FormDate = ({
+let CreateForm = ({
   handleSubmit,
   handleCheckBoxChange,
   handleClose,
@@ -24,12 +24,10 @@ let FormDate = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      <LabeledInput
-        labelText="Name: "
-        id="event-name"
-        inputType="text"
-        content="name"
+      <Field
         name="name"
+        component={NameInput}
+        props={{ value: "event-name" }}
       />
       <div className="form-group">
         <label htmlFor="all-day" className="col-form-label">
@@ -52,7 +50,6 @@ let FormDate = ({
           view={view}
         />
       </FormSection>
-
       <FormSection name="end">
         <DateTimeSection
           label="End: "
@@ -61,7 +58,6 @@ let FormDate = ({
           view={view}
         />
       </FormSection>
-
       <div className="modal-footer">
         <button
           type="button"
@@ -79,8 +75,8 @@ let FormDate = ({
   );
 };
 
-FormDate = reduxForm({
+CreateForm = reduxForm({
   form: "createEvent"
-})(FormDate);
+})(CreateForm);
 
-export default FormDate;
+export default CreateForm;

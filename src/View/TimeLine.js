@@ -40,7 +40,6 @@ export default class TimeLine extends Component {
   };
 
   createIntervalUpdater = interval => {
-    // debugger;
     return setInterval(() => {
       this.setState({
         time: moment()

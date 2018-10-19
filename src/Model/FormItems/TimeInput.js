@@ -1,7 +1,17 @@
 import React from "react";
-
-export default function DateInput({ value, id }) {
+export const TimeInput = field => {
   return (
-    <input type="time" defaultValue={value} id={id} className="form-control" />
+    <div className="form-group">
+      <label htmlFor="time-input" className="col-form-label">
+        Time:
+      </label>
+      <input
+        {...field.input}
+        type="time"
+        defaultValue={field.value}
+        id="time-input"
+        className="form-control"
+      />
+    </div>
   );
-}
+};

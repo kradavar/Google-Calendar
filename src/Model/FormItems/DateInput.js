@@ -1,7 +1,18 @@
 import React from "react";
 
-export default function DateInput({ value, id }) {
+export const DateInput = field => {
   return (
-    <input type="date" defaultValue={value} id={id} className="form-control" />
+    <div className="form-group">
+      <label htmlFor="date-input" className="col-form-label">
+        Date:
+      </label>
+      <input
+        {...field.input}
+        type="date"
+        defaultValue={field.value}
+        id="date-input"
+        className="form-control"
+      />
+    </div>
   );
-}
+};

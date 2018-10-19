@@ -1,39 +1,20 @@
-import React from "react";
-import LabeledInput from "./LabeledInput";
-export default function DateTimeSection({ label, date, view, hour }) {
-  return (
-    <div className="form-group">
-      <label htmlFor="event" className="col-form-label">
-        {label}
-      </label>
-      <div id="event">
-        <LabeledInput
-          labelText="Date: "
-          type="date"
-          id="event-date"
-          content="date"
-          name="date"
-          contentValue={date}
-        />
-        {view === "month" ? (
-          <LabeledInput
-            labelText="Time:"
-            type="time"
-            name="time"
-            id="event-time"
-            content="time"
-          />
-        ) : (
-          <LabeledInput
-            labelText="Time:"
-            type="time"
-            name="time"
-            id="event-time"
-            content="time"
-            contentValue={hour}
-          />
-        )}
+import React, { Component } from "react";
+
+import { Field, reduxForm, FormSection } from "redux-form";
+import { DateInput } from "./DateInput";
+import { TimeInput } from "./TimeInput";
+export class DateTimeSection extends Component {
+  render() {
+    return (
+      <div className="form-group">
+        <label htmlFor="event" className="col-form-label">
+          {this.props.label}
+        </label>
+        <div id="event">
+          <Field name="date" component={DateInput} value={this.props.date} />
+          <Field name="time" component={TimeInput} value={this.props.hour} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
