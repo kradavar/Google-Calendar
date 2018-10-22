@@ -1,5 +1,5 @@
 import React from "react";
-export const TimeInput = field => {
+export const TimeInput = (field, isAllDay) => {
   return (
     <div className="form-group">
       <label htmlFor="time-input" className="col-form-label">
@@ -10,6 +10,7 @@ export const TimeInput = field => {
         type="time"
         id="time-input"
         className="form-control"
+        disabled={isAllDay}
       />
     </div>
   );

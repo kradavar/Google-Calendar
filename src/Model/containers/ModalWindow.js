@@ -15,12 +15,6 @@ function ModalWindow(props) {
     props.addEvent(name, start, end);
   };
 
-  const handleCheckBoxChange = values => {
-    if (values.allDay) {
-    } else {
-    }
-  };
-
   const getRenderedHour = hour => {
     if (hour === undefined) {
       return "00:00";
@@ -45,7 +39,6 @@ function ModalWindow(props) {
           <CreateForm
             onSubmit={handleFormSubmit}
             handleClose={props.handleClose}
-            handleCheckBoxChange={handleCheckBoxChange}
             initialValues={{
               "event-type": false,
               start: {

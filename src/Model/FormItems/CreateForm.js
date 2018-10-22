@@ -1,9 +1,16 @@
 import React from "react";
-import { Field, reduxForm, FormSection } from "redux-form";
+import { Field, reduxForm, FormSection, formValueSelector } from "redux-form";
 import { DateTimeSection } from "./DateTimeSection";
 import { NameInput } from "./NameInput";
+import { connect } from "net";
 
-let CreateForm = ({ handleSubmit, handleCheckBoxChange, handleClose }) => {
+let CreateForm = ({
+  handleSubmit,
+  reset,
+  pristine,
+  submitting,
+  isAllDayEvent
+}) => {
   return (
     <form onSubmit={handleSubmit}>
       <Field
@@ -19,13 +26,12 @@ let CreateForm = ({ handleSubmit, handleCheckBoxChange, handleClose }) => {
           type="checkbox"
           component="input"
           id="all-day"
-          name="event-type"
+          name="eventType"
           value="all-day"
-          onChange={handleCheckBoxChange}
         />
       </div>
       <FormSection name="start">
-        <DateTimeSection label="Start: " />
+        <DateTimeSection label="Start: " isAllDayEvent={isAllDayEvent} />
       </FormSection>
       <FormSection name="end">
         <DateTimeSection label="End: " />
@@ -35,11 +41,15 @@ let CreateForm = ({ handleSubmit, handleCheckBoxChange, handleClose }) => {
           type="button"
           className="btn btn-secondary"
           data-dismiss="modal"
-          onClick={handleClose}
+          onClick={reset}
         >
           Close
         </button>
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={pristine || submitting}
+        >
           Create Event
         </button>
       </div>
@@ -49,6 +59,14 @@ let CreateForm = ({ handleSubmit, handleCheckBoxChange, handleClose }) => {
 
 CreateForm = reduxForm({
   form: "createEvent"
+})(CreateForm);
+
+const selector = formValueSelector("createEvent");
+console.log(selector);
+CreateForm = connect(state => {
+  debugger;
+  const isAllDayEvent = selector(state, "eventType");
+  return { isAllDayEvent };
 })(CreateForm);
 
 export default CreateForm;
