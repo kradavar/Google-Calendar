@@ -16,25 +16,23 @@ export default class Day extends Component {
       targetHour: 0,
       headerClassName: "day-week-header sticky-top"
     };
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
   }
 
-  showModal(e) {
+  showModal = e => {
     this.setState({
       showModal: true,
       targetHour: e.target.textContent,
       headerClassName: "day-week-header sticky-top hide"
     });
-  }
+  };
 
-  hideModal(e) {
+  hideModal = e => {
     e.stopPropagation();
     this.setState({
       showModal: false,
       headerClassName: "day-week-header sticky-top"
     });
-  }
+  };
 
   createDayCell() {
     const dayClassName =
@@ -92,6 +90,7 @@ export default class Day extends Component {
             {this.state.showModal && (
               <ModalWindow
                 renderedDate={this.props.renderedDate}
+                createDayCell
                 handleClose={this.hideModal}
                 target={this.state.targetHour}
                 view={this.props.view}

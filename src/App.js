@@ -17,27 +17,24 @@ class App extends Component {
       view: "month",
       renderedDate: moment()
     };
-    this.handleSwitcherChange = this.handleSwitcherChange.bind(this);
-    this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
-    this.handlePrevButtonClick = this.handlePrevButtonClick.bind(this);
   }
 
-  handleSwitcherChange(event) {
+  handleSwitcherChange = event => {
     if (event.target.value === this.state.view) return;
     this.setState({ view: event.target.value });
-  }
+  };
 
-  handlePrevButtonClick() {
+  handlePrevButtonClick = () => {
     this.setState({
       renderedDate: this.state.renderedDate.clone().subtract(1, this.state.view)
     });
-  }
+  };
 
-  handleNextButtonClick() {
+  handleNextButtonClick = () => {
     this.setState({
       renderedDate: this.state.renderedDate.clone().add(1, this.state.view)
     });
-  }
+  };
 
   render() {
     return (

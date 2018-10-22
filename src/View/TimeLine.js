@@ -18,7 +18,7 @@ export default class TimeLine extends Component {
 
   getTopOfEvent = () => {
     const startTime = this.getMinutes();
-    return 0.05 * startTime; /* rise event on the top of its start */
+    return 0.05 * startTime; /* rise line to the start of the day */
   };
 
   getStyles = () => {
