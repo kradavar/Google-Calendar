@@ -37,3 +37,7 @@
   width: 95%;
   margin-right: 1%;
 }
+
+.hide {
+  z-index: auto;
+}

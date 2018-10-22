@@ -8,7 +8,8 @@ export default class Event extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false
+      showModal: false,
+      eventsClassName: "event-day"
     };
   }
 
@@ -62,31 +63,18 @@ export default class Event extends Component {
 
   handleClose = e => {
     this.setState({
-      showModal: false
+      showModal: false,
+      eventsClassName: "event-day"
     });
     e.stopPropagation();
-
-    const headers = document.getElementsByClassName("sticky-top");
-    for (let i = 0; i < headers.length; i++) {
-      headers[i].style.zIndex = "30";
-    }
   };
 
   handleOpen = e => {
     this.setState({
-      showModal: true
+      showModal: true,
+      eventsClassName: "event-day hide"
     });
     e.stopPropagation();
-    const headers = document.getElementsByClassName("sticky-top");
-    const events = document.getElementsByClassName(
-      "event-day"
-    ); /* maybe fix this in another way */
-    for (let i = 0; i < headers.length; i++) {
-      headers[i].style.zIndex = "auto";
-    }
-    for (let i = 0; i < events.length; i++) {
-      events[i].style.zIndex = "auto";
-    }
   };
 
   render() {
@@ -108,7 +96,7 @@ export default class Event extends Component {
           </div>
         ) : (
           <div
-            className="event-day"
+            className={this.state.eventsClassName}
             style={this.getStyles()}
             onClick={this.handleOpen}
           >

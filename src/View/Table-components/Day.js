@@ -13,7 +13,8 @@ export default class Day extends Component {
     super(props);
     this.state = {
       showModal: false,
-      targetHour: 0
+      targetHour: 0,
+      headerClassName: "day-week-header sticky-top"
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -22,14 +23,16 @@ export default class Day extends Component {
   showModal(e) {
     this.setState({
       showModal: true,
-      targetHour: e.target.textContent
+      targetHour: e.target.textContent,
+      headerClassName: "day-week-header sticky-top hide"
     });
   }
 
   hideModal(e) {
     e.stopPropagation();
     this.setState({
-      showModal: false
+      showModal: false,
+      headerClassName: "day-week-header sticky-top"
     });
   }
 
@@ -79,6 +82,7 @@ export default class Day extends Component {
           <DayWeekHeader
             renderedDate={this.props.renderedDate.date()}
             day={this.props.renderedDate.format("ddd")}
+            className={this.state.headerClassName}
           />
           {this.props.renderedDate.format("YYYY-MM-DD") ===
             moment().format("YYYY-MM-DD") && <TimeLine />}

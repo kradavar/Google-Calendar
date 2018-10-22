@@ -17,8 +17,6 @@ class ModalShowEvent extends Component {
     this.setState({
       editMode: true
     });
-    document.getElementById("event-start").removeAttribute("readonly");
-    document.getElementById("event-end").removeAttribute("readonly");
   };
 
   saveChanges = values => {
