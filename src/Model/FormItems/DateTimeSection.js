@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 
-import { Field, reduxForm, FormSection } from "redux-form";
+import { Field } from "redux-form";
 import { DateInput } from "./DateInput";
 import { TimeInput } from "./TimeInput";
 
 import "../../Styles/Modal.css";
 export class DateTimeSection extends Component {
   render() {
+    //debugger;
     return (
       <div className="form-group">
         <label htmlFor="event" className="col-form-label">
@@ -14,10 +15,14 @@ export class DateTimeSection extends Component {
         </label>
         <div id="event">
           <Field name="date" component={DateInput} />
+
+          {console.log(this.props.label, this.props.isAllDayEvent)}
           <Field
             name="time"
             component={TimeInput}
-            props={{ isAllDay: this.props.isAllDayEvent }}
+            props={{
+              disabled: this.props.isAllDayEvent
+            }}
           />
         </div>
       </div>

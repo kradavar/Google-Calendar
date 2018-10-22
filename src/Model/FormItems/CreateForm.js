@@ -2,7 +2,7 @@ import React from "react";
 import { Field, reduxForm, FormSection, formValueSelector } from "redux-form";
 import { DateTimeSection } from "./DateTimeSection";
 import { NameInput } from "./NameInput";
-import { connect } from "net";
+import { connect } from "react-redux";
 
 let CreateForm = ({
   handleSubmit,
@@ -27,14 +27,15 @@ let CreateForm = ({
           component="input"
           id="all-day"
           name="eventType"
-          value="all-day"
+          value="false"
         />
       </div>
+
       <FormSection name="start">
         <DateTimeSection label="Start: " isAllDayEvent={isAllDayEvent} />
       </FormSection>
       <FormSection name="end">
-        <DateTimeSection label="End: " />
+        <DateTimeSection label="End: " isAllDayEvent={isAllDayEvent} />
       </FormSection>
       <div className="modal-footer">
         <button
@@ -43,13 +44,9 @@ let CreateForm = ({
           data-dismiss="modal"
           onClick={reset}
         >
-          Close
+          Clear
         </button>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          disabled={pristine || submitting}
-        >
+        <button type="submit" className="btn btn-primary">
           Create Event
         </button>
       </div>
@@ -62,9 +59,7 @@ CreateForm = reduxForm({
 })(CreateForm);
 
 const selector = formValueSelector("createEvent");
-console.log(selector);
 CreateForm = connect(state => {
-  debugger;
   const isAllDayEvent = selector(state, "eventType");
   return { isAllDayEvent };
 })(CreateForm);

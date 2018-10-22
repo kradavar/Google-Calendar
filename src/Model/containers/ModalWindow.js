@@ -9,8 +9,16 @@ import CreateForm from "../FormItems/CreateForm";
 function ModalWindow(props) {
   const handleFormSubmit = values => {
     const name = values.name;
-    const start = values.start.date + " " + values.start.time;
-    const end = values.end.date + " " + values.end.time;
+    let start = values.start.date + " ";
+    let end = values.end.date + " ";
+
+    if (values.eventType) {
+      start += "00:00";
+      end += "24:00";
+    } else {
+      start += values.start.time;
+      end += values.end.time;
+    }
 
     props.addEvent(name, start, end);
   };
@@ -38,9 +46,8 @@ function ModalWindow(props) {
         <div className="modal-body">
           <CreateForm
             onSubmit={handleFormSubmit}
-            handleClose={props.handleClose}
             initialValues={{
-              "event-type": false,
+              eventType: false,
               start: {
                 date: props.renderedDate.clone().format("YYYY-MM-DD"),
                 time: getRenderedHour(+props.target)
