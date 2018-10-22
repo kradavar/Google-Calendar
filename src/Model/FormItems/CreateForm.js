@@ -39,7 +39,7 @@ let CreateForm = ({ handleSubmit, handleCheckBoxChange, handleClose }) => {
         >
           Close
         </button>
-        <button type="submit" className="btn btn-primary" onClick={handleClose}>
+        <button type="submit" className="btn btn-primary">
           Create Event
         </button>
       </div>
