@@ -1,22 +1,16 @@
 import React from "react";
 import { Field, reduxForm, FormSection, formValueSelector } from "redux-form";
 import { DateTimeSection } from "./DateTimeSection";
-import { NameInput } from "./NameInput";
+import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
 
-let CreateForm = ({
-  handleSubmit,
-  reset,
-  pristine,
-  submitting,
-  isAllDayEvent
-}) => {
+let CreateForm = ({ handleSubmit, reset, isAllDayEvent }) => {
   return (
     <form onSubmit={handleSubmit}>
       <Field
         name="name"
-        component={NameInput}
-        props={{ value: "event-name" }}
+        component={FormInputWithLabel}
+        props={{ value: "event-name", label: "Name: " }}
       />
       <div className="form-group">
         <label htmlFor="all-day" className="col-form-label">
@@ -40,13 +34,13 @@ let CreateForm = ({
       <div className="modal-footer">
         <button
           type="button"
-          className="btn btn-secondary"
+          className="btn btn-outline-secondary"
           data-dismiss="modal"
           onClick={reset}
         >
           Clear
         </button>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-outline-success">
           Create Event
         </button>
       </div>

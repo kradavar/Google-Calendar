@@ -1,10 +1,11 @@
 import React from "react";
 
-export const NameInput = field => {
+export const FormInputWithLabel = field => {
+  //debugger;
   return (
     <div className="form-group">
       <label htmlFor="name-input" className="col-form-label">
-        Name:
+        {field.label}
       </label>
       <input
         {...field.input}
