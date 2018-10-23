@@ -1,5 +1,4 @@
 import React from "react";
-
 import { shallow } from "enzyme";
 import ViewTypeSwitcher from "../View/Switchers/ViewTypeSwitcher";
 import App from "../App";
@@ -20,24 +19,9 @@ it("rendering of month class", () => {
   expect(wrapper.find(".month").exists());
 });
 
-it("changes type of view on click", () => {
-  const wrapper = shallow(<ViewTypeSwitcher view="month" />);
-  expect(
-    wrapper
-      .find(Button)
-      .at(1)
-      .props().value
-  ).toEqual("week");
-
-  wrapper
-    .find(Button)
-    .at(1)
-    .simulate("click");
-
-  console.log(
-    wrapper
-      .find(Button)
-      .at(1)
-      .props().view
-  );
+it("changes type of view on state changing", () => {
+  const wrapper = shallow(<App />);
+  expect(wrapper.find(ViewTypeSwitcher).props().view).toEqual("month");
+  wrapper.setState({ view: "week" });
+  expect(wrapper.find(ViewTypeSwitcher).props().view).toEqual("week");
 });
