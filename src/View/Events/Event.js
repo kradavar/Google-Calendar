@@ -4,7 +4,7 @@ import "../../Styles/Event.css";
 
 import ModalShowEvent from "../../Model/containers/ModalShowEvent";
 
-import { getDuration, getValueOfMoment } from "../../Model/getRenderedDateInfo";
+import { getDuration, createMoment } from "../../Model/getRenderedDateInfo";
 
 export default class Event extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class Event extends Component {
 
   getTopOfEvent = () => {
     const { start } = this.props;
-    const startTime = getValueOfMoment(start, "min");
+    const startTime = createMoment(start).minute();
     return 0.05 * startTime - 2.2; /* rise event on the top of its start */
   };
 

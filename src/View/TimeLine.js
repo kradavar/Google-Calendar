@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../Styles/CalendarTable.css";
 import moment from "moment";
-import { getValueOfMoment, getDuration } from "../Model/getRenderedDateInfo";
+import { getDuration } from "../Model/getRenderedDateInfo";
 
 export default class TimeLine extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class TimeLine extends Component {
 
   getTopOfEvent = () => {
     const startTime = getDuration(
-      getValueOfMoment(moment(), "day-start"),
+      moment().startOf("day"),
       this.state.time,
       "minutes"
     );

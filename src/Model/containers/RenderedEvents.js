@@ -1,21 +1,18 @@
 import { connect } from "react-redux";
 import EventList from "../../View/Events/EventList";
+import { formatDate } from "../getRenderedDateInfo";
+import { DATE_FORMATS } from "../DateFormats";
 /*---------functions for getRenderedDateEvents---------------*/
-const formatDate = date => date.format("YYYY-MM-DD HH:mm");
-
-const getDate = date => date.split(" ")[0];
-
-const getHour = date => date.split(" ")[1].split(":")[0];
 
 const filterByDate = (eventStart, date) =>
-  getDate(eventStart) === getDate(formatDate(date));
+  formatDate(eventStart, DATE_FORMATS.DATE) === date.format(DATE_FORMATS.DATE);
 
 const filterByHour = (eventStart, date, hour) => {
   if (filterByDate(eventStart, date)) {
     if (hour < 10) {
       hour = `0${hour}`;
     }
-    return getHour(eventStart) === hour.toString();
+    return formatDate(eventStart, DATE_FORMATS.HOUR) === hour.toString();
   }
 };
 /*------------------------------------------------------*/

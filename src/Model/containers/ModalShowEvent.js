@@ -6,7 +6,8 @@ import { Modal } from "../../View/ModalIems/Modal";
 import "../../Styles/Modal.css";
 import CreateForm from "../FormItems/CreateForm.js";
 import ShowForm from "../FormItems/ShowForm.js";
-import { getValueOfMoment } from "../getRenderedDateInfo";
+import { formatDate } from "../getRenderedDateInfo";
+import { DATE_FORMATS } from "../DateFormats.js";
 
 class ModalShowEvent extends Component {
   state = {
@@ -54,12 +55,22 @@ class ModalShowEvent extends Component {
         bottom={
           <div>
             {this.state.editMode === false && (
-              <button onClick={this.editCurrentEvent}>edit</button>
+              <button
+                onClick={this.editCurrentEvent}
+                className="btn btn-outline-info"
+              >
+                Edit
+              </button>
             )}
-            <button onClick={this.deleteCurrentEvent}>delete</button>
+            <button
+              onClick={this.deleteCurrentEvent}
+              className="btn btn-outline-primary"
+            >
+              Delete
+            </button>
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-outline-dark"
               data-dismiss="modal"
               onClick={handleClose}
             >
@@ -76,12 +87,12 @@ class ModalShowEvent extends Component {
               "event-type": false,
               name: name,
               start: {
-                date: getValueOfMoment(start, "date"),
-                time: getValueOfMoment(start, "time")
+                date: formatDate(start, DATE_FORMATS.DATE),
+                time: formatDate(start, DATE_FORMATS.TIME)
               },
               end: {
-                date: getValueOfMoment(end, "date"),
-                time: getValueOfMoment(end, "time")
+                date: formatDate(end, DATE_FORMATS.DATE),
+                time: formatDate(end, DATE_FORMATS.TIME)
               }
             }}
           />
