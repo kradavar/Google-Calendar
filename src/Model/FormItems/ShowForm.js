@@ -1,13 +1,23 @@
 import React from "react";
-import ShowInput from "./ShowInput";
+import { Field, reduxForm } from "redux-form";
+import { FormInputWithLabel } from "./FormInputWithLabel";
 
-const ShowForm = ({ start, end }) => {
+let ShowForm = ({ start, end }) => {
   return (
     <form>
-      <ShowInput label="Start: " data={start} />
-      <ShowInput label="End: " data={end} />
+      <Field
+        name="start"
+        component={FormInputWithLabel}
+        label="Start: "
+        disabled
+      />
+      <Field name="end" component={FormInputWithLabel} label="End: " disabled />
     </form>
   );
 };
+
+ShowForm = reduxForm({
+  form: "showForm"
+})(ShowForm);
 
 export default ShowForm;

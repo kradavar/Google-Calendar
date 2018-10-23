@@ -1,7 +1,6 @@
 import React from "react";
 
 export const FormInputWithLabel = field => {
-  //debugger;
   return (
     <div className="form-group">
       <label htmlFor="name-input" className="col-form-label">
@@ -10,9 +9,10 @@ export const FormInputWithLabel = field => {
       <input
         {...field.input}
         type="text"
-        placeholder="Event Name"
+        placeholder={field.placeholder}
         id="name-input"
         className="form-control"
+        disabled={field.disabled}
       />
     </div>
   );

@@ -97,7 +97,14 @@ class ModalShowEvent extends Component {
             }}
           />
         ) : (
-          <ShowForm start={start} end={end} />
+          <ShowForm
+            start={start}
+            end={end}
+            initialValues={{
+              start: formatDate(start, DATE_FORMATS.DATE_WITH_TIME),
+              end: formatDate(end, DATE_FORMATS.DATE_WITH_TIME)
+            }}
+          />
         )}
       </Modal>
     );
