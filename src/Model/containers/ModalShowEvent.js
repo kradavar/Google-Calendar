@@ -6,6 +6,7 @@ import { Modal } from "../../View/ModalIems/Modal";
 import "../../Styles/Modal.css";
 import CreateForm from "../FormItems/CreateForm.js";
 import ShowForm from "../FormItems/ShowForm.js";
+import { getValueOfMoment } from "../getRenderedDateInfo";
 
 class ModalShowEvent extends Component {
   state = {
@@ -44,17 +45,12 @@ class ModalShowEvent extends Component {
   };
 
   render() {
-    const { start, end, name } = this.props;
+    const { start, end, name, handleClose } = this.props;
 
-    const buttons = (
-      <div>
-        <button onClick={this.props.handleClose}>close</button>
-      </div>
-    );
     return (
       <Modal
-        header={this.state.editMode ? "Edit Event" : this.props.name}
-        buttons={buttons}
+        header={this.state.editMode ? "Edit Event" : name}
+        handleClose={handleClose}
         bottom={
           <div>
             {this.state.editMode === false && (
@@ -65,7 +61,7 @@ class ModalShowEvent extends Component {
               type="button"
               className="btn btn-secondary"
               data-dismiss="modal"
-              onClick={this.props.handleClose}
+              onClick={handleClose}
             >
               Close
             </button>
@@ -78,14 +74,14 @@ class ModalShowEvent extends Component {
             handleCheckBoxChange={this.handleCheckBoxChange}
             initialValues={{
               "event-type": false,
-              name: this.props.name,
+              name: name,
               start: {
-                date: start.split(" ")[0],
-                time: start.split(" ")[1]
+                date: getValueOfMoment(start, "date"),
+                time: getValueOfMoment(start, "time")
               },
               end: {
-                date: end.split(" ")[0],
-                time: end.split(" ")[1]
+                date: getValueOfMoment(end, "date"),
+                time: getValueOfMoment(end, "time")
               }
             }}
           />

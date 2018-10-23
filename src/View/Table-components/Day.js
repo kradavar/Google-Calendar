@@ -19,7 +19,6 @@ export default class Day extends Component {
   }
 
   showModal = e => {
-    debugger;
     this.setState({
       showModal: true,
       targetHour: e.target.textContent,
@@ -86,7 +85,7 @@ export default class Day extends Component {
                 renderedDate={renderedDate}
                 createDayCell
                 handleClose={this.hideModal}
-                target={this.state.targetHour}
+                hour={this.state.targetHour}
                 view={view}
               />
             )}

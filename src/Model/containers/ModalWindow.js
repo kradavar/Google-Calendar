@@ -6,7 +6,7 @@ import "../../Styles/Modal.css";
 import { Modal } from "../../View/ModalIems/Modal";
 import CreateForm from "../FormItems/CreateForm";
 
-function ModalWindow(props) {
+function ModalWindow({ addEvent, handleClose, renderedDate, hour }) {
   const handleFormSubmit = values => {
     const name = values.name;
     let start = values.start.date + " ";
@@ -20,7 +20,7 @@ function ModalWindow(props) {
       end += values.end.time;
     }
 
-    props.addEvent(name, start, end);
+    addEvent(name, start, end);
   };
 
   const getRenderedHour = hour => {
@@ -35,22 +35,19 @@ function ModalWindow(props) {
   };
 
   return (
-    <Modal
-      header="Create New Event"
-      buttons={<button onClick={props.handleClose}>close</button>}
-    >
+    <Modal header="Create New Event" handleClose={handleClose}>
       {
         <CreateForm
           onSubmit={handleFormSubmit}
           initialValues={{
             eventType: false,
             start: {
-              date: props.renderedDate.clone().format("YYYY-MM-DD"),
-              time: getRenderedHour(+props.target)
+              date: renderedDate.clone().format("YYYY-MM-DD"),
+              time: getRenderedHour(+hour)
             },
             end: {
-              date: props.renderedDate.clone().format("YYYY-MM-DD"),
-              time: getRenderedHour(+props.target + 1)
+              date: renderedDate.clone().format("YYYY-MM-DD"),
+              time: getRenderedHour(+hour + 1)
             }
           }}
         />
