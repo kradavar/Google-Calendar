@@ -24,7 +24,8 @@ export default class Event extends Component {
   };
 
   getTopOfEvent = () => {
-    const startTime = getValueOfMoment();
+    const { start } = this.props;
+    const startTime = getValueOfMoment(start, "min");
     return 0.05 * startTime - 2.2; /* rise event on the top of its start */
   };
 

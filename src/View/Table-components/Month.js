@@ -3,7 +3,7 @@ import Week from "./Week";
 import "../../Styles/Cell.css";
 import MonthHeader from "./MonthHeader";
 
-export default function Month(props) {
+export default function Month({ renderedDate, view }) {
   const getWeekCount = date => {
     // week number of 1st day of the month
     const start = date.date(1).isoWeek();
@@ -17,14 +17,14 @@ export default function Month(props) {
   };
 
   const renderMonth = () => {
-    const start = props.renderedDate.clone().startOf("month");
+    const start = renderedDate.clone().startOf("month");
     const weeks = [];
-    const duration = getWeekCount(props.renderedDate.clone());
+    const duration = getWeekCount(renderedDate.clone());
     const currentDate = start.clone();
 
     for (let i = 0; i < duration; i++) {
       weeks.push(
-        <Week renderedDate={currentDate.clone()} view={props.view} key={i} />
+        <Week renderedDate={currentDate.clone()} view={view} key={i} />
       );
       currentDate.add(1, "week");
     }

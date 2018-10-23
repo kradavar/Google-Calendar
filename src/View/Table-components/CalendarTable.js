@@ -3,13 +3,13 @@ import "../../Styles/CalendarTable.css";
 import Month from "./Month";
 import Week from "./Week";
 
-export default function CalendarTable(props) {
+export default function CalendarTable({ renderedDate, view }) {
   return (
     <div className="calendar">
-      {props.view === "month" ? (
-        <Month renderedDate={props.renderedDate} view={props.view} />
+      {view === "month" ? (
+        <Month renderedDate={renderedDate} view={view} />
       ) : (
-        <Week renderedDate={props.renderedDate} view={props.view} />
+        <Week renderedDate={renderedDate} view={view} />
       )}
     </div>
   );

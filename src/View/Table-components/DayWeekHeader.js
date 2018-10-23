@@ -1,10 +1,10 @@
 import React from "react";
 import "../../Styles/Cell.css";
 
-export default function DayWeekHeadar(props) {
+export default function DayWeekHeadar({ className, renderedDate, day }) {
   return (
-    <header className={props.className}>
-      {props.renderedDate},{props.day}
+    <header className={className}>
+      {renderedDate},{day}
     </header>
   );
 }

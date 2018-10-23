@@ -2,19 +2,19 @@ import React from "react";
 import Event from "./Event";
 import "../../Styles/Event.css";
 
-export default function EventList(props) {
+export default function EventList({ events, view }) {
   const className =
-    props.view === "month" ? "event-list" : "event-list day-event-list";
+    view === "month" ? "event-list" : "event-list day-event-list";
   return (
     <ul className={className}>
-      {props.events.map(event => (
+      {events.map(event => (
         <Event
           key={event.id}
           start={event.start}
           end={event.end}
           name={event.name}
           id={event.id}
-          view={props.view}
+          view={view}
         />
       ))}
     </ul>

@@ -19,6 +19,7 @@ export default class Day extends Component {
   }
 
   showModal = e => {
+    debugger;
     this.setState({
       showModal: true,
       targetHour: e.target.textContent,
@@ -35,28 +36,25 @@ export default class Day extends Component {
   };
 
   createDayCell() {
+    const { renderedDate, view } = this.props;
     const dayClassName =
-      this.props.renderedDate.format("YYYY-MM-DD") ===
-      moment().format("YYYY-MM-DD")
+      renderedDate.format("YYYY-MM-DD") === moment().format("YYYY-MM-DD")
         ? "current-day cell day"
         : "cell day";
 
-    if (this.props.view === "month") {
+    if (view === "month") {
       return (
         <div className={dayClassName} onClick={this.showModal}>
           {this.state.showModal && (
             <ModalWindow
               showModal={this.state.showModal}
-              renderedDate={this.props.renderedDate}
+              renderedDate={renderedDate}
               handleClose={this.hideModal}
             />
           )}
 
-          <CellHeader headerInfo={this.props.renderedDate.date()} />
-          <RenderedEvents
-            date={this.props.renderedDate}
-            view={this.props.view}
-          />
+          <CellHeader headerInfo={renderedDate.date()} />
+          <RenderedEvents date={renderedDate} view={view} />
         </div>
       );
     } else {
@@ -66,11 +64,7 @@ export default class Day extends Component {
         hours.push(
           <div className="hour" key={hour} onClick={this.showModal}>
             <CellHeader headerInfo={hour} />
-            <RenderedEvents
-              date={this.props.renderedDate}
-              view={this.props.view}
-              hour={hour}
-            />
+            <RenderedEvents date={renderedDate} view={view} hour={hour} />
           </div>
         );
       }
@@ -78,22 +72,22 @@ export default class Day extends Component {
       return (
         <div className="flex-container">
           <DayWeekHeader
-            renderedDate={this.props.renderedDate.date()}
-            day={this.props.renderedDate.format("ddd")}
+            renderedDate={renderedDate.date()}
+            day={renderedDate.format("ddd")}
             className={this.state.headerClassName}
           />
-          {this.props.renderedDate.format("YYYY-MM-DD") ===
+          {renderedDate.format("YYYY-MM-DD") ===
             moment().format("YYYY-MM-DD") && <TimeLine />}
 
           <div className="day-flex">
             {hours}
             {this.state.showModal && (
               <ModalWindow
-                renderedDate={this.props.renderedDate}
+                renderedDate={renderedDate}
                 createDayCell
                 handleClose={this.hideModal}
                 target={this.state.targetHour}
-                view={this.props.view}
+                view={view}
               />
             )}
           </div>
