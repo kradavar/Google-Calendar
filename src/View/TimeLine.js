@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../Styles/CalendarTable.css";
 import moment from "moment";
+import { getValueOfMoment, getDuration } from "../Model/getRenderedDateInfo";
 
 export default class TimeLine extends Component {
   constructor(props) {
@@ -10,14 +11,12 @@ export default class TimeLine extends Component {
     };
   }
 
-  getDayStart = () => moment().startOf("day");
-
-  getMinutes = () => {
-    return this.state.time.diff(this.getDayStart(), "minutes");
-  };
-
   getTopOfEvent = () => {
-    const startTime = this.getMinutes();
+    const startTime = getDuration(
+      getValueOfMoment(moment(), "day-start"),
+      this.state.time,
+      "minutes"
+    );
     return 0.05 * startTime; /* rise line to the start of the day */
   };
 

@@ -4,6 +4,8 @@ import "../../Styles/Event.css";
 
 import ModalShowEvent from "../../Model/containers/ModalShowEvent";
 
+import { getDuration, getValueOfMoment } from "../../Model/getRenderedDateInfo";
+
 export default class Event extends Component {
   constructor(props) {
     super(props);
@@ -13,43 +15,16 @@ export default class Event extends Component {
     };
   }
 
-  getHourOfEvent = dateString => +dateString.split(" ")[1].split(":")[0];
-
-  getMinutesOfEvent = dateString => +dateString.split(" ")[1].split(":")[1];
-
-  convertHoursIntoMinutes = hour => hour * 60;
-
-  getDate = date => +date.split(" ")[0].split("-")[2];
-
-  convertDayIntoHours = day => day * 24;
-
-  getTimeInMitutes = dateString =>
-    this.getMinutesOfEvent(dateString) +
-    this.convertHoursIntoMinutes(this.getHourOfEvent(dateString));
-
-  getEventDuration = (start, end) =>
-    this.getTimeInMitutes(end) - this.getTimeInMitutes(start);
-
-  getDayDifference = (start, end) => this.getDate(end) - this.getDate(start);
-
   getHeight = () => {
-    let minutes;
-    const { start } = this.props;
-    if (!this.getDayDifference(this.props.start, this.props.end)) {
-      minutes = this.getEventDuration(this.props.start, this.props.end);
-    } else {
-      minutes =
-        this.getEventDuration(this.props.start, this.props.end) +
-        this.getDayDifference(this.props.start, this.props.end) * 60 * 24;
-    }
-
+    const { start, end } = this.props;
+    const minutes = getDuration(start, end, "minutes");
     return (
       minutes * 0.05
     ); /* 0.05rem - height of 1 minute, 'cause height of hour cell is 3rem  */
   };
 
   getTopOfEvent = () => {
-    const startTime = this.getMinutesOfEvent(this.props.start);
+    const startTime = getValueOfMoment();
     return 0.05 * startTime - 2.2; /* rise event on the top of its start */
   };
 

@@ -49,16 +49,28 @@ class ModalShowEvent extends Component {
     const buttons = (
       <div>
         <button onClick={this.props.handleClose}>close</button>
-        {this.state.editMode === false && (
-          <button onClick={this.editCurrentEvent}>edit</button>
-        )}
-        <button onClick={this.deleteCurrentEvent}>delete</button>
       </div>
     );
     return (
       <Modal
         header={this.state.editMode ? "Edit Event" : this.props.name}
         buttons={buttons}
+        bottom={
+          <div>
+            {this.state.editMode === false && (
+              <button onClick={this.editCurrentEvent}>edit</button>
+            )}
+            <button onClick={this.deleteCurrentEvent}>delete</button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              data-dismiss="modal"
+              onClick={this.props.handleClose}
+            >
+              Close
+            </button>
+          </div>
+        }
       >
         {this.state.editMode ? (
           <CreateForm
@@ -79,19 +91,6 @@ class ModalShowEvent extends Component {
           />
         ) : (
           <ShowForm start={start} end={end} />
-        )}
-        bottom=
-        {!this.state.editMode && (
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-dismiss="modal"
-              onClick={this.props.handleClose}
-            >
-              Close
-            </button>
-          </div>
         )}
       </Modal>
     );
