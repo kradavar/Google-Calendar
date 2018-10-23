@@ -7,7 +7,6 @@ import { TimeInput } from "./TimeInput";
 import "../../Styles/Modal.css";
 export class DateTimeSection extends Component {
   render() {
-    //debugger;
     return (
       <div className="form-group">
         <label htmlFor="event" className="col-form-label">

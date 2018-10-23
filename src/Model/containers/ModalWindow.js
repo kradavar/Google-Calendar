@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { addEvent } from "../actions/actions.js";
 import "../../Styles/Modal.css";
-import { Modal } from "../../View/Modal";
+import { Modal } from "../../View/ModalIems/Modal";
 import CreateForm from "../FormItems/CreateForm";
 
 function ModalWindow(props) {
@@ -35,32 +35,27 @@ function ModalWindow(props) {
   };
 
   return (
-    <div className="modal" role="dialog">
-      <Modal>
-        <div className="modal-header">
-          <h5 className="modal-title" id="createModalLabel">
-            Create New Event
-          </h5>
-          <button onClick={props.handleClose}>close</button>
-        </div>
-        <div className="modal-body">
-          <CreateForm
-            onSubmit={handleFormSubmit}
-            initialValues={{
-              eventType: false,
-              start: {
-                date: props.renderedDate.clone().format("YYYY-MM-DD"),
-                time: getRenderedHour(+props.target)
-              },
-              end: {
-                date: props.renderedDate.clone().format("YYYY-MM-DD"),
-                time: getRenderedHour(+props.target + 1)
-              }
-            }}
-          />
-        </div>
-      </Modal>
-    </div>
+    <Modal
+      header="Create New Event"
+      buttons={<button onClick={props.handleClose}>close</button>}
+    >
+      {
+        <CreateForm
+          onSubmit={handleFormSubmit}
+          initialValues={{
+            eventType: false,
+            start: {
+              date: props.renderedDate.clone().format("YYYY-MM-DD"),
+              time: getRenderedHour(+props.target)
+            },
+            end: {
+              date: props.renderedDate.clone().format("YYYY-MM-DD"),
+              time: getRenderedHour(+props.target + 1)
+            }
+          }}
+        />
+      }
+    </Modal>
   );
 }
 

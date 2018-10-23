@@ -6,5 +6,5 @@ import moment from "moment";
 
 it("renders one week, which includes 7 days on week view type", () => {
   const wrapper = shallow(<Week renderedDate={moment()} view="week" />);
-  expect(wrapper.find(".week").children().length).toEqual(7);
+  expect(wrapper.find(".week").children()).toHaveLength(7);
 });

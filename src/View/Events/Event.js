@@ -34,6 +34,7 @@ export default class Event extends Component {
 
   getHeight = () => {
     let minutes;
+    const { start } = this.props;
     if (!this.getDayDifference(this.props.start, this.props.end)) {
       minutes = this.getEventDuration(this.props.start, this.props.end);
     } else {

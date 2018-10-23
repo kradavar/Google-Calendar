@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteEvent, editEvent } from "../actions/actions.js";
-import { Modal } from "../../View/Modal";
+import { Modal } from "../../View/ModalIems/Modal";
 
 import "../../Styles/Modal.css";
 import CreateForm from "../FormItems/CreateForm.js";
+import ShowForm from "../FormItems/ShowForm.js";
 
 class ModalShowEvent extends Component {
   state = {
@@ -43,81 +44,56 @@ class ModalShowEvent extends Component {
   };
 
   render() {
-    return (
-      <div className="modal" role="dialog">
-        <Modal>
-          <div className="modal-header">
-            <h5 className="modal-title" id="showModalLabel">
-              {this.state.editMode ? "Edit Event" : this.props.name}
-            </h5>
-            <button onClick={this.props.handleClose}>close</button>
-            {this.state.editMode === false && (
-              <button onClick={this.editCurrentEvent}>edit</button>
-            )}
-            <button onClick={this.deleteCurrentEvent}>delete</button>
-          </div>
+    const { start, end, name } = this.props;
 
-          <div className="modal-body">
-            {this.state.editMode ? (
-              <CreateForm
-                onSubmit={this.saveChanges}
-                handleCheckBoxChange={this.handleCheckBoxChange}
-                initialValues={{
-                  "event-type": false,
-                  name: this.props.name,
-                  start: {
-                    date: this.props.start.split(" ")[0],
-                    time: this.props.start.split(" ")[1]
-                  },
-                  end: {
-                    date: this.props.end.split(" ")[0],
-                    time: this.props.end.split(" ")[1]
-                  }
-                }}
-              />
-            ) : (
-              <form>
-                <div className="form-group">
-                  <label htmlFor="event-start" className="col-form-label">
-                    Start:
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="event-start"
-                    defaultValue={this.props.start}
-                    readOnly
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="event-end" className="col-form-label">
-                    End:
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="event-end"
-                    defaultValue={this.props.end}
-                    readOnly
-                  />
-                </div>
-              </form>
-            )}
-          </div>
-          {!this.state.editMode && (
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-                onClick={this.props.handleClose}
-              >
-                Close
-              </button>
-            </div>
-          )}
-        </Modal>
+    const buttons = (
+      <div>
+        <button onClick={this.props.handleClose}>close</button>
+        {this.state.editMode === false && (
+          <button onClick={this.editCurrentEvent}>edit</button>
+        )}
+        <button onClick={this.deleteCurrentEvent}>delete</button>
       </div>
+    );
+    return (
+      <Modal
+        header={this.state.editMode ? "Edit Event" : this.props.name}
+        buttons={buttons}
+      >
+        {this.state.editMode ? (
+          <CreateForm
+            onSubmit={this.saveChanges}
+            handleCheckBoxChange={this.handleCheckBoxChange}
+            initialValues={{
+              "event-type": false,
+              name: this.props.name,
+              start: {
+                date: start.split(" ")[0],
+                time: start.split(" ")[1]
+              },
+              end: {
+                date: end.split(" ")[0],
+                time: end.split(" ")[1]
+              }
+            }}
+          />
+        ) : (
+          <ShowForm start={start} end={end} />
+        )}
+        bottom=
+        {!this.state.editMode && (
+          <div className="modal-footer">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              data-dismiss="modal"
+              onClick={this.props.handleClose}
+            >
+              Close
+            </button>
+          </div>
+        )}
+      </Modal>
     );
   }
 }
