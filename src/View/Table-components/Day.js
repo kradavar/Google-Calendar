@@ -7,6 +7,7 @@ import ModalWindow from "../../Model/containers/ModalWindow";
 import DayWeekHeader from "./DayWeekHeader.js";
 import moment from "moment";
 import TimeLine from "../TimeLine.js";
+import HourCell from "./Cells/HourCell.js";
 
 export default class Day extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class Day extends Component {
   showModal = e => {
     this.setState({
       showModal: true,
-      targetHour: e.target.textContent,
+      targetHour: e.target.attributes.value.value,
       headerClassName: "day-week-header sticky-top hide"
     });
   };
@@ -61,10 +62,10 @@ export default class Day extends Component {
 
       for (let hour = 0; hour < 24; hour++) {
         hours.push(
-          <div className="hour" key={hour} onClick={this.showModal}>
-            <CellHeader headerInfo={hour} />
+          <HourCell key={hour} onClick={this.showModal} value={hour}>
+            <CellHeader headerInfo={hour} value={hour} />
             <RenderedEvents date={renderedDate} view={view} hour={hour} />
-          </div>
+          </HourCell>
         );
       }
 
