@@ -7,14 +7,6 @@ import ModalShowEvent from "../../Model/containers/ModalShowEvent";
 import { getDuration, createMoment } from "../../Model/getRenderedDateInfo";
 
 export default class Event extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showModal: false,
-      eventsClassName: "event-day"
-    };
-  }
-
   getHeight = () => {
     const { start, end } = this.props;
     const minutes = getDuration(start, end, "minutes");
@@ -38,30 +30,14 @@ export default class Event extends Component {
     };
   };
 
-  handleClose = e => {
-    this.setState({
-      showModal: false,
-      eventsClassName: "event-day"
-    });
-    e.stopPropagation();
-  };
-
-  handleOpen = e => {
-    this.setState({
-      showModal: true,
-      eventsClassName: "event-day hide"
-    });
-    e.stopPropagation();
-  };
-
   render() {
     return (
       <li className="event-list-item">
         {this.props.view === "month" ? (
-          <div className="event" onClick={this.handleOpen}>
-            {this.state.showModal && (
+          <div className="event">
+            {this.props.showModal && (
               <ModalShowEvent
-                handleClose={this.handleClose}
+                handleClose={this.props.handleClose}
                 start={this.props.start}
                 end={this.props.end}
                 name={this.props.name}
@@ -72,14 +48,10 @@ export default class Event extends Component {
             {this.props.start.split(" ")[1]}-{this.props.name}
           </div>
         ) : (
-          <div
-            className={this.state.eventsClassName}
-            style={this.getStyles()}
-            onClick={this.handleOpen}
-          >
-            {this.state.showModal && (
+          <div className={this.props.eventsClassName} style={this.getStyles()}>
+            {this.props.showModal && (
               <ModalShowEvent
-                handleClose={this.handleClose}
+                handleClose={this.props.handleClose}
                 start={this.props.start}
                 end={this.props.end}
                 name={this.props.name}
