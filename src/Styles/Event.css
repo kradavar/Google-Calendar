@@ -26,12 +26,15 @@
 .event-list {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .day-event-list {
   display: flex;
   justify-content: flex-end;
-  flex-direction: column;
+  list-style: none;
+  padding: 0;
 }
 
 .event-list-item {

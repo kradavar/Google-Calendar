@@ -19,6 +19,7 @@ export default class EventList extends Component {
   };
 
   handleOpen = e => {
+    debugger;
     this.setState({
       showModal: true,
       eventsClassName: "event-day hide"
@@ -27,9 +28,9 @@ export default class EventList extends Component {
   };
 
   render() {
-    const className =
-      view === "month" ? "event-list" : "event-list day-event-list";
     const { events, view } = this.props;
+    const className = view === "month" ? "event-list" : "day-event-list";
+
     return (
       <ul className={className}>
         {events.map(event => (

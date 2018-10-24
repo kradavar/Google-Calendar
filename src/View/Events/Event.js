@@ -34,7 +34,7 @@ export default class Event extends Component {
     return (
       <li className="event-list-item">
         {this.props.view === "month" ? (
-          <div className="event">
+          <div className="event" onClick={this.props.onClick}>
             {this.props.showModal && (
               <ModalShowEvent
                 handleClose={this.props.handleClose}
@@ -48,7 +48,11 @@ export default class Event extends Component {
             {this.props.start.split(" ")[1]}-{this.props.name}
           </div>
         ) : (
-          <div className={this.props.eventsClassName} style={this.getStyles()}>
+          <div
+            className={this.props.eventsClassName}
+            onClick={this.props.onClick}
+            style={this.getStyles()}
+          >
             {this.props.showModal && (
               <ModalShowEvent
                 handleClose={this.props.handleClose}
