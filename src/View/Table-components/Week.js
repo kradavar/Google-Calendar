@@ -4,10 +4,10 @@ import moment from "moment";
 import "../../Styles/Cell.css";
 import DayWeekHeadar from "./DayWeekHeader";
 
-export default function Week(props) {
+export default function Week({ renderedDate, view }) {
   const daysHeader = [];
   const renderWeek = () => {
-    const date = moment(props.renderedDate);
+    const date = moment(renderedDate);
     const wholeWeekStart = date.clone().startOf("isoWeek");
     const wholeWeekEnd = date.clone().endOf("isoWeek");
     const days = [];
@@ -25,21 +25,19 @@ export default function Week(props) {
           key={date.format()}
         />
       );
-      days.push(
-        <Day view={props.view} renderedDate={date} key={date.format()} />
-      );
+      days.push(<Day view={view} renderedDate={date} key={date.format()} />);
     }
 
     return days;
   };
   const days = renderWeek();
 
-  switch (props.view) {
+  switch (view) {
     case "month":
       return <div className="week">{days}</div>;
     case "week":
       return <div className="week content">{days}</div>;
     default:
-      return <Day renderedDate={props.renderedDate} view={props.view} />;
+      return <Day renderedDate={renderedDate} view={view} />;
   }
 }
