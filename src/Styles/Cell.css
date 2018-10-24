@@ -1,7 +1,3 @@
-.cell-header {
-  min-height: 2rem;
-}
-
 .cell:hover,
 .hour:hover {
   background-color: rgba(104, 170, 255, 0.6);
@@ -11,6 +7,7 @@
 .cell-header-info {
   font-size: 0.8rem;
   padding: 0.5rem;
+  min-height: 2rem;
 }
 
 .flex-container {

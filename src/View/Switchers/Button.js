@@ -2,23 +2,26 @@ import React from "react";
 import classNames from "classnames";
 import "../../Styles/Button.css";
 
-export default function Button(props) {
+export default function Button({ classes, value, onClick, view, label }) {
   let btnClass = classNames([
-    props.classes,
+    classes,
     "btn",
     {
-      "btn-outline-primary": props.value !== props.view,
-      "btn-primary": props.value === props.view,
-      disabled: props.value === props.view
+      "btn-outline-primary": value !== view,
+      "btn-primary": value === view,
+      disabled: value === view
     }
   ]);
+
+  const type = value === "Create" ? "submit" : "button";
+
   return (
     <input
-      name={props.value}
-      type="button"
-      value={props.value}
-      onClick={props.onClick}
+      type={type}
+      value={value}
+      onClick={onClick}
       className={btnClass}
+      disabled={view === value}
     />
   );
 }

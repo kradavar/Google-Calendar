@@ -8,6 +8,7 @@ import CreateForm from "../FormItems/CreateForm.js";
 import ShowForm from "../FormItems/ShowForm.js";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../DateFormats.js";
+import Button from "../../View/Switchers/Button.js";
 
 class ModalShowEvent extends Component {
   state = {
@@ -55,27 +56,22 @@ class ModalShowEvent extends Component {
         bottom={
           <div>
             {this.state.editMode === false && (
-              <button
+              <Button
                 onClick={this.editCurrentEvent}
-                className="btn btn-outline-info"
-              >
-                Edit
-              </button>
+                classes="btn btn-outline-info"
+                value="Edit"
+              />
             )}
-            <button
+            <Button
               onClick={this.deleteCurrentEvent}
-              className="btn btn-outline-primary"
-            >
-              Delete
-            </button>
-            <button
-              type="button"
-              className="btn btn-outline-dark"
-              data-dismiss="modal"
+              classes="btn btn-outline-primary"
+              value="Delete"
+            />
+            <Button
+              classes="btn btn-outline-dark"
               onClick={handleClose}
-            >
-              Close
-            </button>
+              value="Close"
+            />
           </div>
         }
       >

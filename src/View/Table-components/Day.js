@@ -20,11 +20,19 @@ export default class Day extends Component {
   }
 
   showModal = e => {
-    this.setState({
-      showModal: true,
-      targetHour: e.target.attributes.value.value,
-      headerClassName: "day-week-header sticky-top hide"
-    });
+    if (this.props.view === "month") {
+      this.setState({
+        showModal: true,
+        targetHour: 0,
+        headerClassName: "day-week-header sticky-top hide"
+      });
+    } else {
+      this.setState({
+        showModal: true,
+        targetHour: e.target.attributes.value.value,
+        headerClassName: "day-week-header sticky-top hide"
+      });
+    }
   };
 
   hideModal = e => {

@@ -3,6 +3,7 @@ import { Field, reduxForm, FormSection, formValueSelector } from "redux-form";
 import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
+import Button from "../../View/Switchers/Button";
 
 let CreateForm = ({ handleSubmit, reset, isAllDayEvent }) => {
   return (
@@ -36,17 +37,13 @@ let CreateForm = ({ handleSubmit, reset, isAllDayEvent }) => {
         <DateTimeSection label="End: " isAllDayEvent={isAllDayEvent} />
       </FormSection>
       <div className="modal-footer">
-        <button
-          type="button"
-          className="btn btn-outline-secondary"
+        <Button
+          classes="btn btn-outline-secondary"
           data-dismiss="modal"
           onClick={reset}
-        >
-          Clear
-        </button>
-        <button type="submit" className="btn btn-outline-success">
-          Create Event
-        </button>
+          value="Clear"
+        />
+        <Button classes="btn btn-outline-success" value="Create" />
       </div>
     </form>
   );
