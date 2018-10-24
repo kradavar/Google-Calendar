@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import EventList from "../../View/Events/EventList";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../DateFormats";
-/*---------functions for getRenderedDateEvents---------------*/
 
 const filterByDate = (eventStart, date) =>
   formatDate(eventStart, DATE_FORMATS.DATE) === date.format(DATE_FORMATS.DATE);
@@ -15,7 +14,6 @@ const filterByHour = (eventStart, date, hour) => {
     return formatDate(eventStart, DATE_FORMATS.HOUR) === hour.toString();
   }
 };
-/*------------------------------------------------------*/
 const getRenderedDateEvents = (events, date, view, hour) => {
   if (view === "month") {
     return events.filter(event => filterByDate(event.start, date));

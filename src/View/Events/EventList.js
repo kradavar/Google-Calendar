@@ -19,7 +19,6 @@ export default class EventList extends Component {
   };
 
   handleOpen = e => {
-    debugger;
     this.setState({
       showModal: true,
       eventsClassName: "event-day hide"
@@ -36,10 +35,7 @@ export default class EventList extends Component {
         {events.map(event => (
           <Event
             key={event.id}
-            start={event.start}
-            end={event.end}
-            name={event.name}
-            id={event.id}
+            {...event}
             view={view}
             onClick={this.handleOpen}
             handleClose={this.handleClose}

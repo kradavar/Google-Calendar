@@ -4,6 +4,7 @@ import { addEvent } from "../actions/actions.js";
 import "../../Styles/Modal.css";
 import { Modal } from "../../View/ModalIems/Modal";
 import CreateForm from "../FormItems/CreateForm";
+import { DATE_FORMATS } from "../DateFormats.js";
 
 function ModalWindow({ addEvent, handleClose, renderedDate, hour }) {
   const handleFormSubmit = values => {
@@ -40,11 +41,11 @@ function ModalWindow({ addEvent, handleClose, renderedDate, hour }) {
           initialValues={{
             eventType: false,
             start: {
-              date: renderedDate.clone().format("YYYY-MM-DD"),
+              date: renderedDate.clone().format(DATE_FORMATS.DATE),
               time: getRenderedHour(+hour)
             },
             end: {
-              date: renderedDate.clone().format("YYYY-MM-DD"),
+              date: renderedDate.clone().format(DATE_FORMATS.DATE),
               time: getRenderedHour(+hour + 1)
             }
           }}

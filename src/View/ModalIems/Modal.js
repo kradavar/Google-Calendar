@@ -1,7 +1,5 @@
 import React from "react";
 import ModalHeader from "../ModalIems/ModalHeader";
-import ModalBody from "../ModalIems/ModalBody";
-import ModalBottom from "../ModalIems/ModalBottom";
 
 export function Modal({ header, handleClose, children, bottom }) {
   return (
@@ -9,8 +7,8 @@ export function Modal({ header, handleClose, children, bottom }) {
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <ModalHeader header={header} handleClose={handleClose} />
-          <ModalBody>{children}</ModalBody>
-          <ModalBottom>{bottom}</ModalBottom>
+          <div className="modal-body">{children}</div>
+          <div className="modal-footer">{bottom}</div>
         </div>
       </div>
     </div>

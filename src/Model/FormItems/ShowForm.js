@@ -2,7 +2,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 
-let ShowForm = ({ start, end }) => {
+let ShowForm = () => {
   return (
     <form>
       <Field

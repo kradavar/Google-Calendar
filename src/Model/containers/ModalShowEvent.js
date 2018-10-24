@@ -28,11 +28,6 @@ class ModalShowEvent extends Component {
     const end = values.end.date + " " + values.end.time;
     this.props.editEvent(this.props.id, name, start, end);
   };
-  handleCheckBoxChange = values => {
-    if (values.allDay) {
-    } else {
-    }
-  };
   getRenderedHour = hour => {
     if (hour === undefined) {
       return "00:00";
@@ -45,13 +40,14 @@ class ModalShowEvent extends Component {
   };
   render() {
     const { start, end, name, handleClose } = this.props;
+    const { editMode } = this.state;
     return (
       <Modal
-        header={this.state.editMode ? "Edit Event" : name}
+        header={editMode ? "Edit Event" : name}
         handleClose={handleClose}
         bottom={
           <div>
-            {this.state.editMode === false && (
+            {editMode === false && (
               <Button
                 onClick={this.editCurrentEvent}
                 classes="btn btn-outline-info show-modal-button"
@@ -71,7 +67,7 @@ class ModalShowEvent extends Component {
           </div>
         }
       >
-        {this.state.editMode ? (
+        {editMode ? (
           <CreateForm
             onSubmit={this.saveChanges}
             handleCheckBoxChange={this.handleCheckBoxChange}

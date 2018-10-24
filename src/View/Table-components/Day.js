@@ -8,6 +8,7 @@ import DayWeekHeader from "./DayWeekHeader.js";
 import moment from "moment";
 import TimeLine from "../TimeLine.js";
 import HourCell from "./Cells/HourCell.js";
+import { DATE_FORMATS } from "../../Model/DateFormats.js";
 
 export default class Day extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ export default class Day extends Component {
     } else {
       this.setState({
         showModal: true,
-        targetHour: e.target.attributes.value.value,
+        targetHour: e.target.attributes.value.value /* don't like this */,
         headerClassName: "day-week-header sticky-top hide"
       });
     }
@@ -46,7 +47,8 @@ export default class Day extends Component {
   createDayCell() {
     const { renderedDate, view } = this.props;
     const dayClassName =
-      renderedDate.format("YYYY-MM-DD") === moment().format("YYYY-MM-DD")
+      renderedDate.format(DATE_FORMATS.DATE) ===
+      moment().format(DATE_FORMATS.DATE)
         ? "current-day cell day"
         : "cell day";
 
@@ -81,11 +83,11 @@ export default class Day extends Component {
         <div className="flex-container">
           <DayWeekHeader
             renderedDate={renderedDate.date()}
-            day={renderedDate.format("ddd")}
+            day={renderedDate.format(DATE_FORMATS.DAY)}
             className={this.state.headerClassName}
           />
-          {renderedDate.format("YYYY-MM-DD") ===
-            moment().format("YYYY-MM-DD") && <TimeLine />}
+          {renderedDate.format(DATE_FORMATS.DATE) ===
+            moment().format(DATE_FORMATS.DATE) && <TimeLine />}
 
           <div className="day-flex">
             {hours}

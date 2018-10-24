@@ -4,6 +4,7 @@ import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
 import Button from "../../View/Switchers/Button";
+import "../../Styles/Modal.css";
 
 let CreateForm = ({ handleSubmit, reset, isAllDayEvent }) => {
   return (
@@ -17,18 +18,16 @@ let CreateForm = ({ handleSubmit, reset, isAllDayEvent }) => {
           type: "text"
         }}
       />
-      <div className="form-group">
-        <label htmlFor="all-day" className="col-form-label">
-          All day
-        </label>
-        <Field
-          type="checkbox"
-          component="input"
-          id="all-day"
-          name="eventType"
-          value="false"
-        />
-      </div>
+      <Field
+        name="eventType"
+        component={FormInputWithLabel}
+        props={{
+          type: "checkbox",
+          label: "All day",
+          value: false,
+          className: "eventType"
+        }}
+      />
 
       <FormSection name="start">
         <DateTimeSection label="Start: " isAllDayEvent={isAllDayEvent} />

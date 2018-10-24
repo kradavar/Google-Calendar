@@ -1,17 +1,23 @@
 import React from "react";
 
-export const FormInputWithLabel = field => {
+export const FormInputWithLabel = ({
+  label,
+  input,
+  type,
+  placeholder,
+  disabled
+}) => {
   return (
     <div className="form-group">
       <label htmlFor="name-input" className="col-form-label">
-        {field.label}
+        {label}
       </label>
       <input
-        {...field.input}
-        type={field.type}
-        placeholder={field.placeholder}
-        className="form-control"
-        disabled={field.disabled}
+        {...input}
+        type={type}
+        placeholder={placeholder}
+        className={type === "checkbox" ? "" : "form-control"}
+        disabled={disabled}
       />
     </div>
   );

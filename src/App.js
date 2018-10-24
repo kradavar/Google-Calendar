@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import moment from "moment";
-// Redux stuff
-
 import "./Styles/App.css";
 // Calendar
 import CalendarTable from "./View/Table-components/CalendarTable";

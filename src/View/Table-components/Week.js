@@ -3,6 +3,7 @@ import Day from "./Day";
 import moment from "moment";
 import "../../Styles/Cell.css";
 import DayWeekHeadar from "./DayWeekHeader";
+import { DATE_FORMATS } from "../../Model/DateFormats";
 
 export default function Week({ renderedDate, view }) {
   const daysHeader = [];
@@ -25,7 +26,13 @@ export default function Week({ renderedDate, view }) {
           key={date.format()}
         />
       );
-      days.push(<Day view={view} renderedDate={date} key={date.format()} />);
+      days.push(
+        <Day
+          view={view}
+          renderedDate={date}
+          key={date.format(DATE_FORMATS.DATE)}
+        />
+      );
     }
 
     return days;
