@@ -3,15 +3,19 @@ import classNames from "classnames";
 import "../../Styles/Button.css";
 
 export default function Button({ classes, value, onClick, view, label }) {
-  let btnClass = classNames([
-    classes,
-    "btn",
-    {
-      "btn-outline-primary": value !== view,
-      "btn-primary": value === view,
-      disabled: value === view
-    }
-  ]);
+  let btnClass;
+  if (value === "Day" || value === "Week" || value === "Month") {
+    btnClass = classNames([
+      classes,
+      {
+        "btn-outline-primary": value !== view,
+        "btn-primary": value === view,
+        disabled: value === view
+      }
+    ]);
+  } else {
+    btnClass = classes;
+  }
 
   const type = value === "Create" ? "submit" : "button";
 

@@ -1,5 +1,4 @@
 import React from "react";
-
 import { connect } from "react-redux";
 import { addEvent } from "../actions/actions.js";
 import "../../Styles/Modal.css";
@@ -19,12 +18,11 @@ function ModalWindow({ addEvent, handleClose, renderedDate, hour }) {
       start += values.start.time;
       end += values.end.time;
     }
-
     addEvent(name, start, end);
   };
 
   const getRenderedHour = hour => {
-    if (hour === undefined) {
+    if (isNaN(hour)) {
       return "00:00";
     } else {
       if (hour < 10) {

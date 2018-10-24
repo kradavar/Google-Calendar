@@ -22,7 +22,6 @@ class ModalShowEvent extends Component {
       editMode: true
     });
   };
-
   saveChanges = values => {
     const name = values.name;
     const start = values.start.date + " " + values.start.time;
@@ -34,7 +33,6 @@ class ModalShowEvent extends Component {
     } else {
     }
   };
-
   getRenderedHour = hour => {
     if (hour === undefined) {
       return "00:00";
@@ -45,10 +43,8 @@ class ModalShowEvent extends Component {
       return hour + ":00";
     }
   };
-
   render() {
     const { start, end, name, handleClose } = this.props;
-
     return (
       <Modal
         header={this.state.editMode ? "Edit Event" : name}
@@ -58,17 +54,17 @@ class ModalShowEvent extends Component {
             {this.state.editMode === false && (
               <Button
                 onClick={this.editCurrentEvent}
-                classes="btn btn-outline-info"
+                classes="btn btn-outline-info show-modal-button"
                 value="Edit"
               />
             )}
             <Button
               onClick={this.deleteCurrentEvent}
-              classes="btn btn-outline-primary"
+              classes="btn btn-outline-primary show-modal-button"
               value="Delete"
             />
             <Button
-              classes="btn btn-outline-dark"
+              classes="btn btn-outline-dark show-modal-button"
               onClick={handleClose}
               value="Close"
             />
