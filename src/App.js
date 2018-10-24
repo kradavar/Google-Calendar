@@ -7,8 +7,7 @@ import "./Styles/App.css";
 import CalendarTable from "./View/Table-components/CalendarTable";
 // Switchers
 import ViewTypeSwitcher from "./View/Switchers/ViewTypeSwitcher";
-import PrevButton from "./View/Switchers/PrevButton";
-import NextButton from "./View/Switchers/NextButton";
+import Button from "./View/Switchers/Button";
 
 class App extends Component {
   constructor() {
@@ -53,8 +52,16 @@ class App extends Component {
             renderedDate={this.state.renderedDate}
           />
           <div className="container d-flex justify-content-between bottom-buttons">
-            <PrevButton onClick={this.handlePrevButtonClick} />
-            <NextButton onClick={this.handleNextButtonClick} />
+            <Button
+              value="Prev"
+              classes="nav-input btn btn-outline-primary"
+              onClick={this.handlePrevButtonClick}
+            />
+            <Button
+              value="Next"
+              classes="nav-input btn btn-outline-primary"
+              onClick={this.handleNextButtonClick}
+            />
           </div>
         </div>
       </div>
