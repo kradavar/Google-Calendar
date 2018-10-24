@@ -38,11 +38,7 @@ export const events = (state = initialState, action) => {
     case EDIT_EVENT:
       return state.map(event => {
         if (event.id === action.id) {
-          event.start = action.start;
-          event.end = action.end;
-          event.name = action.name;
-
-          return event;
+          return { ...action };
         } else {
           return event;
         }
