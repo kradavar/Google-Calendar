@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
 import { Field } from "redux-form";
-import { DateInput } from "./DateInput";
-import { TimeInput } from "./TimeInput";
+import { FormInputWithLabel } from "./FormInputWithLabel";
 
 import "../../Styles/Modal.css";
 export class DateTimeSection extends Component {
@@ -13,11 +12,20 @@ export class DateTimeSection extends Component {
           {this.props.label}
         </label>
         <div id="event">
-          <Field name="date" component={DateInput} />
+          <Field
+            name="date"
+            component={FormInputWithLabel}
+            props={{
+              type: "date",
+              label: "Date: "
+            }}
+          />
           <Field
             name="time"
-            component={TimeInput}
+            component={FormInputWithLabel}
             props={{
+              type: "time",
+              label: "Time: ",
               disabled: this.props.isAllDayEvent
             }}
           />

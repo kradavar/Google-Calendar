@@ -12,9 +12,9 @@ let CreateForm = ({ handleSubmit, reset, isAllDayEvent }) => {
         name="name"
         component={FormInputWithLabel}
         props={{
-          value: "event-name",
           label: "Name: ",
-          placeholder: "Event Name"
+          placeholder: "Event Name",
+          type: "text"
         }}
       />
       <div className="form-group">

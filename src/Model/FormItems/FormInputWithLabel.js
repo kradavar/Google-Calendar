@@ -8,9 +8,8 @@ export const FormInputWithLabel = field => {
       </label>
       <input
         {...field.input}
-        type="text"
+        type={field.type}
         placeholder={field.placeholder}
-        id="name-input"
         className="form-control"
         disabled={field.disabled}
       />
