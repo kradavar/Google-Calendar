@@ -4,7 +4,8 @@ import "../../Styles/Button.css";
 
 export default function Button({ classes, value, onClick, view, label }) {
   let btnClass;
-  if (value === "Day" || value === "Week" || value === "Month") {
+
+  if (value === "day" || value === "week" || value === "month") {
     btnClass = classNames([
       classes,
       {

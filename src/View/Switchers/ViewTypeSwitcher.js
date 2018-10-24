@@ -7,19 +7,19 @@ export default function ViewTypeSwitcher({ onChangeView, view }) {
     <div className="switcher">
       <Button
         view={view}
-        value="Day"
+        value="day"
         onClick={onChangeView}
         classes={"switcher-input btn"}
       />
       <Button
         view={view}
-        value="Week"
+        value="week"
         onClick={onChangeView}
         classes={"switcher-input btn"}
       />
       <Button
         view={view}
-        value="Month"
+        value="month"
         onClick={onChangeView}
         classes={"switcher-input btn"}
       />
