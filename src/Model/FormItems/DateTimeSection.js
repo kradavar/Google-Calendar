@@ -14,8 +14,6 @@ export class DateTimeSection extends Component {
         </label>
         <div id="event">
           <Field name="date" component={DateInput} />
-
-          {console.log(this.props.label, this.props.isAllDayEvent)}
           <Field
             name="time"
             component={TimeInput}
