@@ -39,7 +39,7 @@ export default function Week(props) {
       return <div className="week">{days}</div>;
     case "week":
       return <div className="week content">{days}</div>;
-    case "day":
+    default:
       return <Day renderedDate={props.renderedDate} view={props.view} />;
   }
 }
