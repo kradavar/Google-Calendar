@@ -28,19 +28,15 @@ export const events = (state = initialState, action) => {
         ...state,
         {
           id: nextEventId++,
-          // TODO
-          // ...action
-          start: action.start,
-          end: action.end,
-          name: action.name
+          ...action.payload
         }
       ];
     case DELETE_EVENT:
-      return state.filter(event => event.id !== action.id);
+      return state.filter(event => event.id !== action.payload.id);
     case EDIT_EVENT:
       return state.map(event => {
-        if (event.id === action.id) {
-          return { ...action };
+        if (event.id === action.payload.id) {
+          return { ...action.payload };
         } else {
           return event;
         }

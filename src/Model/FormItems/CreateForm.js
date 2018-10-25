@@ -93,23 +93,12 @@ const mapStateToProps = state => {
     isAllDayEvent: selector(state, "eventType")
   };
 };
-const mapDispatchToProps = (dispatch, props, state, values) => {
-  return {
-    editEvent: () => {
-      dispatch(editEvent(props.id, state.name, state.start, state.end));
-    },
-    addEvent: () => {
-      debugger;
-      dispatch(addEvent(state.name, state.start, state.end));
-    }
-  };
-};
-
 export default compose(
+  reduxForm({
+    form: "createEvent"
+  }),
   connect(
     mapStateToProps,
-    mapDispatchToProps
-  ),
-
-  reduxForm({ form: "createEvent" })
+    { editEvent, addEvent }
+  )
 )(CreateFormComponent);
