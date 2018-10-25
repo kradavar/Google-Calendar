@@ -6,10 +6,11 @@ import { FormInputWithLabel } from "./FormInputWithLabel";
 import "../../Styles/Modal.css";
 export class DateTimeSection extends Component {
   render() {
+    const { label, isAllDayEvent } = this.props;
     return (
       <div className="form-group">
         <label htmlFor="event" className="col-form-label">
-          {this.props.label}
+          {label}
         </label>
         <div id="event">
           <Field
@@ -26,7 +27,7 @@ export class DateTimeSection extends Component {
             props={{
               type: "time",
               label: "Time: ",
-              disabled: this.props.isAllDayEvent
+              disabled: isAllDayEvent
             }}
           />
         </div>

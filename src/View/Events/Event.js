@@ -35,42 +35,36 @@ const Event = ({
   const getStyles = () => {
     const heightRem = getHeight() + "rem";
     const topRem = getTopOfEvent() + "rem";
-    return {
-      height: heightRem,
-      top: topRem
-    };
+    if (view === "day") {
+      return {
+        height: heightRem,
+        top: topRem
+      };
+    }
   };
+
+  const getClassName = () => (view === "month" ? "event" : eventsClassName);
+
+  const eventInput = () =>
+    view === "month"
+      ? formatDate(start, DATE_FORMATS.TIME) + "-" + name
+      : name + ", " + start + "-" + end;
 
   return (
     <li className="event-list-item">
-      {view === "month" ? (
-        <div className="event" onClick={onClick}>
-          {showModal && (
-            <ModalShowEvent
-              handleClose={handleClose}
-              start={start}
-              end={end}
-              name={name}
-              id={id}
-              view={view}
-            />
-          )}
-          {formatDate(start, DATE_FORMATS.TIME)}-{name}
-        </div>
-      ) : (
-        <div className={eventsClassName} onClick={onClick} style={getStyles()}>
-          {showModal && (
-            <ModalShowEvent
-              handleClose={handleClose}
-              start={start}
-              end={end}
-              name={name}
-              id={id}
-            />
-          )}
-          {name},{start} - {end}
-        </div>
-      )}
+      <div className={getClassName()} onClick={onClick} style={getStyles()}>
+        {showModal && (
+          <ModalShowEvent
+            handleClose={handleClose}
+            start={start}
+            end={end}
+            name={name}
+            id={id}
+            view={view}
+          />
+        )}
+        {eventInput()}
+      </div>
     </li>
   );
 };
