@@ -4,27 +4,22 @@ export const EDIT_EVENT = "EDIT_EVENT";
 
 let nextEventId = 0;
 
-export function addEvent(name, start, end) {
+export const addEvent = (name, start, end) => {
   return {
     type: ADD_EVENT,
-    // TODO payload
-    // payload: {
-    //     id: nextEventId++,
-    //     name,
-    //     start,
-    //     end
-    // },
-    id: nextEventId++,
-    name,
-    start,
-    end
+    payload: {
+      id: nextEventId++,
+      name,
+      start,
+      end
+    }
   };
-}
+};
 
-export function deleteEvent(id) {
-  return { type: DELETE_EVENT, id };
-}
+export const deleteEvent = id => {
+  return { type: DELETE_EVENT, payload: { id } };
+};
 
-export function editEvent(id, name, start, end) {
-  return { type: EDIT_EVENT, id, name, start, end };
-}
+export const editEvent = (id, name, start, end) => {
+  return { type: EDIT_EVENT, payload: { id, name, start, end } };
+};

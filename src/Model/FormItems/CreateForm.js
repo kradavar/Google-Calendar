@@ -1,10 +1,12 @@
 import React from "react";
+import { compose } from "redux";
 import { Field, reduxForm, FormSection, formValueSelector } from "redux-form";
 import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
 import Button from "../../View/Switchers/Button";
 import "../../Styles/Modal.css";
+import { addEvent, editEvent } from "../actions/actions";
 
 //
 // <FormInputWithLabel
@@ -15,9 +17,34 @@ import "../../Styles/Modal.css";
 // />
 
 // Add submit
-const CreateFormComponent = ({ handleSubmit, reset, isAllDayEvent }) => {
-    return (
-    <form onSubmit={handleSubmit}>
+const CreateFormComponent = ({
+  reset,
+  isAllDayEvent,
+  id,
+  addEvent,
+  editEvent,
+  handleSubmit
+}) => {
+  const submit = values => {
+    const name = values.name;
+
+    let start = values.start.date + " ";
+    let end = values.end.date + " ";
+
+    if (values.eventType) {
+      start += "00:00";
+      end += "24:00";
+    } else {
+      start += values.start.time;
+      end += values.end.time;
+    }
+
+    id === undefined
+      ? addEvent(name, start, end)
+      : editEvent(id, name, start, end);
+  };
+  return (
+    <form onSubmit={handleSubmit(submit)}>
       <Field
         name="name"
         component={FormInputWithLabel}
@@ -60,17 +87,29 @@ const CreateFormComponent = ({ handleSubmit, reset, isAllDayEvent }) => {
 };
 
 // compose!
-let CreateForm = reduxForm({
-  form: "createEvent"
-})(CreateFormComponent);
+const mapStateToProps = state => {
+  const selector = formValueSelector("createEvent");
+  return {
+    isAllDayEvent: selector(state, "eventType")
+  };
+};
+const mapDispatchToProps = (dispatch, props, state, values) => {
+  return {
+    editEvent: () => {
+      dispatch(editEvent(props.id, state.name, state.start, state.end));
+    },
+    addEvent: () => {
+      debugger;
+      dispatch(addEvent(state.name, state.start, state.end));
+    }
+  };
+};
 
-const selector = formValueSelector("createEvent");
-CreateForm = connect(
-    // mapStateToProps
-    state => {
-  const isAllDayEvent = selector(state, "eventType");
-  return { isAllDayEvent };
-}
-)(CreateForm);
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
 
-export default CreateForm;
+  reduxForm({ form: "createEvent" })
+)(CreateFormComponent);
