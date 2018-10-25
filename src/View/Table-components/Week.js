@@ -5,6 +5,7 @@ import "../../Styles/Cell.css";
 import DayWeekHeadar from "./DayWeekHeader";
 import { DATE_FORMATS } from "../../Model/DateFormats";
 
+// self-invoking functions & clone
 export default function Week({ renderedDate, view }) {
   const daysHeader = [];
   const renderWeek = () => {

@@ -11,14 +11,11 @@ import HourCell from "./Cells/HourCell.js";
 import { DATE_FORMATS } from "../../Model/DateFormats.js";
 
 export default class Day extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showModal: false,
-      targetHour: 0,
-      headerClassName: "day-week-header sticky-top"
-    };
-  }
+  state = {
+    showModal: false,
+    targetHour: 0,
+    headerClassName: "day-week-header sticky-top"
+  };
 
   showModal = e => {
     if (this.props.view === "month") {

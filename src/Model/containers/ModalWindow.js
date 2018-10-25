@@ -6,7 +6,9 @@ import { Modal } from "../../View/ModalIems/Modal";
 import CreateForm from "../FormItems/CreateForm";
 import { DATE_FORMATS } from "../DateFormats.js";
 
-function ModalWindow({ addEvent, handleClose, renderedDate, hour }) {
+const ModalWindow = ({ addEvent, handleClose, renderedDate, hour }) => {
+
+  // Remove submit
   const handleFormSubmit = values => {
     const name = values.name;
     let start = values.start.date + " ";
@@ -23,10 +25,13 @@ function ModalWindow({ addEvent, handleClose, renderedDate, hour }) {
   };
 
   const getRenderedHour = hour => {
+    // TODO get rid of this
     if (isNaN(hour)) {
       return "00:00";
     } else {
       if (hour < 10) {
+
+        // TODO get rid of 0
         hour = `0${hour}`;
       }
       return hour + ":00";

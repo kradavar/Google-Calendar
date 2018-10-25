@@ -28,6 +28,8 @@ export const events = (state = initialState, action) => {
         ...state,
         {
           id: nextEventId++,
+          // TODO
+          // ...action
           start: action.start,
           end: action.end,
           name: action.name

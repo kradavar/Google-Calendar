@@ -3,6 +3,7 @@ import "../Styles/CalendarTable.css";
 import moment from "moment";
 import { getDuration } from "../Model/getRenderedDateInfo";
 
+// Find article
 export default class TimeLine extends Component {
   constructor(props) {
     super(props);

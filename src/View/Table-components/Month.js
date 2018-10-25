@@ -16,6 +16,7 @@ export default function Month({ renderedDate, view }) {
     return duration;
   };
 
+  // clone() ???
   const renderMonth = () => {
     const start = renderedDate.clone().startOf("month");
     const weeks = [];
