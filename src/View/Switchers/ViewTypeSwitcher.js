@@ -21,7 +21,7 @@ export default function ViewTypeSwitcher({ onChangeView, view }) {
         view={view}
         value="month"
         onClick={onChangeView}
-        classes={"switcher-input btn"}
+        classes="switcher-input btn"
       />
     </div>
   );

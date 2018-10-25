@@ -14,20 +14,27 @@ class ModalShowEvent extends Component {
   state = {
     editMode: false
   };
+
+
   deleteCurrentEvent = () => {
     this.props.deleteEvent(this.props.id);
   };
+
   editCurrentEvent = () => {
     this.setState({
       editMode: true
     });
   };
+
+  // Remove submit
   saveChanges = values => {
     const name = values.name;
     const start = values.start.date + " " + values.start.time;
     const end = values.end.date + " " + values.end.time;
     this.props.editEvent(this.props.id, name, start, end);
   };
+
+  // ?
   getRenderedHour = hour => {
     if (hour === undefined) {
       return "00:00";
@@ -70,6 +77,7 @@ class ModalShowEvent extends Component {
         {editMode ? (
           <CreateForm
             onSubmit={this.saveChanges}
+            {/* ? */}
             handleCheckBoxChange={this.handleCheckBoxChange}
             initialValues={{
               "event-type": false,

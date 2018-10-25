@@ -7,6 +7,13 @@ let nextEventId = 0;
 export function addEvent(name, start, end) {
   return {
     type: ADD_EVENT,
+    // TODO payload
+    // payload: {
+    //     id: nextEventId++,
+    //     name,
+    //     start,
+    //     end
+    // },
     id: nextEventId++,
     name,
     start,

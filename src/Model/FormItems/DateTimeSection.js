@@ -4,6 +4,8 @@ import { Field } from "redux-form";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 
 import "../../Styles/Modal.css";
+
+// Investigate WHY it works
 export class DateTimeSection extends Component {
   render() {
     const { label, isAllDayEvent } = this.props;

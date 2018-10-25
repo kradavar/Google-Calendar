@@ -18,6 +18,8 @@ class App extends Component {
   }
 
   handleSwitcherChange = event => {
+    // get rid of this
+    //  move it to disabled logic
     if (event.target.value === this.state.view) return;
     this.setState({ view: event.target.value });
   };

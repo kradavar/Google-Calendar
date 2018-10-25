@@ -6,8 +6,17 @@ import { connect } from "react-redux";
 import Button from "../../View/Switchers/Button";
 import "../../Styles/Modal.css";
 
-let CreateForm = ({ handleSubmit, reset, isAllDayEvent }) => {
-  return (
+//
+// <FormInputWithLabel
+//     name="name"
+//     label
+//     type
+//     placeholder
+// />
+
+// Add submit
+const CreateFormComponent = ({ handleSubmit, reset, isAllDayEvent }) => {
+    return (
     <form onSubmit={handleSubmit}>
       <Field
         name="name"
@@ -35,6 +44,7 @@ let CreateForm = ({ handleSubmit, reset, isAllDayEvent }) => {
       <FormSection name="end">
         <DateTimeSection label="End: " isAllDayEvent={isAllDayEvent} />
       </FormSection>
+
       <div className="modal-footer">
         <Button
           classes="btn btn-outline-secondary"
@@ -42,20 +52,25 @@ let CreateForm = ({ handleSubmit, reset, isAllDayEvent }) => {
           onClick={reset}
           value="Clear"
         />
+
         <Button classes="btn btn-outline-success" value="Create" />
       </div>
     </form>
   );
 };
 
-CreateForm = reduxForm({
+// compose!
+let CreateForm = reduxForm({
   form: "createEvent"
-})(CreateForm);
+})(CreateFormComponent);
 
 const selector = formValueSelector("createEvent");
-CreateForm = connect(state => {
+CreateForm = connect(
+    // mapStateToProps
+    state => {
   const isAllDayEvent = selector(state, "eventType");
   return { isAllDayEvent };
-})(CreateForm);
+}
+)(CreateForm);
 
 export default CreateForm;

@@ -5,7 +5,8 @@ export const FormInputWithLabel = ({
   input,
   type,
   placeholder,
-  disabled
+  disabled,
+   ...props
 }) => {
   return (
     <div className="form-group">
@@ -18,6 +19,7 @@ export const FormInputWithLabel = ({
         placeholder={placeholder}
         className={type === "checkbox" ? "" : "form-control"}
         disabled={disabled}
+        {...props}
       />
     </div>
   );

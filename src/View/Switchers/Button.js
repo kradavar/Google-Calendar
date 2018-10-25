@@ -2,9 +2,12 @@ import React from "react";
 import classNames from "classnames";
 import "../../Styles/Button.css";
 
+
+// Default class 'btn'
 export default function Button({ classes, value, onClick, view, label }) {
   let btnClass;
 
+  // MOVE!
   if (value === "day" || value === "week" || value === "month") {
     btnClass = classNames([
       classes,
@@ -18,6 +21,7 @@ export default function Button({ classes, value, onClick, view, label }) {
     btnClass = classes;
   }
 
+  // MOVE!
   const type = value === "Create" ? "submit" : "button";
 
   return (
