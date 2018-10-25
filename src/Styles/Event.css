@@ -1,6 +1,7 @@
 .event-day {
-  background-color: #acd8ac;
+  background-color: #c4efc4c7;
   font-size: 0.75rem;
+  border: 0.2rem solid #c4efc4;
   z-index: 10;
   position: relative;
   top: -2.2rem;
@@ -20,7 +21,7 @@
 .event::before {
   content: "▶";
   padding-right: 6px;
-  color: green;
+  color: #71c771;
 }
 
 .event-list {
