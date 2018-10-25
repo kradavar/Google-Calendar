@@ -6,6 +6,7 @@ import CalendarTable from "./View/Table-components/CalendarTable";
 // Switchers
 import ViewTypeSwitcher from "./View/Switchers/ViewTypeSwitcher";
 import Button from "./View/Switchers/Button";
+import { DATE_FORMATS } from "./Model/DateFormats";
 
 class App extends Component {
   constructor() {
@@ -43,7 +44,7 @@ class App extends Component {
             onChangeView={this.handleSwitcherChange}
           />
           <div className="current-month">
-            {this.state.renderedDate.format("MMMM")}
+            {this.state.renderedDate.format(DATE_FORMATS.MONTH)}
           </div>
           <CalendarTable
             view={this.state.view}
