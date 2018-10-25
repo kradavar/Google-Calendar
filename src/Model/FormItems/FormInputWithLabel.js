@@ -1,12 +1,13 @@
 import React from "react";
 
+// make HOR
 export const FormInputWithLabel = ({
   label,
   input,
   type,
   placeholder,
   disabled,
-   ...props
+  ...props
 }) => {
   return (
     <div className="form-group">

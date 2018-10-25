@@ -16,7 +16,6 @@ import { addEvent, editEvent } from "../actions/actions";
 //     placeholder
 // />
 
-// Add submit
 const CreateFormComponent = ({
   reset,
   isAllDayEvent,
