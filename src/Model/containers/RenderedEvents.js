@@ -2,8 +2,21 @@ import { connect } from "react-redux";
 import EventList from "../../View/Events/EventList";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../DateFormats";
+import { createSelector } from "reselect";
 
-// TODO use reselect !
+const eventsSelector = state => state.events;
+const propsSelector = (state, props) => props;
+
+const getRenderedDateEvents = createSelector(
+  [eventsSelector, propsSelector],
+  (events, props) =>
+    props.hour
+      ? events.filter(event =>
+          filterByHour(event.start, props.date, props.hour)
+        )
+      : events.filter(event => filterByDate(event.start, props.date))
+);
+
 const filterByDate = (eventStart, date) =>
   formatDate(eventStart, DATE_FORMATS.DATE) ===
   formatDate(date, DATE_FORMATS.DATE);
@@ -15,22 +28,10 @@ const filterByHour = (eventStart, date, hour) => {
     formatDate(dateWithTime, DATE_FORMATS.DATE_WITH_HOUR)
   );
 };
-const getRenderedDateEvents = (events, date, view, hour) => {
-  if (view === "month") {
-    return events.filter(event => filterByDate(event.start, date));
-  } else {
-    return events.filter(event => filterByHour(event.start, date, hour));
-  }
-};
 
 const mapStateToProps = (state, props) => {
   return {
-    events: getRenderedDateEvents(
-      state.events,
-      props.date,
-      props.view,
-      props.hour
-    )
+    events: getRenderedDateEvents(state, props)
   };
 };
 
