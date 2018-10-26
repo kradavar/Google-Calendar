@@ -2,9 +2,14 @@ import React from "react";
 import classNames from "classnames";
 import "../../Styles/Button.css";
 
-
 // Default class 'btn'
-export default function Button({ classes, value, onClick, view, label }) {
+export default function Button({
+  classes,
+  value,
+  onClick,
+  view,
+  type = "button"
+}) {
   let btnClass;
 
   // MOVE!
@@ -20,9 +25,6 @@ export default function Button({ classes, value, onClick, view, label }) {
   } else {
     btnClass = classes;
   }
-
-  // MOVE!
-  const type = value === "Create" ? "submit" : "button";
 
   return (
     <input

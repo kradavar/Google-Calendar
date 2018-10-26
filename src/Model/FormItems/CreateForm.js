@@ -79,19 +79,23 @@ const CreateFormComponent = ({
           value="Clear"
         />
 
-        <Button classes="btn btn-outline-success" value="Create" />
+        <Button
+          classes="btn btn-outline-success"
+          value="Create"
+          type="submit"
+        />
       </div>
     </form>
   );
 };
 
-// compose!
 const mapStateToProps = state => {
   const selector = formValueSelector("createEvent");
   return {
     isAllDayEvent: selector(state, "eventType")
   };
 };
+
 export default compose(
   reduxForm({
     form: "createEvent"
