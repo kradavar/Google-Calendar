@@ -1,6 +1,6 @@
 import { ADD_EVENT, DELETE_EVENT, EDIT_EVENT } from "../actions/actions";
 
-let nextEventId = 0;
+let nextEventId = 1;
 const initialState = [
   {
     id: nextEventId++,

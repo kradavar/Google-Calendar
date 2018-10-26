@@ -5,7 +5,7 @@ import DayWeekHeadar from "./DayWeekHeader";
 import { DATE_FORMATS } from "../../Model/DateFormats";
 import { formatDate } from "../../Model/getRenderedDateInfo";
 
-// self-invoking functions & clone
+// self-invoking functions
 export default function Week({ renderedDate, view }) {
   const renderWeek = () => {
     const wholeWeekStart = renderedDate.clone().startOf("isoWeek");

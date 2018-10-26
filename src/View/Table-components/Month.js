@@ -16,12 +16,10 @@ export default function Month({ renderedDate, view }) {
     return duration;
   };
 
-  // clone() ???
   const renderMonth = () => {
-    const start = renderedDate.clone().startOf("month");
+    const currentDate = renderedDate.clone().startOf("month");
     const weeks = [];
     const duration = getWeekCount(renderedDate.clone());
-    const currentDate = start.clone();
 
     for (let i = 0; i < duration; i++) {
       weeks.push(
