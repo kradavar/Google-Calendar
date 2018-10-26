@@ -38,12 +38,9 @@ export default function Week({ renderedDate, view }) {
   };
   const days = renderWeek();
 
-  switch (view) {
-    case "month":
-      return <div className="week">{days}</div>;
-    case "week":
-      return <div className="week content">{days}</div>;
-    default:
-      return <Day renderedDate={renderedDate} view={view} />;
+  if (view === "day") {
+    return <Day renderedDate={renderedDate} view={view} />;
+  } else {
+    return <div className="week">{days}</div>;
   }
 }
