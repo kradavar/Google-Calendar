@@ -1,6 +1,5 @@
 import React from "react";
 import Day from "./Day";
-import moment from "moment";
 import "../../Styles/Cell.css";
 import DayWeekHeadar from "./DayWeekHeader";
 import { DATE_FORMATS } from "../../Model/DateFormats";
@@ -18,7 +17,7 @@ export default function Week({ renderedDate, view }) {
       currDate <= wholeWeekEnd;
       currDate.add(1, "day")
     ) {
-      const date = moment(currDate);
+      const date = currDate.clone();
       daysHeader.push(
         <DayWeekHeadar
           renderedDate={date.date()}

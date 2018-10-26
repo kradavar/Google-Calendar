@@ -9,13 +9,11 @@ const filterByDate = (eventStart, date) =>
   formatDate(date, DATE_FORMATS.DATE);
 
 const filterByHour = (eventStart, date, hour) => {
-  if (filterByDate(eventStart, date)) {
-    // ???
-    if (hour < 10) {
-      hour = `0${hour}`;
-    }
-    return formatDate(eventStart, DATE_FORMATS.HOUR) === hour.toString();
-  }
+  const dateWithTime = date.clone().set({ hour: hour });
+  return (
+    formatDate(eventStart, DATE_FORMATS.DATE_WITH_HOUR) ===
+    formatDate(dateWithTime, DATE_FORMATS.DATE_WITH_HOUR)
+  );
 };
 const getRenderedDateEvents = (events, date, view, hour) => {
   if (view === "month") {
