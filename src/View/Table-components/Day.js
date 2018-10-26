@@ -8,6 +8,7 @@ import DayWeekHeader from "./DayWeekHeader.js";
 import moment from "moment";
 import TimeLine from "../TimeLine.js";
 import HourCell from "./Cells/HourCell.js";
+import { formatDate } from "./../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../Model/DateFormats.js";
 
 export default class Day extends Component {
@@ -44,8 +45,8 @@ export default class Day extends Component {
   createDayCell() {
     const { renderedDate, view } = this.props;
     const dayClassName =
-      renderedDate.format(DATE_FORMATS.DATE) ===
-      moment().format(DATE_FORMATS.DATE)
+      formatDate(renderedDate, DATE_FORMATS.DATE) ===
+      formatDate(moment(), DATE_FORMATS.DATE)
         ? "current-day cell day"
         : "cell day";
 
@@ -57,6 +58,7 @@ export default class Day extends Component {
               showModal={this.state.showModal}
               renderedDate={renderedDate}
               handleClose={this.hideModal}
+              hour={0}
             />
           )}
 
@@ -66,25 +68,32 @@ export default class Day extends Component {
       );
     } else {
       const hours = [];
+      const renderedHour = renderedDate.clone().startOf("day");
 
       for (let hour = 0; hour < 24; hour++) {
         hours.push(
           <HourCell key={hour} onClick={this.showModal} value={hour}>
             <CellHeader headerInfo={hour} value={hour} />
-            <RenderedEvents date={renderedDate} view={view} hour={hour} />
+            <RenderedEvents
+              date={renderedDate}
+              view={view}
+              hour={hour}
+              renderedHour={renderedHour.clone()}
+            />
           </HourCell>
         );
+        renderedHour.add(1, "hour");
       }
 
       return (
         <div className="flex-container">
           <DayWeekHeader
             renderedDate={renderedDate.date()}
-            day={renderedDate.format(DATE_FORMATS.DAY)}
+            day={formatDate(renderedDate, DATE_FORMATS.DAY)}
             className={this.state.headerClassName}
           />
-          {renderedDate.format(DATE_FORMATS.DATE) ===
-            moment().format(DATE_FORMATS.DATE) && <TimeLine />}
+          {formatDate(renderedDate, DATE_FORMATS.DATE) ===
+            formatDate(moment(), DATE_FORMATS.DATE) && <TimeLine />}
 
           <div className="day-flex">
             {hours}
@@ -93,7 +102,7 @@ export default class Day extends Component {
                 renderedDate={renderedDate}
                 createDayCell
                 handleClose={this.hideModal}
-                hour={this.state.targetHour}
+                hour={+this.state.targetHour}
                 view={view}
               />
             )}

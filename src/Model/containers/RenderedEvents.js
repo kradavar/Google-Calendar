@@ -3,10 +3,10 @@ import EventList from "../../View/Events/EventList";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../DateFormats";
 
-
 // TODO use reselect !
 const filterByDate = (eventStart, date) =>
-  formatDate(eventStart, DATE_FORMATS.DATE) === date.format(DATE_FORMATS.DATE);
+  formatDate(eventStart, DATE_FORMATS.DATE) ===
+  formatDate(date, DATE_FORMATS.DATE);
 
 const filterByHour = (eventStart, date, hour) => {
   if (filterByDate(eventStart, date)) {

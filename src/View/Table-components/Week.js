@@ -4,6 +4,7 @@ import moment from "moment";
 import "../../Styles/Cell.css";
 import DayWeekHeadar from "./DayWeekHeader";
 import { DATE_FORMATS } from "../../Model/DateFormats";
+import { formatDate } from "../../Model/getRenderedDateInfo";
 
 // self-invoking functions & clone
 export default function Week({ renderedDate, view }) {
@@ -23,15 +24,15 @@ export default function Week({ renderedDate, view }) {
       daysHeader.push(
         <DayWeekHeadar
           renderedDate={date.date()}
-          day={date.format("ddd")}
-          key={date.format()}
+          day={formatDate(date, DATE_FORMATS.DAY)}
+          key={formatDate(date, DATE_FORMATS.DATE_WITH_TIME)}
         />
       );
       days.push(
         <Day
           view={view}
           renderedDate={date}
-          key={date.format(DATE_FORMATS.DATE)}
+          key={formatDate(date, DATE_FORMATS.DATE)}
         />
       );
     }

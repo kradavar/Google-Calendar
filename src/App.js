@@ -6,6 +6,7 @@ import CalendarTable from "./View/Table-components/CalendarTable";
 // Switchers
 import ViewTypeSwitcher from "./View/Switchers/ViewTypeSwitcher";
 import Button from "./View/Switchers/Button";
+import { formatDate } from "./Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "./Model/DateFormats";
 
 class App extends Component {
@@ -26,13 +27,13 @@ class App extends Component {
 
   handlePrevButtonClick = () => {
     this.setState({
-      renderedDate: this.state.renderedDate.clone().subtract(1, this.state.view)
+      renderedDate: this.state.renderedDate.subtract(1, this.state.view)
     });
   };
 
   handleNextButtonClick = () => {
     this.setState({
-      renderedDate: this.state.renderedDate.clone().add(1, this.state.view)
+      renderedDate: this.state.renderedDate.add(1, this.state.view)
     });
   };
 
@@ -46,7 +47,7 @@ class App extends Component {
             onChangeView={this.handleSwitcherChange}
           />
           <div className="current-month">
-            {this.state.renderedDate.format(DATE_FORMATS.MONTH)}
+            {formatDate(this.state.renderedDate, DATE_FORMATS.MONTH)}
           </div>
           <CalendarTable
             view={this.state.view}
