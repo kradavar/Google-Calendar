@@ -2,8 +2,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 
-// let ?
-let ShowForm = () => {
+const ShowFormComponent = () => {
   return (
     <form>
       <Field
@@ -17,8 +16,8 @@ let ShowForm = () => {
   );
 };
 
-ShowForm = reduxForm({
+const ShowForm = reduxForm({
   form: "showForm"
-})(ShowForm);
+})(ShowFormComponent);
 
 export default ShowForm;
