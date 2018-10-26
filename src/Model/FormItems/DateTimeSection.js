@@ -1,11 +1,9 @@
 import React from "react";
 
-import { Field } from "redux-form";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 
 import "../../Styles/Modal.css";
 
-// Investigate WHY it works
 export const DateTimeSection = ({ label, isAllDayEvent }) => {
   return (
     <div className="form-group">
@@ -13,22 +11,12 @@ export const DateTimeSection = ({ label, isAllDayEvent }) => {
         {label}
       </label>
       <div id="event">
-        <Field
-          name="date"
-          component={FormInputWithLabel}
-          props={{
-            type: "date",
-            label: "Date: "
-          }}
-        />
-        <Field
+        <FormInputWithLabel name="date" label="Date: " type="date" />
+        <FormInputWithLabel
           name="time"
-          component={FormInputWithLabel}
-          props={{
-            type: "time",
-            label: "Time: ",
-            disabled: isAllDayEvent
-          }}
+          type="time"
+          label="Time: "
+          disabled={isAllDayEvent}
         />
       </div>
     </div>

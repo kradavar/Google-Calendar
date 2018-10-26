@@ -1,20 +1,12 @@
 import React from "react";
 import { compose } from "redux";
-import { Field, reduxForm, FormSection, formValueSelector } from "redux-form";
+import { reduxForm, FormSection, formValueSelector } from "redux-form";
 import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
 import Button from "../../View/Switchers/Button";
 import "../../Styles/Modal.css";
 import { addEvent, editEvent } from "../actions/actions";
-
-//
-// <FormInputWithLabel
-//     name="name"
-//     label
-//     type
-//     placeholder
-// />
 
 const CreateFormComponent = ({
   reset,
@@ -44,24 +36,18 @@ const CreateFormComponent = ({
   };
   return (
     <form onSubmit={handleSubmit(submit)}>
-      <Field
+      <FormInputWithLabel
         name="name"
-        component={FormInputWithLabel}
-        props={{
-          label: "Name: ",
-          placeholder: "Event Name",
-          type: "text"
-        }}
+        label="Name: "
+        placeholder="Event Name"
+        type="text"
       />
-      <Field
+      <FormInputWithLabel
         name="eventType"
-        component={FormInputWithLabel}
-        props={{
-          type: "checkbox",
-          label: "All day",
-          value: false,
-          className: "eventType"
-        }}
+        label="All Day"
+        value={false}
+        className="eventType"
+        type="checkbox"
       />
 
       <FormSection name="start">
