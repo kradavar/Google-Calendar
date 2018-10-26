@@ -25,17 +25,6 @@ class ModalShowEvent extends Component {
     });
   };
 
-  // ?
-  getRenderedHour = hour => {
-    if (hour === undefined) {
-      return "00:00";
-    } else {
-      if (hour < 10) {
-        hour = `0${hour}`;
-      }
-      return hour + ":00";
-    }
-  };
   render() {
     const { start, end, name, handleClose } = this.props;
     const { editMode } = this.state;

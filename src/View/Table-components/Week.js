@@ -8,19 +8,17 @@ import { formatDate } from "../../Model/getRenderedDateInfo";
 
 // self-invoking functions & clone
 export default function Week({ renderedDate, view }) {
-  const daysHeader = [];
   const renderWeek = () => {
-    const date = moment(renderedDate);
-    const wholeWeekStart = date.clone().startOf("isoWeek");
-    const wholeWeekEnd = date.clone().endOf("isoWeek");
+    const wholeWeekStart = renderedDate.clone().startOf("isoWeek");
+    const wholeWeekEnd = renderedDate.clone().endOf("isoWeek");
     const days = [];
+    const daysHeader = [];
     for (
       let currDate = wholeWeekStart.clone();
       currDate <= wholeWeekEnd;
       currDate.add(1, "day")
     ) {
       const date = moment(currDate);
-
       daysHeader.push(
         <DayWeekHeadar
           renderedDate={date.date()}
