@@ -5,7 +5,7 @@ import DayWeekHeadar from "./DayWeekHeader";
 import { DATE_FORMATS } from "../../Model/DateFormats";
 import { formatDate } from "../../Model/getRenderedDateInfo";
 
-// self-invoking functions
+// self-invoking functions ---?
 export default function Week({ renderedDate, view }) {
   const renderWeek = () => {
     const wholeWeekStart = renderedDate.clone().startOf("isoWeek");
@@ -20,7 +20,7 @@ export default function Week({ renderedDate, view }) {
       const date = currDate.clone();
       daysHeader.push(
         <DayWeekHeadar
-          renderedDate={date.date()}
+          renderedDate={formatDate(date, DATE_FORMATS.DATE_OF_MONTH)}
           day={formatDate(date, DATE_FORMATS.DAY)}
           key={formatDate(date, DATE_FORMATS.DATE_WITH_TIME)}
         />
@@ -36,11 +36,10 @@ export default function Week({ renderedDate, view }) {
 
     return days;
   };
-  const days = renderWeek();
 
   if (view === "day") {
     return <Day renderedDate={renderedDate} view={view} />;
   } else {
-    return <div className="week">{days}</div>;
+    return <div className="week">{renderWeek()}</div>;
   }
 }

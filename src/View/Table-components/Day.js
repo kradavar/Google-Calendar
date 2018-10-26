@@ -62,7 +62,9 @@ export default class Day extends Component {
             />
           )}
 
-          <CellHeader headerInfo={renderedDate.date()} />
+          <CellHeader
+            headerInfo={formatDate(renderedDate, DATE_FORMATS.DATE_OF_MONTH)}
+          />
           <RenderedEvents date={renderedDate} view={view} />
         </div>
       );
@@ -88,8 +90,7 @@ export default class Day extends Component {
       return (
         <div className="flex-container">
           <DayWeekHeader
-            renderedDate={renderedDate.date()}
-            day={formatDate(renderedDate, DATE_FORMATS.DAY)}
+            renderedDate={renderedDate}
             className={this.state.headerClassName}
           />
           {formatDate(renderedDate, DATE_FORMATS.DATE) ===

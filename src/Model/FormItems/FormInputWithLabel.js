@@ -2,7 +2,6 @@ import React from "react";
 
 import { Field } from "redux-form";
 
-// make HOR --- done???
 export const FormInputWithLabelComponent = ({
   label,
   input,
