@@ -29,7 +29,7 @@ const CreateFormComponent = ({
       start += values.start.time;
       end += values.end.time;
     }
-
+    // id must start with 1
     id === undefined
       ? addEvent(name, start, end)
       : editEvent(id, name, start, end);
@@ -59,17 +59,13 @@ const CreateFormComponent = ({
 
       <div className="modal-footer">
         <Button
-          classes="btn btn-outline-secondary"
+          classes="btn-outline-secondary"
           data-dismiss="modal"
           onClick={reset}
           value="Clear"
         />
 
-        <Button
-          classes="btn btn-outline-success"
-          value="Create"
-          type="submit"
-        />
+        <Button classes="btn-outline-success" value="Create" type="submit" />
       </div>
     </form>
   );

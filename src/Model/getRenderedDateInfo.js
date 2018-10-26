@@ -1,6 +1,5 @@
 import moment from "moment";
 
-// isMoment(date) ? .. : ...
 export const formatDate = (date, format) =>
   moment.isMoment(date) ? date.format(format) : moment(date).format(format);
 

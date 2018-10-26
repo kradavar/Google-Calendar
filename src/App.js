@@ -19,9 +19,6 @@ class App extends Component {
   }
 
   handleSwitcherChange = event => {
-    // get rid of this
-    //  move it to disabled logic
-    if (event.target.value === this.state.view) return;
     this.setState({ view: event.target.value });
   };
 
@@ -56,12 +53,12 @@ class App extends Component {
           <div className="container d-flex justify-content-between bottom-buttons">
             <Button
               value="Prev"
-              classes="nav-input btn btn-outline-primary"
+              classes="nav-input btn-outline-primary"
               onClick={this.handlePrevButtonClick}
             />
             <Button
               value="Next"
-              classes="nav-input btn btn-outline-primary"
+              classes="nav-input btn-outline-primary"
               onClick={this.handleNextButtonClick}
             />
           </div>

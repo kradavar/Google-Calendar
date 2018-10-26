@@ -37,17 +37,17 @@ class ModalShowEvent extends Component {
             {editMode === false && (
               <Button
                 onClick={this.editCurrentEvent}
-                classes="btn btn-outline-info show-modal-button"
+                classes="btn-outline-info show-modal-button"
                 value="Edit"
               />
             )}
             <Button
               onClick={this.deleteCurrentEvent}
-              classes="btn btn-outline-primary show-modal-button"
+              classes="btn-outline-primary show-modal-button"
               value="Delete"
             />
             <Button
-              classes="btn btn-outline-dark show-modal-button"
+              classes="btn-outline-dark show-modal-button"
               onClick={handleClose}
               value="Close"
             />
