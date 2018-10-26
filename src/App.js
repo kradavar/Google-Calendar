@@ -39,7 +39,7 @@ class App extends Component {
       <div className="container">
         <div className="d-flex flex-column align-items-center justify-content-center">
           <header className="App-header">Calendar</header>
-          <ViewTypeSwitcher
+          <ViewTypeSwitcher.Consumer
             view={this.state.view}
             onChangeView={this.handleSwitcherChange}
           />
