@@ -2,13 +2,10 @@ export const ADD_EVENT = "ADD_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 
-let nextEventId = 1;
-
 export const addEvent = (name, start, end) => {
   return {
     type: ADD_EVENT,
     payload: {
-      id: nextEventId++,
       name,
       start,
       end

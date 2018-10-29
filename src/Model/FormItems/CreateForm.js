@@ -29,7 +29,7 @@ const CreateFormComponent = ({
       start += values.start.time;
       end += values.end.time;
     }
-    id ? addEvent(name, start, end) : editEvent(id, name, start, end);
+    id ? editEvent(id, name, start, end) : addEvent(name, start, end);
   };
   return (
     <form onSubmit={handleSubmit(submit)}>

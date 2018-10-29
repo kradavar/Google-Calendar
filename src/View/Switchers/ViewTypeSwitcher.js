@@ -3,7 +3,7 @@ import Button from "./Button";
 
 import classNames from "classnames";
 import "../../Styles/Switchers.css";
-import { SharedViewContext, SharedViewProvider } from "../../Context";
+import { SharedViewContext } from "../../Context";
 
 export default function ViewTypeSwitcher({ onChangeView, view }) {
   const btnClass = value =>

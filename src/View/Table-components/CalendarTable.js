@@ -2,7 +2,7 @@ import React from "react";
 import "../../Styles/CalendarTable.css";
 import Month from "./Month";
 import Week from "./Week";
-import { SharedViewProvider, SharedViewContext } from "../../Context";
+import { SharedViewContext } from "../../Context";
 
 export default function CalendarTable({ renderedDate }) {
   return (
