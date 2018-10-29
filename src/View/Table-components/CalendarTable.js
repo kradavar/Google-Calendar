@@ -2,15 +2,20 @@ import React from "react";
 import "../../Styles/CalendarTable.css";
 import Month from "./Month";
 import Week from "./Week";
+import { SharedViewProvider, SharedViewContext } from "../../Context";
 
-export default function CalendarTable({ renderedDate, view }) {
+export default function CalendarTable({ renderedDate }) {
   return (
-    <div className="calendar">
-      {view === "month" ? (
-        <Month renderedDate={renderedDate} view={view} />
-      ) : (
-        <Week renderedDate={renderedDate} view={view} />
+    <SharedViewContext.Consumer>
+      {({ view }) => (
+        <div className="calendar">
+          {view === "month" ? (
+            <Month renderedDate={renderedDate} view={view} />
+          ) : (
+            <Week renderedDate={renderedDate} view={view} />
+          )}
+        </div>
       )}
-    </div>
+    </SharedViewContext.Consumer>
   );
 }

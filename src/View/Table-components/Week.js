@@ -4,6 +4,7 @@ import "../../Styles/Cell.css";
 import DayWeekHeadar from "./DayWeekHeader";
 import { DATE_FORMATS } from "../../Model/DateFormats";
 import { formatDate } from "../../Model/getRenderedDateInfo";
+import { SharedViewContext } from "../../Context";
 
 // self-invoking functions ---?
 export default function Week({ renderedDate, view }) {
@@ -37,9 +38,17 @@ export default function Week({ renderedDate, view }) {
     return days;
   };
 
-  if (view === "day") {
-    return <Day renderedDate={renderedDate} view={view} />;
-  } else {
-    return <div className="week">{renderWeek()}</div>;
-  }
+  return (
+    <SharedViewContext.Consumer>
+      {({ view }) => (
+        <div>
+          {view === "day" ? (
+            <Day renderedDate={renderedDate} view={view} />
+          ) : (
+            <div className="week">{renderWeek()}</div>
+          )}
+        </div>
+      )}
+    </SharedViewContext.Consumer>
+  );
 }

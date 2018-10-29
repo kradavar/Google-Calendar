@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import moment from "moment";
 
-class Context extends Component {
+export const SharedViewContext = React.createContext({
+  view: "month",
+  changeViewType: () => {}
+});
+export class SharedViewProvider extends Component {
   state = {
     view: "month"
   };
@@ -14,16 +17,14 @@ class Context extends Component {
 
   render() {
     return (
-      <Context.Provider
+      <SharedViewContext.Provider
         value={{
           view: this.state.view,
           changeViewType: this.changeViewType
         }}
       >
         {this.props.children}
-      </Context.Provider>
+      </SharedViewContext.Provider>
     );
   }
 }
-
-export default Context;

@@ -7,16 +7,14 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import Context from "./Context";
+import { SharedViewProvider } from "./Context";
 
 import { Provider } from "react-redux";
 import store from "./Model/store/store";
 ReactDOM.render(
-  <Context>
-    <Provider store={store}>
-      <App.Consumer />
-    </Provider>
-  </Context>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("root")
 );
 serviceWorker.unregister();
