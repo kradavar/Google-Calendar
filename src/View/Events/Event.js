@@ -44,10 +44,9 @@ export default class Event extends Component {
   };
 
   getStyles = (start, end) => {
-    // fix week view bug
     const heightRem = this.getHeight(start, end) + "rem";
     const topRem = this.getTopOfEvent(start) + "rem";
-    if (this.props.view === "day") {
+    if (this.props.view !== "month") {
       return {
         height: heightRem,
         top: topRem
