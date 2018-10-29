@@ -10,8 +10,6 @@ import { formatDate, getDuration } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../DateFormats.js";
 import Button from "../../View/Switchers/Button.js";
 
-import moment from "moment";
-
 class ModalShowEvent extends Component {
   state = {
     editMode: false
@@ -76,8 +74,6 @@ class ModalShowEvent extends Component {
           />
         ) : (
           <ShowForm
-            start={start}
-            end={end}
             initialValues={{
               start: formatDate(start, DATE_FORMATS.DATE_WITH_TIME),
               end: formatDate(end, DATE_FORMATS.DATE_WITH_TIME)

@@ -5,13 +5,8 @@ import { FormInputWithLabel } from "./FormInputWithLabel";
 const ShowFormComponent = () => {
   return (
     <form>
-      <Field
-        name="start"
-        component={FormInputWithLabel}
-        label="Start: "
-        disabled
-      />
-      <Field name="end" component={FormInputWithLabel} label="End: " disabled />
+      <FormInputWithLabel name="start" label="Start: " type="text" disabled />
+      <FormInputWithLabel name="end" label="End: " type="text" disabled />
     </form>
   );
 };

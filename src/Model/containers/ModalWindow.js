@@ -15,14 +15,14 @@ const ModalWindow = ({ handleClose, renderedDate, hour }) => {
             start: {
               date: formatDate(renderedDate, DATE_FORMATS.DATE),
               time: formatDate(
-                renderedDate.set({ hour: hour, minute: 0 }),
+                renderedDate.clone().set({ hour: hour, minute: 0 }),
                 DATE_FORMATS.TIME
               )
             },
             end: {
               date: formatDate(renderedDate, DATE_FORMATS.DATE),
               time: formatDate(
-                renderedDate.set({ hour: hour + 1, minute: 0 }),
+                renderedDate.clone().set({ hour: hour + 1, minute: 0 }),
                 DATE_FORMATS.TIME
               )
             }
