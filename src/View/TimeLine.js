@@ -29,26 +29,15 @@ export default class TimeLine extends Component {
   };
 
   componentDidMount = () => {
-    this.intervalToken = this.createIntervalUpdater(18000);
-  };
-
-  componentDidUpdate = prevProps => {
-    if (prevProps.interval !== 18000) {
-      clearInterval(this.intervalToken);
-      this.intervalToken = this.createIntervalUpdater(18000);
-    }
-  };
-
-  createIntervalUpdater = interval => {
-    return setInterval(() => {
+    this.interval = setInterval(() => {
       this.setState({
         time: moment()
       });
-    }, interval);
+    }, 18000);
   };
 
   componentWillUnmount = () => {
-    clearInterval(this.intervalToken);
+    clearInterval(this.interval);
   };
 
   render() {
