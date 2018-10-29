@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteEvent, editEvent } from "../actions/actions.js";
+import { deleteEvent } from "../actions/actions.js";
 import { Modal } from "../../View/ModalIems/Modal";
 
 import "../../Styles/Modal.css";
 import CreateForm from "../FormItems/CreateForm.js";
 import ShowForm from "../FormItems/ShowForm.js";
-import { formatDate } from "../getRenderedDateInfo";
+import { formatDate, getDuration } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../DateFormats.js";
 import Button from "../../View/Switchers/Button.js";
+
+import moment from "moment";
 
 class ModalShowEvent extends Component {
   state = {
@@ -24,6 +26,8 @@ class ModalShowEvent extends Component {
       editMode: true
     });
   };
+
+  getValueOfEventType = (start, end) => getDuration(start, end, "hour") === 24;
 
   render() {
     const { start, end, name, handleClose } = this.props;
@@ -58,7 +62,7 @@ class ModalShowEvent extends Component {
           <CreateForm
             {...this.props}
             initialValues={{
-              "event-type": false,
+              eventType: this.getValueOfEventType(start, end),
               name: name,
               start: {
                 date: formatDate(start, DATE_FORMATS.DATE),
@@ -88,7 +92,6 @@ class ModalShowEvent extends Component {
 export default connect(
   null,
   {
-    deleteEvent,
-    editEvent
+    deleteEvent
   }
 )(ModalShowEvent);

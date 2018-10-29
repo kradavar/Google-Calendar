@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { addEvent } from "../actions/actions.js";
 import "../../Styles/Modal.css";
 import { Modal } from "../../View/ModalIems/Modal";
 import CreateForm from "../FormItems/CreateForm";
@@ -35,9 +33,4 @@ const ModalWindow = ({ handleClose, renderedDate, hour }) => {
   );
 };
 
-export default connect(
-  null,
-  {
-    addEvent
-  }
-)(ModalWindow);
+export default ModalWindow;
