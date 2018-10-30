@@ -6,9 +6,8 @@ import { DATE_FORMATS } from "../../Model/DateFormats";
 import { formatDate } from "../../Model/getRenderedDateInfo";
 import { SharedViewContext } from "../../Context";
 
-// self-invoking functions ---?
 export default function Week({ renderedDate, view }) {
-  const renderWeek = () => {
+  const weekArray = (() => {
     const wholeWeekStart = renderedDate.clone().startOf("isoWeek");
     const wholeWeekEnd = renderedDate.clone().endOf("isoWeek");
     const days = [];
@@ -34,9 +33,8 @@ export default function Week({ renderedDate, view }) {
         />
       );
     }
-
     return days;
-  };
+  })();
 
   return (
     <SharedViewContext.Consumer>
@@ -45,7 +43,7 @@ export default function Week({ renderedDate, view }) {
           {view === "day" ? (
             <Day renderedDate={renderedDate} view={view} />
           ) : (
-            <div className="week">{renderWeek()}</div>
+            <div className="week">{weekArray}</div>
           )}
         </div>
       )}

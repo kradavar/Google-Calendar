@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 
 const ShowFormComponent = () => {
