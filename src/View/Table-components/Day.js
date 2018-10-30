@@ -10,28 +10,27 @@ import TimeLine from "../TimeLine.js";
 import HourCell from "./Cells/HourCell.js";
 import { formatDate } from "./../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../Model/DateFormats.js";
+import { SharedViewContext } from "../../Context.js";
 
 export default class Day extends Component {
   state = {
     showModal: false,
-    targetHour: 0,
+    hour: 0,
     headerClassName: "day-week-header sticky-top"
   };
 
+  getTargetHour = e => e.target.attributes.value.value;
+
   showModal = e => {
-    if (this.props.view === "month") {
-      this.setState({
-        showModal: true,
-        targetHour: 0,
-        headerClassName: "day-week-header sticky-top hide"
-      });
-    } else {
-      this.setState({
-        showModal: true,
-        targetHour: e.target.attributes.value.value /* don't like this */,
-        headerClassName: "day-week-header sticky-top hide"
-      });
-    }
+    // ???
+    const targetHour = e.target.attributes.value
+      ? e.target.attributes.value.value
+      : 0;
+    this.setState({
+      showModal: true,
+      hour: targetHour,
+      headerClassName: "day-week-header sticky-top hide"
+    });
   };
 
   hideModal = e => {
@@ -42,8 +41,8 @@ export default class Day extends Component {
     });
   };
 
-  createDayCell() {
-    const { renderedDate, view } = this.props;
+  createDayCell(view) {
+    const { renderedDate } = this.props;
     const dayClassName =
       formatDate(renderedDate, DATE_FORMATS.DATE) ===
       formatDate(moment(), DATE_FORMATS.DATE)
@@ -55,10 +54,9 @@ export default class Day extends Component {
         <div className={dayClassName} onClick={this.showModal}>
           {this.state.showModal && (
             <ModalWindow
-              showModal={this.state.showModal}
               renderedDate={renderedDate}
               handleClose={this.hideModal}
-              hour={0}
+              hour={+this.state.hour}
             />
           )}
 
@@ -76,17 +74,11 @@ export default class Day extends Component {
         hours.push(
           <HourCell key={hour} onClick={this.showModal} value={hour}>
             <CellHeader headerInfo={hour} value={hour} />
-            <RenderedEvents
-              date={renderedDate}
-              view={view}
-              hour={hour}
-              renderedHour={renderedHour.clone()}
-            />
+            <RenderedEvents date={renderedDate} view={view} hour={hour} />
           </HourCell>
         );
         renderedHour.add(1, "hour");
       }
-
       return (
         <div className="flex-container">
           <DayWeekHeader
@@ -101,10 +93,8 @@ export default class Day extends Component {
             {this.state.showModal && (
               <ModalWindow
                 renderedDate={renderedDate}
-                createDayCell
                 handleClose={this.hideModal}
-                hour={+this.state.targetHour}
-                view={view}
+                hour={+this.state.hour}
               />
             )}
           </div>
@@ -113,6 +103,10 @@ export default class Day extends Component {
     }
   }
   render() {
-    return this.createDayCell();
+    return (
+      <SharedViewContext.Consumer>
+        {({ view }) => <>{this.createDayCell(view)}</>}
+      </SharedViewContext.Consumer>
+    );
   }
 }

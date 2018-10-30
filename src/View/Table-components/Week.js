@@ -39,13 +39,13 @@ export default function Week({ renderedDate, view }) {
   return (
     <SharedViewContext.Consumer>
       {({ view }) => (
-        <div>
+        <>
           {view === "day" ? (
             <Day renderedDate={renderedDate} view={view} />
           ) : (
             <div className="week">{weekArray}</div>
           )}
-        </div>
+        </>
       )}
     </SharedViewContext.Consumer>
   );
