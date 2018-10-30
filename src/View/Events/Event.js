@@ -8,6 +8,7 @@ import { getDuration } from "../../Model/getRenderedDateInfo";
 import moment from "moment";
 import { formatDate } from "../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../Model/DateFormats";
+import { SharedViewContext } from "../../Context";
 
 export default class Event extends Component {
   state = {
@@ -67,20 +68,27 @@ export default class Event extends Component {
         formatDate(end, DATE_FORMATS.TIME);
 
   render() {
-    const { view, start, end, name } = this.props;
+    const { start, end, name } = this.props;
     return (
-      <li className="event-list-item">
-        <div
-          className={this.getClassName(view)}
-          onClick={this.handleOpen}
-          style={this.getStyles(start, end)}
-        >
-          {this.state.showModal && (
-            <ModalShowEvent handleClose={this.handleClose} {...this.props} />
-          )}
-          {this.eventInput(start, end, name, view)}
-        </div>
-      </li>
+      <SharedViewContext.Consumer>
+        {({ view }) => (
+          <li className="event-list-item">
+            <div
+              className={this.getClassName(view)}
+              onClick={this.handleOpen}
+              style={this.getStyles(start, end)}
+            >
+              {this.state.showModal && (
+                <ModalShowEvent
+                  handleClose={this.handleClose}
+                  {...this.props}
+                />
+              )}
+              {this.eventInput(start, end, name, view)}
+            </div>
+          </li>
+        )}
+      </SharedViewContext.Consumer>
     );
   }
 }
