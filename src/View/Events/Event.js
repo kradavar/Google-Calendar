@@ -44,10 +44,10 @@ export default class Event extends Component {
     return 0.05 * startTime - 2.2; /* rise event on the top of its start */
   };
 
-  getStyles = (start, end) => {
+  getStyles = (start, end, view) => {
     const heightRem = this.getHeight(start, end) + "rem";
     const topRem = this.getTopOfEvent(start) + "rem";
-    if (this.props.view !== "month") {
+    if (view !== "month") {
       return {
         height: heightRem,
         top: topRem
@@ -76,7 +76,7 @@ export default class Event extends Component {
             <div
               className={this.getClassName(view)}
               onClick={this.handleOpen}
-              style={this.getStyles(start, end)}
+              style={this.getStyles(start, end, view)}
             >
               {this.state.showModal && (
                 <ModalShowEvent
