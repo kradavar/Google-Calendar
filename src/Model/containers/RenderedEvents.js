@@ -10,11 +10,11 @@ const propsSelector = (state, props) => props;
 const getRenderedDateEvents = createSelector(
   [eventsSelector, propsSelector],
   (events, props) =>
-    props.view === "month"
-      ? events.filter(event => filterByDate(event.start, props.date))
-      : events.filter(event =>
+    Number.isInteger(props.hour)
+      ? events.filter(event =>
           filterByHour(event.start, props.date, props.hour)
         )
+      : events.filter(event => filterByDate(event.start, props.date))
 );
 
 const filterByDate = (eventStart, date) =>

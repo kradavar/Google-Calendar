@@ -63,7 +63,7 @@ export default class Day extends Component {
           <CellHeader
             headerInfo={formatDate(renderedDate, DATE_FORMATS.DATE_OF_MONTH)}
           />
-          <RenderedEvents date={renderedDate} view={view} />
+          <RenderedEvents date={renderedDate} />
         </div>
       );
     } else {
@@ -74,7 +74,7 @@ export default class Day extends Component {
         hours.push(
           <HourCell key={hour} onClick={this.showModal} value={hour}>
             <CellHeader headerInfo={hour} value={hour} />
-            <RenderedEvents date={renderedDate} view={view} hour={hour} />
+            <RenderedEvents date={renderedDate} hour={hour} />
           </HourCell>
         );
         renderedHour.add(1, "hour");
