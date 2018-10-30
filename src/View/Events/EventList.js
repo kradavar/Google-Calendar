@@ -1,16 +1,22 @@
 import React from "react";
 import Event from "./Event";
 import "../../Styles/Event.css";
+import { SharedViewContext } from "../../Context";
 
 const EventList = ({ events, view }) => {
-  const className = view === "month" ? "event-list" : "day-event-list";
+  const getClassName = view =>
+    view === "month" ? "event-list" : "day-event-list";
 
   return (
-    <ul className={className}>
-      {events.map(event => (
-        <Event key={event.id} {...event} view={view} />
-      ))}
-    </ul>
+    <SharedViewContext.Consumer>
+      {({ view }) => (
+        <ul className={getClassName(view)}>
+          {events.map(event => (
+            <Event key={event.id} {...event} />
+          ))}
+        </ul>
+      )}
+    </SharedViewContext.Consumer>
   );
 };
 
