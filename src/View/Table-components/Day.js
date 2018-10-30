@@ -19,8 +19,6 @@ export default class Day extends Component {
     headerClassName: "day-week-header sticky-top"
   };
 
-  getTargetHour = e => e.target.attributes.value.value;
-
   showModal = e => {
     // ???
     const targetHour = e.target.attributes.value
