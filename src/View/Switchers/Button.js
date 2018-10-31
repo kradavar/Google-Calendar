@@ -3,7 +3,7 @@ import classNames from "classnames";
 import "../../Styles/Button.css";
 import { SharedViewContext } from "../../Context";
 
-export default function Button({ classes, value, onClick, type = "button" }) {
+export const Button = ({ classes, value, onClick, type = "button" }) => {
   return (
     <SharedViewContext.Consumer>
       {({ view }) => (
@@ -17,4 +17,4 @@ export default function Button({ classes, value, onClick, type = "button" }) {
       )}
     </SharedViewContext.Consumer>
   );
-}
+};

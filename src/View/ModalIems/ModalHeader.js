@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../View/Switchers/Button";
+import { Button } from "../../View/Switchers/Button";
 
 const ModalHeader = ({ header, handleClose }) => {
   return (

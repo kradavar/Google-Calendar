@@ -1,7 +1,7 @@
 import React from "react";
 import ModalHeader from "../ModalIems/ModalHeader";
 
-export function Modal({ header, handleClose, children, bottom }) {
+export const Modal = ({ header, handleClose, children, bottom }) => {
   return (
     <div className="modal" role="dialog">
       <div className="modal-dialog" role="document">
@@ -13,4 +13,4 @@ export function Modal({ header, handleClose, children, bottom }) {
       </div>
     </div>
   );
-}
+};

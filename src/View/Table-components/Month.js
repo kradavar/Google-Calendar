@@ -1,9 +1,9 @@
 import React from "react";
-import Week from "./Week";
+import { Week } from "./Week";
 import "../../Styles/Cell.css";
-import MonthHeader from "./MonthHeader";
+import { MonthHeader } from "./MonthHeader";
 
-export default function Month({ renderedDate, view }) {
+export const Month = ({ renderedDate, view }) => {
   const getWeekCount = date => {
     // week number of 1st day of the month
     const start = date.date(1).isoWeek();
@@ -37,4 +37,4 @@ export default function Month({ renderedDate, view }) {
       {renderMonth()}
     </div>
   );
-}
+};

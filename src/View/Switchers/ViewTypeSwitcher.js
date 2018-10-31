@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "./Button";
+import { Button } from "./Button";
 
 import classNames from "classnames";
 import "../../Styles/Switchers.css";
 import { SharedViewContext } from "../../Context";
 
-export default function ViewTypeSwitcher({ onChangeView, view }) {
+export const ViewTypeSwitcher = ({ onChangeView, view }) => {
   const btnClass = value =>
     classNames([
       "switcher-input",
@@ -41,4 +41,4 @@ export default function ViewTypeSwitcher({ onChangeView, view }) {
       )}
     </SharedViewContext.Consumer>
   );
-}
+};

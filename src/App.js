@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import moment from "moment";
 import "./Styles/App.css";
 // Calendar
-import CalendarTable from "./View/Table-components/CalendarTable";
+import { CalendarTable } from "./View/Table-components/CalendarTable";
 // Switchers
-import ViewTypeSwitcher from "./View/Switchers/ViewTypeSwitcher";
-import Button from "./View/Switchers/Button";
+import { ViewTypeSwitcher } from "./View/Switchers/ViewTypeSwitcher";
+import { Button } from "./View/Switchers/Button";
 import { formatDate } from "./Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "./Model/DateFormats";
 import { SharedViewContext } from "./Context";

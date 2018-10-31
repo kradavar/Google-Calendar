@@ -8,7 +8,7 @@ import CreateForm from "../FormItems/CreateForm.js";
 import ShowForm from "../FormItems/ShowForm.js";
 import { formatDate, getDuration } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../DateFormats.js";
-import Button from "../../View/Switchers/Button.js";
+import { Button } from "../../View/Switchers/Button.js";
 
 class ModalShowEvent extends Component {
   state = {

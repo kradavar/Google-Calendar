@@ -4,7 +4,7 @@ import { reduxForm, FormSection, formValueSelector } from "redux-form";
 import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
-import Button from "../../View/Switchers/Button";
+import { Button } from "../../View/Switchers/Button";
 import "../../Styles/Modal.css";
 import { addEvent, editEvent } from "../actions/actions";
 

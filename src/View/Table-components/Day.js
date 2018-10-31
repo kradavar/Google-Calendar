@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import CellHeader from "./Cells/CellHeader.js";
+import { CellHeader } from "./Cells/CellHeader.js";
 import "../../Styles/Cell.css";
 import RenderedEvents from "../../Model/containers/RenderedEvents.js";
 import ModalWindow from "../../Model/containers/ModalWindow";
 
-import DayWeekHeader from "./DayWeekHeader.js";
+import { DayWeekHeader } from "./DayWeekHeader.js";
+
 import moment from "moment";
 import TimeLine from "../TimeLine.js";
-import HourCell from "./Cells/HourCell.js";
+import { HourCell } from "./Cells/HourCell.js";
 import { formatDate } from "./../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../Model/DateFormats.js";
 import { SharedViewContext } from "../../Context.js";

@@ -1,10 +1,10 @@
 import React from "react";
 import "../../Styles/CalendarTable.css";
-import Month from "./Month";
-import Week from "./Week";
+import { Month } from "./Month";
+import { Week } from "./Week";
 import { SharedViewContext } from "../../Context";
 
-export default function CalendarTable({ renderedDate }) {
+export const CalendarTable = ({ renderedDate }) => {
   return (
     <SharedViewContext.Consumer>
       {({ view }) => (
@@ -18,4 +18,4 @@ export default function CalendarTable({ renderedDate }) {
       )}
     </SharedViewContext.Consumer>
   );
-}
+};
