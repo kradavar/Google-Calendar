@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { CellHeader } from "./Cells/CellHeader.js";
+import { CellHeader } from "./Cells/CellHeader";
 import "../../Styles/Cell.css";
 import RenderedEvents from "../../Model/containers/RenderedEvents.js";
 import ModalWindow from "../../Model/containers/ModalWindow";
 
-import { DayWeekHeader } from "./DayWeekHeader.tsx";
+import { DayWeekHeader } from "./DayWeekHeader";
 
 import moment from "moment";
 import TimeLine from "../TimeLine.js";
-import { HourCell } from "./Cells/HourCell.js";
+import { HourCell } from "./Cells/HourCell";
 import { formatDate } from "./../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../Model/DateFormats.js";
 import { SharedViewContext } from "../../Context.js";
@@ -21,12 +21,10 @@ export default class Day extends Component {
   };
 
   showModal = e => {
-    const targetHour = e.target.attributes.value
-      ? e.target.attributes.value.value
-      : 0;
+    const attr = e.target.getAttribute("data-hour");
     this.setState({
       showModal: true,
-      hour: targetHour,
+      hour: attr ? attr : 0,
       headerClassName: "day-week-header sticky-top hide"
     });
   };
@@ -70,14 +68,13 @@ export default class Day extends Component {
 
       for (let hour = 0; hour < 24; hour++) {
         hours.push(
-          <HourCell key={hour} onClick={this.showModal} value={hour}>
-            <CellHeader headerInfo={hour} value={hour} />
+          <HourCell key={hour} onClick={this.showModal} hour={hour}>
+            <CellHeader headerInfo={hour} hour={hour} />
             <RenderedEvents date={renderedDate} hour={hour} />
           </HourCell>
         );
         renderedHour.add(1, "hour");
       }
-      debugger;
       return (
         <div className="flex-container">
           <DayWeekHeader
