@@ -1,18 +1,23 @@
-import React from "react";
+import * as React from "react";
 import "../../Styles/CalendarTable.css";
 import { Month } from "./Month";
 import { Week } from "./Week";
 import { SharedViewContext } from "../../Context";
+import * as moment from "moment";
 
-export const CalendarTable = ({ renderedDate }) => {
+export interface CalendarProps {
+  renderedDate: moment.Moment;
+}
+
+export const CalendarTable = ({ renderedDate }: CalendarProps) => {
   return (
     <SharedViewContext.Consumer>
-      {({ view }) => (
+      {({ view }: { [key: string]: any }) => (
         <div className="calendar">
           {view === "month" ? (
-            <Month renderedDate={renderedDate} view={view} />
+            <Month renderedDate={renderedDate} />
           ) : (
-            <Week renderedDate={renderedDate} view={view} />
+            <Week renderedDate={renderedDate} />
           )}
         </div>
       )}

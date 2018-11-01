@@ -1,10 +1,15 @@
-import React from "react";
+import * as React from "react";
 import { Week } from "./Week";
 import "../../Styles/Cell.css";
 import { MonthHeader } from "./MonthHeader";
+import * as moment from "moment";
 
-export const Month = ({ renderedDate, view }) => {
-  const getWeekCount = date => {
+export interface MonthProps {
+  renderedDate: moment.Moment;
+}
+
+export const Month = ({ renderedDate }: MonthProps) => {
+  const getWeekCount = (date: moment.Moment) => {
     // week number of 1st day of the month
     const start = date.date(1).isoWeek();
     // week number of the last day of the month
@@ -22,9 +27,7 @@ export const Month = ({ renderedDate, view }) => {
     const duration = getWeekCount(renderedDate.clone());
 
     for (let i = 0; i < duration; i++) {
-      weeks.push(
-        <Week renderedDate={currentDate.clone()} view={view} key={i} />
-      );
+      weeks.push(<Week renderedDate={currentDate.clone()} key={i} />);
       currentDate.add(1, "week");
     }
 
