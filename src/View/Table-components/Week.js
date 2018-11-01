@@ -5,7 +5,7 @@ import { DATE_FORMATS } from "../../Model/DateFormats";
 import { formatDate } from "../../Model/getRenderedDateInfo";
 import { SharedViewContext } from "../../Context";
 
-export const Week = ({ renderedDate, view }) => {
+export const Week = ({ renderedDate }) => {
   const weekArray = (() => {
     const wholeWeekStart = renderedDate.clone().startOf("isoWeek");
     const wholeWeekEnd = renderedDate.clone().endOf("isoWeek");
@@ -17,11 +17,7 @@ export const Week = ({ renderedDate, view }) => {
     ) {
       const date = currDate.clone();
       days.push(
-        <Day
-          view={view}
-          renderedDate={date}
-          key={formatDate(date, DATE_FORMATS.DATE)}
-        />
+        <Day renderedDate={date} key={formatDate(date, DATE_FORMATS.DATE)} />
       );
     }
     return days;
@@ -32,7 +28,7 @@ export const Week = ({ renderedDate, view }) => {
       {({ view }) => (
         <React.Fragment>
           {view === "day" ? (
-            <Day renderedDate={renderedDate} view={view} />
+            <Day renderedDate={renderedDate} />
           ) : (
             <div className="week">{weekArray}</div>
           )}
