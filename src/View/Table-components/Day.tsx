@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { CellHeader } from "./Cells/CellHeader";
 import "../../Styles/Cell.css";
 import RenderedEvents from "../../Model/containers/RenderedEvents.js";
@@ -6,21 +6,31 @@ import ModalWindow from "../../Model/containers/ModalWindow";
 
 import { DayWeekHeader } from "./DayWeekHeader";
 
-import moment from "moment";
+import * as moment from "moment";
 import TimeLine from "../TimeLine.js";
 import { HourCell } from "./Cells/HourCell";
-import { formatDate } from "./../../Model/getRenderedDateInfo";
+import { formatDate } from "../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../Model/DateFormats.js";
 import { SharedViewContext } from "../../Context.js";
 
-export default class Day extends Component {
+export interface DayProps {
+  renderedDate: moment.Moment;
+}
+
+export interface DayState {
+  showModal: boolean;
+  hour: string | number;
+  headerClassName: string;
+}
+
+export default class Day extends React.Component<DayProps, DayState> {
   state = {
     showModal: false,
     hour: 0,
     headerClassName: "day-week-header sticky-top"
   };
 
-  showModal = e => {
+  showModal = (e: any): void => {
     const attr = e.target.getAttribute("data-hour");
     this.setState({
       showModal: true,
@@ -29,7 +39,7 @@ export default class Day extends Component {
     });
   };
 
-  hideModal = e => {
+  hideModal = (e: any): void => {
     e.stopPropagation();
     this.setState({
       showModal: false,
@@ -37,7 +47,7 @@ export default class Day extends Component {
     });
   };
 
-  createDayCell(view) {
+  createDayCell(view: string) {
     const { renderedDate } = this.props;
     const dayClassName =
       formatDate(renderedDate, DATE_FORMATS.DATE) ===
@@ -64,7 +74,7 @@ export default class Day extends Component {
       );
     } else {
       const hours = [];
-      const renderedHour = renderedDate.clone().startOf("day");
+      const renderedHour = moment(renderedDate.startOf("day"));
 
       for (let hour = 0; hour < 24; hour++) {
         hours.push(
@@ -101,7 +111,7 @@ export default class Day extends Component {
   render() {
     return (
       <SharedViewContext.Consumer>
-        {({ view }) => (
+        {({ view }: { [key: string]: any }) => (
           <React.Fragment>{this.createDayCell(view)}</React.Fragment>
         )}
       </SharedViewContext.Consumer>

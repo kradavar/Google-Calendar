@@ -2,8 +2,8 @@ import * as React from "react";
 
 export interface HourCellProps {
   children: any;
-  hour: string;
-  onClick: () => void;
+  hour: string | number;
+  onClick: (e: any) => void;
 }
 
 export const HourCell = ({

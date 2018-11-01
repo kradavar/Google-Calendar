@@ -2,14 +2,11 @@ import * as React from "react";
 import "../../../Styles/Cell.css";
 
 export interface CellHeaderProps {
-  headerInfo: string;
-  hour: string;
+  headerInfo: any /* string or result of function? */;
+  hour: number | null;
 }
 
-export const CellHeader = ({
-  headerInfo,
-  hour
-}: CellHeaderProps): JSX.Element => (
+export const CellHeader = ({ headerInfo, hour }: CellHeaderProps): any => (
   <div className="cell-header-info" data-hour={hour}>
     {headerInfo}
   </div>
