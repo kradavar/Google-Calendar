@@ -56,6 +56,10 @@
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.5.2",
     "reselect": "^4.0.0",
-    "source-map-loader": "^0.2.4"
+    "source-map-loader": "^0.2.4",
+    "@storybook/react": "^4.0.2",
+    "@storybook/addon-actions": "^4.0.2",
+    "@storybook/addon-links": "^4.0.2",
+    "@storybook/addons": "^4.0.2"
   }
 }
