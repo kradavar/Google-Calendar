@@ -30,13 +30,13 @@ export const Week = ({ renderedDate, view }) => {
   return (
     <SharedViewContext.Consumer>
       {({ view }) => (
-        <>
+        <React.Fragment>
           {view === "day" ? (
             <Day renderedDate={renderedDate} view={view} />
           ) : (
             <div className="week">{weekArray}</div>
           )}
-        </>
+        </React.Fragment>
       )}
     </SharedViewContext.Consumer>
   );

@@ -4,7 +4,7 @@ import "../../Styles/Cell.css";
 import RenderedEvents from "../../Model/containers/RenderedEvents.js";
 import ModalWindow from "../../Model/containers/ModalWindow";
 
-import { DayWeekHeader } from "./DayWeekHeader.js";
+import { DayWeekHeader } from "./DayWeekHeader.tsx";
 
 import moment from "moment";
 import TimeLine from "../TimeLine.js";
@@ -78,6 +78,7 @@ export default class Day extends Component {
         );
         renderedHour.add(1, "hour");
       }
+      debugger;
       return (
         <div className="flex-container">
           <DayWeekHeader
@@ -104,7 +105,9 @@ export default class Day extends Component {
   render() {
     return (
       <SharedViewContext.Consumer>
-        {({ view }) => <>{this.createDayCell(view)}</>}
+        {({ view }) => (
+          <React.Fragment>{this.createDayCell(view)}</React.Fragment>
+        )}
       </SharedViewContext.Consumer>
     );
   }

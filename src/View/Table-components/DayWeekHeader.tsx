@@ -9,7 +9,10 @@ export interface Props {
   renderedDate: Moment | string;
 }
 
-export const DayWeekHeader = ({ className, renderedDate }: Props) => (
+export const DayWeekHeader = ({
+  className,
+  renderedDate
+}: Props): JSX.Element => (
   <header className={className}>
     {formatDate(renderedDate, DATE_FORMATS.DATE_OF_MONTH)},
     {formatDate(renderedDate, DATE_FORMATS.DAY)}
