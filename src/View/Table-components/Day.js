@@ -21,7 +21,6 @@ export default class Day extends Component {
   };
 
   showModal = e => {
-    // ???
     const targetHour = e.target.attributes.value
       ? e.target.attributes.value.value
       : 0;

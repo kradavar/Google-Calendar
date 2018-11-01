@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import "../../Styles/Cell.css";
 
-export const MonthHeader = () => (
+export const MonthHeader = (): JSX.Element => (
   <header className="month-header">
     <div>Mon</div>
     <div>Tue</div>
