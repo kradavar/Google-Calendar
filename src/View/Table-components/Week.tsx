@@ -30,7 +30,7 @@ export const Week: React.SFC<{
 
   return (
     <SharedViewContext.Consumer>
-      {({ view }: { [key: string]: any }) => (
+      {({ view }: { view: string }) => (
         <React.Fragment>
           {view === "day" ? (
             <Day renderedDate={renderedDate} />

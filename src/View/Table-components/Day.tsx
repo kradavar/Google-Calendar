@@ -30,9 +30,11 @@ export default class Day extends React.Component<IDayProps, IDayState> {
     headerClassName: "day-week-header sticky-top"
   };
 
+  // React.ChangeEvent<HTMLDivElement>
+  // React.MouseEvent
   showModal = (e: any): void => {
-    /* ANY */
-    const attr: string = e.target.getAttribute("data-hour");
+    debugger;
+    const attr: string | null = e.target.getAttribute("data-hour");
     this.setState({
       showModal: true,
       hour: attr ? attr : 0,

@@ -4,17 +4,15 @@ import "../../Styles/Cell.css";
 import { MonthHeader } from "./MonthHeader";
 import * as moment from "moment";
 
-export interface MonthProps {
-  renderedDate: moment.Moment;
-}
-
-export const Month = ({ renderedDate }: MonthProps) => {
-  const getWeekCount = (date: moment.Moment) => {
+export const Month: React.SFC<{ renderedDate: moment.Moment }> = ({
+  renderedDate
+}) => {
+  const getWeekCount = (date: moment.Moment): number => {
     // week number of 1st day of the month
-    const start = date.date(1).isoWeek();
+    const start: number = date.date(1).isoWeek();
     // week number of the last day of the month
-    const end = date.date(date.daysInMonth()).isoWeek();
-    const duration = end - start + 1;
+    const end: number = date.date(date.daysInMonth()).isoWeek();
+    const duration: number = end - start + 1;
     if (duration < 0) {
       return date.isoWeeksInYear() + duration;
     }
@@ -22,9 +20,9 @@ export const Month = ({ renderedDate }: MonthProps) => {
   };
 
   const renderMonth = () => {
-    const currentDate = renderedDate.clone().startOf("month");
-    const weeks = [];
-    const duration = getWeekCount(renderedDate.clone());
+    const currentDate: moment.Moment = renderedDate.clone().startOf("month");
+    const weeks: Array<JSX.Element> = [];
+    const duration: number = getWeekCount(renderedDate.clone());
 
     for (let i = 0; i < duration; i++) {
       weeks.push(<Week renderedDate={currentDate.clone()} key={i} />);

@@ -5,14 +5,12 @@ import { Week } from "./Week";
 import { SharedViewContext } from "../../Context";
 import * as moment from "moment";
 
-export interface CalendarProps {
-  renderedDate: moment.Moment;
-}
-
-export const CalendarTable = ({ renderedDate }: CalendarProps) => {
+export const CalendarTable: React.SFC<{ renderedDate: moment.Moment }> = ({
+  renderedDate
+}) => {
   return (
     <SharedViewContext.Consumer>
-      {({ view }: { [key: string]: any }) => (
+      {({ view }: { view: string }) => (
         <div className="calendar">
           {view === "month" ? (
             <Month renderedDate={renderedDate} />
