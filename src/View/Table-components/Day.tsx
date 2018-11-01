@@ -13,17 +13,17 @@ import { formatDate } from "../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../Model/DateFormats.js";
 import { SharedViewContext } from "../../Context.js";
 
-export interface DayProps {
+export interface IDayProps {
   renderedDate: moment.Moment;
 }
 
-export interface DayState {
+export interface IDayState {
   showModal: boolean;
   hour: string | number;
   headerClassName: string;
 }
 
-export default class Day extends React.Component<DayProps, DayState> {
+export default class Day extends React.Component<IDayProps, IDayState> {
   state = {
     showModal: false,
     hour: 0,
@@ -31,7 +31,8 @@ export default class Day extends React.Component<DayProps, DayState> {
   };
 
   showModal = (e: any): void => {
-    const attr = e.target.getAttribute("data-hour");
+    /* ANY */
+    const attr: string = e.target.getAttribute("data-hour");
     this.setState({
       showModal: true,
       hour: attr ? attr : 0,
@@ -39,7 +40,7 @@ export default class Day extends React.Component<DayProps, DayState> {
     });
   };
 
-  hideModal = (e: any): void => {
+  hideModal = (e: Event): void => {
     e.stopPropagation();
     this.setState({
       showModal: false,
@@ -49,7 +50,7 @@ export default class Day extends React.Component<DayProps, DayState> {
 
   createDayCell(view: string) {
     const { renderedDate } = this.props;
-    const dayClassName =
+    const dayClassName: string =
       formatDate(renderedDate, DATE_FORMATS.DATE) ===
       formatDate(moment(), DATE_FORMATS.DATE)
         ? "current-day cell day"
@@ -73,8 +74,8 @@ export default class Day extends React.Component<DayProps, DayState> {
         </div>
       );
     } else {
-      const hours = [];
-      const renderedHour = moment(renderedDate.startOf("day"));
+      const hours: Array<JSX.Element> = [];
+      const renderedHour: moment.Moment = moment(renderedDate.startOf("day"));
 
       for (let hour = 0; hour < 24; hour++) {
         hours.push(
@@ -111,7 +112,7 @@ export default class Day extends React.Component<DayProps, DayState> {
   render() {
     return (
       <SharedViewContext.Consumer>
-        {({ view }: { [key: string]: any }) => (
+        {({ view }: { view: string }) => (
           <React.Fragment>{this.createDayCell(view)}</React.Fragment>
         )}
       </SharedViewContext.Consumer>

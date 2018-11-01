@@ -6,21 +6,21 @@ import { formatDate } from "../../Model/getRenderedDateInfo";
 import { SharedViewContext } from "../../Context";
 import * as moment from "moment";
 
-export interface WeekProps {
+export const Week: React.SFC<{
   renderedDate: moment.Moment;
-}
-
-export const Week = ({ renderedDate }: WeekProps) => {
-  const weekArray = (() => {
-    const wholeWeekStart = renderedDate.clone().startOf("isoWeek");
-    const wholeWeekEnd = renderedDate.clone().endOf("isoWeek");
-    const days = [];
+}> = ({ renderedDate }) => {
+  const weekArray: Array<JSX.Element> = (() => {
+    const wholeWeekStart: moment.Moment = renderedDate
+      .clone()
+      .startOf("isoWeek");
+    const wholeWeekEnd: moment.Moment = renderedDate.clone().endOf("isoWeek");
+    const days: Array<JSX.Element> = [];
     for (
       let currDate = wholeWeekStart.clone();
       currDate <= wholeWeekEnd;
       currDate.add(1, "day")
     ) {
-      const date = currDate.clone();
+      const date: moment.Moment = currDate.clone();
       days.push(
         <Day renderedDate={date} key={formatDate(date, DATE_FORMATS.DATE)} />
       );
