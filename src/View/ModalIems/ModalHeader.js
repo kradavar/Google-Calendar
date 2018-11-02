@@ -7,7 +7,7 @@ const ModalHeader = ({ header, handleClose }) => {
       <h5 className="modal-title" id="showModalLabel">
         {header}
       </h5>
-      <Button onClick={handleClose} value="Close" classes="btn-outline-light" />
+      <Button onClick={handleClose} value="Close" classes="btn-light" />
     </div>
   );
 };

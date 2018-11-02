@@ -33,7 +33,6 @@ export default class Day extends React.Component<IDayProps, IDayState> {
   // React.ChangeEvent<HTMLDivElement>
   // React.MouseEvent
   showModal = (e: any): void => {
-    debugger;
     const attr: string | null = e.target.getAttribute("data-hour");
     this.setState({
       showModal: true,
