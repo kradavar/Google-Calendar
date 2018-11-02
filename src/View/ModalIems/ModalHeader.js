@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../../View/Switchers/Button";
+import "../../Styles/Button.css";
 
 const ModalHeader = ({ header, handleClose }) => {
   return (
@@ -7,7 +8,11 @@ const ModalHeader = ({ header, handleClose }) => {
       <h5 className="modal-title" id="showModalLabel">
         {header}
       </h5>
-      <Button onClick={handleClose} value="Close" classes="btn-light" />
+      <Button
+        onClick={handleClose}
+        value="✘"
+        classes="btn-light close-button"
+      />
     </div>
   );
 };

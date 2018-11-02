@@ -1,3 +1,8 @@
 .show-modal-button {
   margin: 0.3rem;
 }
+.close-button {
+  font-size: 1.2rem;
+  background-color: #fff;
+  border: #fff;
+}

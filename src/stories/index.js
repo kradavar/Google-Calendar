@@ -15,14 +15,8 @@ storiesOf("Button", module)
   .add("with text", () => (
     <Button onClick={action("clicked")}>My Button</Button>
   ))
-  .add("validation", () => (
-    <React.Fragment>
-      {["error", "warn", "valid", null].map(valid => (
-        <Button key={valid} size="100%" valid={valid}>
-          click this button
-        </Button>
-      ))}
-    </React.Fragment>
+  .add("Close button with cross", () => (
+    <Button classes="btn-light" onClick={action("clicked")} value="✘" />
   ))
   .add("with some emoji", () => (
     <Button onClick={action("clicked")}>
