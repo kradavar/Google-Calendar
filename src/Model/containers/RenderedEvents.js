@@ -22,7 +22,7 @@ const filterByDate = (eventStart, date) =>
   formatDate(date, DATE_FORMATS.DATE);
 
 const filterByHour = (eventStart, date, hour) => {
-  const dateWithTime = date.clone().set({ hour: hour });
+  const dateWithTime = date.clone().set({ hour });
   return (
     formatDate(eventStart, DATE_FORMATS.DATE_WITH_HOUR) ===
     formatDate(dateWithTime, DATE_FORMATS.DATE_WITH_HOUR)

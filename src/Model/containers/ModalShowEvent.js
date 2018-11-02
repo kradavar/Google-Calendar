@@ -25,8 +25,6 @@ class ModalShowEvent extends Component {
     });
   };
 
-  getValueOfEventType = (start, end) => getDuration(start, end, "hour") === 24;
-
   render() {
     const { start, end, name, handleClose } = this.props;
     const { editMode } = this.state;
@@ -60,7 +58,7 @@ class ModalShowEvent extends Component {
           <CreateForm
             {...this.props}
             initialValues={{
-              eventType: this.getValueOfEventType(start, end),
+              eventType: getDuration(start, end, "hour") === 24,
               name: name,
               start: {
                 date: formatDate(start, DATE_FORMATS.DATE),

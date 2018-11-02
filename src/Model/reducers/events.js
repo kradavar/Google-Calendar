@@ -34,13 +34,10 @@ export const events = (state = initialState, action) => {
     case DELETE_EVENT:
       return state.filter(event => event.id !== action.payload.id);
     case EDIT_EVENT:
-      return state.map(event => {
-        if (event.id === action.payload.id) {
-          return { ...action.payload };
-        } else {
-          return event;
-        }
-      });
+      return state.map(
+        event =>
+          event.id === action.payload.id ? { ...action.payload } : event
+      );
     default:
       return state;
   }

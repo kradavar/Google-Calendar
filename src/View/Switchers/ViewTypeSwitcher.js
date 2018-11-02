@@ -5,8 +5,8 @@ import classNames from "classnames";
 import "../../Styles/Switchers.css";
 import { SharedViewContext } from "../../Context";
 
-export const ViewTypeSwitcher = ({ onChangeView, view }) => {
-  const btnClass = value =>
+export const ViewTypeSwitcher = () => {
+  const btnClass = (value, view) =>
     classNames([
       "switcher-input",
       {

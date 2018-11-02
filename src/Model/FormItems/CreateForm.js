@@ -29,6 +29,7 @@ const CreateFormComponent = ({
       start += values.start.time;
       end += values.end.time;
     }
+
     id ? editEvent(id, name, start, end) : addEvent(name, start, end);
   };
   return (
