@@ -3,7 +3,7 @@ import Event from "./Event";
 import "../../Styles/Event.css";
 import { SharedViewContext } from "../../Context";
 
-const EventList = ({ events, view }) => {
+const EventList = ({ events }) => {
   const getClassName = view =>
     view === "month" ? "event-list" : "day-event-list";
 

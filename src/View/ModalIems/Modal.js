@@ -8,7 +8,7 @@ export const Modal = ({ header, handleClose, children, bottom }) => {
         <div className="modal-content">
           <ModalHeader header={header} handleClose={handleClose} />
           <div className="modal-body">{children}</div>
-          <div className="modal-footer">{bottom}</div>
+          {bottom && <div className="modal-footer">{bottom}</div>}
         </div>
       </div>
     </div>

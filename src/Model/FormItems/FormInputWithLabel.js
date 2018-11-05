@@ -2,6 +2,8 @@ import React from "react";
 
 import { Field } from "redux-form";
 
+import "../../Styles/Modal.css";
+
 export const FormInputWithLabelComponent = ({
   label,
   input,
@@ -19,7 +21,7 @@ export const FormInputWithLabelComponent = ({
         {...input}
         type={type}
         placeholder={placeholder}
-        className={type === "checkbox" ? "" : "form-control"}
+        className={type === "checkbox" ? "checkbox" : "form-control"}
         disabled={disabled}
         {...props}
       />

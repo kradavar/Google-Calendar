@@ -44,7 +44,6 @@ const CreateFormComponent = ({
         name="eventType"
         label="All Day"
         value={false}
-        className="eventType"
         type="checkbox"
       />
 
