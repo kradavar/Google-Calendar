@@ -1,41 +1,32 @@
 import React from "react";
 import { Button } from "./Button";
 
-import classNames from "classnames";
 import "../../Styles/Switchers.css";
 import { SharedViewContext } from "../../Context";
+import { VIEW } from "../../constants/ViewTypes";
 
 export const ViewTypeSwitcher = () => {
-  const btnClass = (value, view) =>
-    classNames([
-      "switcher-input",
-      {
-        "btn-outline-primary": value !== view,
-        "btn-primary": value === view,
-        disabled: value === view
-      }
-    ]);
   return (
     <SharedViewContext.Consumer>
       {({ view, changeViewType }) => (
         <div className="switcher">
           <Button
             view={view}
-            value="day"
+            value={VIEW.DAY}
             onClick={changeViewType}
-            classes={btnClass("day")}
+            classes="switcher-input btn-outline-primary"
           />
           <Button
             view={view}
-            value="week"
+            value={VIEW.WEEK}
             onClick={changeViewType}
-            classes={btnClass("week")}
+            classes="switcher-input btn-outline-primary"
           />
           <Button
             view={view}
-            value="month"
+            value={VIEW.MONTH}
             onClick={changeViewType}
-            classes={btnClass("month")}
+            classes="switcher-input btn-outline-primary"
           />
         </div>
       )}

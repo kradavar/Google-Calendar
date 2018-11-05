@@ -7,8 +7,9 @@ import ModalShowEvent from "../../Model/containers/ModalShowEvent";
 import { getDuration } from "../../Model/getRenderedDateInfo";
 import moment from "moment";
 import { formatDate } from "../../Model/getRenderedDateInfo";
-import { DATE_FORMATS } from "../../Model/DateFormats";
+import { DATE_FORMATS } from "../../constants/DateFormats";
 import { SharedViewContext } from "../../Context";
+import { VIEW } from "../../constants/ViewTypes";
 
 export default class Event extends Component {
   state = {
@@ -47,7 +48,7 @@ export default class Event extends Component {
   getStyles = (start, end, view) => {
     const heightRem = this.getHeight(start, end) + "rem";
     const topRem = this.getTopOfEvent(start) + "rem";
-    if (view !== "month") {
+    if (view !== VIEW.MONTH) {
       return {
         height: heightRem,
         top: topRem
@@ -56,10 +57,10 @@ export default class Event extends Component {
   };
 
   getClassName = view =>
-    view === "month" ? "event" : this.state.eventsClassName;
+    view === VIEW.MONTH ? "event" : this.state.eventsClassName;
 
   eventInput = (start, end, name, view) =>
-    view === "month"
+    view === VIEW.MONTH
       ? formatDate(start, DATE_FORMATS.TIME) + "-" + name
       : name +
         "," +

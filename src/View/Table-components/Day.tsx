@@ -10,8 +10,9 @@ import * as moment from "moment";
 import TimeLine from "../TimeLine.js";
 import { HourCell } from "./Cells/HourCell";
 import { formatDate } from "../../Model/getRenderedDateInfo";
-import { DATE_FORMATS } from "../../Model/DateFormats.js";
+import { DATE_FORMATS } from "../../constants/DateFormats.js";
 import { SharedViewContext } from "../../Context.js";
+import { VIEW } from "../../constants/ViewTypes";
 
 export interface IDayProps {
   renderedDate: moment.Moment;
@@ -57,7 +58,7 @@ export default class Day extends React.Component<IDayProps, IDayState> {
         ? "current-day cell day"
         : "cell day";
 
-    if (view === "month") {
+    if (view === VIEW.MONTH) {
       return (
         <div className={dayClassName} onClick={this.showModal}>
           {this.state.showModal && (

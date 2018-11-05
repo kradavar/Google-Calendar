@@ -1,10 +1,11 @@
 import * as React from "react";
 import Day from "./Day";
 import "../../Styles/Cell.css";
-import { DATE_FORMATS } from "../../Model/DateFormats";
+import { DATE_FORMATS } from "../../constants/DateFormats";
 import { formatDate } from "../../Model/getRenderedDateInfo";
 import { SharedViewContext } from "../../Context";
 import * as moment from "moment";
+import { VIEW } from "../../constants/ViewTypes";
 
 export const Week: React.SFC<{
   renderedDate: moment.Moment;
@@ -32,7 +33,7 @@ export const Week: React.SFC<{
     <SharedViewContext.Consumer>
       {({ view }: { view: string }) => (
         <React.Fragment>
-          {view === "day" ? (
+          {view === VIEW.DAY ? (
             <Day renderedDate={renderedDate} />
           ) : (
             <div className="week">{weekArray}</div>

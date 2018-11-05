@@ -1,6 +1,7 @@
 import React from "react";
+import { VIEW } from "./constants/ViewTypes";
 
 export const SharedViewContext = React.createContext({
-  view: "month",
+  view: VIEW.MONTH,
   changeViewType: () => {}
 });

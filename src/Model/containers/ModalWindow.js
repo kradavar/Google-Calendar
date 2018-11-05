@@ -3,7 +3,7 @@ import "../../Styles/Modal.css";
 import { Modal } from "../../View/ModalIems/Modal";
 import CreateForm from "../FormItems/CreateForm";
 import { formatDate } from "../getRenderedDateInfo";
-import { DATE_FORMATS } from "../DateFormats.js";
+import { DATE_FORMATS } from "../../constants/DateFormats.js";
 
 const ModalWindow = ({ handleClose, renderedDate, hour }) => (
   <Modal header="Create New Event" handleClose={handleClose}>

@@ -7,8 +7,9 @@ import { CalendarTable } from "./View/Table-components/CalendarTable";
 import { ViewTypeSwitcher } from "./View/Switchers/ViewTypeSwitcher";
 import { Button } from "./View/Switchers/Button";
 import { formatDate } from "./Model/getRenderedDateInfo";
-import { DATE_FORMATS } from "./Model/DateFormats";
+import { DATE_FORMATS } from "./constants/DateFormats";
 import { SharedViewContext } from "./Context";
+import { VIEW } from "./constants/ViewTypes";
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class App extends Component {
     };
 
     this.state = {
-      view: "month",
+      view: VIEW.MONTH,
       renderedDate: moment(),
       changeViewType: this.changeViewType
     };
