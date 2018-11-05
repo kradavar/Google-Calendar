@@ -1,7 +1,6 @@
 .cell:hover,
 .hour:hover {
   background-color: rgba(104, 170, 255, 0.6);
-  color: white;
 }
 
 .cell-header-info {

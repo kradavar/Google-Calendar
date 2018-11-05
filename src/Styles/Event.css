@@ -1,7 +1,7 @@
 .event-day {
-  background-color: #c4efc4c7;
+  background-color: #8ebbecea;
   font-size: 0.75rem;
-  border: 0.2rem solid #c4efc4;
+  border: 0.05rem solid #789ec4;
   z-index: 10;
   position: relative;
   top: -2.2rem;
@@ -15,7 +15,7 @@
 
 .event:hover,
 .event-day:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 .event::before {
