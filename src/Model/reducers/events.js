@@ -19,6 +19,18 @@ const initialState = [
     name: "Test 3",
     start: "2018-11-15 09:00",
     end: "2018-11-15 11:00"
+  },
+  {
+    id: nextEventId++,
+    name: "Test 4",
+    start: "2018-11-15 09:00",
+    end: "2018-11-15 11:00"
+  },
+  {
+    id: nextEventId++,
+    name: "Test 5",
+    start: "2018-11-15 09:00",
+    end: "2018-11-15 11:00"
   }
 ];
 export const events = (state = initialState, action) => {
