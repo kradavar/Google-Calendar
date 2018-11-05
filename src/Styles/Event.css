@@ -19,9 +19,9 @@
 }
 
 .event::before {
-  content: "▶";
+  content: "✔";
   padding-right: 6px;
-  color: #71c771;
+  color: #141c83;
 }
 
 .event-list {

@@ -11,7 +11,7 @@ export const Button = ({ classes, value, onClick, type = "button" }) => {
           type={type}
           value={value}
           onClick={onClick}
-          className={classNames(["btn", classes])}
+          className={classNames(["btn", "bnt-font", classes])}
           disabled={view === value}
         />
       )}

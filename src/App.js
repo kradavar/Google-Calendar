@@ -54,16 +54,16 @@ class App extends Component {
             <div className="current-month">
               {formatDate(this.state.renderedDate, DATE_FORMATS.MONTH)}
             </div>
-            <CalendarTable renderedDate={this.state.renderedDate} />
-            <div className="container d-flex justify-content-between bottom-buttons">
+            <div className="container d-flex justify-content-center align-items-center">
               <Button
-                value="Prev"
-                classes="nav-input btn-outline-primary"
+                value="◀"
+                classes="nav-input"
                 onClick={this.handlePrevButtonClick}
               />
+              <CalendarTable renderedDate={this.state.renderedDate} />
               <Button
-                value="Next"
-                classes="nav-input btn-outline-primary"
+                value="▶"
+                classes="nav-input"
                 onClick={this.handleNextButtonClick}
               />
             </div>

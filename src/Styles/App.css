@@ -7,11 +7,25 @@
 }
 .App-header {
   font-size: 2rem;
+  font-family: "Mali";
 }
 .current-month {
   font-size: 3rem;
+  font-family: "Mali";
 }
 
 .bottom-buttons {
   padding: 0.5rem;
+  font-family: "Mali";
+}
+
+.nav-input {
+  background-color: inherit;
+  border: none;
+  font-size: 2rem;
+  color: #7d99cc;
+}
+
+.nav-input:hover {
+  border: none;
 }
