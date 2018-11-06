@@ -50,7 +50,7 @@
 .all-events {
   z-index: 30;
   position: relative;
-  background-color: white;
+  background-color: #bbcdf1;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
 .all-events:hover {
@@ -69,4 +69,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.all-events-header .more-close-btn {
+  background-color: #bbcdf1;
 }

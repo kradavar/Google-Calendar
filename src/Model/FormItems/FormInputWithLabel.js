@@ -10,10 +10,12 @@ export const FormInputWithLabelComponent = ({
   type,
   placeholder,
   disabled,
+  classes = "form-group",
+  meta,
   ...props
 }) => {
   return (
-    <div className="form-group">
+    <div className={classes}>
       <label htmlFor="name-input" className="col-form-label">
         {label}
       </label>
@@ -25,6 +27,8 @@ export const FormInputWithLabelComponent = ({
         disabled={disabled}
         {...props}
       />
+      {meta.error &&
+        meta.touched && <div className="error-message">{meta.error}</div>}
     </div>
   );
 };

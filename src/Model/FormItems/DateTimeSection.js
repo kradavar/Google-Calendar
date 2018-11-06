@@ -11,11 +11,17 @@ export const DateTimeSection = ({ label, isAllDayEvent }) => {
         {label}
       </label>
       <div id="event">
-        <FormInputWithLabel name="date" label="Date: " type="date" />
+        <FormInputWithLabel
+          name="date"
+          label="Date: "
+          type="date"
+          classes="date-input form-group"
+        />
         <FormInputWithLabel
           name="time"
           type="time"
           label="Time: "
+          classes="time-input form-group"
           disabled={isAllDayEvent}
         />
       </div>

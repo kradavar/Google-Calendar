@@ -10,7 +10,7 @@ export const EventsComponent = ({ events, handleClose }) => (
       <Button
         onClick={handleClose}
         value="✘"
-        classes="btn-light close-button"
+        classes="btn-light close-button more-close-btn"
       />
     </header>
     <ul className="event-list">

@@ -17,3 +17,17 @@
 .checkbox {
   margin-left: 1rem;
 }
+
+.error-message {
+  color: rgb(102, 15, 37);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.date-input {
+  width: 13rem;
+}
+
+.time-input {
+  width: 10rem;
+}

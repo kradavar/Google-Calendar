@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { Button } from "../../View/Switchers/Button";
 import "../../Styles/Modal.css";
 import { addEvent, editEvent } from "../actions/actions";
+import { validate } from "../../validation/index";
 
 const CreateFormComponent = ({
   reset,
@@ -77,7 +78,8 @@ const mapStateToProps = state => {
 
 export default compose(
   reduxForm({
-    form: "createEvent"
+    form: "createEvent",
+    validate
   }),
   connect(
     mapStateToProps,
