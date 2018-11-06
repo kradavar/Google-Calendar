@@ -8,13 +8,11 @@ import * as moment from "moment";
 import { VIEW } from "../../constants/ViewTypes";
 
 export const Week: React.SFC<{
-  renderedDate: moment.Moment;
-}> = ({ renderedDate }) => {
+  weekDate: moment.Moment;
+}> = ({ weekDate }) => {
   const weekArray: Array<JSX.Element> = (() => {
-    const wholeWeekStart: moment.Moment = renderedDate
-      .clone()
-      .startOf("isoWeek");
-    const wholeWeekEnd: moment.Moment = renderedDate.clone().endOf("isoWeek");
+    const wholeWeekStart: moment.Moment = weekDate.clone().startOf("isoWeek");
+    const wholeWeekEnd: moment.Moment = weekDate.clone().endOf("isoWeek");
     const days: Array<JSX.Element> = [];
     for (
       let currDate = wholeWeekStart.clone();
@@ -23,7 +21,7 @@ export const Week: React.SFC<{
     ) {
       const date: moment.Moment = currDate.clone();
       days.push(
-        <Day renderedDate={date} key={formatDate(date, DATE_FORMATS.DATE)} />
+        <Day dayDate={date} key={formatDate(date, DATE_FORMATS.DATE)} />
       );
     }
     return days;
@@ -34,7 +32,7 @@ export const Week: React.SFC<{
       {({ view }: { view: string }) => (
         <React.Fragment>
           {view === VIEW.DAY ? (
-            <Day renderedDate={renderedDate} />
+            <Day dayDate={weekDate} />
           ) : (
             <div className="week">{weekArray}</div>
           )}

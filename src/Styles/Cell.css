@@ -75,3 +75,8 @@
 .not-current-month {
   background-color: #d1d6e0a4;
 }
+
+.disabled {
+  pointer-events: none;
+  color: #8f9dad;
+}

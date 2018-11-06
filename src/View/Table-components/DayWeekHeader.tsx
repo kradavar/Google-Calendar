@@ -2,14 +2,14 @@ import * as React from "react";
 import "../../Styles/Cell.css";
 import { formatDate } from "../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/DateFormats";
-import { Moment } from "moment";
+import * as moment from "moment";
 
 export const DayWeekHeader: React.SFC<{
   className: string;
-  renderedDate: Moment;
-}> = ({ className, renderedDate }) => (
+  dayDate: moment.Moment;
+}> = ({ className, dayDate }) => (
   <header className={className}>
-    {formatDate(renderedDate, DATE_FORMATS.DATE_OF_MONTH)},
-    {formatDate(renderedDate, DATE_FORMATS.DAY)}
+    {formatDate(dayDate, DATE_FORMATS.DATE_OF_MONTH)},
+    {formatDate(dayDate, DATE_FORMATS.DAY)}
   </header>
 );

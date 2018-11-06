@@ -4,8 +4,8 @@ import "../../Styles/Cell.css";
 import { MonthHeader } from "./MonthHeader";
 import * as moment from "moment";
 
-export const Month: React.SFC<{ renderedDate: moment.Moment }> = ({
-  renderedDate
+export const Month: React.SFC<{ monthDate: moment.Moment }> = ({
+  monthDate
 }) => {
   const getWeekCount = (date: moment.Moment): number => {
     // week number of 1st day of the month
@@ -20,12 +20,12 @@ export const Month: React.SFC<{ renderedDate: moment.Moment }> = ({
   };
 
   const renderMonth = () => {
-    const currentDate: moment.Moment = renderedDate.clone().startOf("month");
+    const currentDate: moment.Moment = monthDate.clone().startOf("month");
     const weeks: Array<JSX.Element> = [];
-    const duration: number = getWeekCount(renderedDate.clone());
+    const duration: number = getWeekCount(monthDate.clone());
 
     for (let i = 0; i < duration; i++) {
-      weeks.push(<Week renderedDate={currentDate.clone()} key={i} />);
+      weeks.push(<Week weekDate={currentDate.clone()} key={i} />);
       currentDate.add(1, "week");
     }
 

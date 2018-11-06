@@ -18,9 +18,9 @@ export const CalendarTable: React.SFC<{}> = ({}) => {
       }) => (
         <div className="calendar">
           {view === VIEW.MONTH ? (
-            <Month renderedDate={renderedDate} />
+            <Month monthDate={renderedDate} />
           ) : (
-            <Week renderedDate={renderedDate} />
+            <Week weekDate={renderedDate} />
           )}
         </div>
       )}
