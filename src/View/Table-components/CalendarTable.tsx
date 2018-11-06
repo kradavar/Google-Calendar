@@ -6,12 +6,16 @@ import { SharedViewContext } from "../../Context";
 import * as moment from "moment";
 import { VIEW } from "../../constants/ViewTypes";
 
-export const CalendarTable: React.SFC<{ renderedDate: moment.Moment }> = ({
-  renderedDate
-}) => {
+export const CalendarTable: React.SFC<{}> = ({}) => {
   return (
     <SharedViewContext.Consumer>
-      {({ view }: { view: string }) => (
+      {({
+        view,
+        renderedDate
+      }: {
+        view: string;
+        renderedDate: moment.Moment;
+      }) => (
         <div className="calendar">
           {view === VIEW.MONTH ? (
             <Month renderedDate={renderedDate} />

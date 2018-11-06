@@ -71,3 +71,7 @@
 .current-day {
   background: #9cbdfb;
 }
+
+.not-current-month {
+  background-color: #d1d6e0a4;
+}

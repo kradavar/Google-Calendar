@@ -16,6 +16,7 @@ import { VIEW } from "../../constants/ViewTypes";
 
 export interface IDayProps {
   renderedDate: moment.Moment;
+  date?: moment.Moment;
 }
 
 export interface IDayState {
@@ -50,17 +51,63 @@ export default class Day extends React.Component<IDayProps, IDayState> {
     });
   };
 
-  createDayCell(view: string) {
+  createDayCellMonth = (date: moment.Moment): JSX.Element => {
     const { renderedDate } = this.props;
-    const dayClassName: string =
+
+    let dayClassName: string =
       formatDate(renderedDate, DATE_FORMATS.DATE) ===
       formatDate(moment(), DATE_FORMATS.DATE)
         ? "current-day cell day"
         : "cell day";
+    console.log(formatDate(date, DATE_FORMATS.DATE));
+    dayClassName +=
+      formatDate(renderedDate, DATE_FORMATS.NUMBER_MONTH) ===
+      formatDate(date, DATE_FORMATS.NUMBER_MONTH)
+        ? ""
+        : " not-current-month";
 
-    if (view === VIEW.MONTH) {
-      return (
-        <div className={dayClassName} onClick={this.showModal}>
+    return (
+      <div className={dayClassName} onClick={this.showModal}>
+        {this.state.showModal && (
+          <ModalWindow
+            renderedDate={renderedDate}
+            handleClose={this.hideModal}
+            hour={+this.state.hour}
+          />
+        )}
+        <CellHeader
+          headerInfo={formatDate(renderedDate, DATE_FORMATS.DATE_OF_MONTH)}
+        />
+        <RenderedEvents date={renderedDate} />
+      </div>
+    );
+  };
+
+  createDayCell = (): JSX.Element => {
+    const { renderedDate } = this.props;
+    const hours: Array<JSX.Element> = [];
+    const renderedHour: moment.Moment = moment(renderedDate.startOf("day"));
+
+    for (let hour = 0; hour < 24; hour++) {
+      hours.push(
+        <HourCell key={hour} onClick={this.showModal} hour={hour}>
+          <CellHeader headerInfo={hour} hour={hour} />
+          <RenderedEvents date={renderedDate} hour={hour} />
+        </HourCell>
+      );
+      renderedHour.add(1, "hour");
+    }
+    return (
+      <div className="flex-container">
+        <DayWeekHeader
+          renderedDate={renderedDate}
+          className={this.state.headerClassName}
+        />
+        {formatDate(renderedDate, DATE_FORMATS.DATE) ===
+          formatDate(moment(), DATE_FORMATS.DATE) && <TimeLine />}
+
+        <div className="day-flex">
+          {hours}
           {this.state.showModal && (
             <ModalWindow
               renderedDate={renderedDate}
@@ -68,54 +115,29 @@ export default class Day extends React.Component<IDayProps, IDayState> {
               hour={+this.state.hour}
             />
           )}
-
-          <CellHeader
-            headerInfo={formatDate(renderedDate, DATE_FORMATS.DATE_OF_MONTH)}
-          />
-          <RenderedEvents date={renderedDate} />
         </div>
-      );
-    } else {
-      const hours: Array<JSX.Element> = [];
-      const renderedHour: moment.Moment = moment(renderedDate.startOf("day"));
-
-      for (let hour = 0; hour < 24; hour++) {
-        hours.push(
-          <HourCell key={hour} onClick={this.showModal} hour={hour}>
-            <CellHeader headerInfo={hour} hour={hour} />
-            <RenderedEvents date={renderedDate} hour={hour} />
-          </HourCell>
-        );
-        renderedHour.add(1, "hour");
-      }
-      return (
-        <div className="flex-container">
-          <DayWeekHeader
-            renderedDate={renderedDate}
-            className={this.state.headerClassName}
-          />
-          {formatDate(renderedDate, DATE_FORMATS.DATE) ===
-            formatDate(moment(), DATE_FORMATS.DATE) && <TimeLine />}
-
-          <div className="day-flex">
-            {hours}
-            {this.state.showModal && (
-              <ModalWindow
-                renderedDate={renderedDate}
-                handleClose={this.hideModal}
-                hour={+this.state.hour}
-              />
-            )}
-          </div>
-        </div>
-      );
-    }
-  }
+      </div>
+    );
+  };
   render() {
     return (
       <SharedViewContext.Consumer>
-        {({ view }: { view: string }) => (
-          <React.Fragment>{this.createDayCell(view)}</React.Fragment>
+        {({
+          view,
+          renderedDate
+        }: {
+          view: string;
+          renderedDate: moment.Moment;
+        }) => (
+          <React.Fragment>
+            {view === VIEW.MONTH ? (
+              <React.Fragment>
+                {this.createDayCellMonth(renderedDate)}
+              </React.Fragment>
+            ) : (
+              <React.Fragment>{this.createDayCell()}</React.Fragment>
+            )}
+          </React.Fragment>
         )}
       </SharedViewContext.Consumer>
     );

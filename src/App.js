@@ -21,16 +21,28 @@ class App extends Component {
       });
     };
 
+    this.nextPeriod = () => {
+      this.setState({
+        renderedDate: this.state.renderedDate.clone().add(1, this.state.view)
+      });
+    };
+
+    this.previuosPeriod = () => {
+      this.setState({
+        renderedDate: this.state.renderedDate
+          .clone()
+          .subtract(1, this.state.view)
+      });
+    };
+
     this.state = {
       view: VIEW.MONTH,
       renderedDate: moment(),
-      changeViewType: this.changeViewType
+      changeViewType: this.changeViewType,
+      nextPeriod: this.nextPeriod,
+      previuosPeriod: this.previuosPeriod
     };
   }
-
-  handleSwitcherChange = event => {
-    this.setState({ view: event.target.value });
-  };
 
   handlePrevButtonClick = () => {
     this.setState({
@@ -48,26 +60,27 @@ class App extends Component {
     return (
       <SharedViewContext.Provider value={this.state}>
         <div className="container">
-          <div className="d-flex flex-column align-items-center justify-content-center">
-            <header className="App-header">Calendar</header>
-            <ViewTypeSwitcher />
-            <div className="current-month">
-              {formatDate(this.state.renderedDate, DATE_FORMATS.MONTH)}
-            </div>
-            <div className="container d-flex justify-content-center align-items-center">
-              <Button
-                value="◀"
-                classes="nav-input"
-                onClick={this.handlePrevButtonClick}
-              />
-              <CalendarTable renderedDate={this.state.renderedDate} />
-              <Button
-                value="▶"
-                classes="nav-input"
-                onClick={this.handleNextButtonClick}
-              />
-            </div>
-          </div>
+          <SharedViewContext.Consumer>
+            {({ renderedDate, previuosPeriod, nextPeriod }) => (
+              <div className="d-flex flex-column align-items-center justify-content-center">
+                <header className="App-header">Calendar</header>
+                <ViewTypeSwitcher />
+                <div className="current-month">
+                  {formatDate(renderedDate, DATE_FORMATS.MONTH)}
+                </div>
+
+                <div className="container d-flex justify-content-center align-items-center">
+                  <Button
+                    value="◀"
+                    classes="nav-input"
+                    onClick={previuosPeriod}
+                  />
+                  <CalendarTable />
+                  <Button value="▶" classes="nav-input" onClick={nextPeriod} />
+                </div>
+              </div>
+            )}
+          </SharedViewContext.Consumer>
         </div>
       </SharedViewContext.Provider>
     );
