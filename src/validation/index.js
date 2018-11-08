@@ -35,7 +35,7 @@ export const validate = values => {
   return {
     name: checkName(values.name),
     start: {
-      date: checkDate(start) || checkTimeSequence(start, end, "day"),
+      date: checkDate(start) || checkTimeSequence(start, end, "hour"),
       time: checkTime(start) || checkTimeSequence(start, end, "minute")
     },
     end: {
