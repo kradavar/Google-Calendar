@@ -92,16 +92,19 @@ export default class Day extends React.Component<IDayProps, IDayState> {
     const hours: Array<JSX.Element> = [];
     const renderedHour: moment.Moment = moment(dayDate.startOf("day"));
 
-    const hourClass =
-      getDuration(
-        formatDate(moment(), DATE_FORMATS.HOUR),
-        formatDate(dayDate, DATE_FORMATS.HOUR),
-        "hour"
-      ) < 0
-        ? " disabled"
-        : "";
-
     for (let hour = 0; hour < 24; hour++) {
+      const hourClass =
+        getDuration(
+          formatDate(moment(), DATE_FORMATS.DATE_WITH_HOUR),
+          formatDate(
+            moment(dayDate.set("hour", hour)),
+            DATE_FORMATS.DATE_WITH_HOUR
+          ),
+          "hour"
+        ) < 0
+          ? " disabled"
+          : "";
+
       hours.push(
         <HourCell
           key={hour}
