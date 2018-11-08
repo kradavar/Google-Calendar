@@ -22,8 +22,8 @@ const checkDuration = (start, end) =>
     ? "The duration of the event must be more than 15 minutes."
     : undefined;
 
-const checkTimeSequence = (start, end) =>
-  getDuration(start, end, "minute") < 0
+const checkTimeSequence = (start, end, period) =>
+  getDuration(start, end, period) < 0
     ? "The beginning of the event can not be later than its end."
     : undefined;
 
@@ -35,8 +35,8 @@ export const validate = values => {
   return {
     name: checkName(values.name),
     start: {
-      date: checkDate(start),
-      time: checkTime(start) || checkTimeSequence(start, end)
+      date: checkDate(start) || checkTimeSequence(start, end, "day"),
+      time: checkTime(start) || checkTimeSequence(start, end, "minute")
     },
     end: {
       date: checkDate(end),
