@@ -13,22 +13,19 @@ import { VIEW } from "../../constants/ViewTypes";
 
 export default class Event extends Component {
   state = {
-    showModal: false,
-    eventsClassName: "event-day"
+    showModal: false
   };
 
   handleClose = e => {
     this.setState({
-      showModal: false,
-      eventsClassName: "event-day"
+      showModal: false
     });
     e.stopPropagation();
   };
 
   handleOpen = e => {
     this.setState({
-      showModal: true,
-      eventsClassName: "event-day hide"
+      showModal: true
     });
     e.stopPropagation();
   };
@@ -57,7 +54,11 @@ export default class Event extends Component {
   };
 
   getClassName = view =>
-    view === VIEW.MONTH ? "event" : this.state.eventsClassName;
+    view === VIEW.MONTH
+      ? "event"
+      : this.state.showModal
+      ? "event-day hide"
+      : "event-day";
 
   eventInput = (start, end, name, view) =>
     view === VIEW.MONTH
