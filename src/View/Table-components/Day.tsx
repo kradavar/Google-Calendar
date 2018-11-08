@@ -11,6 +11,7 @@ import { formatDate, getDuration } from "../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/DateFormats.js";
 import { SharedViewContext } from "../../Context.js";
 import { VIEW } from "../../constants/ViewTypes";
+import { findDOMNode } from "react-dom";
 
 export interface IDayProps {
   dayDate: moment.Moment;
@@ -22,16 +23,31 @@ export interface IDayState {
   headerClassName: string;
 }
 
-export default class Day extends React.Component<IDayProps, IDayState> {
-  state = {
-    showModal: false,
-    hour: 0,
-    headerClassName: "day-week-header sticky-top"
-  };
+interface ModalValueEventTarget extends EventTarget {
+  getAttribute: (str: string) => string | null;
+}
 
-  // React.ChangeEvent<HTMLDivElement>
-  // React.MouseEvent
-  showModal = (e: any): void => {
+export interface ModalMouseEvent extends React.MouseEvent<HTMLDivElement> {
+  target: ModalValueEventTarget;
+}
+
+export default class Day extends React.Component<IDayProps, IDayState> {
+  constructor(props: IDayProps) {
+    super(props);
+    this.state = {
+      showModal: false,
+      hour: 0,
+      headerClassName: "day-week-header sticky-top"
+    };
+    this.hour0Ref = React.createRef();
+    this.hour8Ref = React.createRef();
+    this.hour18Ref = React.createRef();
+  }
+  hour0Ref?: React.RefObject<JSX.Element>;
+  hour8Ref?: React.RefObject<JSX.Element>;
+  hour18Ref?: React.RefObject<JSX.Element>;
+
+  showModal = (e: ModalMouseEvent): void => {
     const attr: string | null = e.target.getAttribute("data-hour");
     this.setState({
       showModal: true,
@@ -87,6 +103,36 @@ export default class Day extends React.Component<IDayProps, IDayState> {
     );
   };
 
+  handleScroll = (ref: React.RefObject<JSX.Element> | undefined) => {
+    if (ref !== undefined && ref.current !== null) {
+      const refNotUndef = ref as React.RefObject<JSX.Element>;
+      const currentRef = refNotUndef.current as Element | null;
+      const current = currentRef as Element;
+      const node = findDOMNode(current) as Element;
+      node.scrollIntoView();
+    }
+  };
+
+  componentDidMount = () => {
+    const currentHour = +formatDate(moment(), DATE_FORMATS.HOUR);
+
+    let ref;
+    switch (true) {
+      case currentHour >= 0 && currentHour < 8:
+        break;
+      case currentHour > 7 && currentHour < 18:
+        ref = this.hour8Ref;
+        break;
+      case currentHour > 17 && currentHour < 24:
+        ref = this.hour18Ref;
+        break;
+      default:
+        ref = this.hour0Ref;
+        break;
+    }
+    this.handleScroll(ref);
+  };
+
   createDayCell = (): JSX.Element => {
     const { dayDate } = this.props;
     const hours: Array<JSX.Element> = [];
@@ -105,12 +151,35 @@ export default class Day extends React.Component<IDayProps, IDayState> {
           ? " disabled"
           : "";
 
+      // type for refValue:
+      /* string | (((instance: HourCell | null) => any) & RefObject<Element>)
+       | (RefObject<HourCell> & RefObject<Element>) |
+        undefined */
+      //////////
+      /*
+        RefObject<Element>)
+        */
+      /////////
+      // React.RefObject<Element>
+      // React.RefObject<JSX.Element>
+
+      const refValue: any =
+        hour === 0
+          ? this.hour0Ref
+          : hour === 8
+          ? this.hour8Ref
+          : hour === 18
+          ? this.hour18Ref
+          : undefined;
+
+      console.log(refValue);
       hours.push(
         <HourCell
           key={hour}
           onClick={this.showModal}
           hour={hour}
           classes={hourClass}
+          ref={refValue}
         >
           <CellHeader headerInfo={hour} hour={hour} />
           <RenderedEvents date={dayDate} hour={hour} />
