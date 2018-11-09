@@ -23,15 +23,13 @@ class App extends Component {
 
     this.nextPeriod = () => {
       this.setState({
-        renderedDate: this.state.renderedDate.clone().add(1, this.state.view)
+        renderedDate: this.state.renderedDate.add(1, this.state.view)
       });
     };
 
     this.previuosPeriod = () => {
       this.setState({
-        renderedDate: this.state.renderedDate
-          .clone()
-          .subtract(1, this.state.view)
+        renderedDate: this.state.renderedDate.subtract(1, this.state.view)
       });
     };
 
@@ -43,18 +41,6 @@ class App extends Component {
       previuosPeriod: this.previuosPeriod
     };
   }
-
-  handlePrevButtonClick = () => {
-    this.setState({
-      renderedDate: this.state.renderedDate.clone().subtract(1, this.state.view)
-    });
-  };
-
-  handleNextButtonClick = () => {
-    this.setState({
-      renderedDate: this.state.renderedDate.clone().add(1, this.state.view)
-    });
-  };
 
   render() {
     return (

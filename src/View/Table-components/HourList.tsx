@@ -12,9 +12,9 @@ export const HourList: React.SFC<{
   showModal: (e: ModalMouseEvent) => void;
   dayDate: moment.Moment;
   hour0Ref?: React.RefObject<JSX.Element>;
-  hour8Ref?: React.RefObject<JSX.Element>;
+  hour7Ref?: React.RefObject<JSX.Element>;
   hour18Ref?: React.RefObject<JSX.Element>;
-}> = ({ showModal, dayDate, hour0Ref, hour8Ref, hour18Ref }) => {
+}> = ({ showModal, dayDate, hour0Ref, hour7Ref, hour18Ref }) => {
   const hours: Array<JSX.Element> = [];
   const renderedHour: moment.Moment = moment(dayDate.startOf("day"));
 
@@ -46,8 +46,8 @@ export const HourList: React.SFC<{
     const refValue: any =
       hour === 0
         ? hour0Ref
-        : hour === 8
-        ? hour8Ref
+        : hour === 7
+        ? hour7Ref
         : hour === 18
         ? hour18Ref
         : undefined;

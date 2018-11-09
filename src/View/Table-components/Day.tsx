@@ -38,11 +38,11 @@ export default class Day extends React.Component<IDayProps, IDayState> {
       hour: 0
     };
     this.hour0Ref = React.createRef();
-    this.hour8Ref = React.createRef();
+    this.hour7Ref = React.createRef();
     this.hour18Ref = React.createRef();
   }
   hour0Ref?: React.RefObject<JSX.Element>;
-  hour8Ref?: React.RefObject<JSX.Element>;
+  hour7Ref?: React.RefObject<JSX.Element>;
   hour18Ref?: React.RefObject<JSX.Element>;
 
   showModal = (e: ModalMouseEvent): void => {
@@ -100,7 +100,7 @@ export default class Day extends React.Component<IDayProps, IDayState> {
       ref = this.hour0Ref;
     }
     if (currentHour > 7 && currentHour < 18) {
-      ref = this.hour8Ref;
+      ref = this.hour7Ref;
     }
     if (currentHour > 17 && currentHour < 24) {
       ref = this.hour18Ref;
@@ -159,7 +159,7 @@ export default class Day extends React.Component<IDayProps, IDayState> {
                     showModal={this.showModal}
                     hour0Ref={this.hour0Ref}
                     hour18Ref={this.hour18Ref}
-                    hour8Ref={this.hour8Ref}
+                    hour7Ref={this.hour7Ref}
                   />
                   {this.state.showModal && (
                     <ModalWindow
