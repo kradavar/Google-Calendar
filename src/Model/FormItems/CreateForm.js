@@ -47,6 +47,7 @@ const CreateFormComponent = ({
         label="All Day"
         value={false}
         type="checkbox"
+        classes="checkbox-form"
       />
 
       <FormSection name="start">

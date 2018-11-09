@@ -6,12 +6,12 @@ import ModalWindow from "../../Model/containers/ModalWindow";
 import { DayWeekHeader } from "./DayWeekHeader";
 import * as moment from "moment";
 import TimeLine from "../TimeLine.js";
-import { HourCell } from "./Cells/HourCell";
 import { formatDate, getDuration } from "../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/DateFormats.js";
 import { SharedViewContext } from "../../Context.js";
 import { VIEW } from "../../constants/ViewTypes";
 import { findDOMNode } from "react-dom";
+import { HourList } from "./HourList";
 
 export interface IDayProps {
   dayDate: moment.Moment;
@@ -85,92 +85,29 @@ export default class Day extends React.Component<IDayProps, IDayState> {
     return dayClassName;
   };
 
-  handleScroll = (ref: React.RefObject<JSX.Element> | undefined) => {
-    if (ref !== undefined && ref.current !== null) {
-      const refNotUndef = ref as React.RefObject<JSX.Element>;
-      const currentRef = refNotUndef.current as Element | null;
-      const current = currentRef as Element;
-      const node = findDOMNode(current) as Element;
+  handleScroll = (ref?: React.RefObject<JSX.Element>) => {
+    if (ref && ref.current) {
+      //@ts-ignore
+      const node = findDOMNode(ref.current) as Element;
       node.scrollIntoView();
     }
   };
 
   componentDidMount = () => {
     const currentHour = +formatDate(moment(), DATE_FORMATS.HOUR);
-
     let ref;
-    switch (true) {
-      case currentHour >= 0 && currentHour < 8:
-        break;
-      case currentHour > 7 && currentHour < 18:
-        ref = this.hour8Ref;
-        break;
-      case currentHour > 17 && currentHour < 24:
-        ref = this.hour18Ref;
-        break;
-      default:
-        ref = this.hour0Ref;
-        break;
+    if (currentHour >= 0 && currentHour < 8) {
+      ref = this.hour0Ref;
+    }
+    if (currentHour > 7 && currentHour < 18) {
+      ref = this.hour8Ref;
+    }
+    if (currentHour > 17 && currentHour < 24) {
+      ref = this.hour18Ref;
     }
     this.handleScroll(ref);
   };
 
-  createDayCell = (): Array<JSX.Element> => {
-    const { dayDate } = this.props;
-    const hours: Array<JSX.Element> = [];
-    const renderedHour: moment.Moment = moment(dayDate.startOf("day"));
-
-    for (let hour = 0; hour < 24; hour++) {
-      const hourClass =
-        getDuration(
-          formatDate(moment(), DATE_FORMATS.DATE_WITH_HOUR),
-          formatDate(
-            moment(dayDate.set("hour", hour)),
-            DATE_FORMATS.DATE_WITH_HOUR
-          ),
-          "hour"
-        ) < 0
-          ? " disabled"
-          : "";
-
-      // type for refValue:
-      /* string | (((instance: HourCell | null) => any) & RefObject<Element>)
-       | (RefObject<HourCell> & RefObject<Element>) |
-        undefined */
-      //////////
-      /*
-        RefObject<Element>)
-        */
-      /////////
-      // React.RefObject<Element>
-      // React.RefObject<JSX.Element>
-
-      const refValue: any =
-        hour === 0
-          ? this.hour0Ref
-          : hour === 8
-          ? this.hour8Ref
-          : hour === 18
-          ? this.hour18Ref
-          : undefined;
-
-      hours.push(
-        <HourCell
-          key={hour}
-          onClick={this.showModal}
-          hour={hour}
-          classes={hourClass}
-          ref={refValue}
-        >
-          <CellHeader headerInfo={hour} hour={hour} />
-          <RenderedEvents date={dayDate} hour={hour} />
-        </HourCell>
-      );
-      renderedHour.add(1, "hour");
-    }
-
-    return hours;
-  };
   render() {
     const { dayDate } = this.props;
     return (
@@ -204,33 +141,35 @@ export default class Day extends React.Component<IDayProps, IDayState> {
                 <RenderedEvents date={dayDate} />
               </div>
             ) : (
-              <React.Fragment>
-                {
-                  <div className="flex-container">
-                    <DayWeekHeader
-                      dayDate={dayDate}
-                      className={
-                        this.state.showModal
-                          ? "day-week-header sticky-top hide"
-                          : "day-week-header sticky-top"
-                      }
-                    />
-                    {formatDate(dayDate, DATE_FORMATS.DATE) ===
-                      formatDate(moment(), DATE_FORMATS.DATE) && <TimeLine />}
+              <div className="flex-container">
+                <DayWeekHeader
+                  dayDate={dayDate}
+                  className={
+                    this.state.showModal
+                      ? "day-week-header sticky-top hide"
+                      : "day-week-header sticky-top"
+                  }
+                />
+                {formatDate(dayDate, DATE_FORMATS.DATE) ===
+                  formatDate(moment(), DATE_FORMATS.DATE) && <TimeLine />}
 
-                    <div className="day-flex">
-                      {this.createDayCell()}
-                      {this.state.showModal && (
-                        <ModalWindow
-                          dayDate={dayDate}
-                          handleClose={this.hideModal}
-                          hour={+this.state.hour}
-                        />
-                      )}
-                    </div>
-                  </div>
-                }
-              </React.Fragment>
+                <div className="day-flex">
+                  <HourList
+                    dayDate={dayDate}
+                    showModal={this.showModal}
+                    hour0Ref={this.hour0Ref}
+                    hour18Ref={this.hour18Ref}
+                    hour8Ref={this.hour8Ref}
+                  />
+                  {this.state.showModal && (
+                    <ModalWindow
+                      dayDate={dayDate}
+                      handleClose={this.hideModal}
+                      hour={+this.state.hour}
+                    />
+                  )}
+                </div>
+              </div>
             )}
           </React.Fragment>
         )}
