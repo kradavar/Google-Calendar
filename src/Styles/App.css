@@ -18,14 +18,14 @@
   padding: 0.5rem;
   font-family: "Mali";
 }
-
 .nav-input {
   background-color: inherit;
   border: none;
   font-size: 2rem;
   color: #7d99cc;
 }
-
-.nav-input:hover {
+.nav-input:hover,
+.nav-input:enabled {
+  border-color: ghostwhite !important;
   border: none;
 }
