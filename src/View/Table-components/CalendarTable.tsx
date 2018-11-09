@@ -24,7 +24,9 @@ export const CalendarTable: React.SFC<{}> = ({}) => {
               monthDate={formatDate(renderedDate, DATE_FORMATS.DATE_WITH_TIME)}
             />
           ) : (
-            <Week weekDate={renderedDate} />
+            <Week
+              weekDate={formatDate(renderedDate, DATE_FORMATS.DATE_WITH_TIME)}
+            />
           )}
         </div>
       )}

@@ -3,6 +3,8 @@ import { Week } from "./Week";
 import "../../Styles/Cell.css";
 import { MonthHeader } from "./MonthHeader";
 import * as moment from "moment";
+import { formatDate } from "../../Model/getRenderedDateInfo";
+import { DATE_FORMATS } from "../../constants/DateFormats";
 
 export const Month: React.SFC<{ monthDate: string }> = ({ monthDate }) => {
   const getWeekCount = (date: string): number => {
@@ -25,7 +27,13 @@ export const Month: React.SFC<{ monthDate: string }> = ({ monthDate }) => {
 
     for (let i = 0; i < duration; i++) {
       weeks.push(
-        <Week weekDate={currentDate.clone().add(i, "week")} key={i} />
+        <Week
+          weekDate={formatDate(
+            currentDate.add(i, "week"),
+            DATE_FORMATS.DATE_WITH_TIME
+          )}
+          key={i}
+        />
       );
     }
 
