@@ -35,7 +35,7 @@ export default class Day extends React.Component<IDayProps, IDayState> {
     super(props);
     this.state = {
       showModal: false,
-      hour: 0
+      hour: moment().hour() + 1
     };
     this.hour0Ref = React.createRef();
     this.hour7Ref = React.createRef();
@@ -49,7 +49,7 @@ export default class Day extends React.Component<IDayProps, IDayState> {
     const attr: string | null = e.target.getAttribute("data-hour");
     this.setState({
       showModal: true,
-      hour: attr ? attr : 0
+      hour: attr ? attr : moment().hour() + 1
     });
   };
 
