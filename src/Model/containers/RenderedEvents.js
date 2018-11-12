@@ -1,9 +1,8 @@
 import { connect } from "react-redux";
 import EventList from "../../View/Events/EventList";
-import { formatDate, getDuration } from "../getRenderedDateInfo";
+import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/DateFormats";
 import { createSelector } from "reselect";
-import moment from "moment";
 
 const eventsSelector = state => state.events;
 const propsSelector = (state, props) => props;

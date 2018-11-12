@@ -19,7 +19,7 @@ export interface IDayProps {
 
 export interface IDayState {
   showModal: boolean;
-  hour: string | number;
+  hour: number;
 }
 
 interface ModalValueEventTarget extends EventTarget {
@@ -49,7 +49,7 @@ export default class Day extends React.Component<IDayProps, IDayState> {
     const attr: string | null = e.target.getAttribute("data-hour");
     this.setState({
       showModal: true,
-      hour: attr ? attr : moment().hour() + 1
+      hour: attr ? +attr : moment().hour() + 1
     });
   };
 
@@ -165,7 +165,7 @@ export default class Day extends React.Component<IDayProps, IDayState> {
                     <ModalWindow
                       dayDate={dayDate}
                       handleClose={this.hideModal}
-                      hour={+this.state.hour}
+                      hour={this.state.hour}
                     />
                   )}
                 </div>
