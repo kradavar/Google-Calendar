@@ -29,7 +29,7 @@ export const Month: React.SFC<{ monthDate: string }> = ({ monthDate }) => {
       weeks.push(
         <Week
           weekDate={formatDate(
-            currentDate.add(i, "week"),
+            currentDate.clone().add(i, "week"),
             DATE_FORMATS.DATE_WITH_TIME
           )}
           key={i}

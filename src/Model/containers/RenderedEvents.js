@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import EventList from "../../View/Events/EventList";
-import { formatDate } from "../getRenderedDateInfo";
+import { formatDate, getDuration } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/DateFormats";
 import { createSelector } from "reselect";
+import moment from "moment";
 
 const eventsSelector = state => state.events;
 const propsSelector = (state, props) => props;
@@ -29,9 +30,20 @@ const filterByHour = (eventStart, date, hour) => {
   );
 };
 
+const sortEvents = events =>
+  events.sort((a, b) => {
+    if (a.start > b.start) {
+      return 1;
+    }
+    if (a.start < b.start) {
+      return -1;
+    }
+    return 0;
+  });
+
 const mapStateToProps = (state, props) => {
   return {
-    events: getRenderedDateEvents(state, props)
+    events: sortEvents(getRenderedDateEvents(state, props))
   };
 };
 
