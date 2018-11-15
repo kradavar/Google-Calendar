@@ -6,18 +6,15 @@ import {
 } from "../actions/actions";
 import initialState from "../initialState/initialState";
 
-let nextEventId = 1;
 export const events = (state = initialState.events, action) => {
+  debugger;
   switch (action.type) {
     case LOAD_EVENTS_SUCCESS:
-      console.log(action.payload);
-      debugger;
       return action.payload.events;
     case ADD_EVENT:
       return [
         ...state,
         {
-          id: nextEventId++,
           ...action.payload
         }
       ];

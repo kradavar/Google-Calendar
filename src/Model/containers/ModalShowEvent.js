@@ -26,7 +26,8 @@ class ModalShowEvent extends Component {
   };
 
   render() {
-    const { start, end, name, handleClose } = this.props;
+    const { start, end, handleClose } = this.props;
+    const name = this.props.event_name;
     const { editMode } = this.state;
     return (
       <Modal

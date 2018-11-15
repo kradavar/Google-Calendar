@@ -15,8 +15,7 @@ const CreateFormComponent = ({
   id,
   addEvent,
   editEvent,
-  handleSubmit,
-  startDate
+  handleSubmit
 }) => {
   const submit = values => {
     const name = values.name;
@@ -31,8 +30,8 @@ const CreateFormComponent = ({
       start += values.start.time;
       end += values.end.time;
     }
-
-    id ? editEvent(id, name, start, end) : addEvent(name, start, end);
+    /* 1 - userID */
+    id ? editEvent(id, name, start, end, 1) : addEvent(name, start, end, 1);
   };
   return (
     <form onSubmit={handleSubmit(submit)}>
@@ -74,8 +73,7 @@ const CreateFormComponent = ({
 const mapStateToProps = state => {
   const selector = formValueSelector("createEvent");
   return {
-    isAllDayEvent: selector(state, "eventType"),
-    startDate: selector(state, "start")
+    isAllDayEvent: selector(state, "eventType")
   };
 };
 
