@@ -1,40 +1,18 @@
-import { ADD_EVENT, DELETE_EVENT, EDIT_EVENT } from "../actions/actions";
+import {
+  ADD_EVENT,
+  DELETE_EVENT,
+  EDIT_EVENT,
+  LOAD_EVENTS_SUCCESS
+} from "../actions/actions";
+import initialState from "../initialState/initialState";
 
 let nextEventId = 1;
-const initialState = [
-  {
-    id: nextEventId++,
-    name: "Test 1",
-    start: "2018-10-12 10:50",
-    end: "2018-10-12 11:50"
-  },
-  {
-    id: nextEventId++,
-    name: "Test 2",
-    start: "2018-10-12 15:20",
-    end: "2018-10-12 16:30"
-  },
-  {
-    id: nextEventId++,
-    name: "Test 3",
-    start: "2018-11-15 09:00",
-    end: "2018-11-15 11:00"
-  },
-  {
-    id: nextEventId++,
-    name: "Test 4",
-    start: "2018-11-15 09:00",
-    end: "2018-11-15 11:00"
-  },
-  {
-    id: nextEventId++,
-    name: "Test 5",
-    start: "2018-11-15 09:00",
-    end: "2018-11-15 11:00"
-  }
-];
-export const events = (state = initialState, action) => {
+export const events = (state = initialState.events, action) => {
   switch (action.type) {
+    case LOAD_EVENTS_SUCCESS:
+      console.log(action.payload);
+      debugger;
+      return action.payload.events;
     case ADD_EVENT:
       return [
         ...state,
@@ -46,9 +24,8 @@ export const events = (state = initialState, action) => {
     case DELETE_EVENT:
       return state.filter(event => event.id !== action.payload.id);
     case EDIT_EVENT:
-      return state.map(
-        event =>
-          event.id === action.payload.id ? { ...action.payload } : event
+      return state.map(event =>
+        event.id === action.payload.id ? { ...action.payload } : event
       );
     default:
       return state;

@@ -8,7 +8,12 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 
 import { Provider } from "react-redux";
-import store from "./Model/store/store";
+import { configureStore } from "./Model/store/store";
+import { loadUserEvents } from "./Model/actions/actions";
+
+const store = configureStore();
+store.dispatch(loadUserEvents());
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

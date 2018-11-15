@@ -70,7 +70,8 @@ export default class Event extends Component {
         formatDate(end, DATE_FORMATS.TIME);
 
   render() {
-    const { start, end, name } = this.props;
+    const { start, end } = this.props;
+    const name = this.props.event_name;
     return (
       <SharedViewContext.Consumer>
         {({ view }) => (
