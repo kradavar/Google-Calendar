@@ -18,6 +18,21 @@ export const addEventSuccess = event => {
     }
   };
 };
+
+export const deleteEventSuccess = id => {
+  return { type: DELETE_EVENT, payload: { id } };
+};
+
+export const editEventSuccess = event => {
+  const { start, end, event_name, id } = event;
+  const userID = event.user_id;
+  return { type: EDIT_EVENT, payload: { id, event_name, start, end, userID } };
+};
+
+export const loadEventsSuccess = events => {
+  return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
+};
+
 export const addEvent = (name, start, end, userID) => dispatch =>
   eventsAPI
     .createEvent(name, start, end, userID)
@@ -36,15 +51,15 @@ export const addEvent = (name, start, end, userID) => dispatch =>
       throw error;
     });
 
-export const deleteEvent = id => {
-  return { type: DELETE_EVENT, payload: { id } };
-};
-
-export const editEventSuccess = event => {
-  const { start, end, event_name, id } = event;
-  const userID = event.user_id;
-  return { type: EDIT_EVENT, payload: { id, event_name, start, end, userID } };
-};
+export const deleteEvent = id => dispatch =>
+  eventsAPI
+    .deleteEvent(id)
+    .then(() => {
+      dispatch(deleteEventSuccess(id));
+    })
+    .catch(error => {
+      throw error;
+    });
 
 export const editEvent = (id, name, start, end, userID) => dispatch =>
   eventsAPI
@@ -63,10 +78,6 @@ export const editEvent = (id, name, start, end, userID) => dispatch =>
     .catch(error => {
       throw error;
     });
-
-export const loadEventsSuccess = events => {
-  return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
-};
 
 export const loadUserEvents = () => dispatch =>
   eventsAPI

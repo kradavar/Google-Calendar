@@ -17,8 +17,6 @@ class EventAPI {
   };
 
   static editEvent = (id, name, start, end, userID) => {
-    console.log("eventAPI put: ", id, name, start, end, userID);
-    debugger;
     const request = new Request("http://localhost:5000/events/:" + id, {
       method: "PUT",
       headers: new Headers({ "Content-Type": "application/json" }),
@@ -28,10 +26,17 @@ class EventAPI {
     console.log("request.body:  ", request.body);
 
     return fetch(request)
-      .then(response => {
-        console.log("server response", response.json());
-        return response.json();
-      })
+      .then(response => response.json())
+      .catch(error => error);
+  };
+
+  static deleteEvent = id => {
+    const request = new Request("http://localhost:5000/events/:" + id, {
+      method: "DELETE",
+      headers: new Headers({ "Content-Type": "application/json" })
+    });
+    return fetch(request)
+      .then(response => response.json())
       .catch(error => error);
   };
 }
