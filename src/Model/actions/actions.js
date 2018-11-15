@@ -8,6 +8,7 @@ export const addEventSuccess = event => {
   const { start, end } = event;
   const name = event.event_name;
   const userID = event.user_id;
+  console.log(event);
   debugger;
   return {
     type: ADD_EVENT,

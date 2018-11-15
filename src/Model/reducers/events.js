@@ -7,9 +7,9 @@ import {
 import initialState from "../initialState/initialState";
 
 export const events = (state = initialState.events, action) => {
-  debugger;
   switch (action.type) {
     case LOAD_EVENTS_SUCCESS:
+      debugger;
       return action.payload.events;
     case ADD_EVENT:
       return [
