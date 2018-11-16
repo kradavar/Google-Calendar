@@ -7,7 +7,7 @@ import { Button } from "./Switchers/Button";
 import { DATE_FORMATS } from "../constants/DateFormats";
 import { formatDate } from "../Model/getRenderedDateInfo";
 
-export const Header = () => {
+export const Header = props => {
   return (
     <SharedViewContext.Consumer>
       {({ renderedDate, previuosPeriod, nextPeriod }) => (
@@ -36,12 +36,16 @@ export const Header = () => {
               className="dropdown-menu drop-width"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              <a className="dropdown-item" href="#">
-                Sign in
-              </a>
-              <a className="dropdown-item" href="#">
-                Sign up
-              </a>
+              <Button
+                value="Sign in"
+                classes="dropdown-item"
+                onClick={props.handleOpen}
+              />
+              <Button
+                value="Sign up"
+                classes="dropdown-item"
+                onClick={props.handleOpen}
+              />
             </div>
           </div>
         </nav>

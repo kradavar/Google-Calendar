@@ -7,7 +7,11 @@
 }
 
 select:focus {
-  outline-color: #b4cada;
+  outline: none;
+}
+
+.switcher:hover option {
+  color: #203763;
 }
 
 .switcher {
@@ -16,4 +20,10 @@ select:focus {
   background: inherit;
   color: #203763;
   font-size: 1.2rem;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.switcher:hover {
+  color: #0056b3;
 }

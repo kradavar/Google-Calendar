@@ -11,6 +11,7 @@ import { DATE_FORMATS } from "./constants/DateFormats";
 import { SharedViewContext } from "./Context";
 import { VIEW } from "./constants/ViewTypes";
 import { Header } from "./View/Header";
+import { SignModal } from "./View/Authorization";
 
 class App extends Component {
   constructor(props) {
@@ -39,25 +40,43 @@ class App extends Component {
       renderedDate: moment(),
       changeViewType: this.changeViewType,
       nextPeriod: this.nextPeriod,
-      previuosPeriod: this.previuosPeriod
+      previuosPeriod: this.previuosPeriod,
+      showModal: false,
+      signedUser: false
     };
   }
+
+  handleClose = e => {
+    this.setState({
+      showModal: false
+    });
+    e.stopPropagation();
+  };
+
+  handleOpen = e => {
+    console.log(e.target);
+    this.setState({
+      showModal: true,
+      signedUser: e.target.value === "Sign in"
+    });
+    e.stopPropagation();
+  };
 
   render() {
     return (
       <SharedViewContext.Provider value={this.state}>
-        <SharedViewContext.Consumer>
-          {({ renderedDate, previuosPeriod, nextPeriod }) => (
-            <React.Fragment>
-              <Header />
-              <div className="container">
-                <div className="d-flex flex-column  justify-content-center calendar-table">
-                  <CalendarTable />
-                </div>
-              </div>
-            </React.Fragment>
+        <Header handleOpen={this.handleOpen} />
+        <div className="container">
+          <div className="d-flex flex-column  justify-content-center calendar-table">
+            <CalendarTable />
+          </div>
+          {this.state.showModal && (
+            <SignModal
+              signed={this.state.signedUser}
+              handleClose={this.handleClose}
+            />
           )}
-        </SharedViewContext.Consumer>
+        </div>
       </SharedViewContext.Provider>
     );
   }
