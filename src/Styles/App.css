@@ -49,3 +49,7 @@
 .drop-width {
   min-width: 4rem;
 }
+
+.drop-button:focus {
+  outline: none !important;
+}

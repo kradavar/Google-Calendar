@@ -38,12 +38,12 @@ export const Header = props => {
             >
               <Button
                 value="Sign in"
-                classes="dropdown-item"
+                classes="dropdown-item drop-button"
                 onClick={props.handleOpen}
               />
               <Button
                 value="Sign up"
-                classes="dropdown-item"
+                classes="dropdown-item drop-button"
                 onClick={props.handleOpen}
               />
             </div>
