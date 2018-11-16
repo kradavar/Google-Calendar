@@ -10,6 +10,7 @@ import { formatDate } from "./Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "./constants/DateFormats";
 import { SharedViewContext } from "./Context";
 import { VIEW } from "./constants/ViewTypes";
+import { Header } from "./View/Header";
 
 class App extends Component {
   constructor(props) {
@@ -45,29 +46,18 @@ class App extends Component {
   render() {
     return (
       <SharedViewContext.Provider value={this.state}>
-        <div className="container">
-          <SharedViewContext.Consumer>
-            {({ renderedDate, previuosPeriod, nextPeriod }) => (
-              <div className="d-flex flex-column align-items-center justify-content-center">
-                <header className="App-header">Calendar</header>
-                <ViewTypeSwitcher />
-                <div className="current-month">
-                  {formatDate(renderedDate, DATE_FORMATS.MONTH)}
-                </div>
-
-                <div className="container d-flex justify-content-center align-items-center">
-                  <Button
-                    value="◀"
-                    classes="nav-input"
-                    onClick={previuosPeriod}
-                  />
+        <SharedViewContext.Consumer>
+          {({ renderedDate, previuosPeriod, nextPeriod }) => (
+            <React.Fragment>
+              <Header />
+              <div className="container">
+                <div className="d-flex flex-column  justify-content-center calendar-table">
                   <CalendarTable />
-                  <Button value="▶" classes="nav-input" onClick={nextPeriod} />
                 </div>
               </div>
-            )}
-          </SharedViewContext.Consumer>
-        </div>
+            </React.Fragment>
+          )}
+        </SharedViewContext.Consumer>
       </SharedViewContext.Provider>
     );
   }

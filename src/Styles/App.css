@@ -8,6 +8,7 @@
 .App-header {
   font-size: 2rem;
   font-family: "Mali";
+  margin-left: 4rem;
 }
 .current-month {
   font-size: 3rem;
@@ -28,4 +29,23 @@
 .nav-input:enabled {
   border-color: ghostwhite !important;
   border: none;
+}
+
+.navbar-header {
+  width: 100%;
+  display: flex;
+}
+
+.calendar-table {
+  margin-top: 2rem;
+}
+
+.sign-link {
+  color: #203763;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.drop-width {
+  min-width: 4rem;
 }
