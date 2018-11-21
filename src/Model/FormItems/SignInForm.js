@@ -2,12 +2,15 @@ import React from "react";
 import { reduxForm } from "redux-form";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { Button } from "../../View/Switchers/Button";
+import { compose } from "redux";
+import { signIn } from "../actions/users";
+import { connect } from "react-redux";
 
-const SignInFormComponent = ({ handleSubmit, reset }) => {
+const SignInFormComponent = ({ handleSubmit, reset, signIn }) => {
   const submit = values => {
-    //check if this user is in the DB
-    //and correspondence on his password
-    // if everything is correct => send his id
+    const username = values.username;
+    const pass = values.password;
+    signIn(username, pass);
   };
   return (
     <form onSubmit={handleSubmit(submit)}>
@@ -35,4 +38,12 @@ const SignInForm = reduxForm({
   form: "showForm"
 })(SignInFormComponent);
 
-export default SignInForm;
+export default compose(
+  reduxForm({
+    form: "signIn"
+  }),
+  connect(
+    null,
+    { signIn }
+  )
+)(SignInForm);

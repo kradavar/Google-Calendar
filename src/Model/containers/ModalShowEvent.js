@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteEvent } from "../actions/actions.js";
+import { deleteEvent } from "../actions/events.js";
 import { Modal } from "../../View/ModalIems/Modal";
 
 import "../../Styles/Modal.css";

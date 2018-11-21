@@ -9,7 +9,7 @@ import registerServiceWorker from "./registerServiceWorker";
 
 import { Provider } from "react-redux";
 import { configureStore } from "./Model/store/store";
-import { loadUserEvents } from "./Model/actions/actions";
+import { loadUserEvents } from "./Model/actions/events";
 
 const store = configureStore();
 store.dispatch(loadUserEvents());

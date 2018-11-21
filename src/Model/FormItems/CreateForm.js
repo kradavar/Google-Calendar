@@ -6,7 +6,7 @@ import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
 import { Button } from "../../View/Switchers/Button";
 import "../../Styles/Modal.css";
-import { addEvent, editEvent } from "../actions/actions";
+import { addEvent, editEvent } from "../actions/events";
 import { validate } from "../../validation/index";
 
 const CreateFormComponent = ({
@@ -30,7 +30,6 @@ const CreateFormComponent = ({
       start += values.start.time;
       end += values.end.time;
     }
-    /* 1 - userID */
     id ? editEvent(id, name, start, end, 1) : addEvent(name, start, end, 1);
   };
   return (

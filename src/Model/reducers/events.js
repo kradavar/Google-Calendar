@@ -3,7 +3,7 @@ import {
   DELETE_EVENT,
   EDIT_EVENT,
   LOAD_EVENTS_SUCCESS
-} from "../actions/actions";
+} from "../actions/events";
 import initialState from "../initialState/initialState";
 
 export const events = (state = initialState.events, action) => {

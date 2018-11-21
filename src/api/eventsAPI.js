@@ -1,14 +1,14 @@
-class EventAPI {
+export class EventAPI {
   static getEvents = () =>
     fetch("http://localhost:5000/events")
       .then(response => response.json())
       .catch(error => error);
 
-  static createEvent = (name, start, end, userID) => {
+  static createEvent = (name, start, end) => {
     const request = new Request("http://localhost:5000/events", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
-      body: JSON.stringify({ event_name: name, start, end, user_id: 1 })
+      body: JSON.stringify({ event_name: name, start, end })
     });
 
     return fetch(request)
@@ -16,11 +16,11 @@ class EventAPI {
       .catch(error => error);
   };
 
-  static editEvent = (id, name, start, end, userID) => {
+  static editEvent = (id, name, start, end) => {
     const request = new Request("http://localhost:5000/events/" + id, {
       method: "PUT",
       headers: new Headers({ "Content-Type": "application/json" }),
-      body: JSON.stringify({ event_name: name, start, end, user_id: 1 })
+      body: JSON.stringify({ event_name: name, start, end })
     });
 
     console.log("request.body:  ", request);
@@ -37,11 +37,8 @@ class EventAPI {
     });
     return fetch(request)
       .then(response => {
-        debugger;
         return response.json();
       })
       .catch(error => error);
   };
 }
-
-export default EventAPI;
