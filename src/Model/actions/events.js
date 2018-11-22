@@ -22,7 +22,7 @@ const editEventSuccess = event => {
   return { type: EDIT_EVENT, payload: { id, event_name, start, end } };
 };
 
-const loadEventsSuccess = events => {
+export const loadEventsSuccess = events => {
   return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
 };
 
@@ -62,15 +62,6 @@ export const editEvent = (id, name, start, end) => dispatch =>
           end
         })
       );
-    })
-    .catch(error => {
-      throw error;
-    });
-
-export const loadUserEvents = () => dispatch =>
-  EventAPI.getEvents()
-    .then(events => {
-      dispatch(loadEventsSuccess(events));
     })
     .catch(error => {
       throw error;

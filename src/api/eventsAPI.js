@@ -1,16 +1,12 @@
 export class EventAPI {
-  static getEvents = () =>
-    fetch("http://localhost:5000/events")
-      .then(response => response.json())
-      .catch(error => error);
-
   static createEvent = (name, start, end) => {
     const request = new Request("http://localhost:5000/events", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
+      credentials: "include",
       body: JSON.stringify({ event_name: name, start, end })
     });
-
+    debugger;
     return fetch(request)
       .then(response => response.json())
       .catch(error => error);

@@ -9,12 +9,19 @@ const propsSelector = (state, props) => props;
 
 const getRenderedDateEvents = createSelector(
   [eventsSelector, propsSelector],
-  (events, props) =>
-    Number.isInteger(props.hour)
+  (events, props) => {
+    if (Number.isInteger(props.hour)) {
+      return events.filter(event =>
+        filterByHour(event.start, props.date, props.hour)
+      );
+    }
+    return events.filter(event => filterByDate(event.start, props.date));
+  }
+  /* Number.isInteger(props.hour)
       ? events.filter(event =>
           filterByHour(event.start, props.date, props.hour)
         )
-      : events.filter(event => filterByDate(event.start, props.date))
+      : events.filter(event => filterByDate(event.start, props.date))*/
 );
 
 const filterByDate = (eventStart, date) =>

@@ -1,17 +1,9 @@
 import { UserAPI } from "../../api/userAPI";
+import { loadEventsSuccess } from "../actions/events";
 
 export const SIGN_IN = "SIGN_IN";
 export const SIGN_UP = "SIGN_UP";
 export const SIGN_OUT = "SIGN_OUT";
-
-const signInSuccess = user => {
-  return {
-    type: SIGN_IN,
-    payload: {
-      ...user
-    }
-  };
-};
 
 const signUpSuccess = user => {
   return {
@@ -32,7 +24,7 @@ const signOutSuccess = () => {
 export const signIn = (username, password) => dispatch =>
   UserAPI.signIn(username, password)
     .then(result => {
-      dispatch(signInSuccess({ id: result.insertId, username, password }));
+      dispatch(loadEventsSuccess(result));
     })
     .catch(error => {
       throw error;
