@@ -5,15 +5,6 @@ export const SIGN_IN = "SIGN_IN";
 export const SIGN_UP = "SIGN_UP";
 export const SIGN_OUT = "SIGN_OUT";
 
-const signUpSuccess = user => {
-  return {
-    type: SIGN_UP,
-    payload: {
-      ...user
-    }
-  };
-};
-
 const signOutSuccess = () => {
   return {
     type: SIGN_OUT,
@@ -33,7 +24,7 @@ export const signIn = (username, password) => dispatch =>
 export const signUp = (username, password, fullName) => dispatch =>
   UserAPI.signUp(username, password, fullName)
     .then(result => {
-      dispatch(signUpSuccess({ username, password, fullName }));
+      dispatch(loadEventsSuccess(result));
     })
     .catch(error => {
       throw error;
