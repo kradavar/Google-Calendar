@@ -10,6 +10,7 @@ const SignInFormComponent = ({ handleSubmit, reset, signIn }) => {
   const submit = values => {
     const username = values.username;
     const pass = values.password;
+    // this.props.dispatch(signIn(...))
     signIn(username, pass);
   };
   return (
@@ -33,17 +34,13 @@ const SignInFormComponent = ({ handleSubmit, reset, signIn }) => {
     </form>
   );
 };
-
-const SignInForm = reduxForm({
-  form: "showForm"
-})(SignInFormComponent);
+const sign = connect(
+  null,
+  { signIn }
+)(SignInFormComponent);
 
 export default compose(
   reduxForm({
     form: "signIn"
-  }),
-  connect(
-    null,
-    { signIn }
-  )
-)(SignInForm);
+  })
+)(sign);
