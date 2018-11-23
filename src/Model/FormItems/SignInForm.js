@@ -2,7 +2,6 @@ import React from "react";
 import { reduxForm } from "redux-form";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { Button } from "../../View/Switchers/Button";
-import { compose } from "redux";
 import { signIn } from "../actions/users";
 import { connect } from "react-redux";
 
@@ -10,7 +9,6 @@ const SignInFormComponent = ({ handleSubmit, reset, signIn }) => {
   const submit = values => {
     const username = values.username;
     const pass = values.password;
-    // this.props.dispatch(signIn(...))
     signIn(username, pass);
   };
   return (
@@ -39,8 +37,6 @@ const sign = connect(
   { signIn }
 )(SignInFormComponent);
 
-export default compose(
-  reduxForm({
-    form: "signIn"
-  })
-)(sign);
+export default reduxForm({
+  form: "signIn"
+})(sign);

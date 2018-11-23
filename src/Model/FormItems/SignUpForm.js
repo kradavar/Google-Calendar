@@ -1,15 +1,22 @@
 import React from "react";
-import { compose } from "redux";
-import { reduxForm, formValueSelector } from "redux-form";
+import { reduxForm } from "redux-form";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
 import { Button } from "../../View/Switchers/Button";
+import { signUp } from "../actions/users";
+
+import { validate } from "../../validation/sign";
 import "../../Styles/Modal.css";
 
 const SignUpFormComponent = ({ reset, id, handleSubmit }) => {
   const submit = values => {
-    // POST
-    // username must be unic!
+    const fullName = values.firstName + " " + values.lastName;
+    console.log("before calling sign up in form", values);
+    const username = values.username;
+    const password = values.password;
+    debugger;
+    signUp(username, password, fullName);
+    console.log("after signUp in Form");
   };
   return (
     <form onSubmit={handleSubmit(submit)}>
@@ -37,17 +44,12 @@ const SignUpFormComponent = ({ reset, id, handleSubmit }) => {
   );
 };
 
-const mapStateToProps = state => {
-  const selector = formValueSelector("signUpForm");
-  return {
-    password: selector(state, "password"),
-    correctPassword: selector(state, "correctPassword")
-  };
-};
-
-export default compose(
-  reduxForm({
-    form: "signUpForm"
-  }),
-  connect(mapStateToProps)
+const signUpForm = connect(
+  null,
+  { signUp }
 )(SignUpFormComponent);
+
+export default reduxForm({
+  form: "signUp",
+  validate
+})(signUpForm);

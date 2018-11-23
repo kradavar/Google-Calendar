@@ -6,7 +6,6 @@ export class EventAPI {
       credentials: "include",
       body: JSON.stringify({ event_name: name, start, end })
     });
-    debugger;
     return fetch(request)
       .then(response => response.json())
       .catch(error => error);
