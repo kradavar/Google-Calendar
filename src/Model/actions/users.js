@@ -15,18 +15,31 @@ const signOutSuccess = () => {
 export const signIn = (username, password) => dispatch =>
   UserAPI.signIn(username, password)
     .then(result => {
-      dispatch(loadEventsSuccess(result));
+      if (result.status > 400) {
+        debugger;
+        return dispatch({
+          type: "SIGNIN_FAILED",
+          error: "Wrong username or password"
+        });
+      } else dispatch(loadEventsSuccess(result));
     })
     .catch(error => {
-      throw error;
+      debugger;
+      return new Error(error.statusText);
     });
 
 export const signUp = (username, password, fullName) => dispatch =>
   UserAPI.signUp(username, password, fullName)
     .then(result => {
-      dispatch(loadEventsSuccess(result));
+      console.log(result);
+      debugger;
+      if (result.status > 400) {
+        throw new Error();
+      } else dispatch(loadEventsSuccess(result));
     })
     .catch(error => {
+      debugger;
+      console.log("user error", error);
       throw error;
     });
 
