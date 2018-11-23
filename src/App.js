@@ -49,7 +49,6 @@ class App extends Component {
   };
 
   handleOpen = e => {
-    console.log(e.target);
     this.setState({
       showModal: true,
       signedUser: e.target.value === "Sign in"

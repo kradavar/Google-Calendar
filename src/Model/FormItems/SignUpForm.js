@@ -11,12 +11,7 @@ import "../../Styles/Modal.css";
 const SignUpFormComponent = ({ reset, handleSubmit, signUp }) => {
   const submit = values => {
     const fullName = values.firstName + " " + values.lastName;
-    console.log("before calling sign up in form", values);
-    const username = values.username;
-    const password = values.password;
-    debugger;
-    signUp(username, password, fullName);
-    console.log("after signUp in Form");
+    signUp(values.username, values.password, fullName);
   };
   return (
     <form onSubmit={handleSubmit(submit)}>

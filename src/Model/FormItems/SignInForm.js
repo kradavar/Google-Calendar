@@ -7,9 +7,7 @@ import { connect } from "react-redux";
 
 const SignInFormComponent = ({ handleSubmit, reset, signIn }) => {
   const submit = values => {
-    const username = values.username;
-    const pass = values.password;
-    signIn(username, pass);
+    signIn(values.username, values.password);
   };
   return (
     <form onSubmit={handleSubmit(submit)}>
