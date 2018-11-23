@@ -8,7 +8,7 @@ import { signUp } from "../actions/users";
 import { validate } from "../../validation/sign";
 import "../../Styles/Modal.css";
 
-const SignUpFormComponent = ({ reset, id, handleSubmit }) => {
+const SignUpFormComponent = ({ reset, handleSubmit, signUp }) => {
   const submit = values => {
     const fullName = values.firstName + " " + values.lastName;
     console.log("before calling sign up in form", values);
