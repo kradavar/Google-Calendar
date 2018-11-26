@@ -8,9 +8,9 @@ export class UserAPI {
     });
     return fetch(request)
       .then(response => {
-        if (response.status > 400) {
-          throw response;
-        } else return response.json();
+        if (response.ok) {
+          return response.json();
+        } else throw response;
       })
       .catch(err => {
         return err;

@@ -1,7 +1,8 @@
 import { UserAPI } from "../../api/userAPI";
+import { SubmissionError } from "redux-form";
 import { loadEventsSuccess } from "../actions/events";
 
-export const SIGN_IN = "SIGN_IN";
+export const SIGNIN_FAILED = "SIGNIN_FAILED";
 export const SIGN_UP = "SIGN_UP";
 export const SIGN_OUT = "SIGN_OUT";
 
@@ -15,17 +16,15 @@ const signOutSuccess = () => {
 export const signIn = (username, password) => dispatch =>
   UserAPI.signIn(username, password)
     .then(result => {
-      if (result.status > 400) {
-        debugger;
-        return dispatch({
-          type: "SIGNIN_FAILED",
-          error: "Wrong username or password"
-        });
-      } else dispatch(loadEventsSuccess(result));
+      debugger;
+      if (Number.isInteger(result.length)) {
+        dispatch(loadEventsSuccess(result));
+      } else {
+        throw result;
+      }
     })
     .catch(error => {
-      debugger;
-      return new Error(error.statusText);
+      throw error;
     });
 
 export const signUp = (username, password, fullName) => dispatch =>

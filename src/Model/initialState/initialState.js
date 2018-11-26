@@ -1,4 +1,4 @@
 export default {
   events: [],
-  user: {}
+  user: false
 };

@@ -7,14 +7,18 @@ import { connect } from "react-redux";
 
 const SignInFormComponent = ({ handleSubmit, reset, signIn }) => {
   const submit = values => {
-    signIn(values.username, values.password);
-    console.log(signIn);
-    console.log("-----------");
-    console.log(signIn(values.username, values.password));
-    throw new SubmissionError({
-      password: "Invalid username or password",
-      _error: "Sign in failed"
-    });
+    signIn(values.username, values.password)
+      .then(result => {
+        if (true) {
+          throw result;
+        }
+      })
+      .catch(error => {
+        throw new SubmissionError({
+          password: "Invalid username or password",
+          _error: "Sign in failed"
+        });
+      });
   };
   return (
     <form onSubmit={handleSubmit(submit)}>
@@ -37,6 +41,7 @@ const SignInFormComponent = ({ handleSubmit, reset, signIn }) => {
     </form>
   );
 };
+
 const sign = connect(
   null,
   { signIn }
