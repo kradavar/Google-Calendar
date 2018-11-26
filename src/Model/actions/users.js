@@ -16,11 +16,11 @@ const signOutSuccess = () => {
 export const signIn = (username, password) => dispatch =>
   UserAPI.signIn(username, password)
     .then(result => {
-      debugger;
-      if (Number.isInteger(result.length)) {
-        dispatch(loadEventsSuccess(result));
+      if (result.hasErrors) {
+        dispatch({ type: SIGNIN_FAILED, payload: { error: { result } } });
+        return Promise.reject(result);
       } else {
-        throw result;
+        return dispatch(loadEventsSuccess(result));
       }
     })
     .catch(error => {

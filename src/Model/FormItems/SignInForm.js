@@ -5,17 +5,17 @@ import { Button } from "../../View/Switchers/Button";
 import { signIn } from "../actions/users";
 import { connect } from "react-redux";
 
-const SignInFormComponent = ({ handleSubmit, reset, signIn }) => {
+const SignInFormComponent = ({ handleSubmit, reset, signIn, handleClose }) => {
   const submit = values => {
-    signIn(values.username, values.password)
-      .then(result => {
-        if (true) {
-          throw result;
-        }
+    return signIn(values.username, values.password)
+      .then(() => {
+        // add notification like toast.js or something?
+        console.log("MODAL IS CLOSING,BYE");
+        return handleClose();
       })
       .catch(error => {
         throw new SubmissionError({
-          password: "Invalid username or password",
+          [error.field]: error.message,
           _error: "Sign in failed"
         });
       });

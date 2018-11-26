@@ -7,14 +7,10 @@ export class UserAPI {
       headers: new Headers({ "Content-Type": "application/json" })
     });
     return fetch(request)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else throw response;
-      })
-      .catch(err => {
-        return err;
-      });
+      .then(response =>
+        response.ok ? response.json() : Promise.reject(response.json())
+      )
+      .catch(err => err);
   };
 
   static signUp = (username, password, fullName) => {
