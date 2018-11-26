@@ -1,5 +1,5 @@
 export class UserAPI {
-  static signIn = (username, password) => {
+  static signIn = (username: string, password: string) => {
     const request = new Request("http://localhost:5000/signin", {
       method: "POST",
       body: JSON.stringify({ username, password }),
@@ -13,7 +13,7 @@ export class UserAPI {
       .catch(err => err);
   };
 
-  static signUp = (username, password, fullName) => {
+  static signUp = (username: string, password: string, fullName: string) => {
     const request = new Request("http://localhost:5000/signup", {
       method: "POST",
       credentials: "include",
@@ -21,7 +21,9 @@ export class UserAPI {
       body: JSON.stringify({ username, password, full_name: fullName })
     });
     return fetch(request)
-      .then(response => response.json())
+      .then(response =>
+        response.ok ? response.json() : Promise.reject(response.json())
+      )
       .catch(err => err);
   };
 

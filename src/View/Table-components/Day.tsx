@@ -1,14 +1,14 @@
 import * as React from "react";
 import { CellHeader } from "./Cells/CellHeader";
 import "../../Styles/Cell.css";
-import RenderedEvents from "../../Model/containers/RenderedEvents.js";
+import RenderedEvents from "../../Model/containers/RenderedEvents";
 import ModalWindow from "../../Model/containers/ModalWindow";
 import { DayWeekHeader } from "./DayWeekHeader";
 import * as moment from "moment";
-import TimeLine from "../TimeLine.js";
+import TimeLine from "../TimeLine";
 import { formatDate, getDuration } from "../../Model/getRenderedDateInfo";
-import { DATE_FORMATS } from "../../constants/DateFormats.js";
-import { SharedViewContext } from "../../Context.js";
+import { DATE_FORMATS } from "../../constants/DateFormats";
+import { SharedViewContext } from "../../Context";
 import { VIEW } from "../../constants/ViewTypes";
 import { findDOMNode } from "react-dom";
 import { HourList } from "./HourList";

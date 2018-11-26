@@ -1,16 +1,24 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { connect } from "react-redux";
-import { deleteEvent } from "../actions/events.js";
+import { deleteEvent } from "../actions/events";
 import { Modal } from "../../View/ModalIems/Modal";
 
 import "../../Styles/Modal.css";
-import CreateForm from "../FormItems/CreateForm.js";
-import ShowForm from "../FormItems/ShowForm.js";
+import CreateForm from "../FormItems/CreateForm";
+import ShowForm from "../FormItems/ShowForm";
 import { formatDate, getDuration } from "../getRenderedDateInfo";
-import { DATE_FORMATS } from "../../constants/DateFormats.js";
-import { Button } from "../../View/Switchers/Button.js";
+import { DATE_FORMATS } from "../../constants/DateFormats";
+import { Button } from "../../View/Switchers/Button";
 
-class ModalShowEvent extends Component {
+export interface IModalShowEventProps {
+  deleteEvent: (id: number) => void;
+}
+
+export interface IModalShowEventState {
+  editMode: boolean;
+}
+
+class ModalShowEvent extends React.Component<any, IModalShowEventState> {
   state = {
     editMode: false
   };
@@ -26,7 +34,7 @@ class ModalShowEvent extends Component {
   };
 
   render() {
-    const { start, end, handleClose } = this.props;
+    const { start, end, handleClose }: any = this.props;
     const name = this.props.event_name;
     const { editMode } = this.state;
     return (

@@ -4,7 +4,7 @@ export const DELETE_EVENT = "DELETE_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 export const LOAD_EVENTS_SUCCESS = "LOAD_EVENTS_SUCCESS";
 
-const addEventSuccess = event => {
+const addEventSuccess = (event: Object) => {
   return {
     type: ADD_EVENT,
     payload: {
@@ -13,20 +13,22 @@ const addEventSuccess = event => {
   };
 };
 
-const deleteEventSuccess = id => {
+const deleteEventSuccess = (id: number) => {
   return { type: DELETE_EVENT, payload: { id } };
 };
 
-const editEventSuccess = event => {
-  const { start, end, event_name, id } = event;
+const editEventSuccess = (event: Object) => {
+  const { start, end, event_name, id }: any = event;
   return { type: EDIT_EVENT, payload: { id, event_name, start, end } };
 };
 
-export const loadEventsSuccess = events => {
+export const loadEventsSuccess = (events: Array<Object>) => {
   return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
 };
 
-export const addEvent = (name, start, end) => dispatch =>
+export const addEvent = (name: string, start: string, end: string) => (
+  dispatch: Function
+) =>
   EventAPI.createEvent(name, start, end)
     .then(result => {
       dispatch(
@@ -42,7 +44,7 @@ export const addEvent = (name, start, end) => dispatch =>
       throw error;
     });
 
-export const deleteEvent = id => dispatch =>
+export const deleteEvent = (id: number) => (dispatch: Function) =>
   EventAPI.deleteEvent(id)
     .then(() => {
       dispatch(deleteEventSuccess(id));
@@ -51,7 +53,12 @@ export const deleteEvent = id => dispatch =>
       throw error;
     });
 
-export const editEvent = (id, name, start, end) => dispatch =>
+export const editEvent = (
+  id: number,
+  name: string,
+  start: string,
+  end: string
+) => (dispatch: Function) =>
   EventAPI.editEvent(id, name, start, end)
     .then(() => {
       dispatch(

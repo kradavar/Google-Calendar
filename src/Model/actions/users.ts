@@ -1,9 +1,8 @@
 import { UserAPI } from "../../api/userAPI";
-import { SubmissionError } from "redux-form";
-import { loadEventsSuccess } from "../actions/events";
+import { loadEventsSuccess } from "./events";
 
 export const SIGNIN_FAILED = "SIGNIN_FAILED";
-export const SIGN_UP = "SIGN_UP";
+export const SIGNUP_FAILED = "SIGNUP_FAILED";
 export const SIGN_OUT = "SIGN_OUT";
 
 const signOutSuccess = () => {
@@ -13,7 +12,9 @@ const signOutSuccess = () => {
   };
 };
 
-export const signIn = (username, password) => dispatch =>
+export const signIn = (username: string, password: string) => (
+  dispatch: Function
+) =>
   UserAPI.signIn(username, password)
     .then(result => {
       if (result.hasErrors) {
@@ -27,6 +28,27 @@ export const signIn = (username, password) => dispatch =>
       throw error;
     });
 
+export const signUp = (
+  username: string,
+  password: string,
+  fullName: string
+) => (dispatch: Function) =>
+  UserAPI.signUp(username, password, fullName)
+    .then(result => {
+      if (result.hasErrors) {
+        dispatch({
+          type: SIGNUP_FAILED,
+          payload: { error: { result } }
+        });
+        return Promise.reject(result);
+      } else {
+        return dispatch(loadEventsSuccess(result));
+      }
+    })
+    .catch(error => {
+      throw error;
+    });
+/*
 export const signUp = (username, password, fullName) => dispatch =>
   UserAPI.signUp(username, password, fullName)
     .then(result => {
@@ -41,8 +63,8 @@ export const signUp = (username, password, fullName) => dispatch =>
       console.log("user error", error);
       throw error;
     });
-
-export const signOut = () => dispatch =>
+*/
+export const signOut = () => (dispatch: Function) =>
   UserAPI.signOut()
     .then(result => {
       dispatch(signOutSuccess());

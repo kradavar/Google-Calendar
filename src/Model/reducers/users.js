@@ -1,4 +1,4 @@
-import { SIGNIN_FAILED } from "../actions/users";
+import { SIGNIN_FAILED, SIGNUP_FAILED } from "../actions/users";
 
 import initialState from "../initialState/initialState";
 

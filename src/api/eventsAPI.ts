@@ -1,5 +1,5 @@
 export class EventAPI {
-  static createEvent = (name, start, end) => {
+  static createEvent = (name: string, start: string, end: string) => {
     const request = new Request("http://localhost:5000/events", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
@@ -11,7 +11,7 @@ export class EventAPI {
       .catch(error => error);
   };
 
-  static editEvent = (id, name, start, end) => {
+  static editEvent = (id: number, name: string, start: string, end: string) => {
     const request = new Request("http://localhost:5000/events/" + id, {
       method: "PUT",
       headers: new Headers({ "Content-Type": "application/json" }),
@@ -24,7 +24,7 @@ export class EventAPI {
       .catch(error => error);
   };
 
-  static deleteEvent = id => {
+  static deleteEvent = (id: number) => {
     const request = new Request("http://localhost:5000/events/" + id, {
       method: "DELETE",
       credentials: "include",
