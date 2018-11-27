@@ -4,6 +4,7 @@ import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
 import { Button } from "../../View/Switchers/Button";
 import { signUp } from "../actions/users";
+import { SIGN } from "../../constants/SignTypes";
 import { validate } from "../../validation/sign";
 import "../../Styles/Modal.css";
 
@@ -36,10 +37,10 @@ const SignUpFormComponent = ({ reset, handleSubmit, signUp, handleClose }) => {
           classes="btn-outline-secondary"
           data-dismiss="modal"
           onClick={reset}
-          value="Clear"
+          value="Cancel"
         />
 
-        <Button classes="btn-outline-success" value="Create" type="submit" />
+        <Button classes="btn-outline-success" value={SIGN.UP} type="submit" />
       </div>
     </form>
   );

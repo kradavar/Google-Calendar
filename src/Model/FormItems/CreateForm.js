@@ -15,7 +15,9 @@ const CreateFormComponent = ({
   id,
   addEvent,
   editEvent,
-  handleSubmit
+  handleSubmit,
+  isSigned,
+  handleClose
 }) => {
   const submit = values => {
     const name = values.name;
@@ -33,46 +35,68 @@ const CreateFormComponent = ({
     id ? editEvent(id, name, start, end, 1) : addEvent(name, start, end, 1);
   };
   return (
-    <form onSubmit={handleSubmit(submit)}>
-      <FormInputWithLabel
-        name="name"
-        label="Name: "
-        placeholder="Event Name"
-        type="text"
-      />
-      <FormInputWithLabel
-        name="eventType"
-        label="All Day"
-        value={false}
-        type="checkbox"
-        classes="checkbox-form"
-      />
+    <React.Fragment>
+      {isSigned ? (
+        <form onSubmit={handleSubmit(submit)}>
+          <FormInputWithLabel
+            name="name"
+            label="Name: "
+            placeholder="Event Name"
+            type="text"
+          />
+          <FormInputWithLabel
+            name="eventType"
+            label="All Day"
+            value={false}
+            type="checkbox"
+            classes="checkbox-form"
+          />
 
-      <FormSection name="start">
-        <DateTimeSection label="Start: " isAllDayEvent={isAllDayEvent} />
-      </FormSection>
-      <FormSection name="end">
-        <DateTimeSection label="End: " isAllDayEvent={isAllDayEvent} />
-      </FormSection>
+          <FormSection name="start">
+            <DateTimeSection label="Start: " isAllDayEvent={isAllDayEvent} />
+          </FormSection>
+          <FormSection name="end">
+            <DateTimeSection label="End: " isAllDayEvent={isAllDayEvent} />
+          </FormSection>
 
-      <div className="modal-footer">
-        <Button
-          classes="btn-outline-secondary"
-          data-dismiss="modal"
-          onClick={reset}
-          value="Clear"
-        />
+          <div className="modal-footer">
+            <Button
+              classes="btn-outline-secondary"
+              data-dismiss="modal"
+              onClick={reset}
+              value="Clear"
+            />
 
-        <Button classes="btn-outline-success" value="Create" type="submit" />
-      </div>
-    </form>
+            <Button
+              classes="btn-outline-success"
+              value="Create"
+              type="submit"
+            />
+          </div>
+        </form>
+      ) : (
+        <React.Fragment>
+          <p>Please, sign in or sign up to create new event</p>
+          <div className="modal-footer">
+            <Button
+              classes="btn-outline-secondary"
+              data-dismiss="modal"
+              onClick={handleClose}
+              value="Close"
+            />
+          </div>
+        </React.Fragment>
+      )}
+    </React.Fragment>
   );
 };
 
 const mapStateToProps = state => {
-  const selector = formValueSelector("createEvent");
+  const userSelector = state => state.user.isSigned;
+  const eventType = formValueSelector("createEvent");
   return {
-    isAllDayEvent: selector(state, "eventType")
+    isAllDayEvent: eventType(state, "eventType"),
+    isSigned: userSelector(state)
   };
 };
 

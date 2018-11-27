@@ -4,6 +4,7 @@ import { FormInputWithLabel } from "./FormInputWithLabel";
 import { Button } from "../../View/Switchers/Button";
 import { signIn } from "../actions/users";
 import { connect } from "react-redux";
+import { SIGN } from "../../constants/SignTypes";
 
 const SignInFormComponent = ({ handleSubmit, reset, signIn, handleClose }) => {
   const submit = values =>
@@ -36,7 +37,7 @@ const SignInFormComponent = ({ handleSubmit, reset, signIn, handleClose }) => {
           value="Clear"
         />
 
-        <Button classes="btn-outline-success" value="Create" type="submit" />
+        <Button classes="btn-outline-success" value={SIGN.IN} type="submit" />
       </div>
     </form>
   );

@@ -9,6 +9,7 @@ const ModalWindow = ({ handleClose, dayDate, hour }) => (
   <Modal header="Create New Event" handleClose={handleClose}>
     {
       <CreateForm
+        handleClose={handleClose}
         initialValues={{
           eventType: false,
           start: {
