@@ -6,8 +6,8 @@ import { signIn } from "../actions/users";
 import { connect } from "react-redux";
 
 const SignInFormComponent = ({ handleSubmit, reset, signIn, handleClose }) => {
-  const submit = values => {
-    return signIn(values.username, values.password)
+  const submit = values =>
+    signIn(values.username, values.password)
       .then(() => {
         // add notification like toast.js or something?
         console.log("MODAL IS CLOSING,BYE");
@@ -19,7 +19,7 @@ const SignInFormComponent = ({ handleSubmit, reset, signIn, handleClose }) => {
           _error: "Sign in failed"
         });
       });
-  };
+
   return (
     <form onSubmit={handleSubmit(submit)}>
       <FormInputWithLabel name="username" label="Your username: " type="text" />

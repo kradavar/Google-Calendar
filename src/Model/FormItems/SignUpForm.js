@@ -1,17 +1,25 @@
 import React from "react";
-import { reduxForm } from "redux-form";
+import { reduxForm, SubmissionError } from "redux-form";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
 import { Button } from "../../View/Switchers/Button";
 import { signUp } from "../actions/users";
-
 import { validate } from "../../validation/sign";
 import "../../Styles/Modal.css";
 
-const SignUpFormComponent = ({ reset, handleSubmit, signUp }) => {
+const SignUpFormComponent = ({ reset, handleSubmit, signUp, handleClose }) => {
   const submit = values => {
     const fullName = values.firstName + " " + values.lastName;
-    signUp(values.username, values.password, fullName);
+    return signUp(values.username, values.password, fullName)
+      .then(() => {
+        return handleClose();
+      })
+      .catch(error => {
+        throw new SubmissionError({
+          username: "User with this username is already exists.",
+          _error: "Sign up failed"
+        });
+      });
   };
   return (
     <form onSubmit={handleSubmit(submit)}>
