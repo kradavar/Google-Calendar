@@ -40,3 +40,14 @@
   display: flex;
   align-items: center;
 }
+
+.signup-form {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signup-form input {
+  width: auto;
+}

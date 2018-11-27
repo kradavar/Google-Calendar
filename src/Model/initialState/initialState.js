@@ -1,4 +1,7 @@
 export default {
   events: [],
-  user: false
+  user: {
+    isSigned: false,
+    hasErrors: false
+  }
 };

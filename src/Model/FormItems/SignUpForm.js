@@ -9,9 +9,8 @@ import { validate } from "../../validation/sign";
 import "../../Styles/Modal.css";
 
 const SignUpFormComponent = ({ reset, handleSubmit, signUp, handleClose }) => {
-  const submit = values => {
-    const fullName = values.firstName + " " + values.lastName;
-    return signUp(values.username, values.password, fullName)
+  const submit = values =>
+    signUp(values.username, values.password, values.fullName)
       .then(() => handleClose())
       .catch(error => {
         throw new SubmissionError({
@@ -19,16 +18,31 @@ const SignUpFormComponent = ({ reset, handleSubmit, signUp, handleClose }) => {
           _error: "Sign up failed"
         });
       });
-  };
+
   return (
     <form onSubmit={handleSubmit(submit)}>
-      <FormInputWithLabel name="firstName" label="First Name: " type="text" />
-      <FormInputWithLabel name="lastName" label="Last Name: " type="text" />
-      <FormInputWithLabel name="username" label="Username: " type="text" />
-      <FormInputWithLabel name="password" label="Password: " type="password" />
       <FormInputWithLabel
+        classes="signup-form"
+        name="fullName"
+        label="Please, enter your name: "
+        type="text"
+      />
+      <FormInputWithLabel
+        classes="signup-form"
+        name="username"
+        label="Create a unique username: "
+        type="text"
+      />
+      <FormInputWithLabel
+        classes="signup-form"
+        name="password"
+        label="Create your secret password: "
+        type="password"
+      />
+      <FormInputWithLabel
+        classes="signup-form"
         name="correctPassword"
-        label="Password one more time: "
+        label="Confirm your password: "
         type="password"
       />
 
