@@ -1,16 +1,9 @@
 import { UserAPI } from "../../api/userAPI";
-import { loadEventsSuccess } from "./events";
+import { loadEventsSuccess, removeEvents } from "./events";
 
 export const SIGNIN_FAILED = "SIGNIN_FAILED";
 export const SIGNUP_FAILED = "SIGNUP_FAILED";
 export const SIGN_OUT = "SIGN_OUT";
-
-const signOutSuccess = () => {
-  return {
-    type: SIGN_OUT,
-    payload: {}
-  };
-};
 
 export const signIn = (username: string, password: string) => (
   dispatch: Function
@@ -52,7 +45,9 @@ export const signUp = (
 export const signOut = () => (dispatch: Function) =>
   UserAPI.signOut()
     .then(result => {
-      dispatch(signOutSuccess());
+      if (result.signOutDone) {
+        dispatch(removeEvents());
+      }
     })
     .catch(error => {
       throw error;

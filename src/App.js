@@ -37,7 +37,7 @@ class App extends Component {
       nextPeriod: this.nextPeriod,
       previuosPeriod: this.previuosPeriod,
       showModal: false,
-      signedUser: false
+      signType: "Sign in"
     };
   }
 
@@ -51,7 +51,7 @@ class App extends Component {
   handleOpen = e => {
     this.setState({
       showModal: true,
-      signedUser: e.target.value === "Sign in"
+      signType: e.target.value
     });
     e.stopPropagation();
   };
@@ -66,7 +66,7 @@ class App extends Component {
           </div>
           {this.state.showModal && (
             <SignModal
-              signed={this.state.signedUser}
+              type={this.state.signType}
               handleClose={this.handleClose}
             />
           )}

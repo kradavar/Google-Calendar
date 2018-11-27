@@ -3,6 +3,7 @@ export const ADD_EVENT = "ADD_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 export const LOAD_EVENTS_SUCCESS = "LOAD_EVENTS_SUCCESS";
+export const REMOVE_EVENTS = "REMOVE_EVENTS";
 
 const addEventSuccess = (event: Object) => {
   return {
@@ -24,6 +25,10 @@ const editEventSuccess = (event: Object) => {
 
 export const loadEventsSuccess = (events: Array<Object>) => {
   return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
+};
+
+export const removeEvents = () => {
+  return { type: REMOVE_EVENTS, payload: {} };
 };
 
 export const addEvent = (name: string, start: string, end: string) => (

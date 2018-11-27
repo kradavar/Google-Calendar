@@ -1,17 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
 import { Modal } from "./ModalIems/Modal";
 import SignInForm from "../Model/FormItems/SignInForm";
 import SignUpForm from "../Model/FormItems/SignUpForm";
+import SignOutForm from "../Model/FormItems/SignOutForm";
+import { SIGN } from "../constants/SignTypes";
 
-export class SignModal extends Component {
-  render() {
-    return (
-      <Modal
-        header={this.props.signed ? "Sign in" : "Sign up"}
-        handleClose={this.props.handleClose}
-      >
-        {this.props.signed ? <SignInForm /> : <SignUpForm />}
-      </Modal>
-    );
-  }
-}
+export const SignModal = ({ handleClose, type }) => {
+  console.log(handleClose);
+  return (
+    <Modal header={type} handleClose={handleClose}>
+      {type === SIGN.IN ? (
+        <SignInForm />
+      ) : (
+        <React.Fragment>
+          {type === SIGN.UP ? (
+            <SignUpForm />
+          ) : (
+            <SignOutForm handleClose={handleClose} />
+          )}
+        </React.Fragment>
+      )}
+    </Modal>
+  );
+};

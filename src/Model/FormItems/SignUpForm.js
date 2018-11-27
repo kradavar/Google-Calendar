@@ -11,9 +11,7 @@ const SignUpFormComponent = ({ reset, handleSubmit, signUp, handleClose }) => {
   const submit = values => {
     const fullName = values.firstName + " " + values.lastName;
     return signUp(values.username, values.password, fullName)
-      .then(() => {
-        return handleClose();
-      })
+      .then(() => handleClose())
       .catch(error => {
         throw new SubmissionError({
           username: "User with this username is already exists.",

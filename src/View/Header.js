@@ -3,6 +3,7 @@ import React from "react";
 import { ViewTypeSwitcher } from "./Switchers/ViewTypeSwitcher";
 import "../Styles/App.css";
 import { SharedViewContext } from "../Context";
+import SignMenu from "./SignMenu";
 import { Button } from "./Switchers/Button";
 import { DATE_FORMATS } from "../constants/DateFormats";
 import { formatDate } from "../Model/getRenderedDateInfo";
@@ -21,33 +22,7 @@ export const Header = props => {
             <Button value="▶" classes="nav-input" onClick={nextPeriod} />
           </div>
           <ViewTypeSwitcher />
-          <div className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle sign-link"
-              href="#"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Sign
-            </a>
-            <div
-              className="dropdown-menu drop-width"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
-              <Button
-                value="Sign in"
-                classes="dropdown-item drop-button"
-                onClick={props.handleOpen}
-              />
-              <Button
-                value="Sign up"
-                classes="dropdown-item drop-button"
-                onClick={props.handleOpen}
-              />
-            </div>
-          </div>
+          <SignMenu handleOpen={props.handleOpen} />
         </nav>
       )}
     </SharedViewContext.Consumer>
