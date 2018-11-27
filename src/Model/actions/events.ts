@@ -30,7 +30,19 @@ export const loadEventsSuccess = (events: Array<Object>) => {
 export const removeEvents = () => {
   return { type: REMOVE_EVENTS, payload: {} };
 };
-
+/*
+export const loadUserEvents = () => (dispatch: Function) =>
+  EventAPI.getEvents()
+    .then((result: any) => {
+      if (result.hasErrors) {
+        dispatch(loadEventsSuccess([]))
+      }
+      else {
+        dispatch(loadEventsSuccess(result))
+       }
+    })
+    .catch();
+*/
 export const addEvent = (name: string, start: string, end: string) => (
   dispatch: Function
 ) =>

@@ -1,4 +1,13 @@
 export class EventAPI {
+  static getEvents = () =>
+    fetch("http://localhost:5000/events")
+      .then((result: any) => {
+        if (result.hasErrors) {
+          return Promise.reject(result.json());
+        } else return result.json();
+      })
+      .catch((err: any) => err);
+
   static createEvent = (name: string, start: string, end: string) => {
     const request = new Request("http://localhost:5000/events", {
       method: "POST",

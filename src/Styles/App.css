@@ -9,10 +9,12 @@
   font-size: 2rem;
   font-family: "Mali";
   margin-left: 4rem;
+  pointer-events: none;
 }
 .current-month {
   font-size: 3rem;
   font-family: "Mali";
+  pointer-events: none;
 }
 
 .bottom-buttons {
