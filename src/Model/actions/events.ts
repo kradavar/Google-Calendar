@@ -1,4 +1,6 @@
 import { EventAPI } from "../../api/eventsAPI";
+import { normalize } from "normalizr";
+import { users } from "../../api/schema";
 export const ADD_EVENT = "ADD_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
@@ -24,7 +26,8 @@ const editEventSuccess = (event: Object) => {
 };
 
 export const loadEventsSuccess = (events: Array<Object>) => {
-  return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
+  const eventsNorm = normalize(events, users);
+  return { type: LOAD_EVENTS_SUCCESS, payload: { eventsNorm } };
 };
 
 export const removeEvents = () => {

@@ -1,5 +1,7 @@
 export default {
-  events: [],
+  events: {
+    byIds: {}
+  },
   user: {
     isSigned: false,
     hasErrors: false

@@ -1,10 +1,13 @@
 import { schema } from "normalizr";
+const event = new schema.Entity("events");
+const user = new schema.Entity(
+  "users",
+  {
+    events: [event]
+  },
+  {
+    idAttribute: "userId"
+  }
+);
 
-const user = new schema.Entity("userID");
-
-const eventsById = new schema.Entity("events");
-
-const allInfo = new schema.Entity("all-events", {
-  usersById: user,
-  events: [eventsById]
-});
+export const users = [user];

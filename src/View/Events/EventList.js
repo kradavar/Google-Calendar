@@ -44,12 +44,11 @@ class EventList extends Component {
             ) : (
               <React.Fragment>
                 {this.getRenderedList(this.props.events, view)}
-                {this.props.events.length > 2 &&
-                  view === VIEW.MONTH && (
-                    <p className="more" onClick={this.handleLinkClick}>
-                      more
-                    </p>
-                  )}
+                {this.props.events.length > 2 && view === VIEW.MONTH && (
+                  <p className="more" onClick={this.handleLinkClick}>
+                    more
+                  </p>
+                )}
               </React.Fragment>
             )}
           </ul>

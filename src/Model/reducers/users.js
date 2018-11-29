@@ -8,7 +8,11 @@ export const user = (state = initialState.user, action) => {
     case SIGNIN_FAILED:
       return { isSigned: false, hasErrors: action.payload.error };
     case LOAD_EVENTS_SUCCESS:
-      return { isSigned: true, hasErrors: false };
+      return {
+        isSigned: true,
+        hasErrors: false,
+        byIds: action.payload.eventsNorm.entities.users
+      };
     case REMOVE_EVENTS:
       return { isSigned: false, hasErrors: false };
     default:
