@@ -7,9 +7,8 @@ import { DayWeekHeader } from "./DayWeekHeader";
 import * as moment from "moment";
 import TimeLine from "../TimeLine";
 import { formatDate, getDuration } from "../../Model/getRenderedDateInfo";
-import { DATE_FORMATS } from "../../constants/DateFormats";
+import { DATE_FORMATS, VIEW } from "../../constants/constants";
 import { SharedViewContext } from "../../Context";
-import { VIEW } from "../../constants/ViewTypes";
 import { findDOMNode } from "react-dom";
 import { HourList } from "./HourList";
 

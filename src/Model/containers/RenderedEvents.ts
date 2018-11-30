@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import EventList from "../../View/Events/EventList";
 import { formatDate } from "../getRenderedDateInfo";
-import { DATE_FORMATS } from "../../constants/DateFormats";
+import { DATE_FORMATS } from "../../constants/constants";
 
 const eventsSelector = (state: any) =>
   Object.keys(state.events.byIds).map(key => state.events.byIds[key]);

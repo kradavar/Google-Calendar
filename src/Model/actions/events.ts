@@ -3,7 +3,6 @@ import { normalize } from "normalizr";
 import { EventAPI } from "../../api/eventsAPI";
 import { user } from "../../api/schema";
 
-
 export const ADD_EVENT = "ADD_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
@@ -14,10 +13,7 @@ export const REMOVE_EVENTS = "REMOVE_EVENTS";
 const addEventSuccess = (event: Object) => {
   return {
     type: ADD_EVENT,
-    //  WHY not just payload: event
-    payload: {
-      ...event
-    }
+    payload: event
   };
 };
 
@@ -34,7 +30,9 @@ const editEventSuccess = (event: Object) => {
 
 // STORE_EVENTS ?
 export const loadEventsSuccess = (response: Array<Object>) => {
-  const { entities: { events } } = normalize(response, [user]);
+  const {
+    entities: { events }
+  } = normalize(response, [user]);
   return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
 };
 
@@ -42,19 +40,6 @@ export const removeEvents = () => {
   // Does it make sense in payload: {} ?
   return { type: REMOVE_EVENTS, payload: {} };
 };
-/*
-export const loadUserEvents = () => (dispatch: Function) =>
-  EventAPI.getEvents()
-    .then((result: any) => {
-      if (result.hasErrors) {
-        dispatch(loadEventsSuccess([]))
-      }
-      else {
-        dispatch(loadEventsSuccess(result))
-       }
-    })
-    .catch();
-*/
 
 // TODO start, end, ... => event: EventType
 export const addEvent = (name: string, start: string, end: string) => (

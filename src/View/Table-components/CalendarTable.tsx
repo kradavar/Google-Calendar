@@ -4,8 +4,7 @@ import { Month } from "./Month";
 import { Week } from "./Week";
 import { SharedViewContext } from "../../Context";
 import * as moment from "moment";
-import { VIEW } from "../../constants/ViewTypes";
-import { DATE_FORMATS } from "../../constants/DateFormats";
+import { VIEW, DATE_FORMATS } from "../../constants/constants";
 import { formatDate } from "../../Model/getRenderedDateInfo";
 
 export const CalendarTable: React.SFC<{}> = ({}) => {
@@ -14,8 +13,7 @@ export const CalendarTable: React.SFC<{}> = ({}) => {
       {({
         view,
         renderedDate
-      }:
-        // SharedViewContextProps
+      }: // SharedViewContextProps
       {
         view: string;
         renderedDate: moment.Moment;

@@ -2,7 +2,7 @@ import * as React from "react";
 import Event from "./Event";
 import "../../Styles/Event.css";
 import { SharedViewContext } from "../../Context";
-import { VIEW } from "../../constants/ViewTypes";
+import { VIEW } from "../../constants/constants";
 import { EventsComponent } from "./EventsComponent";
 
 export interface IEventListProps {
@@ -18,10 +18,10 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
   state = {
     showAllEvents: false,
     colorsByUser: {
-      1: "#d598ac",
-      2: "#bf98d5",
+      1: "#d598ac"
+      /* 2: "#bf98d5",
       3: "#a4d2d4",
-      4: "#81a3e6"
+      4: "#81a3e6"*/
     }
   };
   getClassName = (view: string) =>
@@ -39,14 +39,16 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
         color += letters[Math.floor(Math.random() * 16)];
       }
       console.log(this.state);
-      const nextColorByUser = {
+      // state warning:(
+      /*const nextColorByUser = {
         ...this.state.colorsByUser,
         [userOfEvent]: color
       };
-      this.setState({
+       this.setState({
         colorsByUser: nextColorByUser
       });
-      console.log(this.state);
+      debugger;
+      console.log(this.state);*/
       return color;
     }
   };

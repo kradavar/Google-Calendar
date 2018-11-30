@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import { deleteEvent } from "../actions/events";
 import { Modal } from "../../View/ModalIems/Modal";
 
-import "../../Styles/Modal.css";
 import CreateForm from "../FormItems/CreateForm";
 import ShowForm from "../FormItems/ShowForm";
 import { formatDate, getDuration } from "../getRenderedDateInfo";
-import { DATE_FORMATS } from "../../constants/DateFormats";
+import { DATE_FORMATS } from "../../constants/constants";
 import { Button } from "../../View/Switchers/Button";
 
 // Dead code ?
@@ -27,7 +26,6 @@ class ModalShowEvent extends React.Component<any, IModalShowEventState> {
 
   // Why does it need?
   deleteCurrentEvent = () => {
-    debugger;
     this.props.deleteEvent(this.props.id);
   };
 

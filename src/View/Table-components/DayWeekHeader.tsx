@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../../Styles/Cell.css";
 import { formatDate } from "../../Model/getRenderedDateInfo";
-import { DATE_FORMATS } from "../../constants/DateFormats";
+import { DATE_FORMATS } from "../../constants/constants";
 import * as moment from "moment";
 
 export const DayWeekHeader: React.SFC<{

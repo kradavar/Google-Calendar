@@ -2,7 +2,7 @@ import React from "react";
 
 import "../../Styles/Switchers.css";
 import { SharedViewContext } from "../../Context";
-import { VIEW } from "../../constants/ViewTypes";
+import { VIEW } from "../../constants/constants";
 
 export const ViewTypeSwitcher = () => {
   return (

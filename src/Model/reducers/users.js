@@ -10,8 +10,7 @@ export const user = (state = initialState.user, action) => {
     case LOAD_EVENTS_SUCCESS:
       return {
         isSigned: true,
-        hasErrors: false,
-        byIds: action.payload.eventsNorm.entities.users
+        hasErrors: false
       };
     case REMOVE_EVENTS:
       return { isSigned: false, hasErrors: false };

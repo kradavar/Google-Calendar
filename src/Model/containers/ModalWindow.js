@@ -1,9 +1,8 @@
 import React from "react";
-import "../../Styles/Modal.css";
 import { Modal } from "../../View/ModalIems/Modal";
 import CreateForm from "../FormItems/CreateForm";
 import { formatDate } from "../getRenderedDateInfo";
-import { DATE_FORMATS } from "../../constants/DateFormats";
+import { DATE_FORMATS } from "../../constants/constants";
 
 // Move to ts
 const ModalWindow = ({ handleClose, dayDate, hour }) => (

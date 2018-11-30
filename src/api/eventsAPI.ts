@@ -1,9 +1,4 @@
-// Add base wrapper where will be logic like
-// return fetch(request)
-//     .then(response => response.json())
-//     .catch(error => error);
 import { makeRequest } from "./requestWrapper";
-
 import { EVENTS } from "./enpoints";
 export class EventAPI {
   // TODO start, end => event: EventType

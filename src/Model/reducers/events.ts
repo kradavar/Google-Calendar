@@ -8,29 +8,26 @@ import {
 import initialState from "../initialState/initialState";
 
 export const events = (state = initialState.events, action: any) => {
-  // ???
-  const nextState = state;
   switch (action.type) {
     case LOAD_EVENTS_SUCCESS:
-      return { byIds: action.payload.eventsNorm.entities.events };
+      return Object.assign({}, state, { byIds: action.payload.events });
     case ADD_EVENT:
-      debugger;
-      return {
+      return Object.assign({}, state, {
         byIds: {
-          ...nextState.byIds,
-          [action.payload.id]: {
-            ...action.payload
-          }
+          [action.payload.id]: action.payload
         }
-      };
-      case DELETE_EVENT:
+      });
+    case DELETE_EVENT:
       // DON'T MODIFY STATE
+      const nextState = Object.assign({}, state);
       delete nextState.byIds[action.payload.id];
       return nextState;
     case EDIT_EVENT:
-        // DON'T MODIFY STATE
-      nextState.byIds[action.payload.id] = { ...action.payload };
-      return nextState;
+      return Object.assign({}, state, {
+        byIds: {
+          [action.payload.id]: action.payload
+        }
+      });
     case REMOVE_EVENTS:
       return {};
     default:

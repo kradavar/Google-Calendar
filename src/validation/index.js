@@ -1,5 +1,5 @@
 import { getDuration, formatDate } from "../Model/getRenderedDateInfo";
-import { DATE_FORMATS } from "../constants/DateFormats";
+import { DATE_FORMATS } from "../constants/constants";
 import moment from "moment";
 
 const checkDate = date =>

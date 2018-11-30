@@ -1,5 +1,5 @@
 import React from "react";
-import { VIEW } from "./constants/ViewTypes";
+import { VIEW } from "./constants/constants";
 import moment from "moment";
 
 export const SharedViewContext = React.createContext({

@@ -4,9 +4,8 @@ import ModalShowEvent from "../../Model/containers/ModalShowEvent";
 import { getDuration } from "../../Model/getRenderedDateInfo";
 import moment from "moment";
 import { formatDate } from "../../Model/getRenderedDateInfo";
-import { DATE_FORMATS } from "../../constants/DateFormats";
+import { DATE_FORMATS, VIEW } from "../../constants/constants";
 import { SharedViewContext } from "../../Context";
-import { VIEW } from "../../constants/ViewTypes";
 
 export default class Event extends Component {
   state = {
@@ -38,7 +37,6 @@ export default class Event extends Component {
     const startTime = moment(start).minute();
     return 0.05 * startTime - 2.2; /* rise event on the top of its start */
   };
-
 
   getColor = user_id => this.props.color;
 

@@ -4,14 +4,13 @@ import "./Styles/App.css";
 // Calendar
 import { CalendarTable } from "./View/Table-components/CalendarTable";
 import { SharedViewContext } from "./Context";
-import { VIEW } from "./constants/ViewTypes";
+import { VIEW } from "./constants/constants";
 import { Header } from "./View/Header";
 import { SignModal } from "./View/Authorization";
 
 class App extends Component {
   constructor(props) {
     super(props);
-
     // Why all of these in constructor?
     this.changeViewType = e => {
       this.setState({

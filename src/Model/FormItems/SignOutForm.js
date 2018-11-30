@@ -2,10 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Button } from "../../View/Switchers/Button";
 import { signOut } from "../actions/users";
-import "../../Styles/Modal.css";
 
 // Is it a form?
-const SignOutFormComponent = ({ signOut, handleClose }) => {
+const SignOutComponent = ({ signOut, handleClose }) => {
   const handleSignOut = () => {
     return signOut()
       .then(() => handleClose())
@@ -37,4 +36,4 @@ const SignOutFormComponent = ({ signOut, handleClose }) => {
 export default connect(
   null,
   { signOut }
-)(SignOutFormComponent);
+)(SignOutComponent);

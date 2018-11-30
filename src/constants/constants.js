@@ -1,5 +1,3 @@
-// all files in constants can be combine in one
-
 export const DATE_FORMATS = {
   DAY: "ddd",
   HOUR: "HH",
@@ -10,4 +8,16 @@ export const DATE_FORMATS = {
   DATE_WITH_HOUR: "YYYY-MM-DD HH",
   DATE: "YYYY-MM-DD",
   DATE_WITH_TIME: "YYYY-MM-DD HH:mm"
+};
+
+export const SIGN = {
+  IN: "Sign in",
+  UP: "Sign up",
+  OUT: "Sign out"
+};
+
+export const VIEW = {
+  MONTH: "month",
+  WEEK: "week",
+  DAY: "day"
 };

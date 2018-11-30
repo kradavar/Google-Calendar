@@ -4,10 +4,10 @@ import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
 import { Button } from "../../View/Switchers/Button";
 import { signUp } from "../actions/users";
-import { SIGN } from "../../constants/SignTypes";
+import { SIGN } from "../../constants/constants";
 import { validate } from "../../validation/sign";
 
-// Modal.css everywhere ...
+// Modal.css everywhere ..
 import "../../Styles/Modal.css";
 
 const SignUpFormComponent = ({ reset, handleSubmit, signUp, handleClose }) => {
