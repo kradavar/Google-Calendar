@@ -1,3 +1,5 @@
+// all files in constants can be combine in one
+
 export const DATE_FORMATS = {
   DAY: "ddd",
   HOUR: "HH",

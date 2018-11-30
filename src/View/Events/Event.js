@@ -43,6 +43,7 @@ export default class Event extends Component {
     return 0.05 * startTime - 2.2; /* rise event on the top of its start */
   };
 
+  // ??????
   checkUserId = id => {
     if (this.state.userList.length) {
       for (let i = 0; i < this.state.userList.length; i++) {

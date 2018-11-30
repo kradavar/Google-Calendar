@@ -1,8 +1,9 @@
 import * as React from "react";
+import * as moment from "moment";
+
 import { Week } from "./Week";
 import "../../Styles/Cell.css";
 import { MonthHeader } from "./MonthHeader";
-import * as moment from "moment";
 import { formatDate } from "../../Model/getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/DateFormats";
 

@@ -8,6 +8,7 @@ import {
 import initialState from "../initialState/initialState";
 
 export const events = (state = initialState.events, action: any) => {
+  // ???
   const nextState = state;
   switch (action.type) {
     case LOAD_EVENTS_SUCCESS:
@@ -22,10 +23,12 @@ export const events = (state = initialState.events, action: any) => {
           }
         }
       };
-    case DELETE_EVENT:
+      case DELETE_EVENT:
+      // DON'T MODIFY STATE
       delete nextState.byIds[action.payload.id];
       return nextState;
     case EDIT_EVENT:
+        // DON'T MODIFY STATE
       nextState.byIds[action.payload.id] = { ...action.payload };
       return nextState;
     case REMOVE_EVENTS:

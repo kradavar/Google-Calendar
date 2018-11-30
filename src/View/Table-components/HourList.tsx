@@ -1,5 +1,6 @@
 import * as moment from "moment";
 import * as React from "react";
+
 import { DATE_FORMATS } from "../../constants/DateFormats";
 import { formatDate, getDuration } from "../../Model/getRenderedDateInfo";
 import { HourCell } from "./Cells/HourCell";

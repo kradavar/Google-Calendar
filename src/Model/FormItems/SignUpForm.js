@@ -6,6 +6,8 @@ import { Button } from "../../View/Switchers/Button";
 import { signUp } from "../actions/users";
 import { SIGN } from "../../constants/SignTypes";
 import { validate } from "../../validation/sign";
+
+// Modal.css everywhere ...
 import "../../Styles/Modal.css";
 
 const SignUpFormComponent = ({ reset, handleSubmit, signUp, handleClose }) => {

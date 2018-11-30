@@ -5,6 +5,7 @@ import CreateForm from "../FormItems/CreateForm";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/DateFormats";
 
+// Move to ts
 const ModalWindow = ({ handleClose, dayDate, hour }) => (
   <Modal header="Create New Event" handleClose={handleClose}>
     {
