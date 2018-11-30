@@ -12,20 +12,24 @@ import { Button } from "../../View/Switchers/Button";
 // Dead code ?
 export interface IModalShowEventProps {
   deleteEvent: (id: number) => void;
+  id: number;
+  event_name: string;
 }
 
 export interface IModalShowEventState {
   editMode: boolean;
 }
-
-// IModalShowEventProps instead of any
-class ModalShowEvent extends React.Component<any, IModalShowEventState> {
+class ModalShowEvent extends React.Component<
+  IModalShowEventProps,
+  IModalShowEventState
+> {
   state: IModalShowEventState = {
     editMode: false
   };
 
   // Why does it need?
   deleteCurrentEvent = () => {
+    debugger;
     this.props.deleteEvent(this.props.id);
   };
 
