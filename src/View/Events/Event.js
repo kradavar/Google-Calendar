@@ -39,6 +39,7 @@ export default class Event extends Component {
     return 0.05 * startTime - 2.2; /* rise event on the top of its start */
   };
 
+
   getColor = user_id => this.props.color;
 
   getStyles = (start, end, view, user_id) => {

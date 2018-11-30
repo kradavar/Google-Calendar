@@ -1,3 +1,8 @@
+// Add base wrapper where will be logic like
+// return fetch(request)
+//     .then(response => response.json())
+//     .catch(error => error);
+
 export class EventAPI {
   static getEvents = () =>
     fetch("http://localhost:5000/events")
@@ -8,6 +13,7 @@ export class EventAPI {
       })
       .catch((err: any) => err);
 
+  // TODO start, end => event: EventType
   static createEvent = (name: string, start: string, end: string) => {
     const request = new Request("http://localhost:5000/events", {
       method: "POST",
@@ -20,7 +26,8 @@ export class EventAPI {
       .catch(error => error);
   };
 
-  static editEvent = (id: number, name: string, start: string, end: string) => {
+    // TODO id, name, start, end => event: EventType
+    static editEvent = (id: number, name: string, start: string, end: string) => {
     const request = new Request("http://localhost:5000/events/" + id, {
       method: "PUT",
       headers: new Headers({ "Content-Type": "application/json" }),

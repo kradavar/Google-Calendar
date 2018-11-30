@@ -22,9 +22,11 @@ const CreateFormComponent = ({
   const submit = values => {
     const name = values.name;
 
+    // ?????
     let start = values.start.date + " ";
     let end = values.end.date + " ";
 
+    // Do it in onEventTypeChange
     if (values.eventType) {
       start += "00:00";
       end += "24:00";
@@ -34,6 +36,7 @@ const CreateFormComponent = ({
     }
     id ? editEvent(id, name, start, end, 1) : addEvent(name, start, end, 1);
   };
+  // Move a case !isSigned to a separate component and don't use it here
   return (
     <React.Fragment>
       {isSigned ? (

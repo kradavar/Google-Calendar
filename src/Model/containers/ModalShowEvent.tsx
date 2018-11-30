@@ -10,6 +10,7 @@ import { formatDate, getDuration } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/DateFormats";
 import { Button } from "../../View/Switchers/Button";
 
+// Dead code ?
 export interface IModalShowEventProps {
   deleteEvent: (id: number) => void;
 }
@@ -18,11 +19,13 @@ export interface IModalShowEventState {
   editMode: boolean;
 }
 
+// IModalShowEventProps instead of any
 class ModalShowEvent extends React.Component<any, IModalShowEventState> {
-  state = {
+  state: IModalShowEventState = {
     editMode: false
   };
 
+  // Why does it need?
   deleteCurrentEvent = () => {
     debugger;
     this.props.deleteEvent(this.props.id);
@@ -44,7 +47,7 @@ class ModalShowEvent extends React.Component<any, IModalShowEventState> {
         handleClose={handleClose}
         bottom={
           <div>
-            {editMode === false && (
+            {!editMode && (
               <Button
                 onClick={this.editCurrentEvent}
                 classes="btn-outline-info show-modal-button"

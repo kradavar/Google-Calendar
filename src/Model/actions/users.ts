@@ -5,6 +5,8 @@ export const SIGNIN_FAILED = "SIGNIN_FAILED";
 export const SIGNUP_FAILED = "SIGNUP_FAILED";
 export const SIGN_OUT = "SIGN_OUT";
 
+
+// TODO username, password, ... => event: UserType
 export const signIn = (username: string, password: string) => (
   dispatch: Function
 ) =>
@@ -21,6 +23,8 @@ export const signIn = (username: string, password: string) => (
       throw error;
     });
 
+
+// TODO username, password, ... => event: UserType
 export const signUp = (
   username: string,
   password: string,

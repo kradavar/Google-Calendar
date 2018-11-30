@@ -1,7 +1,7 @@
 import React from "react";
-
 import { Field } from "redux-form";
 
+// Why se use Modal.css into DateTimeSection?
 import "../../Styles/Modal.css";
 
 export const FormInputWithLabelComponent = ({
@@ -33,6 +33,7 @@ export const FormInputWithLabelComponent = ({
   );
 };
 
+// props={{ ...props }} ????
 export const FormInputWithLabel = props => {
   return (
     <Field

@@ -4,6 +4,7 @@ import { Button } from "../../View/Switchers/Button";
 import { signOut } from "../actions/users";
 import "../../Styles/Modal.css";
 
+// Is it a form?
 const SignOutFormComponent = ({ signOut, handleClose }) => {
   const handleSignOut = () => {
     return signOut()

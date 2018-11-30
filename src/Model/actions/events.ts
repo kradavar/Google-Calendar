@@ -1,15 +1,20 @@
-import { EventAPI } from "../../api/eventsAPI";
 import { normalize } from "normalizr";
-import { users } from "../../api/schema";
+
+import { EventAPI } from "../../api/eventsAPI";
+import { user } from "../../api/schema";
+
+
 export const ADD_EVENT = "ADD_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 export const LOAD_EVENTS_SUCCESS = "LOAD_EVENTS_SUCCESS";
 export const REMOVE_EVENTS = "REMOVE_EVENTS";
 
+//  Add EventType
 const addEventSuccess = (event: Object) => {
   return {
     type: ADD_EVENT,
+    //  WHY not just payload: event
     payload: {
       ...event
     }
@@ -20,17 +25,21 @@ const deleteEventSuccess = (id: number) => {
   return { type: DELETE_EVENT, payload: { id } };
 };
 
+// EDIT_EVENT_SUCCESS
+// EDIT_EVENT_FAILURE ???
 const editEventSuccess = (event: Object) => {
   const { start, end, event_name, id }: any = event;
   return { type: EDIT_EVENT, payload: { id, event_name, start, end } };
 };
 
-export const loadEventsSuccess = (events: Array<Object>) => {
-  const eventsNorm = normalize(events, users);
-  return { type: LOAD_EVENTS_SUCCESS, payload: { eventsNorm } };
+// STORE_EVENTS ?
+export const loadEventsSuccess = (response: Array<Object>) => {
+  const { entities: { events } } = normalize(response, [user]);
+  return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
 };
 
 export const removeEvents = () => {
+  // Does it make sense in payload: {} ?
   return { type: REMOVE_EVENTS, payload: {} };
 };
 /*
@@ -46,6 +55,8 @@ export const loadUserEvents = () => (dispatch: Function) =>
     })
     .catch();
 */
+
+// TODO start, end, ... => event: EventType
 export const addEvent = (name: string, start: string, end: string) => (
   dispatch: Function
 ) =>
@@ -73,6 +84,7 @@ export const deleteEvent = (id: number) => (dispatch: Function) =>
       throw error;
     });
 
+// EDIT_EVENT
 export const editEvent = (
   id: number,
   name: string,

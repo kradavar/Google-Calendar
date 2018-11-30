@@ -1,5 +1,6 @@
 import React from "react";
 import { reduxForm, SubmissionError } from "redux-form";
+
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { Button } from "../../View/Switchers/Button";
 import { signIn } from "../actions/users";
@@ -11,6 +12,7 @@ const SignInFormComponent = ({ handleSubmit, reset, signIn, handleClose }) => {
     signIn(values.username, values.password)
       .then(() => {
         // add notification like toast.js or something?
+        //  YES :)
         console.log("MODAL IS CLOSING,BYE");
         return handleClose();
       })

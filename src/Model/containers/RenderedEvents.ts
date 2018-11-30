@@ -1,9 +1,10 @@
+import { createSelector } from "reselect";
+import * as moment from "moment";
 import { connect } from "react-redux";
+
 import EventList from "../../View/Events/EventList";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/DateFormats";
-import { createSelector } from "reselect";
-import * as moment from "moment";
 
 const eventsSelector = (state: any) =>
   Object.keys(state.events.byIds).map(key => state.events.byIds[key]);
