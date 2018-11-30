@@ -3,7 +3,7 @@ import Event from "./Event";
 import { Button } from "../../View/Switchers/Button";
 import "../../Styles/Event.css";
 
-export const EventsComponent = ({ events, handleClose }) => (
+export const EventsComponent = ({ events, handleClose, userColors }) => (
   <div className="all-events">
     <header className="all-events-header">
       All events

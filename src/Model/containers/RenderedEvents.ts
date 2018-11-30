@@ -6,9 +6,11 @@ import EventList from "../../View/Events/EventList";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/DateFormats";
 
-const eventsSelector = (state: any) => {
-  return Object.keys(state.events.byIds).map(key => state.events.byIds[key]);
-};
+const eventsSelector = (state: any) =>
+  Object.keys(state.events.byIds).map(key => state.events.byIds[key]);
+
+const eventsByUserSelector = (state: any) => state.user.byIds;
+
 const propsSelector = (state: any, props: any) => props;
 
 const getRenderedDateEvents = createSelector(
@@ -50,7 +52,8 @@ const sortEvents = (events: any) =>
 
 const mapStateToProps = (state: any, props: any) => {
   return {
-    events: sortEvents(getRenderedDateEvents(state, props))
+    events: sortEvents(getRenderedDateEvents(state, props)),
+    eventsByUsers: eventsByUserSelector(state)
   };
 };
 
