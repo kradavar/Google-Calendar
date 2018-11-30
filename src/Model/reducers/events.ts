@@ -8,21 +8,26 @@ import {
 import initialState from "../initialState/initialState";
 
 export const events = (state = initialState.events, action: any) => {
+  const nextState = state;
   switch (action.type) {
     case LOAD_EVENTS_SUCCESS:
       return { byIds: action.payload.eventsNorm.entities.events };
     case ADD_EVENT:
+      debugger;
       return {
-        ...state,
-
-        ...action.payload
+        byIds: {
+          ...nextState.byIds,
+          [action.payload.id]: {
+            ...action.payload
+          }
+        }
       };
     case DELETE_EVENT:
-    //return state.filter((event: any) => event.id !== action.payload.id);
+      delete nextState.byIds[action.payload.id];
+      return nextState;
     case EDIT_EVENT:
-    //return state.map((event: any) =>
-    //   event.id === action.payload.id ? { ...action.payload } : event
-    // );
+      nextState.byIds[action.payload.id] = { ...action.payload };
+      return nextState;
     case REMOVE_EVENTS:
       return {};
     default:

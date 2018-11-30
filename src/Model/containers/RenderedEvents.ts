@@ -6,26 +6,18 @@ import { createSelector } from "reselect";
 import * as moment from "moment";
 
 const eventsSelector = (state: any) => {
-  debugger;
   return Object.keys(state.events.byIds).map(key => state.events.byIds[key]);
 };
 const propsSelector = (state: any, props: any) => props;
 
 const getRenderedDateEvents = createSelector(
   [eventsSelector, propsSelector],
-  (events, props) => {
-    if (Number.isInteger(props.hour)) {
-      return events.filter((event: any) =>
-        filterByHour(event.start, props.date, props.hour)
-      );
-    }
-    return events.filter((event: any) => filterByDate(event.start, props.date));
-  }
-  /* Number.isInteger(props.hour)
+  (events, props) =>
+    Number.isInteger(props.hour)
       ? events.filter(event =>
           filterByHour(event.start, props.date, props.hour)
         )
-      : events.filter(event => filterByDate(event.start, props.date))*/
+      : events.filter(event => filterByDate(event.start, props.date))
 );
 
 const filterByDate = (eventStart: string, date: string | moment.Moment) =>
