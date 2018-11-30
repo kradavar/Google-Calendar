@@ -1,8 +1,9 @@
 export class EventAPI {
   static getEvents = () =>
-    fetch("http://localhost:5000/events")
+    fetch("http://localhost:5000/me")
       .then((result: any) => {
         if (result.hasErrors) {
+          console.log("eventAPI return error");
           return Promise.reject(result.json());
         } else return result.json();
       })

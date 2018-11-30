@@ -7,6 +7,8 @@ import { SharedViewContext } from "./Context";
 import { VIEW } from "./constants/ViewTypes";
 import { Header } from "./View/Header";
 import { SignModal } from "./View/Authorization";
+import { connect } from "react-redux";
+import { loadUserEvents } from "./Model/actions/events";
 
 class App extends Component {
   constructor(props) {
@@ -56,6 +58,10 @@ class App extends Component {
     e.stopPropagation();
   };
 
+  componentDidMount = () => {
+    this.props.loadUserEvents();
+  };
+
   render() {
     return (
       <SharedViewContext.Provider value={this.state}>
@@ -75,5 +81,10 @@ class App extends Component {
     );
   }
 }
+
+const appWithConnect = connect(
+  null,
+  { loadUserEvents }
+);
 
 export default App;

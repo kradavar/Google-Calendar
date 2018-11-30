@@ -17,6 +17,7 @@ export interface IEventListState {
 class EventList extends React.Component<IEventListProps, IEventListState> {
   state = {
     showAllEvents: false,
+    // ???
     colorsByUser: {
       1: "#d598ac",
       2: "#bf98d5",
@@ -28,7 +29,6 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
     view === VIEW.MONTH ? "event-list" : "day-event-list";
 
   getUserColor = (event: any) => {
-    debugger;
     const userOfEvent = event.user_id;
     if (userOfEvent in this.state.colorsByUser) {
       return this.state.colorsByUser[userOfEvent];
@@ -43,10 +43,10 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
         ...this.state.colorsByUser,
         [userOfEvent]: color
       };
+      // Warning about state
       this.setState({
         colorsByUser: nextColorByUser
       });
-      console.log(this.state);
       return color;
     }
   };

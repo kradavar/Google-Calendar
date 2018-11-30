@@ -24,7 +24,6 @@ class ModalShowEvent extends React.Component<any, IModalShowEventState> {
   };
 
   deleteCurrentEvent = () => {
-    debugger;
     this.props.deleteEvent(this.props.id);
   };
 

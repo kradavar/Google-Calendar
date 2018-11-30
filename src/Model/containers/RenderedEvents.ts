@@ -5,8 +5,9 @@ import { DATE_FORMATS } from "../../constants/DateFormats";
 import { createSelector } from "reselect";
 import * as moment from "moment";
 
-const eventsSelector = (state: any) =>
-  Object.keys(state.events.byIds).map(key => state.events.byIds[key]);
+const eventsSelector = (state: any) => {
+  return Object.keys(state.events.byIds).map(key => state.events.byIds[key]);
+};
 
 const eventsByUserSelector = (state: any) => state.user.byIds;
 

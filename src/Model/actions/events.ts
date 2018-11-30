@@ -5,6 +5,7 @@ export const ADD_EVENT = "ADD_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 export const LOAD_EVENTS_SUCCESS = "LOAD_EVENTS_SUCCESS";
+export const LOAD_EVENTS_EMPTY = "LOAD_EVENTS_EMPTY";
 export const REMOVE_EVENTS = "REMOVE_EVENTS";
 
 const addEventSuccess = (event: Object) => {
@@ -30,22 +31,29 @@ export const loadEventsSuccess = (events: Array<Object>) => {
   return { type: LOAD_EVENTS_SUCCESS, payload: { eventsNorm } };
 };
 
+export const loadEventsEmpty = () => {
+  console.log("loadEvents Empty");
+  return { type: LOAD_EVENTS_EMPTY, payload: {} };
+};
+
 export const removeEvents = () => {
   return { type: REMOVE_EVENTS, payload: {} };
 };
-/*
-export const loadUserEvents = () => (dispatch: Function) =>
-  EventAPI.getEvents()
+
+export const loadUserEvents = () => (dispatch: Function) => {
+  return EventAPI.getEvents()
     .then((result: any) => {
+      console.log("result of eventAPI in actions", result);
       if (result.hasErrors) {
-        dispatch(loadEventsSuccess([]))
+        console.log("hasErrors");
+        dispatch(loadEventsEmpty());
+      } else {
+        dispatch(loadEventsSuccess(result));
       }
-      else {
-        dispatch(loadEventsSuccess(result))
-       }
     })
-    .catch();
-*/
+    .catch(err => err);
+};
+
 export const addEvent = (name: string, start: string, end: string) => (
   dispatch: Function
 ) =>
