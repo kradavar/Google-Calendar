@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-
 import "../../Styles/Event.css";
-
 import ModalShowEvent from "../../Model/containers/ModalShowEvent";
-
 import { getDuration } from "../../Model/getRenderedDateInfo";
 import moment from "moment";
 import { formatDate } from "../../Model/getRenderedDateInfo";
@@ -13,8 +10,7 @@ import { VIEW } from "../../constants/ViewTypes";
 
 export default class Event extends Component {
   state = {
-    showModal: false,
-    userList: []
+    showModal: false
   };
 
   handleClose = e => {
@@ -43,37 +39,14 @@ export default class Event extends Component {
     return 0.05 * startTime - 2.2; /* rise event on the top of its start */
   };
 
-  checkUserId = id => {
-    if (this.state.userList.length) {
-      for (let i = 0; i < this.state.userList.length; i++) {
-        if (this.state.userList[i].userId === id) {
-          return this.state.userList[i];
-        }
-      }
-    }
-    return false;
-  };
+  getColor = user_id => this.props.color;
 
   getStyles = (start, end, view, user_id) => {
-    let color = "#";
-    if (this.checkUserId(user_id)) {
-      color = this.checkUserId(user_id);
-    } else {
-      const letters = "0123456789ABCDEF";
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      this.setState({
-        ...this.state,
-        userList: [...this.state.userList, { userId: user_id, color }]
-      });
-    }
-
     const heightRem = this.getHeight(start, end) + "rem";
     const topRem = this.getTopOfEvent(start) + "rem";
     if (view !== VIEW.MONTH) {
       return {
-        background: color,
+        background: this.getColor(user_id),
         height: heightRem,
         top: topRem
       };
