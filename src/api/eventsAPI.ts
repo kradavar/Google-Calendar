@@ -14,7 +14,7 @@ export class EventAPI {
 
   // TODO id, name, start, end => event: EventType
   static editEvent = (id: number, name: string, start: string, end: string) => {
-    const request = new Request(EVENTS + id, {
+    const request = new Request(EVENTS + "/" + id, {
       method: "PUT",
       headers: new Headers({ "Content-Type": "application/json" }),
       credentials: "include",
@@ -25,7 +25,7 @@ export class EventAPI {
   };
 
   static deleteEvent = (id: number) => {
-    const request = new Request(EVENTS + id, {
+    const request = new Request(EVENTS + "/" + id, {
       method: "DELETE",
       credentials: "include",
       headers: new Headers({ "Content-Type": "application/json" })

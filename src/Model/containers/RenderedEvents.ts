@@ -6,8 +6,14 @@ import EventList from "../../View/Events/EventList";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/constants";
 
-const eventsSelector = (state: any) =>
-  Object.keys(state.events.byIds).map(key => state.events.byIds[key]);
+const eventsSelector = (state: any) => {
+  const events = state.events.byIds;
+  const keysArray = Object.keys(events);
+  keysArray.forEach(key =>
+    events[key] === undefined ? delete events[key] : ""
+  );
+  return Object.keys(events).map(key => events[key]);
+};
 
 const eventsByUserSelector = (state: any) => state.user.byIds;
 

@@ -27,8 +27,9 @@ export const FormInputWithLabelComponent = ({
         disabled={disabled}
         {...props}
       />
-      {meta.error &&
-        meta.touched && <div className="error-message">{meta.error}</div>}
+      {meta.error && meta.touched && (
+        <div className="error-message">{meta.error}</div>
+      )}
     </div>
   );
 };
@@ -39,7 +40,7 @@ export const FormInputWithLabel = props => {
     <Field
       component={FormInputWithLabelComponent}
       name={props.name}
-      props={{ ...props }}
+      props={props}
     />
   );
 };

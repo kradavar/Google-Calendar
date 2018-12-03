@@ -28,7 +28,6 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
     view === VIEW.MONTH ? "event-list" : "day-event-list";
 
   getUserColor = (event: any) => {
-    debugger;
     const userOfEvent = event.user_id;
     if (userOfEvent in this.state.colorsByUser) {
       return this.state.colorsByUser[userOfEvent];
@@ -47,7 +46,6 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
        this.setState({
         colorsByUser: nextColorByUser
       });
-      debugger;
       console.log(this.state);*/
       return color;
     }

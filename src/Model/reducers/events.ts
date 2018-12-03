@@ -10,26 +10,36 @@ import initialState from "../initialState/initialState";
 export const events = (state = initialState.events, action: any) => {
   switch (action.type) {
     case LOAD_EVENTS_SUCCESS:
-      return Object.assign({}, state, { byIds: action.payload.events });
+      return { byIds: action.payload.events };
     case ADD_EVENT:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         byIds: {
+          ...state.byIds,
           [action.payload.id]: action.payload
         }
-      });
+      };
     case DELETE_EVENT:
-      // DON'T MODIFY STATE
-      const nextState = Object.assign({}, state);
-      delete nextState.byIds[action.payload.id];
-      return nextState;
-    case EDIT_EVENT:
       return Object.assign({}, state, {
+        byIds: {
+          ...state.byIds,
+          [action.payload.id]: undefined
+        }
+      });
+
+    /* {
+        byIds: { [action.payload.id]: undefined, ...state.byIds },
+        ...state
+      };*/
+    case EDIT_EVENT:
+      return {
+        ...state,
         byIds: {
           [action.payload.id]: action.payload
         }
-      });
+      };
     case REMOVE_EVENTS:
-      return {};
+      return action.payload;
     default:
       return state;
   }

@@ -1,5 +1,5 @@
-import { Entity, schema } from "normalizr";
-// Entity doesn't work
+import { schema } from "normalizr";
+
 const event = new schema.Entity("events");
 export const user = new schema.Entity(
   "users",

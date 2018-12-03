@@ -9,8 +9,15 @@ export const EDIT_EVENT = "EDIT_EVENT";
 export const LOAD_EVENTS_SUCCESS = "LOAD_EVENTS_SUCCESS";
 export const REMOVE_EVENTS = "REMOVE_EVENTS";
 
+export interface IEvent {
+  id: number;
+  start: string;
+  end: string;
+  event_name: string;
+  user_id?: number;
+}
 //  Add EventType
-const addEventSuccess = (event: Object) => {
+const addEventSuccess = (event: IEvent) => {
   return {
     type: ADD_EVENT,
     payload: event
@@ -23,7 +30,7 @@ const deleteEventSuccess = (id: number) => {
 
 // EDIT_EVENT_SUCCESS
 // EDIT_EVENT_FAILURE ???
-const editEventSuccess = (event: Object) => {
+const editEventSuccess = (event: IEvent) => {
   const { start, end, event_name, id }: any = event;
   return { type: EDIT_EVENT, payload: { id, event_name, start, end } };
 };
@@ -38,7 +45,7 @@ export const loadEventsSuccess = (response: Array<Object>) => {
 
 export const removeEvents = () => {
   // Does it make sense in payload: {} ?
-  return { type: REMOVE_EVENTS, payload: {} };
+  return { type: REMOVE_EVENTS, payload: { byIds: {} } };
 };
 
 // TODO start, end, ... => event: EventType
