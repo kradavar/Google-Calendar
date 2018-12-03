@@ -5,12 +5,13 @@ export const SIGNIN_FAILED = "SIGNIN_FAILED";
 export const SIGNUP_FAILED = "SIGNUP_FAILED";
 export const SIGN_OUT = "SIGN_OUT";
 
-
-// TODO username, password, ... => event: UserType
-export const signIn = (username: string, password: string) => (
-  dispatch: Function
-) =>
-  UserAPI.signIn(username, password)
+export interface IUserType {
+  username: string;
+  password: string;
+  fullName?: string;
+}
+export const signIn = (user: IUserType) => (dispatch: Function) =>
+  UserAPI.signIn(user)
     .then(result => {
       if (result.hasErrors) {
         dispatch({ type: SIGNIN_FAILED, payload: { error: { result } } });
@@ -23,14 +24,8 @@ export const signIn = (username: string, password: string) => (
       throw error;
     });
 
-
-// TODO username, password, ... => event: UserType
-export const signUp = (
-  username: string,
-  password: string,
-  fullName: string
-) => (dispatch: Function) =>
-  UserAPI.signUp(username, password, fullName)
+export const signUp = (user: IUserType) => (dispatch: Function) =>
+  UserAPI.signUp(user)
     .then(result => {
       if (result.hasErrors) {
         dispatch({

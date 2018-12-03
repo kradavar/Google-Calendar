@@ -23,8 +23,13 @@ const CreateFormComponent = ({
 
     const dates = onEventTypeChange(values);
     id
-      ? editEvent(id, name, dates.start, dates.end)
-      : addEvent(name, dates.start, dates.end);
+      ? editEvent({
+          id,
+          event_name: name,
+          start: dates.start,
+          end: dates.end
+        })
+      : addEvent({ event_name: name, start: dates.start, end: dates.end });
   };
 
   const onEventTypeChange = values => {

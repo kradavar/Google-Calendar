@@ -1,3 +1,4 @@
+import { IEvent } from "./events";
 import { normalize } from "normalizr";
 
 import { EventAPI } from "../../api/eventsAPI";
@@ -16,7 +17,7 @@ export interface IEvent {
   event_name: string;
   user_id?: number;
 }
-//  Add EventType
+
 const addEventSuccess = (event: IEvent) => {
   return {
     type: ADD_EVENT,
@@ -44,22 +45,18 @@ export const loadEventsSuccess = (response: Array<Object>) => {
 };
 
 export const removeEvents = () => {
-  // Does it make sense in payload: {} ?
-  return { type: REMOVE_EVENTS, payload: { byIds: {} } };
+  return { type: REMOVE_EVENTS };
 };
 
-// TODO start, end, ... => event: EventType
-export const addEvent = (name: string, start: string, end: string) => (
-  dispatch: Function
-) =>
-  EventAPI.createEvent(name, start, end)
+export const addEvent = (event: IEvent) => (dispatch: Function) =>
+  EventAPI.createEvent(event)
     .then(result => {
       dispatch(
         addEventSuccess({
           id: result.insertId,
-          event_name: name,
-          start,
-          end
+          event_name: event.event_name,
+          start: event.start,
+          end: event.end
         })
       );
     })
@@ -77,22 +74,10 @@ export const deleteEvent = (id: number) => (dispatch: Function) =>
     });
 
 // EDIT_EVENT
-export const editEvent = (
-  id: number,
-  name: string,
-  start: string,
-  end: string
-) => (dispatch: Function) =>
-  EventAPI.editEvent(id, name, start, end)
+export const editEvent = (event: IEvent) => (dispatch: Function) =>
+  EventAPI.editEvent(event)
     .then(() => {
-      dispatch(
-        editEventSuccess({
-          id,
-          event_name: name,
-          start,
-          end
-        })
-      );
+      dispatch(editEventSuccess(event));
     })
     .catch(error => {
       throw error;

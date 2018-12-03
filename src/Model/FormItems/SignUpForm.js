@@ -11,7 +11,7 @@ import "../../Styles/Form.css";
 
 const SignUpFormComponent = ({ reset, handleSubmit, signUp, handleClose }) => {
   const submit = values =>
-    signUp(values.username, values.password, values.fullName)
+    signUp(values)
       .then(() => handleClose())
       .catch(error => {
         throw new SubmissionError({

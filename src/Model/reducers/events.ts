@@ -30,7 +30,7 @@ export const events = (state = initialState.events, action: any) => {
         byIds: { ...state.byIds, [action.payload.id]: action.payload }
       };
     case REMOVE_EVENTS:
-      return action.payload;
+      return { ...state, byIds: {} };
     default:
       return state;
   }

@@ -8,8 +8,6 @@ import ShowForm from "../FormItems/ShowForm";
 import { formatDate, getDuration } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/constants";
 import { Button } from "../../View/Switchers/Button";
-
-// Dead code ?
 export interface IModalShowEventProps {
   deleteEvent: (id: number) => void;
   id: number;
@@ -25,11 +23,6 @@ class ModalShowEvent extends React.Component<
 > {
   state: IModalShowEventState = {
     editMode: false
-  };
-
-  // Why does it need?
-  deleteCurrentEvent = () => {
-    this.props.deleteEvent(this.props.id);
   };
 
   editCurrentEvent = () => {
@@ -56,7 +49,9 @@ class ModalShowEvent extends React.Component<
               />
             )}
             <Button
-              onClick={this.deleteCurrentEvent}
+              onClick={() => {
+                this.props.deleteEvent(this.props.id);
+              }}
               classes="btn-outline-primary show-modal-button"
               value="Delete"
             />

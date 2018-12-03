@@ -9,7 +9,7 @@ import { SIGN } from "../../constants/constants";
 
 const SignInFormComponent = ({ handleSubmit, reset, signIn, handleClose }) => {
   const submit = values =>
-    signIn(values.username, values.password)
+    signIn(values)
       .then(() => {
         // add notification like toast.js or something?
         //  YES :)
