@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Button } from "../../View/Switchers/Button";
 import { signOut } from "../actions/users";
 
-// Is it a form?
 const SignOutComponent = ({ signOut, handleClose }) => {
   const handleSignOut = () => {
     return signOut()

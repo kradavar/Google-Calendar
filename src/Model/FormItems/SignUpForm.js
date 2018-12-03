@@ -7,8 +7,7 @@ import { signUp } from "../actions/users";
 import { SIGN } from "../../constants/constants";
 import { validate } from "../../validation/sign";
 
-// Modal.css everywhere ..
-import "../../Styles/Modal.css";
+import "../../Styles/Form.css";
 
 const SignUpFormComponent = ({ reset, handleSubmit, signUp, handleClose }) => {
   const submit = values =>

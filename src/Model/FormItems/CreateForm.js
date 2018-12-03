@@ -5,7 +5,7 @@ import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
 import { Button } from "../../View/Switchers/Button";
-import "../../Styles/Modal.css";
+import "../../Styles/Form.css";
 import { addEvent, editEvent } from "../actions/events";
 import { validate } from "../../validation/index";
 
@@ -21,21 +21,24 @@ const CreateFormComponent = ({
   const submit = values => {
     const name = values.name;
 
-    // ?????
-    let start = values.start.date + " ";
-    let end = values.end.date + " ";
-
-    // Do it in onEventTypeChange
-    if (values.eventType) {
-      start += "00:00";
-      end += "24:00";
-    } else {
-      start += values.start.time;
-      end += values.end.time;
-    }
-    id ? editEvent(id, name, start, end, 1) : addEvent(name, start, end, 1);
+    const dates = onEventTypeChange(values);
+    id
+      ? editEvent(id, name, dates.start, dates.end)
+      : addEvent(name, dates.start, dates.end);
   };
-  // Move a case !isSigned to a separate component and don't use it here
+
+  const onEventTypeChange = values => {
+    if (values.eventType) {
+      return {
+        start: values.start.date.concat(" 00:00"),
+        end: values.end.date.concat(" 24:00")
+      };
+    } else
+      return {
+        start: values.start.date.concat(" ", values.start.time),
+        end: values.end.date.concat(" ", values.end.time)
+      };
+  };
   return (
     <React.Fragment>
       <form onSubmit={handleSubmit(submit)}>

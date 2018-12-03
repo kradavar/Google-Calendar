@@ -2,8 +2,7 @@ import React from "react";
 
 import { FormInputWithLabel } from "./FormInputWithLabel";
 
-// Why se use Modal.css into DateTimeSection?
-import "../../Styles/Modal.css";
+import "../../Styles/Form.css";
 
 export const DateTimeSection = ({ label, isAllDayEvent }) => (
   <div className="form-group">
