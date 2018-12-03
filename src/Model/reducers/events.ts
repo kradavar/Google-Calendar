@@ -20,23 +20,14 @@ export const events = (state = initialState.events, action: any) => {
         }
       };
     case DELETE_EVENT:
-      return Object.assign({}, state, {
-        byIds: {
-          ...state.byIds,
-          [action.payload.id]: undefined
-        }
-      });
-
-    /* {
-        byIds: { [action.payload.id]: undefined, ...state.byIds },
-        ...state
-      };*/
+      return {
+        ...state,
+        byIds: { ...state.byIds, [action.payload.id]: undefined }
+      };
     case EDIT_EVENT:
       return {
         ...state,
-        byIds: {
-          [action.payload.id]: action.payload
-        }
+        byIds: { ...state.byIds, [action.payload.id]: action.payload }
       };
     case REMOVE_EVENTS:
       return action.payload;

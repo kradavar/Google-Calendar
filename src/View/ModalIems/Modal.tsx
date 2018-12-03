@@ -1,8 +1,13 @@
-import React from "react";
-import ModalHeader from "../ModalIems/ModalHeader";
+import * as React from "react";
+import ModalHeader from "./ModalHeader";
 
-export const Modal = ({ header, handleClose, children, bottom }) => {
-  const childrenWithProps = React.Children.map(children, child =>
+export const Modal: React.SFC<{
+  header: string;
+  handleClose: (e: Event) => void;
+  children?: any;
+  bottom?: any;
+}> = ({ header, handleClose, children, bottom }) => {
+  const childrenWithProps = React.Children.map(children, (child: any) =>
     React.cloneElement(child, { handleClose: handleClose })
   );
   return (

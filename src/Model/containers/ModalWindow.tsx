@@ -1,13 +1,20 @@
-import React from "react";
+import * as React from "react";
 import { Modal } from "../../View/ModalIems/Modal";
 import CreateForm from "../FormItems/CreateForm";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/constants";
+import * as moment from "moment";
+import { connect } from "react-redux";
+import { UnsignedMessage } from "../FormItems/Unsigned";
 
-// Move to ts
-const ModalWindow = ({ handleClose, dayDate, hour }) => (
+const ModalWindow: React.SFC<{
+  handleClose: (e: Event) => void;
+  dayDate: moment.Moment;
+  hour: number;
+  isSigned: boolean;
+}> = ({ handleClose, dayDate, hour, isSigned }) => (
   <Modal header="Create New Event" handleClose={handleClose}>
-    {
+    {isSigned ? (
       <CreateForm
         handleClose={handleClose}
         initialValues={{
@@ -28,8 +35,17 @@ const ModalWindow = ({ handleClose, dayDate, hour }) => (
           }
         }}
       />
-    }
+    ) : (
+      <UnsignedMessage handleClose={handleClose} />
+    )}
   </Modal>
 );
 
-export default ModalWindow;
+const mapStateToProps = (state: any) => {
+  const userSelector = (state: any) => state.user.isSigned;
+  return {
+    isSigned: userSelector(state)
+  };
+};
+
+export default connect(mapStateToProps)(ModalWindow);
