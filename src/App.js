@@ -11,7 +11,6 @@ import { SignModal } from "./View/Authorization";
 class App extends Component {
   constructor(props) {
     super(props);
-    // Why all of these in constructor?
     this.changeViewType = e => {
       this.setState({
         view: e.target.value

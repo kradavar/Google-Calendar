@@ -37,17 +37,31 @@ const editEventSuccess = (event: IEvent) => {
 };
 
 // STORE_EVENTS ?
-export const loadEventsSuccess = (response: Array<Object>) => {
-  const {
-    entities: { events }
-  } = normalize(response, [user]);
-  return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
+export const loadEventsSuccess = (response: any) => {
+  debugger;
+  if (
+    (response.length === 1 && response[0].events.length !== 0) ||
+    response.length > 1
+  ) {
+    const {
+      entities: { normalizedEvents }
+    } = normalize(response, [user]);
+    return { type: LOAD_EVENTS_SUCCESS, payload: { normalizedEvents } };
+  } else return { type: LOAD_EVENTS_SUCCESS, payload: { byIds: {} } };
 };
 
 export const removeEvents = () => {
   return { type: REMOVE_EVENTS };
 };
 
+export const loadEvents = () => (dispatch: Function) =>
+  EventAPI.getEvents()
+    .then(result => {
+      dispatch(loadEventsSuccess(result));
+    })
+    .catch(err => {
+      throw err;
+    });
 export const addEvent = (event: IEvent) => (dispatch: Function) =>
   EventAPI.createEvent(event)
     .then(result => {

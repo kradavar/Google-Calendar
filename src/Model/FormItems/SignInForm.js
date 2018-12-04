@@ -1,6 +1,5 @@
 import React from "react";
 import { reduxForm, SubmissionError } from "redux-form";
-import { ToastContainer, ToastStore } from "react-toasts";
 
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { Button } from "../../View/Switchers/Button";
@@ -12,8 +11,6 @@ const SignInFormComponent = ({ handleSubmit, reset, signIn, handleClose }) => {
   const submit = values =>
     signIn(values)
       .then(() => {
-        debugger;
-        ToastStore.success("Welcome!");
         return handleClose();
       })
       .catch(error => {
@@ -46,10 +43,6 @@ const SignInFormComponent = ({ handleSubmit, reset, signIn, handleClose }) => {
           <Button classes="btn-outline-success" value={SIGN.IN} type="submit" />
         </div>
       </form>
-      <ToastContainer
-        store={ToastStore}
-        position={ToastContainer.POSITION.TOP_RIGHT}
-      />
     </React.Fragment>
   );
 };

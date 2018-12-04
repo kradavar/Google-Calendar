@@ -2,6 +2,15 @@ import { IEvent } from "./../Model/actions/events";
 import { makeRequest } from "./requestWrapper";
 import { EVENTS } from "./enpoints";
 export class EventAPI {
+  static getEvents = () => {
+    const request = new Request(EVENTS, {
+      method: "GET",
+      credentials: "include"
+    });
+
+    return makeRequest(request);
+  };
+
   static createEvent = (event: IEvent) => {
     const request = new Request(EVENTS, {
       method: "POST",
