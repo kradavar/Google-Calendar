@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { deleteEvent } from "../actions/events";
 import { Modal } from "../../View/ModalIems/Modal";
-
+import { ModalMouseEvent } from "../../View/Table-components/Day";
 import CreateForm from "../FormItems/CreateForm";
 import ShowForm from "../FormItems/ShowForm";
 import { formatDate, getDuration } from "../getRenderedDateInfo";
@@ -12,6 +12,7 @@ export interface IModalShowEventProps {
   deleteEvent: (id: number) => void;
   id: number;
   event_name: string;
+  handleClose: (e: ModalMouseEvent) => void;
 }
 
 export interface IModalShowEventState {

@@ -18,10 +18,10 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
   state = {
     showAllEvents: false,
     colorsByUser: {
-      1: "#d598ac"
-      /* 2: "#bf98d5",
+      1: "#d598ac",
+      2: "#bf98d5", // for color schema
       3: "#a4d2d4",
-      4: "#81a3e6"*/
+      4: "#81a3e6"
     }
   };
   getClassName = (view: string) =>
@@ -37,22 +37,20 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
       for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
       }
-      console.log(this.state);
-      // state warning:(
+      // state warning
       /*const nextColorByUser = {
         ...this.state.colorsByUser,
         [userOfEvent]: color
       };
-       this.setState({
+      this.setState({
         colorsByUser: nextColorByUser
-      });
-      console.log(this.state);*/
+      });*/
       return color;
     }
   };
 
-  getRenderedList = (events: any, view: string) =>
-    events.length < 3 || view !== VIEW.MONTH
+  getRenderedList = (events: any, view: string) => {
+    return events.length < 3 || view !== VIEW.MONTH
       ? events.map((event: any) => (
           <Event key={event.id} {...event} color={this.getUserColor(event)} />
         ))
@@ -61,7 +59,7 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
           .map((event: any) => (
             <Event key={event.id} {...event} color={this.getUserColor(event)} />
           ));
-
+  };
   handleLinkClick = (e: any) => {
     e.stopPropagation();
     this.setState({
