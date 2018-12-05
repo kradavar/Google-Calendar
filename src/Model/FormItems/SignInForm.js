@@ -7,10 +7,17 @@ import { signIn } from "../actions/users";
 import { connect } from "react-redux";
 import { SIGN } from "../../constants/constants";
 
-const SignInFormComponent = ({ handleSubmit, reset, signIn, handleClose }) => {
+const SignInFormComponent = ({
+  handleSubmit,
+  reset,
+  signIn,
+  handleClose,
+  showSuccessToast
+}) => {
   const submit = values =>
     signIn(values)
       .then(() => {
+        showSuccessToast();
         return handleClose();
       })
       .catch(error => {

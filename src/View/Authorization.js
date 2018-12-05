@@ -5,16 +5,32 @@ import SignUpForm from "../Model/FormItems/SignUpForm";
 import SignOutForm from "../Model/FormItems/SignOut";
 import { SIGN } from "../constants/constants";
 
-export const SignModal = ({ handleClose, type }) => (
+export const SignModal = ({
+  handleClose,
+  type,
+  showSuccessToast,
+  showErrorToast
+}) => (
   <Modal header={type} handleClose={handleClose}>
     {type === SIGN.IN ? (
-      <SignInForm />
+      <SignInForm
+        showSuccessToast={showSuccessToast}
+        showErrorToast={showErrorToast}
+      />
     ) : (
       <React.Fragment>
         {type === SIGN.UP ? (
-          <SignUpForm handleClose={handleClose} />
+          <SignUpForm
+            handleClose={handleClose}
+            showSuccessToast={showSuccessToast}
+            showErrorToast={showErrorToast}
+          />
         ) : (
-          <SignOutForm handleClose={handleClose} />
+          <SignOutForm
+            handleClose={handleClose}
+            showSuccessToast={showSuccessToast}
+            showErrorToast={showErrorToast}
+          />
         )}
       </React.Fragment>
     )}

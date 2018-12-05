@@ -1,5 +1,7 @@
-import React, { Component } from "react";
-import moment from "moment";
+import * as React from "react";
+import * as moment from "moment";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Styles/App.css";
 // Calendar
 import { CalendarTable } from "./View/Table-components/CalendarTable";
@@ -8,8 +10,22 @@ import { VIEW } from "./constants/constants";
 import { Header } from "./View/Header";
 import { SignModal } from "./View/Authorization";
 
-class App extends Component {
-  constructor(props) {
+export interface IAppState {
+  view: string;
+  renderedDate: moment.Moment;
+  changeViewType: (e: Event) => void;
+  nextPeriod: () => void;
+  previuosPeriod: () => void;
+  showModal: boolean;
+  signType: string;
+  toastId: number;
+}
+
+class App extends React.Component<{}, IAppState> {
+  changeViewType: (e: any) => void;
+  nextPeriod: () => void;
+  previuosPeriod: () => void;
+  constructor(props: any) {
     super(props);
     this.changeViewType = e => {
       this.setState({
@@ -19,12 +35,14 @@ class App extends Component {
 
     this.nextPeriod = () => {
       this.setState({
+        //@ts-ignore
         renderedDate: this.state.renderedDate.add(1, this.state.view)
       });
     };
 
     this.previuosPeriod = () => {
       this.setState({
+        //@ts-ignore
         renderedDate: this.state.renderedDate.subtract(1, this.state.view)
       });
     };
@@ -36,18 +54,19 @@ class App extends Component {
       nextPeriod: this.nextPeriod,
       previuosPeriod: this.previuosPeriod,
       showModal: false,
-      signType: "Sign in"
+      signType: "Sign in",
+      toastId: 0
     };
   }
 
-  handleClose = e => {
+  handleClose = (e: Event) => {
     this.setState({
       showModal: false
     });
     e.stopPropagation();
   };
 
-  handleOpen = e => {
+  handleOpen = (e: any) => {
     this.setState({
       showModal: true,
       signType: e.target.value
@@ -55,6 +74,14 @@ class App extends Component {
     e.stopPropagation();
   };
 
+  showSuccessToast = (message = "Welcome!") =>
+    toast.success(message, {
+      hideProgressBar: true
+    });
+  showErrorToast = () =>
+    toast.error("Sorry, something went wrong", {
+      hideProgressBar: true
+    });
   render() {
     return (
       <SharedViewContext.Provider value={this.state}>
@@ -67,8 +94,11 @@ class App extends Component {
             <SignModal
               type={this.state.signType}
               handleClose={this.handleClose}
+              showSuccessToast={this.showSuccessToast}
+              showErrorToast={this.showErrorToast}
             />
           )}
+          <ToastContainer autoClose={1000} />
         </div>
       </SharedViewContext.Provider>
     );

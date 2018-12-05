@@ -9,13 +9,21 @@ import { validate } from "../../validation/sign";
 
 import "../../Styles/Form.css";
 
-const SignUpFormComponent = ({ reset, handleSubmit, signUp, handleClose }) => {
+const SignUpFormComponent = ({
+  reset,
+  handleSubmit,
+  signUp,
+  handleClose,
+  showSuccessToast
+}) => {
   const submit = values =>
     signUp(values)
       .then(() => {
+        showSuccessToast();
         return handleClose();
       })
       .catch(error => {
+        console.log(error);
         throw new SubmissionError({
           username: "User with this username is already exists.",
           _error: "Sign up failed"

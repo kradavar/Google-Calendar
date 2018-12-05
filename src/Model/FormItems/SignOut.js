@@ -3,12 +3,21 @@ import { connect } from "react-redux";
 import { Button } from "../../View/Switchers/Button";
 import { signOut } from "../actions/users";
 
-const SignOutComponent = ({ signOut, handleClose }) => {
+const SignOutComponent = ({
+  signOut,
+  handleClose,
+  showSuccessToast,
+  showErrorToast
+}) => {
   const handleSignOut = () => {
     return signOut()
-      .then(() => handleClose())
+      .then(() => {
+        showSuccessToast("See you next time!");
+        return handleClose();
+      })
       .catch(error => {
-        console.log(error);
+        // fix this
+        showErrorToast();
       });
   };
   return (
