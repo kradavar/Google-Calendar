@@ -38,16 +38,23 @@ const editEventSuccess = (event: IEvent) => {
 
 // STORE_EVENTS ?
 export const loadEventsSuccess = (response: any) => {
-  debugger;
   if (
     (response.length === 1 && response[0].events.length !== 0) ||
     response.length > 1
   ) {
     const {
-      entities: { normalizedEvents }
+      entities: { events }
     } = normalize(response, [user]);
-    return { type: LOAD_EVENTS_SUCCESS, payload: { normalizedEvents } };
-  } else return { type: LOAD_EVENTS_SUCCESS, payload: { byIds: {} } };
+    return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
+  } else
+    return {
+      type: LOAD_EVENTS_SUCCESS,
+      payload: {
+        events: {
+          byIds: {}
+        }
+      }
+    };
 };
 
 export const removeEvents = () => {

@@ -15,8 +15,6 @@ const eventsSelector = (state: any) => {
   return Object.keys(events).map(key => events[key]);
 };
 
-const eventsByUserSelector = (state: any) => state.user.byIds;
-
 const propsSelector = (state: any, props: any) => props;
 
 const getRenderedDateEvents = createSelector(
@@ -58,8 +56,7 @@ const sortEvents = (events: any) =>
 
 const mapStateToProps = (state: any, props: any) => {
   return {
-    events: sortEvents(getRenderedDateEvents(state, props)),
-    eventsByUsers: eventsByUserSelector(state)
+    events: sortEvents(getRenderedDateEvents(state, props))
   };
 };
 

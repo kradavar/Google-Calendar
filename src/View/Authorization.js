@@ -12,7 +12,7 @@ export const SignModal = ({ handleClose, type }) => (
     ) : (
       <React.Fragment>
         {type === SIGN.UP ? (
-          <SignUpForm />
+          <SignUpForm handleClose={handleClose} />
         ) : (
           <SignOutForm handleClose={handleClose} />
         )}
