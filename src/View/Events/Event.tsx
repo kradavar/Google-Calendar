@@ -1,46 +1,49 @@
-import React, { Component } from "react";
+import * as React from "react";
 import "../../Styles/Event.css";
 import ModalShowEvent from "../../Model/containers/ModalShowEvent";
 import { getDuration } from "../../Model/getRenderedDateInfo";
-import moment from "moment";
+import * as moment from "moment";
 import { formatDate } from "../../Model/getRenderedDateInfo";
 import { DATE_FORMATS, VIEW } from "../../constants/constants";
 import { SharedViewContext } from "../../Context";
+import { IEvent } from "../../Model/actions/events";
+import { ModalMouseEvent } from "../Table-components/Day";
 
-export default class Event extends Component {
-  state = {
-    showModal: false
-  };
+export interface IEventState {
+  showModal: boolean;
+}
+export interface IEventProps extends IEvent {
+  color: string;
+}
 
-  handleClose = e => {
-    this.setState({
-      showModal: false
-    });
+export default class Event extends React.Component<IEventProps, IEventState> {
+  state = { showModal: false };
+
+  handleClose = (e: ModalMouseEvent) => {
+    this.setState({ showModal: false });
     e.stopPropagation();
   };
 
-  handleOpen = e => {
-    this.setState({
-      showModal: true
-    });
+  handleOpen = (e: ModalMouseEvent) => {
+    this.setState({ showModal: true });
     e.stopPropagation();
   };
 
-  getHeight = (start, end) => {
+  getHeight = (start: string, end: string) => {
     const minutes = getDuration(start, end, "minutes");
     return (
       minutes * 0.05
     ); /* 0.05rem - height of 1 minute, 'cause height of hour cell is 3rem  */
   };
 
-  getTopOfEvent = start => {
+  getTopOfEvent = (start: string) => {
     const startTime = moment(start).minute();
     return 0.05 * startTime - 2.2; /* rise event on the top of its start */
   };
 
-  getColor = user_id => this.props.color;
+  getColor = (user_id?: number) => this.props.color;
 
-  getStyles = (start, end, view, user_id) => {
+  getStyles = (start: string, end: string, view: string, user_id?: number) => {
     const heightRem = this.getHeight(start, end) + "rem";
     const topRem = this.getTopOfEvent(start) + "rem";
     if (view !== VIEW.MONTH) {
@@ -50,16 +53,17 @@ export default class Event extends Component {
         top: topRem
       };
     }
+    return {};
   };
 
-  getClassName = view =>
+  getClassName = (view: string) =>
     view === VIEW.MONTH
       ? "event"
       : this.state.showModal
       ? "event-day hide"
       : "event-day";
 
-  eventInput = (start, end, name, view) =>
+  eventInput = (start: string, end: string, name: string, view: string) =>
     view === VIEW.MONTH
       ? formatDate(start, DATE_FORMATS.TIME) + "-" + name
       : name +
@@ -73,7 +77,7 @@ export default class Event extends Component {
     const name = this.props.event_name;
     return (
       <SharedViewContext.Consumer>
-        {({ view }) => (
+        {({ view }: { view: string }) => (
           <li className="event-list-item">
             <div
               className={this.getClassName(view)}
