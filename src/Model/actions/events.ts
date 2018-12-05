@@ -50,9 +50,7 @@ export const loadEventsSuccess = (response: any) => {
     return {
       type: LOAD_EVENTS_SUCCESS,
       payload: {
-        events: {
-          byIds: {}
-        }
+        events: {}
       }
     };
 };
