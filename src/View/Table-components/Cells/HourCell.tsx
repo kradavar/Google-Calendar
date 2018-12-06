@@ -6,7 +6,6 @@ export interface IHourCell {
   hour: string | number;
   onClick: (e: ModalMouseEvent) => void;
   classes?: string;
-  // Does it use?
   ref?: React.RefObject<JSX.Element>;
 }
 

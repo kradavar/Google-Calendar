@@ -4,11 +4,9 @@ import { normalize } from "normalizr";
 import { EventAPI } from "../../api/eventsAPI";
 import { user } from "../../api/schema";
 
-export const ADD_EVENT = "ADD_EVENT";
-export const DELETE_EVENT = "DELETE_EVENT";
-export const EDIT_EVENT = "EDIT_EVENT";
-export const LOAD_EVENTS_SUCCESS = "LOAD_EVENTS_SUCCESS";
+export const STORE_EVENTS = "STORE_EVENTS";
 export const REMOVE_EVENTS = "REMOVE_EVENTS";
+export const IS_FETCHING = "IS_FETCHING";
 
 export interface IEvent {
   id: number;
@@ -18,26 +16,7 @@ export interface IEvent {
   user_id?: number;
 }
 
-const addEventSuccess = (event: IEvent) => {
-  return {
-    type: ADD_EVENT,
-    payload: event
-  };
-};
-
-const deleteEventSuccess = (id: number) => {
-  return { type: DELETE_EVENT, payload: { id } };
-};
-
-// EDIT_EVENT_SUCCESS
-// EDIT_EVENT_FAILURE ???
-const editEventSuccess = (event: IEvent) => {
-  const { start, end, event_name, id }: any = event;
-  return { type: EDIT_EVENT, payload: { id, event_name, start, end } };
-};
-
-// STORE_EVENTS ?
-export const loadEventsSuccess = (response: any) => {
+const storeEventsSuccess = (response: any) => {
   if (
     (response.length === 1 && response[0].events.length !== 0) ||
     response.length > 1
@@ -45,10 +24,10 @@ export const loadEventsSuccess = (response: any) => {
     const {
       entities: { events }
     } = normalize(response, [user]);
-    return { type: LOAD_EVENTS_SUCCESS, payload: { events } };
+    return { type: STORE_EVENTS, payload: { events } };
   } else
     return {
-      type: LOAD_EVENTS_SUCCESS,
+      type: STORE_EVENTS,
       payload: {
         events: {}
       }
@@ -59,45 +38,41 @@ export const removeEvents = () => {
   return { type: REMOVE_EVENTS };
 };
 
-export const loadEvents = () => (dispatch: Function) =>
+export const storeEvents = () => (dispatch: Function) => {
+  dispatch(setFetchingState());
   EventAPI.getEvents()
     .then(result => {
-      dispatch(loadEventsSuccess(result));
+      console.log(result);
+      dispatch(storeEventsSuccess(result));
     })
     .catch(err => {
       throw err;
     });
-export const addEvent = (event: IEvent) => (dispatch: Function) =>
-  EventAPI.createEvent(event)
-    .then(result => {
-      dispatch(
-        addEventSuccess({
-          id: result.insertId,
-          event_name: event.event_name,
-          start: event.start,
-          end: event.end
-        })
-      );
-    })
-    .catch(error => {
-      throw error;
-    });
+};
 
-export const deleteEvent = (id: number) => (dispatch: Function) =>
-  EventAPI.deleteEvent(id)
-    .then(() => {
-      dispatch(deleteEventSuccess(id));
-    })
-    .catch(error => {
-      throw error;
-    });
+const setFetchingState = () => {
+  return {
+    type: IS_FETCHING
+  };
+};
 
-// EDIT_EVENT
-export const editEvent = (event: IEvent) => (dispatch: Function) =>
-  EventAPI.editEvent(event)
-    .then(() => {
-      dispatch(editEventSuccess(event));
-    })
-    .catch(error => {
-      throw error;
-    });
+export const addEvent = (event: IEvent) => (dispatch: Function) => {
+  dispatch(setFetchingState());
+  return EventAPI.createEvent(event).then(result => {
+    dispatch(storeEvents());
+  });
+};
+
+export const editEvent = (event: IEvent) => (dispatch: Function) => {
+  dispatch(setFetchingState());
+  return EventAPI.editEvent(event).then(result => {
+    dispatch(storeEvents());
+  });
+};
+
+export const deleteEvent = (id: number) => (dispatch: Function) => {
+  dispatch(setFetchingState());
+  return EventAPI.deleteEvent(id).then(result => {
+    dispatch(storeEvents());
+  });
+};

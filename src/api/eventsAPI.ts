@@ -27,7 +27,7 @@ export class EventAPI {
       headers: new Headers({ "Content-Type": "application/json" }),
       credentials: "include",
       body: JSON.stringify({
-        event_name: name,
+        event_name: event.event_name,
         start: event.start,
         end: event.end
       })

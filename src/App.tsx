@@ -76,7 +76,6 @@ class App extends React.Component<{}, IAppState> {
   };
 
   showSuccessToast = (message = "Welcome!") => {
-    debugger;
     if (this.state.showToast) {
       this.setState({
         showToast: false
@@ -93,7 +92,6 @@ class App extends React.Component<{}, IAppState> {
   };
 
   showErrorToast = () => {
-    debugger;
     if (this.state.showToast) {
       this.setState({
         showToast: false

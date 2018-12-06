@@ -16,7 +16,6 @@ const SignOutComponent = ({
         return handleClose();
       })
       .catch(error => {
-        // fix this
         showErrorToast();
       });
   };

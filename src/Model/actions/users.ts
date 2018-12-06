@@ -1,5 +1,5 @@
 import { UserAPI } from "../../api/userAPI";
-import { loadEvents, removeEvents } from "./events";
+import { removeEvents, storeEvents } from "./events";
 
 export const SIGNIN_FAILED = "SIGNIN_FAILED";
 export const SIGNUP_FAILED = "SIGNUP_FAILED";
@@ -17,7 +17,8 @@ export const signIn = (user: IUserType) => (dispatch: Function) =>
         dispatch({ type: SIGNIN_FAILED, payload: { error: { result } } });
         return Promise.reject(result);
       } else {
-        return dispatch(loadEvents());
+        //return dispatch(loadEvents());
+        return dispatch(storeEvents());
       }
     })
     .catch(error => {
@@ -34,7 +35,8 @@ export const signUp = (user: IUserType) => (dispatch: Function) =>
         });
         return Promise.reject(result);
       } else {
-        return dispatch(loadEvents());
+        //return dispatch(loadEvents());
+        return dispatch(storeEvents());
       }
     })
     .catch(error => {
