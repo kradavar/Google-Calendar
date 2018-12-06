@@ -18,7 +18,7 @@ export interface IAppState {
   previuosPeriod: () => void;
   showModal: boolean;
   signType: string;
-  toastId: number;
+  showToast: boolean;
 }
 
 class App extends React.Component<{}, IAppState> {
@@ -55,7 +55,7 @@ class App extends React.Component<{}, IAppState> {
       previuosPeriod: this.previuosPeriod,
       showModal: false,
       signType: "Sign in",
-      toastId: 0
+      showToast: false
     };
   }
 
@@ -69,19 +69,46 @@ class App extends React.Component<{}, IAppState> {
   handleOpen = (e: any) => {
     this.setState({
       showModal: true,
-      signType: e.target.value
+      signType: e.target.value,
+      showToast: false
     });
     e.stopPropagation();
   };
 
-  showSuccessToast = (message = "Welcome!") =>
-    toast.success(message, {
-      hideProgressBar: true
-    });
-  showErrorToast = () =>
-    toast.error("Sorry, something went wrong", {
-      hideProgressBar: true
-    });
+  showSuccessToast = (message = "Welcome!") => {
+    debugger;
+    if (this.state.showToast) {
+      this.setState({
+        showToast: false
+      });
+      return "";
+    } else {
+      this.setState({
+        showToast: true
+      });
+      return toast.success(message, {
+        hideProgressBar: true
+      });
+    }
+  };
+
+  showErrorToast = () => {
+    debugger;
+    if (this.state.showToast) {
+      this.setState({
+        showToast: false
+      });
+      return "";
+    } else {
+      this.setState({
+        showToast: true
+      });
+      return toast.error("Sorry, something went wrong", {
+        hideProgressBar: true
+      });
+    }
+  };
+
   render() {
     return (
       <SharedViewContext.Provider value={this.state}>
