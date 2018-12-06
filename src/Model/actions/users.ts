@@ -17,7 +17,6 @@ export const signIn = (user: IUserType) => (dispatch: Function) =>
         dispatch({ type: SIGNIN_FAILED, payload: { error: { result } } });
         return Promise.reject(result);
       } else {
-        //return dispatch(loadEvents());
         return dispatch(storeEvents());
       }
     })
@@ -35,7 +34,6 @@ export const signUp = (user: IUserType) => (dispatch: Function) =>
         });
         return Promise.reject(result);
       } else {
-        //return dispatch(loadEvents());
         return dispatch(storeEvents());
       }
     })
