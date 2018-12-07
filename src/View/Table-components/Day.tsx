@@ -53,7 +53,7 @@ export default class Day extends React.Component<IDayProps, IDayState> {
   };
 
   hideModal = (e: Event): void => {
-    e.stopPropagation();
+    e && e.stopPropagation();
     this.setState({
       showModal: false
     });

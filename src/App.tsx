@@ -63,7 +63,7 @@ class App extends React.Component<{}, IAppState> {
     this.setState({
       showModal: false
     });
-    e.stopPropagation();
+    e && e.stopPropagation();
   };
 
   handleOpen = (e: any) => {
@@ -72,7 +72,7 @@ class App extends React.Component<{}, IAppState> {
       signType: e.target.value,
       showToast: false
     });
-    e.stopPropagation();
+    e && e.stopPropagation();
   };
 
   showSuccessToast = (message = "Welcome!") => {

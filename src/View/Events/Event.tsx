@@ -21,12 +21,12 @@ export default class Event extends React.Component<IEventProps, IEventState> {
 
   handleClose = (e: ModalMouseEvent) => {
     this.setState({ showModal: false });
-    e.stopPropagation();
+    e && e.stopPropagation();
   };
 
   handleOpen = (e: ModalMouseEvent) => {
     this.setState({ showModal: true });
-    e.stopPropagation();
+    e && e.stopPropagation();
   };
 
   getHeight = (start: string, end: string) => {

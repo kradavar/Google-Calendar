@@ -1,6 +1,13 @@
 import React from "react";
 import { compose } from "redux";
-import { reduxForm, FormSection, formValueSelector } from "redux-form";
+import {
+  reduxForm,
+  FormSection,
+  formValueSelector,
+  SubmissionError
+} from "redux-form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSync } from "@fortawesome/free-solid-svg-icons";
 import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
@@ -8,6 +15,7 @@ import { Button } from "../../View/Switchers/Button";
 import "../../Styles/Form.css";
 import { addEvent, editEvent } from "../actions/events";
 import { validate } from "../../validation/index";
+import { REQUEST_TYPES } from "src/constants/constants";
 
 const CreateFormComponent = ({
   reset,
@@ -16,21 +24,51 @@ const CreateFormComponent = ({
   addEvent,
   editEvent,
   handleSubmit,
-  handleClose
+  handleClose,
+  loading,
+  pressedButton
 }) => {
   const submit = values => {
-    const name = values.name;
-
     const dates = onEventTypeChange(values);
     id
       ? editEvent({
           id,
-          event_name: name,
+          event_name: values.name,
           start: dates.start,
           end: dates.end
         })
-      : addEvent({ event_name: name, start: dates.start, end: dates.end });
+          .then(() => {
+            // add success toast
+            return handleClose();
+          })
+          .catch(err => {
+            throw new SubmissionError({
+              name: "Sorry, something went wrong",
+              _error: "Event edition was failed"
+            });
+          })
+      : addEvent({
+          event_name: values.name,
+          start: dates.start,
+          end: dates.end
+        })
+          .then(() => {
+            return handleClose();
+          })
+          .catch(err => {
+            throw new SubmissionError({
+              name: "Sorry, something went wrong",
+              _error: "Event creation was failed"
+            });
+          });
   };
+
+  const getButtonValue = value =>
+    value === pressedButton && loading ? (
+      <FontAwesomeIcon icon={faSync} />
+    ) : (
+      value
+    );
 
   const onEventTypeChange = values => {
     if (values.eventType) {
@@ -75,8 +113,19 @@ const CreateFormComponent = ({
             onClick={reset}
             value="Clear"
           />
-
-          <Button classes="btn-outline-success" value="Create" type="submit" />
+          {pressedButton === REQUEST_TYPES.ADD ? (
+            <Button
+              classes="btn-outline-success"
+              value={getButtonValue(REQUEST_TYPES.ADD)}
+              type="submit"
+            />
+          ) : (
+            <Button
+              classes="btn-outline-success"
+              value={getButtonValue(REQUEST_TYPES.EDIT)}
+              type="submit"
+            />
+          )}
         </div>
       </form>
     </React.Fragment>
@@ -85,8 +134,11 @@ const CreateFormComponent = ({
 
 const mapStateToProps = state => {
   const eventType = formValueSelector("createEvent");
+  const loadingState = state => state.meta;
   return {
-    isAllDayEvent: eventType(state, "eventType")
+    isAllDayEvent: eventType(state, "eventType"),
+    loading: loadingState.isLoading,
+    pressedButton: loadingState.actionType
   };
 };
 

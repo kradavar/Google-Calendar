@@ -21,3 +21,10 @@ export const VIEW = {
   WEEK: "week",
   DAY: "day"
 };
+
+export const REQUEST_TYPES = {
+  ADD: "Create",
+  EDIT: "Edit",
+  DEL: "Delete",
+  GET: "Get"
+};

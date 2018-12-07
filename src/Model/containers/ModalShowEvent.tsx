@@ -82,6 +82,7 @@ class ModalShowEvent extends React.Component<
           />
         ) : (
           <ShowForm
+            {...this.props}
             initialValues={{
               start: formatDate(start, DATE_FORMATS.DATE_WITH_TIME),
               end: formatDate(end, DATE_FORMATS.DATE_WITH_TIME)
