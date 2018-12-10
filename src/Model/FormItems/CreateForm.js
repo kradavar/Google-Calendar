@@ -25,8 +25,7 @@ const CreateFormComponent = ({
   editEvent,
   handleSubmit,
   handleClose,
-  loading,
-  pressedButton
+  loading
 }) => {
   const submit = values => {
     const dates = onEventTypeChange(values);
@@ -64,11 +63,7 @@ const CreateFormComponent = ({
   };
 
   const getButtonValue = value =>
-    value === pressedButton && loading ? (
-      <FontAwesomeIcon icon={faSync} />
-    ) : (
-      value
-    );
+    loading ? <FontAwesomeIcon icon={faSync} /> : value;
 
   const onEventTypeChange = values => {
     if (values.eventType) {
@@ -113,16 +108,16 @@ const CreateFormComponent = ({
             onClick={reset}
             value="Clear"
           />
-          {pressedButton === REQUEST_TYPES.ADD ? (
+          {id ? (
             <Button
               classes="btn-outline-success"
-              value={getButtonValue(REQUEST_TYPES.ADD)}
+              value={getButtonValue("Edit event")}
               type="submit"
             />
           ) : (
             <Button
               classes="btn-outline-success"
-              value={getButtonValue(REQUEST_TYPES.EDIT)}
+              value={getButtonValue("Create event")}
               type="submit"
             />
           )}
@@ -137,8 +132,7 @@ const mapStateToProps = state => {
   const loadingState = state => state.meta;
   return {
     isAllDayEvent: eventType(state, "eventType"),
-    loading: loadingState.isLoading,
-    pressedButton: loadingState.actionType
+    loading: loadingState.isLoading
   };
 };
 
