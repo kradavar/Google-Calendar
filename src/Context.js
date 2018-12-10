@@ -7,5 +7,7 @@ export const SharedViewContext = React.createContext({
   renderedDate: moment(),
   changeViewType: () => {},
   previousPeriod: () => {},
-  nextPeriod: () => {}
+  nextPeriod: () => {},
+  showSuccessToast: message => {},
+  showErrorToast: () => {}
 });

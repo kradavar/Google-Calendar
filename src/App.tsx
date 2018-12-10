@@ -19,12 +19,16 @@ export interface IAppState {
   showModal: boolean;
   signType: string;
   showToast: boolean;
+  showSuccessToast: (message: string) => any;
+  showErrorToast: () => any;
 }
 
 class App extends React.Component<{}, IAppState> {
   changeViewType: (e: any) => void;
   nextPeriod: () => void;
   previuosPeriod: () => void;
+  showSuccessToast: (message: string) => any;
+  showErrorToast: () => any;
   constructor(props: any) {
     super(props);
     this.changeViewType = e => {
@@ -47,6 +51,38 @@ class App extends React.Component<{}, IAppState> {
       });
     };
 
+    this.showSuccessToast = (message = "Welcome!") => {
+      if (this.state.showToast) {
+        this.setState({
+          showToast: false
+        });
+        return "";
+      } else {
+        this.setState({
+          showToast: true
+        });
+        return toast.success(message, {
+          hideProgressBar: true
+        });
+      }
+    };
+
+    this.showErrorToast = () => {
+      if (this.state.showToast) {
+        this.setState({
+          showToast: false
+        });
+        return "";
+      } else {
+        this.setState({
+          showToast: true
+        });
+        return toast.error("Sorry, something went wrong", {
+          hideProgressBar: true
+        });
+      }
+    };
+
     this.state = {
       view: VIEW.MONTH,
       renderedDate: moment(),
@@ -55,13 +91,16 @@ class App extends React.Component<{}, IAppState> {
       previuosPeriod: this.previuosPeriod,
       showModal: false,
       signType: "Sign in",
+      showSuccessToast: this.showSuccessToast,
+      showErrorToast: this.showErrorToast,
       showToast: false
     };
   }
 
   handleClose = (e: Event) => {
     this.setState({
-      showModal: false
+      showModal: false,
+      showToast: false
     });
     e && e.stopPropagation();
   };
@@ -73,38 +112,6 @@ class App extends React.Component<{}, IAppState> {
       showToast: false
     });
     e && e.stopPropagation();
-  };
-
-  showSuccessToast = (message = "Welcome!") => {
-    if (this.state.showToast) {
-      this.setState({
-        showToast: false
-      });
-      return "";
-    } else {
-      this.setState({
-        showToast: true
-      });
-      return toast.success(message, {
-        hideProgressBar: true
-      });
-    }
-  };
-
-  showErrorToast = () => {
-    if (this.state.showToast) {
-      this.setState({
-        showToast: false
-      });
-      return "";
-    } else {
-      this.setState({
-        showToast: true
-      });
-      return toast.error("Sorry, something went wrong", {
-        hideProgressBar: true
-      });
-    }
   };
 
   render() {
@@ -119,8 +126,6 @@ class App extends React.Component<{}, IAppState> {
             <SignModal
               type={this.state.signType}
               handleClose={this.handleClose}
-              showSuccessToast={this.showSuccessToast}
-              showErrorToast={this.showErrorToast}
             />
           )}
           <ToastContainer autoClose={1000} />

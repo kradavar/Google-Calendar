@@ -77,7 +77,7 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
   render() {
     return (
       <SharedViewContext.Consumer>
-        {({ view }: any) => (
+        {({ view }: { view: string }) => (
           <ul className={this.getClassName(view)}>
             {this.state.showAllEvents && view === VIEW.MONTH ? (
               <EventsComponent

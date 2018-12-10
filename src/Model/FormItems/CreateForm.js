@@ -6,8 +6,6 @@ import {
   formValueSelector,
   SubmissionError
 } from "redux-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSync } from "@fortawesome/free-solid-svg-icons";
 import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
@@ -15,16 +13,18 @@ import { Button } from "../../View/Switchers/Button";
 import "../../Styles/Form.css";
 import { addEvent, editEvent } from "../actions/events";
 import { validate } from "../../validation/index";
-import { REQUEST_TYPES } from "src/constants/constants";
 
 const CreateFormComponent = ({
+  pristine,
   reset,
+  submitting,
   isAllDayEvent,
   id,
   addEvent,
   editEvent,
   handleSubmit,
   handleClose,
+  showSuccessToast,
   loading
 }) => {
   const submit = values => {
@@ -37,7 +37,7 @@ const CreateFormComponent = ({
           end: dates.end
         })
           .then(() => {
-            // add success toast
+            showSuccessToast("Your event was successfully changed");
             return handleClose();
           })
           .catch(err => {
@@ -52,6 +52,8 @@ const CreateFormComponent = ({
           end: dates.end
         })
           .then(() => {
+            debugger;
+            showSuccessToast("Your event was successfully created");
             return handleClose();
           })
           .catch(err => {
@@ -61,9 +63,6 @@ const CreateFormComponent = ({
             });
           });
   };
-
-  const getButtonValue = value =>
-    loading ? <FontAwesomeIcon icon={faSync} /> : value;
 
   const onEventTypeChange = values => {
     if (values.eventType) {
@@ -111,14 +110,16 @@ const CreateFormComponent = ({
           {id ? (
             <Button
               classes="btn-outline-success"
-              value={getButtonValue("Edit event")}
+              value="Edit event"
               type="submit"
+              disabled={loading}
             />
           ) : (
             <Button
               classes="btn-outline-success"
-              value={getButtonValue("Create event")}
+              value="Create event"
               type="submit"
+              disabled={loading}
             />
           )}
         </div>

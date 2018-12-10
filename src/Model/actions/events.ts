@@ -44,10 +44,7 @@ export const removeEvents = () => {
 };
 
 const setFetchingState = () => {
-  return {
-    type: IS_FETCHING,
-    payload: {}
-  };
+  return { type: IS_FETCHING };
 };
 
 export const storeEvents = () => (dispatch: Function) => {

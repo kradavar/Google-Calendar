@@ -4,35 +4,35 @@ import SignInForm from "../Model/FormItems/SignInForm";
 import SignUpForm from "../Model/FormItems/SignUpForm";
 import SignOutForm from "../Model/FormItems/SignOut";
 import { SIGN } from "../constants/constants";
+import { SharedViewContext } from "../Context";
 
-export const SignModal = ({
-  handleClose,
-  type,
-  showSuccessToast,
-  showErrorToast
-}) => (
-  <Modal header={type} handleClose={handleClose}>
-    {type === SIGN.IN ? (
-      <SignInForm
-        showSuccessToast={showSuccessToast}
-        showErrorToast={showErrorToast}
-      />
-    ) : (
-      <React.Fragment>
-        {type === SIGN.UP ? (
-          <SignUpForm
-            handleClose={handleClose}
+export const SignModal = ({ handleClose, type }) => (
+  <SharedViewContext.Consumer>
+    {({ showSuccessToast, showErrorToast }) => (
+      <Modal header={type} handleClose={handleClose}>
+        {type === SIGN.IN ? (
+          <SignInForm
             showSuccessToast={showSuccessToast}
             showErrorToast={showErrorToast}
           />
         ) : (
-          <SignOutForm
-            handleClose={handleClose}
-            showSuccessToast={showSuccessToast}
-            showErrorToast={showErrorToast}
-          />
+          <React.Fragment>
+            {type === SIGN.UP ? (
+              <SignUpForm
+                handleClose={handleClose}
+                showSuccessToast={showSuccessToast}
+                showErrorToast={showErrorToast}
+              />
+            ) : (
+              <SignOutForm
+                handleClose={handleClose}
+                showSuccessToast={showSuccessToast}
+                showErrorToast={showErrorToast}
+              />
+            )}
+          </React.Fragment>
         )}
-      </React.Fragment>
+      </Modal>
     )}
-  </Modal>
+  </SharedViewContext.Consumer>
 );
