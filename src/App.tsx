@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Styles/App.css";
@@ -12,13 +11,11 @@ import { SignModal } from "./View/Authorization";
 
 export interface IAppState {
   view: string;
-  renderedDate: moment.Moment;
   changeViewType: (e: Event) => void;
   nextPeriod: () => void;
   previuosPeriod: () => void;
   showModal: boolean;
   signType: string;
-  showToast: boolean;
   showSuccessToast: (message: string) => any;
   showErrorToast: () => any;
 }
@@ -51,57 +48,31 @@ class App extends React.Component<{}, IAppState> {
       });
     };
 
-    this.showSuccessToast = (message = "Welcome!") => {
-      debugger;
-      if (this.state.showToast) {
-        this.setState({
-          showToast: false
-        });
-        return "";
-      } else {
-        this.setState({
-          showToast: true
-        });
-        return toast.success(message, {
-          hideProgressBar: true
-        });
-      }
-    };
+    this.showSuccessToast = (message = "Welcome!") =>
+      toast.success(message, {
+        hideProgressBar: true
+      });
 
-    this.showErrorToast = () => {
-      if (this.state.showToast) {
-        this.setState({
-          showToast: false
-        });
-        return "";
-      } else {
-        this.setState({
-          showToast: true
-        });
-        return toast.error("Sorry, something went wrong", {
-          hideProgressBar: true
-        });
-      }
-    };
+    this.showErrorToast = () =>
+      toast.error("Sorry, something went wrong", {
+        hideProgressBar: true
+      });
 
     this.state = {
       view: VIEW.MONTH,
-      renderedDate: moment(),
       changeViewType: this.changeViewType,
       nextPeriod: this.nextPeriod,
       previuosPeriod: this.previuosPeriod,
       showModal: false,
       signType: "Sign in",
       showSuccessToast: this.showSuccessToast,
-      showErrorToast: this.showErrorToast,
-      showToast: false
+      showErrorToast: this.showErrorToast
     };
   }
 
   handleClose = (e: Event) => {
     this.setState({
-      showModal: false,
-      showToast: false
+      showModal: false
     });
     e && e.stopPropagation();
   };
@@ -109,8 +80,7 @@ class App extends React.Component<{}, IAppState> {
   handleOpen = (e: any) => {
     this.setState({
       showModal: true,
-      signType: e.target.value,
-      showToast: false
+      signType: e.target.value
     });
     e && e.stopPropagation();
   };
