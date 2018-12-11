@@ -17,7 +17,6 @@ import { validate } from "../../validation/index";
 const CreateFormComponent = ({
   pristine,
   reset,
-  submitting,
   isAllDayEvent,
   id,
   addEvent,
@@ -52,11 +51,11 @@ const CreateFormComponent = ({
           end: dates.end
         })
           .then(() => {
-            debugger;
             showSuccessToast("Your event was successfully created");
             return handleClose();
           })
           .catch(err => {
+            console.log(err);
             throw new SubmissionError({
               name: "Sorry, something went wrong",
               _error: "Event creation was failed"

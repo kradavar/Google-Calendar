@@ -15,11 +15,11 @@ const ModalWindow: React.SFC<{
   isSigned: boolean;
 }> = ({ handleClose, dayDate, hour, isSigned }) => (
   <SharedViewContext.Consumer>
-    {({ showToastSuccess }: { showToastSuccess: (message: string) => any }) => (
+    {({ showSuccessToast }: { showSuccessToast: (message: string) => any }) => (
       <Modal header="Create New Event" handleClose={handleClose}>
         {isSigned ? (
           <CreateForm
-            showToastSuccess={showToastSuccess}
+            showSuccessToast={showSuccessToast}
             handleClose={handleClose}
             initialValues={{
               eventType: false,

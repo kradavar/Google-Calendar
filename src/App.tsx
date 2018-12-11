@@ -52,6 +52,7 @@ class App extends React.Component<{}, IAppState> {
     };
 
     this.showSuccessToast = (message = "Welcome!") => {
+      debugger;
       if (this.state.showToast) {
         this.setState({
           showToast: false
