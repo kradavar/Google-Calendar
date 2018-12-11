@@ -1,4 +1,4 @@
-import { STORE_EVENTS, REMOVE_EVENTS } from "../actions/events";
+import { STORE_EVENTS, REMOVE_EVENTS, IS_FETCHING } from "../actions/events";
 import { initialState } from "../initialState/initialState";
 
 export const events = (
@@ -6,12 +6,27 @@ export const events = (
   action: { type: string; payload: any }
 ) => {
   switch (action.type) {
+    case IS_FETCHING:
+      return {
+        ...state,
+        meta: {
+          loading: true
+        }
+      };
     case STORE_EVENTS:
       return {
-        byIds: { ...state.byIds, ...action.payload.events }
+        byIds: { ...state.byIds, ...action.payload.events },
+        meta: {
+          loading: false
+        }
       };
     case REMOVE_EVENTS:
-      return { byIds: {} };
+      return {
+        byIds: {},
+        meta: {
+          loading: false
+        }
+      };
     default:
       return state;
   }
