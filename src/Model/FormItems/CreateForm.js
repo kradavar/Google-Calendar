@@ -6,6 +6,7 @@ import {
   formValueSelector,
   SubmissionError
 } from "redux-form";
+import { createSelector } from "reselect";
 import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
@@ -105,20 +106,21 @@ const CreateFormComponent = ({
             data-dismiss="modal"
             onClick={reset}
             value="Clear"
+            disabled={loading}
           />
           {id ? (
             <Button
               classes="btn-outline-success"
               value="Edit event"
               type="submit"
-              disabled={loading}
+              loading={loading}
             />
           ) : (
             <Button
               classes="btn-outline-success"
               value="Create event"
               type="submit"
-              disabled={loading}
+              loading={loading}
             />
           )}
         </div>
@@ -129,10 +131,9 @@ const CreateFormComponent = ({
 
 const mapStateToProps = state => {
   const eventType = formValueSelector("createEvent");
-  const loadingState = state => state.meta;
   return {
     isAllDayEvent: eventType(state, "eventType"),
-    loading: loadingState.isLoading
+    loading: state.events.meta.loading
   };
 };
 

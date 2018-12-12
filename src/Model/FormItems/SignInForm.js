@@ -12,7 +12,8 @@ const SignInFormComponent = ({
   reset,
   signIn,
   handleClose,
-  showSuccessToast
+  showSuccessToast,
+  loading
 }) => {
   const submit = values =>
     signIn(values)
@@ -46,16 +47,28 @@ const SignInFormComponent = ({
             data-dismiss="modal"
             onClick={reset}
             value="Clear"
+            disabled={loading}
           />
-          <Button classes="btn-outline-success" value={SIGN.IN} type="submit" />
+          <Button
+            classes="btn-outline-success"
+            value={SIGN.IN}
+            loading={loading}
+            type="submit"
+          />
         </div>
       </form>
     </React.Fragment>
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    loading: state.user.meta.loading
+  };
+};
+
 const sign = connect(
-  null,
+  mapStateToProps,
   { signIn }
 )(SignInFormComponent);
 

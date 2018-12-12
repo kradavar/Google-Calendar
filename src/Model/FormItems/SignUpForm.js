@@ -14,7 +14,8 @@ const SignUpFormComponent = ({
   handleSubmit,
   signUp,
   handleClose,
-  showSuccessToast
+  showSuccessToast,
+  loading
 }) => {
   const submit = values =>
     signUp(values)
@@ -62,16 +63,28 @@ const SignUpFormComponent = ({
           data-dismiss="modal"
           onClick={reset}
           value="Cancel"
+          disabled={loading}
         />
 
-        <Button classes="btn-outline-success" value={SIGN.UP} type="submit" />
+        <Button
+          classes="btn-outline-success"
+          value={SIGN.UP}
+          loading={loading}
+          type="submit"
+        />
       </div>
     </form>
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    loading: state.user.meta.loading
+  };
+};
+
 const signUpForm = connect(
-  null,
+  mapStateToProps,
   { signUp }
 )(SignUpFormComponent);
 

@@ -9,6 +9,8 @@ import { formatDate, getDuration } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/constants";
 import { Button } from "../../View/Switchers/Button";
 import { SharedViewContext } from "../../Context";
+
+import "../../Styles/Modal.css";
 export interface IModalShowEventProps {
   deleteEvent: (id: number) => void;
   id: number;
@@ -34,7 +36,7 @@ class ModalShowEvent extends React.Component<
   };
 
   render() {
-    const { start, end, handleClose }: any = this.props;
+    const { start, end, handleClose, loading }: any = this.props;
     const name = this.props.event_name;
     const { editMode } = this.state;
     return (
@@ -48,26 +50,30 @@ class ModalShowEvent extends React.Component<
             header={editMode ? "Edit Event" : name}
             handleClose={handleClose}
             bottom={
-              <div>
+              <div className="show-modal-buttons">
                 {!editMode && (
                   <Button
                     onClick={this.editCurrentEvent}
                     classes="btn-outline-info show-modal-button"
                     value="Edit"
+                    disabled={loading}
                   />
                 )}
                 <Button
                   onClick={() => {
-                    console;
                     this.props.deleteEvent(this.props.id);
+                    handleClose();
+                    showSuccessToast("Your event has been deleted");
                   }}
                   classes="btn-outline-primary show-modal-button"
                   value="Delete"
+                  loading={loading}
                 />
                 <Button
                   classes="btn-outline-dark show-modal-button"
                   onClick={handleClose}
                   value="Close"
+                  disabled={loading}
                 />
               </div>
             }
@@ -105,8 +111,14 @@ class ModalShowEvent extends React.Component<
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    loading: state.events.meta.loading
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     deleteEvent
   }

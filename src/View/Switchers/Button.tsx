@@ -9,9 +9,12 @@ export const Button: React.SFC<{
   onClick: () => void;
   type?: string;
   loading?: boolean;
+  disabled?: boolean;
 }> = ({ classes, value, onClick, type = "button", loading = false }) =>
   loading ? (
-    <Loader type="Bars" />
+    <div className="loading">
+      <Loader type="Oval" height={30} width={30} color="#255831" />
+    </div>
   ) : (
     <input
       type={type}

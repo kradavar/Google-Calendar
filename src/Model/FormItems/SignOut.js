@@ -7,7 +7,8 @@ const SignOutComponent = ({
   signOut,
   handleClose,
   showSuccessToast,
-  showErrorToast
+  showErrorToast,
+  loading
 }) => {
   const handleSignOut = () => {
     return signOut()
@@ -28,11 +29,13 @@ const SignOutComponent = ({
           data-dismiss="modal"
           onClick={handleClose}
           value="No"
+          disabled={loading}
         />
 
         <Button
           classes="btn-outline-success"
           value="Yes"
+          loading={loading}
           onClick={handleSignOut}
         />
       </div>
@@ -40,7 +43,13 @@ const SignOutComponent = ({
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    loading: state.user.meta.loading
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { signOut }
 )(SignOutComponent);

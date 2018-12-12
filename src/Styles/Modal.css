@@ -13,3 +13,10 @@
   display: flex;
   justify-content: space-around;
 }
+
+.show-modal-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+}
