@@ -10,7 +10,14 @@ export const Button: React.SFC<{
   type?: string;
   loading?: boolean;
   disabled?: boolean;
-}> = ({ classes, value, onClick, type = "button", loading = false }) =>
+}> = ({
+  classes,
+  value,
+  onClick,
+  type = "button",
+  loading = false,
+  disabled = false
+}) =>
   loading ? (
     <div className="loading">
       <Loader type="Oval" height={30} width={30} color="#255831" />
@@ -20,6 +27,7 @@ export const Button: React.SFC<{
       type={type}
       value={value}
       onClick={onClick}
+      disabled={disabled}
       className={classNames(["btn", "bnt-font", classes])}
     />
   );
