@@ -4,7 +4,7 @@ import { deleteEvent } from "../../actions/events";
 import { Modal } from "./modalItems/Modal";
 import { ModalMouseEvent } from "../calendar-table/cells/Day";
 import CreateForm from "../../FormItems/CreateEditEvent";
-import ShowForm from "../../FormItems/ShowForm";
+import ShowForm from "../../FormItems/ShowEventInfo";
 import { formatDate, getDuration } from "../../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/constants";
 import { Button } from "../buttons/Button";
