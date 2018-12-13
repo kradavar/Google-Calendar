@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { ViewTypeSwitcher } from "./Switchers/ViewTypeSwitcher";
 import "../Styles/App.css";
@@ -7,11 +7,20 @@ import SignMenu from "./SignMenu";
 import { Button } from "./Switchers/Button";
 import { DATE_FORMATS } from "../constants/constants";
 import { formatDate } from "../getRenderedDateInfo";
+import * as moment from "moment";
 
 export const Header = props => {
   return (
     <SharedViewContext.Consumer>
-      {({ renderedDate, previuosPeriod, nextPeriod }) => (
+      {({
+        renderedDate,
+        previuosPeriod,
+        nextPeriod
+      }: {
+        renderedDate: moment.Moment;
+        previuosPeriod: () => void;
+        nextPeriod: () => void;
+      }) => (
         <nav className="navbar navbar-light navbar-header">
           <header className="App-header">Calendar</header>
           <div className="container d-flex justify-content-center align-items-center">

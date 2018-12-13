@@ -13,8 +13,7 @@ export const CalendarTable: React.SFC<{}> = ({}) => {
       {({
         view,
         renderedDate
-      }: // SharedViewContextProps
-      {
+      }: {
         view: string;
         renderedDate: moment.Moment;
       }) => (

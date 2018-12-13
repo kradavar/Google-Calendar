@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import React from "react";
 
-import Day from "../components/calendar-table/Day";
+import Day from "../components/calendar-table/Cells/Day";
 import moment from "moment";
 
 it("renders a modal window", () => {

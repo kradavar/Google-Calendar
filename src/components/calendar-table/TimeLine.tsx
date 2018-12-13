@@ -1,16 +1,20 @@
-import React, { Component } from "react";
-import "../Styles/CalendarTable.css";
-import moment from "moment";
-import { getDuration } from "../getRenderedDateInfo";
+import * as React from "react";
+import "../../Styles/CalendarTable.css";
+import * as moment from "moment";
+import { getDuration } from "../../getRenderedDateInfo";
 
-export default class TimeLine extends Component {
+export interface ITimelimeState {
+  time: moment.Moment;
+}
+
+export default class TimeLine extends React.Component<{}, ITimelimeState> {
   constructor(props) {
     super(props);
     this.state = {
       time: moment()
     };
   }
-
+  interval: any;
   getTopOfEvent = () => {
     const startTime = getDuration(
       moment().startOf("day"),

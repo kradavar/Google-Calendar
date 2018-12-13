@@ -7,7 +7,7 @@ import { formatDate } from "../../getRenderedDateInfo";
 import { DATE_FORMATS, VIEW } from "../../constants/constants";
 import { SharedViewContext } from "../../Context";
 import { IEvent } from "../../actions/events";
-import { ModalMouseEvent } from "../calendar-table/Day";
+import { ModalMouseEvent } from "../calendar-table/Cells/Day";
 
 export interface IEventState {
   showModal: boolean;

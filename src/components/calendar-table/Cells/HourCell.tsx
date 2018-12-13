@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ModalMouseEvent } from "../Day";
+import { ModalMouseEvent } from "./Day";
 
 export interface IHourCell {
   children: Array<JSX.Element>;

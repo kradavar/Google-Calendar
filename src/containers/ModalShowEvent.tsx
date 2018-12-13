@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { deleteEvent } from "../actions/events";
 import { Modal } from "../components/ModalIems/Modal";
-import { ModalMouseEvent } from "../components/calendar-table/Day";
+import { ModalMouseEvent } from "../components/calendar-table/Cells/Day";
 import CreateForm from "../FormItems/CreateEditEvent";
 import ShowForm from "../FormItems/ShowForm";
 import { formatDate, getDuration } from "../getRenderedDateInfo";
