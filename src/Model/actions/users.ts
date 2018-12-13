@@ -1,4 +1,4 @@
-import { UserAPI } from "../../api/userAPI";
+import * as UserAPI from "../../api/userAPI";
 import { removeEvents, storeEvents } from "./events";
 
 export const SIGNIN_FAILED = "SIGNIN_FAILED";
