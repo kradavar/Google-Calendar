@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../Styles/Event.css";
-import ModalShowEvent from "../../containers/ModalShowEvent";
+import ModalShowEvent from "../modals/ModalShowEvent";
 import { getDuration } from "../../getRenderedDateInfo";
 import * as moment from "moment";
 import { formatDate } from "../../getRenderedDateInfo";

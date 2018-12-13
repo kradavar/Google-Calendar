@@ -1,8 +1,8 @@
 import * as React from "react";
 import { CellHeader } from "./CellHeader";
 import "../../../Styles/Cell.css";
-import RenderedEvents from "../../../containers/RenderedEvents";
-import ModalWindow from "../../../containers/ModalWindow";
+import RenderedEvents from "../../events/RenderedEvents";
+import ModalWindow from "../../modals/ModalWindow";
 import { DayWeekHeader } from "../DayWeekHeader";
 import * as moment from "moment";
 import TimeLine from "../TimeLine";

@@ -8,7 +8,7 @@ import { CalendarTable } from "./components/calendar-table/CalendarTable";
 import { SharedViewContext } from "./Context";
 import { VIEW } from "./constants/constants";
 import { Header } from "./components/Header";
-import { SignModal } from "./components/ModalSign";
+import { SignModal } from "./components/modals/ModalSign";
 
 export interface IAppState {
   view: string;

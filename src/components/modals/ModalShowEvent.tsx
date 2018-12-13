@@ -1,14 +1,14 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { deleteEvent } from "../actions/events";
-import { Modal } from "../components/ModalIems/Modal";
-import { ModalMouseEvent } from "../components/calendar-table/Cells/Day";
-import CreateForm from "../FormItems/CreateEditEvent";
-import ShowForm from "../FormItems/ShowForm";
-import { formatDate, getDuration } from "../getRenderedDateInfo";
-import { DATE_FORMATS } from "../constants/constants";
-import { Button } from "../components/Switchers/Button";
-import { SharedViewContext } from "../Context";
+import { deleteEvent } from "../../actions/events";
+import { Modal } from "./modalItems/Modal";
+import { ModalMouseEvent } from "../calendar-table/Cells/Day";
+import CreateForm from "../../FormItems/CreateEditEvent";
+import ShowForm from "../../FormItems/ShowForm";
+import { formatDate, getDuration } from "../../getRenderedDateInfo";
+import { DATE_FORMATS } from "../../constants/constants";
+import { Button } from "../Switchers/Button";
+import { SharedViewContext } from "../../Context";
 
 import "../Styles/Modal.css";
 export interface IModalShowEventProps {
