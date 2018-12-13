@@ -111,11 +111,20 @@ export default class Day extends React.Component<IDayProps, IDayState> {
     const { dayDate } = this.props;
     return (
       <SharedViewContext.Consumer>
-        {({ view }: { view: string }) => (
+        {({
+          view,
+          renderedDate
+        }: {
+          view: string;
+          renderedDate: moment.Moment;
+        }) => (
           <React.Fragment>
             {view === VIEW.MONTH ? (
               <div
-                className={this.getDayCellMonthClassNames(dayDate, moment())}
+                className={this.getDayCellMonthClassNames(
+                  dayDate,
+                  renderedDate
+                )}
                 onClick={this.showModal}
               >
                 {this.state.showModal && (

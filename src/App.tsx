@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Styles/App.css";
@@ -11,6 +12,7 @@ import { SignModal } from "./View/Authorization";
 
 export interface IAppState {
   view: string;
+  renderedDate: moment.Moment;
   changeViewType: (e: Event) => void;
   nextPeriod: () => void;
   previuosPeriod: () => void;
@@ -59,6 +61,7 @@ class App extends React.Component<{}, IAppState> {
       });
 
     this.state = {
+      renderedDate: moment(),
       view: VIEW.MONTH,
       changeViewType: this.changeViewType,
       nextPeriod: this.nextPeriod,
