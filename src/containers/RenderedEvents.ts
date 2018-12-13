@@ -2,7 +2,7 @@ import { createSelector } from "reselect";
 import * as moment from "moment";
 import { connect } from "react-redux";
 
-import EventList from "../components/Events/EventList";
+import EventList from "../components/events/EventList";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../constants/constants";
 
