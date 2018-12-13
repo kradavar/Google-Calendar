@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Button } from "../../Switchers/Button";
-import "../../Styles/Button.css";
+import "../../../Styles/Button.css";
 
 const ModalHeader: React.SFC<{
   header: string;

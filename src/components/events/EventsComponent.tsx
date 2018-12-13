@@ -1,9 +1,13 @@
-import React from "react";
+import * as React from "react";
 import Event from "./Event";
-import { Button } from "../../components/Switchers/Button";
+import { Button } from "../Switchers/Button";
 import "../../Styles/Event.css";
 
-export const EventsComponent = ({ events, handleClose, userColors }) => (
+export const EventsComponent: React.SFC<{
+  events: any;
+  handleClose: (e?: any) => void;
+  userColors?: any;
+}> = ({ events, handleClose, userColors }) => (
   <div className="all-events">
     <header className="all-events-header">
       All events

@@ -1,5 +1,5 @@
 import * as React from "react";
-import Day from "./Cells/Day";
+import Day from "./cells/Day";
 import "../../Styles/Cell.css";
 import { DATE_FORMATS, VIEW } from "../../constants/constants";
 import { formatDate } from "../../getRenderedDateInfo";

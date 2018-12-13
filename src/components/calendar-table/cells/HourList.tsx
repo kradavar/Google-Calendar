@@ -7,7 +7,7 @@ import { HourCell } from "./HourCell";
 import { ModalMouseEvent } from "./Day";
 import { CellHeader } from "./CellHeader";
 import "../../../Styles/Cell.css";
-import RenderedEvents from "../../../containers/RenderedEvents";
+import RenderedEvents from "../../events/RenderedEvents";
 
 export const HourList: React.SFC<{
   showModal: (e: ModalMouseEvent) => void;
