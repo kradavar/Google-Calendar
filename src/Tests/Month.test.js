@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import React from "react";
 
-import Month from "../components/Table-components/Month";
+import Month from "../components/calendar-table/Month";
 import moment from "moment";
 
 it("renders one month, which includes 5 weeks on month view type with header", () => {

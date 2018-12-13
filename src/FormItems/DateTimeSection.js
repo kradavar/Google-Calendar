@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FormInputWithLabel } from "./FormInputWithLabel";
+import { FormInputWithLabel } from "./InputWithLabel";
 
 import "../Styles/Form.css";
 

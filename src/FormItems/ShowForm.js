@@ -1,6 +1,6 @@
 import React from "react";
 import { reduxForm } from "redux-form";
-import { FormInputWithLabel } from "./FormInputWithLabel";
+import { FormInputWithLabel } from "./InputWithLabel";
 
 // Can we do it more flex in order to use for example in CreateForm like a section?
 const ShowFormComponent = () => {

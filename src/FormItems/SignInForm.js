@@ -1,7 +1,7 @@
 import React from "react";
 import { reduxForm, SubmissionError } from "redux-form";
 
-import { FormInputWithLabel } from "./FormInputWithLabel";
+import { FormInputWithLabel } from "./InputWithLabel";
 import { Button } from "../components/Switchers/Button";
 import { signIn } from "../actions/users";
 import { connect } from "react-redux";

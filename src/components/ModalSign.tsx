@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Modal } from "./ModalIems/Modal";
 import SignInForm from "../FormItems/SignInForm";
 import SignUpForm from "../FormItems/SignUpForm";
@@ -6,7 +6,10 @@ import SignOutForm from "../FormItems/SignOut";
 import { SIGN } from "../constants/constants";
 import { SharedViewContext } from "../Context";
 
-export const SignModal = ({ handleClose, type }) => (
+export const SignModal: React.SFC<{
+  handleClose: (e: Event) => void;
+  type: string;
+}> = ({ handleClose, type }) => (
   <SharedViewContext.Consumer>
     {({ showSuccessToast, showErrorToast }) => (
       <Modal header={type} handleClose={handleClose}>

@@ -7,7 +7,7 @@ import {
   SubmissionError
 } from "redux-form";
 import { DateTimeSection } from "./DateTimeSection";
-import { FormInputWithLabel } from "./FormInputWithLabel";
+import { FormInputWithLabel } from "./InputWithLabel";
 import { connect } from "react-redux";
 import { Button } from "../components/Switchers/Button";
 import "../Styles/Form.css";

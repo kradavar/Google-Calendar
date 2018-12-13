@@ -1,8 +1,11 @@
-import React from "react";
-import { Button } from "../../components/Switchers/Button";
+import * as React from "react";
+import { Button } from "../Switchers/Button";
 import "../../Styles/Button.css";
 
-const ModalHeader = ({ header, handleClose }) => {
+const ModalHeader: React.SFC<{
+  header: string;
+  handleClose: (e?: Event) => void;
+}> = ({ header, handleClose }) => {
   return (
     <div className="modal-header">
       <h5 className="modal-title" id="showModalLabel">

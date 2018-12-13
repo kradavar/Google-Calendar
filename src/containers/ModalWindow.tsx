@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Modal } from "../components/ModalIems/Modal";
-import CreateForm from "../FormItems/CreateForm";
+import CreateForm from "../FormItems/CreateEditEvent";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../constants/constants";
 import * as moment from "moment";
