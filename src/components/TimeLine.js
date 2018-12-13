@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../Styles/CalendarTable.css";
 import moment from "moment";
-import { getDuration } from "../Model/getRenderedDateInfo";
+import { getDuration } from "../getRenderedDateInfo";
 
 export default class TimeLine extends Component {
   constructor(props) {

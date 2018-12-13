@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../View/Switchers/Button";
+import { Button } from "../components/Switchers/Button";
 
 export const UnsignedMessage = ({ handleClose }) => (
   <React.Fragment>

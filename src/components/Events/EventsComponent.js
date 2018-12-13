@@ -1,6 +1,6 @@
 import React from "react";
 import Event from "./Event";
-import { Button } from "../../View/Switchers/Button";
+import { Button } from "../../components/Switchers/Button";
 import "../../Styles/Event.css";
 
 export const EventsComponent = ({ events, handleClose, userColors }) => (

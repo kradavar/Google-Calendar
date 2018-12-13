@@ -2,10 +2,10 @@ import React from "react";
 import { reduxForm, SubmissionError } from "redux-form";
 
 import { FormInputWithLabel } from "./FormInputWithLabel";
-import { Button } from "../../View/Switchers/Button";
+import { Button } from "../components/Switchers/Button";
 import { signIn } from "../actions/users";
 import { connect } from "react-redux";
-import { SIGN } from "../../constants/constants";
+import { SIGN } from "../constants/constants";
 
 const SignInFormComponent = ({
   handleSubmit,

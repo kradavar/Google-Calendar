@@ -1,4 +1,4 @@
-import { IEvent } from "./../Model/actions/events";
+import { IEvent } from "./../actions/events";
 import { makeRequest } from "./requestWrapper";
 import { EVENTS } from "./enpoints";
 

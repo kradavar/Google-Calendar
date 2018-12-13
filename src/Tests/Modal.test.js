@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import React from "react";
 
-import Day from "../View/Table-components/Day";
+import Day from "../components/Table-components/Day";
 import moment from "moment";
 
 it("renders a modal window", () => {

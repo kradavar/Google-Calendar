@@ -1,12 +1,12 @@
 import * as React from "react";
 import "../../Styles/Event.css";
-import ModalShowEvent from "../../Model/containers/ModalShowEvent";
-import { getDuration } from "../../Model/getRenderedDateInfo";
+import ModalShowEvent from "../../containers/ModalShowEvent";
+import { getDuration } from "../../getRenderedDateInfo";
 import * as moment from "moment";
-import { formatDate } from "../../Model/getRenderedDateInfo";
+import { formatDate } from "../../getRenderedDateInfo";
 import { DATE_FORMATS, VIEW } from "../../constants/constants";
 import { SharedViewContext } from "../../Context";
-import { IEvent } from "../../Model/actions/events";
+import { IEvent } from "../../actions/events";
 import { ModalMouseEvent } from "../Table-components/Day";
 
 export interface IEventState {

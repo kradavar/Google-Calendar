@@ -4,7 +4,7 @@ import * as moment from "moment";
 import { Week } from "./Week";
 import "../../Styles/Cell.css";
 import { MonthHeader } from "./MonthHeader";
-import { formatDate } from "../../Model/getRenderedDateInfo";
+import { formatDate } from "../../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/constants";
 
 export const Month: React.SFC<{ monthDate: string }> = ({ monthDate }) => {

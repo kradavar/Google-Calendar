@@ -1,7 +1,7 @@
 import React from "react";
 import { Field } from "redux-form";
 
-import "../../Styles/Modal.css";
+import "../Styles/Modal.css";
 
 export const FormInputWithLabelComponent = ({
   label,

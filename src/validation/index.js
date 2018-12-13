@@ -1,4 +1,4 @@
-import { getDuration, formatDate } from "../Model/getRenderedDateInfo";
+import { getDuration, formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../constants/constants";
 import moment from "moment";
 

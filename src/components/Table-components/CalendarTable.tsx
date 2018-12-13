@@ -5,7 +5,7 @@ import { Week } from "./Week";
 import { SharedViewContext } from "../../Context";
 import * as moment from "moment";
 import { VIEW, DATE_FORMATS } from "../../constants/constants";
-import { formatDate } from "../../Model/getRenderedDateInfo";
+import { formatDate } from "../../getRenderedDateInfo";
 
 export const CalendarTable: React.SFC<{}> = ({}) => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import CellHeader from "../View/Table-components/Cells/CellHeader";
+import CellHeader from "../components/Table-components/Cells/CellHeader";
 import { shallow } from "enzyme";
 
 it("renders a Cell Header info, which contains date ", () => {

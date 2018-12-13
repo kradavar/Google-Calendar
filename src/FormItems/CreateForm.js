@@ -6,17 +6,15 @@ import {
   formValueSelector,
   SubmissionError
 } from "redux-form";
-import { createSelector } from "reselect";
 import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./FormInputWithLabel";
 import { connect } from "react-redux";
-import { Button } from "../../View/Switchers/Button";
-import "../../Styles/Form.css";
+import { Button } from "../components/Switchers/Button";
+import "../Styles/Form.css";
 import { addEvent, editEvent } from "../actions/events";
-import { validate } from "../../validation/index";
+import { validate } from "../validation/index";
 
 const CreateFormComponent = ({
-  pristine,
   reset,
   isAllDayEvent,
   id,

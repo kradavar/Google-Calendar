@@ -1,6 +1,6 @@
 import { USER_SIGN_IN, USER_SIGN_OUT, USER_SIGN_UP } from "./enpoints";
 import { makeRequest } from "./requestWrapper";
-import { IUserType } from "src/Model/actions/users";
+import { IUserType } from "../actions/users";
 
 export const signIn = (user: IUserType) => {
   const request = new Request(USER_SIGN_IN, {

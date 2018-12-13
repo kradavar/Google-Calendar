@@ -6,7 +6,7 @@ import { SharedViewContext } from "../Context";
 import SignMenu from "./SignMenu";
 import { Button } from "./Switchers/Button";
 import { DATE_FORMATS } from "../constants/constants";
-import { formatDate } from "../Model/getRenderedDateInfo";
+import { formatDate } from "../getRenderedDateInfo";
 
 export const Header = props => {
   return (
