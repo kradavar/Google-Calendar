@@ -2,7 +2,7 @@ import React from "react";
 import { reduxForm, SubmissionError } from "redux-form";
 
 import { FormInputWithLabel } from "./InputWithLabel";
-import { Button } from "../components/Switchers/Button";
+import { Button } from "../components/buttons/Button";
 import { signIn } from "../actions/users";
 import { connect } from "react-redux";
 import { SIGN } from "../constants/constants";

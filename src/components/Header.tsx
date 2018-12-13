@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { ViewTypeSwitcher } from "./Switchers/ViewTypeSwitcher";
+import { ViewTypeSwitcher } from "./buttons/ViewTypeSwitcher";
 import "../Styles/App.css";
 import { SharedViewContext } from "../Context";
-import SignMenu from "./SignMenu";
-import { Button } from "./Switchers/Button";
+import SignMenu from "./buttons/SignMenu";
+import { Button } from "./buttons/Button";
 import { DATE_FORMATS } from "../constants/constants";
 import { formatDate } from "../getRenderedDateInfo";
 import * as moment from "moment";

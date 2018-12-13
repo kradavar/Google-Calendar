@@ -1,6 +1,6 @@
 import * as React from "react";
 import Event from "./Event";
-import { Button } from "../Switchers/Button";
+import { Button } from "../buttons/Button";
 import "../../Styles/Event.css";
 
 export const EventsComponent: React.SFC<{

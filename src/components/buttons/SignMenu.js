@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "./Switchers/Button";
+import { Button } from "./Button";
 import { connect } from "react-redux";
-import { SIGN } from "../constants/constants";
+import { SIGN } from "../../constants/constants";
 
 const SignMenu = ({ handleOpen, isSigned }) => {
   return (
