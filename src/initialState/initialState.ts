@@ -3,7 +3,8 @@ export const initialState = {
     meta: {
       loading: false
     },
-    byIds: {}
+    byIds: {},
+    byUsers: {}
   },
   user: {
     meta: {

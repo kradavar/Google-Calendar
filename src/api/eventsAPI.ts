@@ -2,16 +2,13 @@ import { IEvent } from "./../actions/events";
 import { makeRequest } from "./requestWrapper";
 import { EVENTS } from "./enpoints";
 
-export const getEvents = () => {
-  return makeRequest(EVENTS, "GET");
-};
+export const getEvents = () => makeRequest(EVENTS, "GET");
 
-export const createEvent = (event: IEvent) => {
-  return makeRequest(EVENTS, "POST", JSON.stringify(event));
-};
+export const createEvent = (event: IEvent) =>
+  makeRequest(EVENTS, "POST", JSON.stringify(event));
 
-export const editEvent = (event: IEvent) => {
-  return makeRequest(
+export const editEvent = (event: IEvent) =>
+  makeRequest(
     EVENTS + "/" + event.id,
     "PUT",
     JSON.stringify({
@@ -20,8 +17,6 @@ export const editEvent = (event: IEvent) => {
       end: event.end
     })
   );
-};
 
-export const deleteEvent = (id: number) => {
-  return makeRequest(EVENTS + "/" + id, "DELETE");
-};
+export const deleteEvent = (id: number) =>
+  makeRequest(EVENTS + "/" + id, "DELETE");

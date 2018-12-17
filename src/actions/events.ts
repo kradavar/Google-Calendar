@@ -17,24 +17,21 @@ export interface IEvent {
 }
 
 const normalizeEvent = (eventFromServer: IEvent) => {
-  const {
-    entities: { events }
-  } = normalize(eventFromServer, event);
-  return events;
+  const { entities } = normalize(eventFromServer, event);
+  return entities;
 };
 
 const normalizeEvents = (responseEvents: Array<IEvent>) => {
-  const {
-    entities: { events }
-  } = normalize(responseEvents, [user]);
-  return events;
+  const { entities } = normalize(responseEvents, [user]);
+  return entities;
 };
 
 const storeEventsSuccess = (response: any) => {
   return {
     type: STORE_EVENTS,
     payload: {
-      events: response
+      events: response.events,
+      eventsByUsers: response.users
     }
   };
 };

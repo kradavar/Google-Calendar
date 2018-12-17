@@ -63,7 +63,9 @@ class ModalShowEvent extends React.Component<
                   onClick={() => {
                     this.props.deleteEvent(this.props.id);
                     handleClose();
-                    showSuccessToast("Your event has been deleted");
+                    setTimeout(() => {
+                      showSuccessToast("Your event has been deleted");
+                    }, 1500);
                   }}
                   classes="btn-outline-primary show-modal-button"
                   value="Delete"

@@ -16,6 +16,7 @@ export const events = (
     case STORE_EVENTS:
       return {
         byIds: { ...state.byIds, ...action.payload.events },
+        byUsers: { ...state.byUsers, ...action.payload.eventsByUsers },
         meta: {
           loading: false
         }
@@ -23,6 +24,7 @@ export const events = (
     case REMOVE_EVENTS:
       return {
         byIds: {},
+        byUsers: {},
         meta: {
           loading: false
         }
