@@ -1,6 +1,6 @@
 import { USER_SIGN_IN, USER_SIGN_OUT, USER_SIGN_UP } from "./enpoints";
 import { makeRequest } from "./requestWrapper";
-import { IUserType } from "../actions/users";
+import { IUserType } from "../redux/actions/users";
 
 export const signIn = (user: IUserType) =>
   makeRequest(

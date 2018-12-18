@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { deleteEvent } from "../../actions/events";
+import { deleteEvent } from "../../redux/actions/events";
 import { Modal } from "./modalItems/Modal";
 import { ModalMouseEvent } from "../calendar-table/cells/Day";
 import CreateForm from "../../FormItems/CreateEditEvent";

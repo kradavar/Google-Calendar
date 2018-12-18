@@ -7,9 +7,7 @@ const ModalHeader: React.SFC<{
 }> = ({ header, handleClose }) => {
   return (
     <div className="modal-header">
-      <h5 className="modal-title" id="showModalLabel">
-        {header}
-      </h5>
+      <h5 className="modal-title">{header}</h5>
       <Button
         onClick={handleClose}
         value="✘"

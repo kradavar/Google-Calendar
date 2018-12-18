@@ -1,9 +1,9 @@
 import React from "react";
-import { reduxForm, SubmissionError } from "redux-form";
+import { reduxForm } from "redux-form";
 
 import { FormInputWithLabel } from "./InputWithLabel";
 import { Button } from "../components/buttons/Button/Button";
-import { signIn } from "../actions/users";
+import { signIn } from "../redux/actions/users";
 import { connect } from "react-redux";
 import { SIGN } from "../constants/constants";
 

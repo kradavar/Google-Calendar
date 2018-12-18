@@ -11,7 +11,7 @@ import { FormInputWithLabel } from "./InputWithLabel";
 import { connect } from "react-redux";
 import { Button } from "../components/buttons/Button/Button";
 import "../Styles/Form.css";
-import { addEvent, editEvent } from "../actions/events";
+import { addEvent, editEvent } from "../redux/actions/events";
 import { validate } from "../validation/index";
 
 const CreateFormComponent = ({
@@ -54,7 +54,6 @@ const CreateFormComponent = ({
             return handleClose();
           })
           .catch(err => {
-            console.log(err);
             throw new SubmissionError({
               name: "Sorry, something went wrong",
               _error: "Event creation was failed"

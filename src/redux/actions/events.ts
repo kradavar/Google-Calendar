@@ -1,8 +1,8 @@
 import { IEvent } from "./events";
 import { normalize } from "normalizr";
 
-import * as EventAPI from "../api/eventsAPI";
-import { user, event } from "../api/schema";
+import * as EventAPI from "../../api/eventsAPI";
+import { user, event } from "../../api/schema";
 
 export const STORE_EVENTS = "STORE_EVENTS";
 export const REMOVE_EVENTS = "REMOVE_EVENTS";

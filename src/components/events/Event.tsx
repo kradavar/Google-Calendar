@@ -6,7 +6,7 @@ import * as moment from "moment";
 import { formatDate } from "../../getRenderedDateInfo";
 import { DATE_FORMATS, VIEW } from "../../constants/constants";
 import { SharedViewContext } from "../../Context";
-import { IEvent } from "../../actions/events";
+import { IEvent } from "../../redux/actions/events";
 import { ModalMouseEvent } from "../calendar-table/cells/Day";
 
 export interface IEventState {

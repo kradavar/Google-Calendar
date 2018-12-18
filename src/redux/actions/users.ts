@@ -1,4 +1,4 @@
-import * as UserAPI from "../api/userAPI";
+import * as UserAPI from "../../api/userAPI";
 import { removeEvents, storeEvents } from "./events";
 import { SubmissionError } from "redux-form";
 

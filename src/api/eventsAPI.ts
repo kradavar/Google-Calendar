@@ -1,4 +1,4 @@
-import { IEvent } from "./../actions/events";
+import { IEvent } from "./../redux/actions/events";
 import { makeRequest } from "./requestWrapper";
 import { EVENTS } from "./enpoints";
 
