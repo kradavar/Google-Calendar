@@ -5,7 +5,7 @@ import RenderedEvents from "../../events/RenderedEvents";
 import ModalWindow from "../../modals/ModalWindow";
 import { DayWeekHeader } from "../DayWeekHeader";
 import * as moment from "moment";
-import TimeLine from "../TimeLine";
+import TimeLine from "../timeline/TimeLine";
 import { formatDate, getDuration } from "../../../getRenderedDateInfo";
 import { DATE_FORMATS, VIEW } from "../../../constants/constants";
 import { SharedViewContext } from "../../../Context";

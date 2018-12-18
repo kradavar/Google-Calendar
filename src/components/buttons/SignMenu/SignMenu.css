@@ -1,0 +1,13 @@
+.sign-link {
+  color: #203763;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.drop-width {
+  min-width: 4rem;
+}
+
+.drop-button:focus {
+  outline: none !important;
+}

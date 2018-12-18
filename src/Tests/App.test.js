@@ -1,9 +1,9 @@
 import React from "react";
 import { shallow } from "enzyme";
 import ViewTypeSwitcher from "../components/buttons/ViewTypeSwitcher";
-import App from "../App";
-import CalendarTable from "../components/calendar-table/CalendarTable";
-import Button from "../components/buttons/Button";
+import App from "../App/App";
+import CalendarTable from "../components/calendar-table/cells/CalendarTable /CalendarTable";
+import Button from "../components/buttons/Button/Button";
 it("renders three buttons for changing type of view ", () => {
   const wrapper = shallow(<ViewTypeSwitcher />);
   expect(wrapper.find(Button).length).toEqual(3);

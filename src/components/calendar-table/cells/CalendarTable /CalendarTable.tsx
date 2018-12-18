@@ -1,11 +1,11 @@
 import * as React from "react";
-import "../../Styles/CalendarTable.css";
-import { Month } from "./Month";
-import { Week } from "./Week";
-import { SharedViewContext } from "../../Context";
+import "./CalendarTable.css";
+import { Month } from "../../Month";
+import { Week } from "../../Week";
+import { SharedViewContext } from "../../../../Context";
 import * as moment from "moment";
-import { VIEW, DATE_FORMATS } from "../../constants/constants";
-import { formatDate } from "../../getRenderedDateInfo";
+import { VIEW, DATE_FORMATS } from "../../../../constants/constants";
+import { formatDate } from "../../../../getRenderedDateInfo";
 
 export const CalendarTable: React.SFC<{}> = ({}) => {
   return (

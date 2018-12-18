@@ -1,7 +1,7 @@
 import * as React from "react";
 import Loader from "react-loader-spinner";
 import * as classNames from "classnames";
-import "../../Styles/Button.css";
+import "./Button.css";
 
 export const Button: React.SFC<{
   classes: string;

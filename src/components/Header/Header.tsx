@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import { ViewTypeSwitcher } from "./buttons/ViewTypeSwitcher";
-import "../Styles/App.css";
-import { SharedViewContext } from "../Context";
-import SignMenu from "./buttons/SignMenu";
-import { Button } from "./buttons/Button";
-import { DATE_FORMATS } from "../constants/constants";
-import { formatDate } from "../getRenderedDateInfo";
+import { ViewTypeSwitcher } from "../buttons/ViewTypeSwitcher";
+import "./Header.css";
+import { SharedViewContext } from "../../Context";
+import SignMenu from "../buttons/SignMenu/SignMenu";
+import { Button } from "../buttons/Button/Button";
+import { DATE_FORMATS } from "../../constants/constants";
+import { formatDate } from "../../getRenderedDateInfo";
 import * as moment from "moment";
 
 export const Header = props => {

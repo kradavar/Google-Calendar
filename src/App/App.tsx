@@ -2,13 +2,14 @@ import * as React from "react";
 import * as moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Styles/App.css";
 // Calendar
-import { CalendarTable } from "./components/calendar-table/CalendarTable";
-import { SharedViewContext } from "./Context";
-import { VIEW } from "./constants/constants";
-import { Header } from "./components/Header";
-import { SignModal } from "./components/modals/ModalSign";
+import { CalendarTable } from "../components/calendar-table/cells/CalendarTable /CalendarTable";
+import { SharedViewContext } from "../Context";
+import { VIEW } from "../constants/constants";
+import { Header } from "../components/Header/Header";
+import { SignModal } from "../components/modals/ModalSign";
+
+import "./App.css";
 
 export interface IAppState {
   view: string;

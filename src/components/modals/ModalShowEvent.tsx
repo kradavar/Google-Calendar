@@ -7,7 +7,7 @@ import CreateForm from "../../FormItems/CreateEditEvent";
 import ShowForm from "../../FormItems/ShowEventInfo";
 import { formatDate, getDuration } from "../../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/constants";
-import { Button } from "../buttons/Button";
+import { Button } from "../buttons/Button/Button";
 import { SharedViewContext } from "../../Context";
 
 import "../../Styles/Modal.css";

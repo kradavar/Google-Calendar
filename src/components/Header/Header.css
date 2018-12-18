@@ -1,0 +1,27 @@
+.App-header {
+  font-size: 2rem;
+  font-family: "Mali";
+  margin-left: 4rem;
+  pointer-events: none;
+}
+.nav-input {
+  background-color: inherit;
+  border: none;
+  font-size: 2rem;
+  color: #7d99cc;
+}
+.nav-input:hover,
+.nav-input:enabled {
+  border-color: ghostwhite !important;
+  border: none;
+}
+.navbar-header {
+  width: 100%;
+  display: flex;
+}
+
+.current-month {
+  font-size: 3rem;
+  font-family: "Mali";
+  pointer-events: none;
+}

@@ -1,9 +1,14 @@
-import React from "react";
-import { Button } from "./Button";
+import * as React from "react";
+import { Button } from "../Button/Button";
 import { connect } from "react-redux";
-import { SIGN } from "../../constants/constants";
+import { SIGN } from "../../../constants/constants";
 
-const SignMenu = ({ handleOpen, isSigned }) => {
+import "./SignMenu.css";
+
+const SignMenu: React.SFC<{
+  handleOpen: () => void;
+  isSigned: boolean;
+}> = ({ handleOpen, isSigned }) => {
   return (
     <React.Fragment>
       <div className="nav-item dropdown">

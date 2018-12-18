@@ -9,7 +9,7 @@ import {
 import { DateTimeSection } from "./DateTimeSection";
 import { FormInputWithLabel } from "./InputWithLabel";
 import { connect } from "react-redux";
-import { Button } from "../components/buttons/Button";
+import { Button } from "../components/buttons/Button/Button";
 import "../Styles/Form.css";
 import { addEvent, editEvent } from "../actions/events";
 import { validate } from "../validation/index";
