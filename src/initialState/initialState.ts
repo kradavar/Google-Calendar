@@ -12,5 +12,9 @@ export const initialState = {
     },
     isSigned: false,
     hasErrors: false
+  },
+  error: {
+    hasServerError: false,
+    message: undefined
   }
 };

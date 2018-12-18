@@ -2,14 +2,16 @@ import * as React from "react";
 import * as moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { connect } from "react-redux";
 // Calendar
-import { CalendarTable } from "../components/calendar-table/cells/CalendarTable /CalendarTable";
+import { CalendarTable } from "../components/calendar-table/cells/CalendarTable/";
 import { SharedViewContext } from "../Context";
 import { VIEW } from "../constants/constants";
 import { Header } from "../components/Header/Header";
 import { SignModal } from "../components/modals/ModalSign";
 
 import "./App.css";
+import { ErrorMessage } from "../components/ErrorMessage";
 
 export interface IAppState {
   view: string;
@@ -23,7 +25,7 @@ export interface IAppState {
   showErrorToast: () => any;
 }
 
-class App extends React.Component<{}, IAppState> {
+class App extends React.Component<{ hasError: Boolean }, IAppState> {
   changeViewType: (e: any) => void;
   nextPeriod: () => void;
   previuosPeriod: () => void;
@@ -90,8 +92,11 @@ class App extends React.Component<{}, IAppState> {
   };
 
   render() {
+    const hasError = this.props.hasError;
+
     return (
       <SharedViewContext.Provider value={this.state}>
+        {hasError && <ErrorMessage />}
         <Header handleOpen={this.handleOpen} />
         <div className="container">
           <div className="d-flex flex-column  justify-content-center calendar-table">
@@ -110,4 +115,8 @@ class App extends React.Component<{}, IAppState> {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { hasError: state.error.hasServerError };
+};
+
+export default connect(mapStateToProps)(App);

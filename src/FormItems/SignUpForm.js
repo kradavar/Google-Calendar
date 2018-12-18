@@ -24,10 +24,7 @@ const SignUpFormComponent = ({
         return handleClose();
       })
       .catch(error => {
-        throw new SubmissionError({
-          username: "User with this username is already exists.",
-          _error: "Sign up failed"
-        });
+        throw error;
       });
 
   return (
