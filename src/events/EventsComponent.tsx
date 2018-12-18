@@ -1,7 +1,7 @@
 import * as React from "react";
 import Event from "./Event";
-import { Button } from "../Button";
-import "../../Styles/Event.css";
+import { Button } from "../components/Button";
+import "../Styles/Event.css";
 
 export const EventsComponent: React.SFC<{
   events: any;

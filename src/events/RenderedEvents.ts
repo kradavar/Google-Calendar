@@ -3,8 +3,8 @@ import * as moment from "moment";
 import { connect } from "react-redux";
 
 import EventList from "./EventList";
-import { formatDate } from "../../getRenderedDateInfo";
-import { DATE_FORMATS } from "../../constants/constants";
+import { formatDate } from "../getRenderedDateInfo";
+import { DATE_FORMATS } from "../constants/constants";
 
 const eventsSelector = (state: any) => {
   const events = state.events.byIds;

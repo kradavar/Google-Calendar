@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import "../../Styles/Switchers.css";
-import { SharedViewContext } from "../../Context";
-import { VIEW } from "../../constants/constants";
+import "../Styles/Switchers.css";
+import { SharedViewContext } from "../Context";
+import { VIEW } from "../constants/constants";
 
 export const ViewTypeSwitcher = () => {
   return (

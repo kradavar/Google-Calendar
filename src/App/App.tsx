@@ -4,11 +4,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
 // Calendar
-import { CalendarTable } from "../components/calendar-table/cells/CalendarTable/";
+import { CalendarTable } from "../calendar-table/cells/CalendarTable/";
 import { SharedViewContext } from "../Context";
 import { VIEW } from "../constants/constants";
 import { Header } from "../components/Header/Header";
-import { SignModal } from "../components/modals/ModalSign";
+import { SignModal } from "../modals/ModalSign";
 
 import "./App.css";
 import { ErrorMessage } from "../components/ErrorMessage";

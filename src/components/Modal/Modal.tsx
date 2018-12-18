@@ -1,5 +1,5 @@
 import * as React from "react";
-import ModalHeader from "./ModalHeader";
+import ModalHeader from "../ModalHeader";
 
 export const Modal: React.SFC<{
   header: string;

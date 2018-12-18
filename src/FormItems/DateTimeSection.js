@@ -9,7 +9,7 @@ export const DateTimeSection = ({ label, isAllDayEvent }) => (
     <label htmlFor="event" className="col-form-label">
       {label}
     </label>
-    <div id="event">
+    <div className="date-time-section">
       <FormInputWithLabel
         name="date"
         label="Date: "

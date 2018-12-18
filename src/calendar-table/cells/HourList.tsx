@@ -1,12 +1,12 @@
 import * as moment from "moment";
 import * as React from "react";
 
-import { DATE_FORMATS } from "../../../constants/constants";
-import { formatDate, getDuration } from "../../../getRenderedDateInfo";
+import { DATE_FORMATS } from "../../constants/constants";
+import { formatDate, getDuration } from "../../getRenderedDateInfo";
 import { HourCell } from "./HourCell";
 import { ModalMouseEvent } from "./Day";
 import { CellHeader } from "./CellHeader";
-import "../../../Styles/Cell.css";
+import "../../Styles/Cell.css";
 import RenderedEvents from "../../events/RenderedEvents";
 
 export const HourList: React.SFC<{

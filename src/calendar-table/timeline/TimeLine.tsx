@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./TimeLine.css";
 import * as moment from "moment";
-import { getDuration } from "../../../getRenderedDateInfo";
+import { getDuration } from "../../getRenderedDateInfo";
 
 export interface ITimelimeState {
   time: moment.Moment;

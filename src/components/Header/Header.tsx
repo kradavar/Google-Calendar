@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { ViewTypeSwitcher } from "../buttons/ViewTypeSwitcher";
+import { ViewTypeSwitcher } from "../ViewTypeSwitcher";
 import "./Header.css";
 import { SharedViewContext } from "../../Context";
-import SignMenu from "../buttons/SignMenu/SignMenu";
+import SignMenu from "../SignMenu/SignMenu";
 import { Button } from "../Button";
 import { DATE_FORMATS } from "../../constants/constants";
 import { formatDate } from "../../getRenderedDateInfo";

@@ -1,8 +1,8 @@
 import * as React from "react";
 import Event from "./Event";
-import "../../Styles/Event.css";
-import { SharedViewContext } from "../../Context";
-import { VIEW } from "../../constants/constants";
+import "../Styles/Event.css";
+import { SharedViewContext } from "./../Context";
+import { VIEW } from "./../constants/constants";
 import { EventsComponent } from "./EventsComponent";
 
 export interface IEventListProps {
