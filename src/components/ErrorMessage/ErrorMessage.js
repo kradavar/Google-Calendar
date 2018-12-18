@@ -1,6 +1,6 @@
 import React from "react";
 import "./ErrorMessage.css";
-import { Button } from "../buttons/Button/Button";
+import { Button } from "../Button";
 
 export const ErrorMessage = () => (
   <div className="overlay">

@@ -1,13 +1,13 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { deleteEvent } from "../../redux/actions/events";
-import { Modal } from "./modalItems/Modal";
+import { Modal } from "../Modal";
 import { ModalMouseEvent } from "../calendar-table/cells/Day";
 import CreateForm from "../../FormItems/CreateEditEvent";
 import ShowForm from "../../FormItems/ShowEventInfo";
 import { formatDate, getDuration } from "../../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/constants";
-import { Button } from "../buttons/Button/Button";
+import { Button } from "../Button/";
 import { SharedViewContext } from "../../Context";
 
 import "../../Styles/Modal.css";

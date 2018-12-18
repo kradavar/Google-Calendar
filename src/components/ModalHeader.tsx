@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button } from "../../buttons/Button/Button";
+import { Button } from "./Button";
 
 const ModalHeader: React.SFC<{
   header: string;

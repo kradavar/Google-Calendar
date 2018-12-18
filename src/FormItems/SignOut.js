@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button } from "../components/buttons/Button/Button";
+import { Button } from "../components/Button";
 import { signOut } from "../redux/actions/users";
 
 const SignOutComponent = ({

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../components/buttons/Button/Button";
+import { Button } from "../components/Button";
 
 export const UnsignedMessage = ({ handleClose }) => (
   <React.Fragment>

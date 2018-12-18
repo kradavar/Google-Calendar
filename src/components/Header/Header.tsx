@@ -4,7 +4,7 @@ import { ViewTypeSwitcher } from "../buttons/ViewTypeSwitcher";
 import "./Header.css";
 import { SharedViewContext } from "../../Context";
 import SignMenu from "../buttons/SignMenu/SignMenu";
-import { Button } from "../buttons/Button/Button";
+import { Button } from "../Button";
 import { DATE_FORMATS } from "../../constants/constants";
 import { formatDate } from "../../getRenderedDateInfo";
 import * as moment from "moment";

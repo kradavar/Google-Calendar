@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Modal } from "./modalItems/Modal";
+import { Modal } from "../Modal";
 import SignInForm from "../../FormItems/SignInForm";
 import SignUpForm from "../../FormItems/SignUpForm";
 import SignOutForm from "../../FormItems/SignOut";

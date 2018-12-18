@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Modal } from "./modalItems/Modal";
+import { Modal } from "../Modal";
 import CreateForm from "../../FormItems/CreateEditEvent";
 import { formatDate } from "../../getRenderedDateInfo";
 import { DATE_FORMATS } from "../../constants/constants";
