@@ -2,7 +2,7 @@ import React from "react";
 
 import { FormInputWithLabel } from "./InputWithLabel";
 
-import "../Styles/Form.css";
+import "../../Styles/Form.css";
 
 export const DateTimeSection = ({ label, isAllDayEvent }) => (
   <div className="form-group">

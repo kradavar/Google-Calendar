@@ -1,7 +1,7 @@
 import React from "react";
 import { reduxForm } from "redux-form";
 
-import { FormInputWithLabel } from "./InputWithLabel";
+import { FormInputWithLabel } from "./formItems/InputWithLabel";
 import { Button } from "../components/Button";
 import { signIn } from "../redux/actions/users";
 import { connect } from "react-redux";

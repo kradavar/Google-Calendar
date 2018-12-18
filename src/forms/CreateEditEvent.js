@@ -6,13 +6,13 @@ import {
   formValueSelector,
   SubmissionError
 } from "redux-form";
-import { DateTimeSection } from "./DateTimeSection";
-import { FormInputWithLabel } from "./InputWithLabel";
+import { DateTimeSection } from "./formItems/DateTimeSection";
+import { FormInputWithLabel } from "./formItems/InputWithLabel";
 import { connect } from "react-redux";
 import { Button } from "../components/Button";
 import "../Styles/Form.css";
 import { addEvent, editEvent } from "../redux/actions/events";
-import { validate } from "../validation/index";
+import { validate } from "./validation/index";
 
 const CreateFormComponent = ({
   reset,

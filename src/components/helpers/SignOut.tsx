@@ -1,14 +1,14 @@
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
-import { Button } from "../components/Button";
-import { signOut } from "../redux/actions/users";
+import { Button } from "../Button";
+import { signOut } from "../../redux/actions/users";
 
-const SignOutComponent = ({
-  signOut,
-  handleClose,
-  showSuccessToast,
-  showErrorToast
-}) => {
+const SignOutComponent: React.SFC<{
+  signOut: () => Promise<{}>;
+  handleClose: () => void;
+  showSuccessToast: (message?: string) => void;
+  showErrorToast: () => void;
+}> = ({ signOut, handleClose, showSuccessToast, showErrorToast }) => {
   const handleSignOut = () => {
     return signOut()
       .then(() => {
@@ -43,4 +43,5 @@ const SignOutComponent = ({
 export default connect(
   null,
   { signOut }
+  //@ts-ignore
 )(SignOutComponent);

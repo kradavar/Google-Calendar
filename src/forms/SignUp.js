@@ -1,11 +1,11 @@
 import React from "react";
 import { reduxForm } from "redux-form";
-import { FormInputWithLabel } from "./InputWithLabel";
+import { FormInputWithLabel } from "./formItems/InputWithLabel";
 import { connect } from "react-redux";
 import { Button } from "../components/Button";
 import { signUp } from "../redux/actions/users";
 import { SIGN } from "../constants/constants";
-import { validate } from "../validation/sign";
+import { validate } from "./validation/sign";
 
 import "../Styles/Form.css";
 

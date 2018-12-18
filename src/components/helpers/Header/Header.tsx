@@ -2,11 +2,11 @@ import * as React from "react";
 
 import { ViewTypeSwitcher } from "../ViewTypeSwitcher";
 import "./Header.css";
-import { SharedViewContext } from "../../Context";
-import SignMenu from "../SignMenu/SignMenu";
-import { Button } from "../Button";
-import { DATE_FORMATS } from "../../constants/constants";
-import { formatDate } from "../../getRenderedDateInfo";
+import { SharedViewContext } from "../../../Context";
+import SignMenu from "../SignMenu";
+import { Button } from "../../Button";
+import { DATE_FORMATS } from "../../../constants/constants";
+import { formatDate } from "../../../getRenderedDateInfo";
 import * as moment from "moment";
 
 export const Header = props => {

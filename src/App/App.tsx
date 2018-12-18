@@ -7,11 +7,11 @@ import { connect } from "react-redux";
 import { CalendarTable } from "../calendar-table/cells/CalendarTable/";
 import { SharedViewContext } from "../Context";
 import { VIEW } from "../constants/constants";
-import { Header } from "../components/Header/Header";
+import { Header } from "../components/helpers/Header";
 import { SignModal } from "../modals/ModalSign";
 
 import "./App.css";
-import { ErrorMessage } from "../components/ErrorMessage";
+import { ErrorMessage } from "../components/helpers/ErrorMessage";
 
 export interface IAppState {
   view: string;

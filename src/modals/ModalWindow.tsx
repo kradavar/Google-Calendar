@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Modal } from "../components/Modal";
-import CreateForm from "../FormItems/CreateEditEvent";
+import CreateForm from "../forms/CreateEditEvent";
 import { formatDate } from "../getRenderedDateInfo";
 import { DATE_FORMATS } from "../constants/constants";
 import * as moment from "moment";
 import { connect } from "react-redux";
-import { UnsignedMessage } from "../FormItems/Unsigned";
+import { UnsignedMessage } from "../components/helpers/Unsigned";
 import { SharedViewContext } from "../Context";
 
 const ModalWindow: React.SFC<{

@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import ViewTypeSwitcher from "../components/ViewTypeSwitcher";
+import ViewTypeSwitcher from "../components/helpers/ViewTypeSwitcher";
 import App from "../App/App";
 import CalendarTable from "../components/calendar-table/cells/CalendarTable /CalendarTable";
 import Button from "../components/buttons/Button/Button";

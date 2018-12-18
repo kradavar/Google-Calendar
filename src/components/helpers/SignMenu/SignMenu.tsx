@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Button } from "../Button";
+import { Button } from "../../Button";
 import { connect } from "react-redux";
-import { SIGN } from "../../constants/constants";
+import { SIGN } from "../../../constants/constants";
 
 import "./SignMenu.css";
 
@@ -59,4 +59,10 @@ const mapStateToProps = state => {
   return { isSigned: userSelector(state) };
 };
 
-export default connect(mapStateToProps)(SignMenu);
+export default connect<
+  { isSigned: boolean },
+  {
+    handleOpen: () => void;
+    isSigned: boolean;
+  }
+>(mapStateToProps)(SignMenu);

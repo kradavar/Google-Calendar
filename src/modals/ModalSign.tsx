@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Modal } from "../components/Modal";
-import SignInForm from "../FormItems/SignInForm";
-import SignUpForm from "../FormItems/SignUpForm";
-import SignOutForm from "../FormItems/SignOut";
+import SignInForm from "../forms/SignIn";
+import SignUpForm from "../forms/SignUp";
+import SignOutForm from "../components/helpers/SignOut";
 import { SIGN } from "../constants/constants";
 import { SharedViewContext } from "../Context";
 
