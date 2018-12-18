@@ -13,7 +13,7 @@ export interface IUserType {
 export const signIn = (user: IUserType) => (dispatch: Function) =>
   UserAPI.signIn(user)
     .then(result => {
-      if (result.hasErrors) {
+      if (result.hasErrors || result.message) {
         dispatch({ type: SIGNIN_FAILED, payload: { error: { result } } });
         return Promise.reject(result);
       } else {
@@ -27,11 +27,8 @@ export const signIn = (user: IUserType) => (dispatch: Function) =>
 export const signUp = (user: IUserType) => (dispatch: Function) =>
   UserAPI.signUp(user)
     .then(result => {
-      if (result.hasErrors) {
-        dispatch({
-          type: SIGNUP_FAILED,
-          payload: { error: { result } }
-        });
+      if (result.hasErrors || result.message) {
+        dispatch({ type: SIGNUP_FAILED, payload: { error: { result } } });
         return Promise.reject(result);
       } else {
         return dispatch(storeEvents());

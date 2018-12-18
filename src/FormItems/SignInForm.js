@@ -22,10 +22,17 @@ const SignInFormComponent = ({
         return handleClose();
       })
       .catch(error => {
-        throw new SubmissionError({
-          [error.field]: error.message,
-          _error: "Sign in failed"
-        });
+        if (error.field) {
+          throw new SubmissionError({
+            [error.field]: error.message,
+            _error: "Sign in failed"
+          });
+        } else {
+          throw new SubmissionError({
+            password: "Server is not aviable",
+            _error: "Sign in failed."
+          });
+        }
       });
 
   return (
