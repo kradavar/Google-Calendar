@@ -1,16 +1,16 @@
 import * as React from "react";
-import { CellHeader } from "./CellHeader";
+import { CellHeader } from "../CellHeader";
 import "../../Styles/Cell.css";
-import RenderedEvents from "../../events/RenderedEvents";
-import ModalWindow from "../../modals/ModalWindow";
-import { DayWeekHeader } from "../DayWeekHeader";
+import RenderedEvents from "../../../events/RenderedEvents";
+import ModalWindow from "../../../modals/ModalWindow";
+import { DayWeekHeader } from "../../DayWeekHeader";
 import * as moment from "moment";
-import TimeLine from "../timeline/TimeLine";
-import { formatDate, getDuration } from "../../getRenderedDateInfo";
-import { DATE_FORMATS, VIEW } from "../../constants/constants";
-import { SharedViewContext } from "../../Context";
+import TimeLine from "../../timeline/TimeLine";
+import { formatDate, getDuration } from "../../../getRenderedDateInfo";
+import { DATE_FORMATS, VIEW } from "../../../constants/constants";
+import { SharedViewContext } from "../../../Context";
 import { findDOMNode } from "react-dom";
-import { HourList } from "./HourList";
+import { HourList } from "../HourList";
 
 export interface IDayProps {
   dayDate: moment.Moment;

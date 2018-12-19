@@ -59,10 +59,12 @@ const mapStateToProps = state => {
   return { isSigned: userSelector(state) };
 };
 
-export default connect<
+const SignMenuWithConnect = connect<
   { isSigned: boolean },
   {
     handleOpen: () => void;
     isSigned: boolean;
   }
 >(mapStateToProps)(SignMenu);
+
+export default () => <SignMenuWithConnect />;
