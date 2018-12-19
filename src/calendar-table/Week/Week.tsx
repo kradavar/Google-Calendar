@@ -1,10 +1,12 @@
 import * as React from "react";
-import Day from "./cells/Day";
-import "../Styles/Cell.css";
-import { DATE_FORMATS, VIEW } from "../constants/constants";
-import { formatDate } from "../getRenderedDateInfo";
-import { SharedViewContext } from "../Context";
 import * as moment from "moment";
+
+import { Day } from "../cells/Day";
+import { DATE_FORMATS, VIEW } from "../../constants/constants";
+import { formatDate } from "../../getRenderedDateInfo";
+import { SharedViewContext } from "../../Context";
+
+import "./Week.css";
 
 export const Week: React.SFC<{
   weekDate: string;

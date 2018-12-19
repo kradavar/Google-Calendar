@@ -1,5 +1,5 @@
 import * as React from "react";
-import Event from "./Event";
+import { Event } from "./Event";
 import { Button } from "../components/Button";
 import "../Styles/Event.css";
 

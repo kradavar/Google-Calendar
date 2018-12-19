@@ -1,0 +1,14 @@
+.month-header {
+  display: flex;
+  height: 2rem;
+  justify-content: space-between;
+  background-color: #bdddff;
+  line-height: 3rem;
+  min-height: 3rem;
+}
+.month-header div {
+  border: 0.25px solid #8f9dad;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}

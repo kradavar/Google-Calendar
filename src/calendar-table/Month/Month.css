@@ -1,0 +1,8 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.month {
+  border: none !important;
+}

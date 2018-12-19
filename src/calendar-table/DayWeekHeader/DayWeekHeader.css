@@ -1,0 +1,12 @@
+.day-week-header {
+  height: 3rem;
+  width: 100%;
+  border: 0.25px solid #8f9dad;
+  background-color: #bdddff;
+  line-height: 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+.hide {
+  z-index: auto;
+}

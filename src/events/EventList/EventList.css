@@ -1,0 +1,12 @@
+.event-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.day-event-list {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  padding: 0;
+}

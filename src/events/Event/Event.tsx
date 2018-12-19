@@ -1,12 +1,13 @@
 import * as React from "react";
-import "../Styles/Event.css";
-import ModalShowEvent from "../modals/ModalShowEvent";
-import { getDuration, formatDate } from "./../getRenderedDateInfo";
+import ModalShowEvent from "../../modals/ModalShowEvent";
+import { getDuration, formatDate } from "../../getRenderedDateInfo";
 import * as moment from "moment";
-import { DATE_FORMATS, VIEW } from "./../constants/constants";
-import { SharedViewContext } from "./../Context";
-import { IEvent } from "./../redux/actions/events";
-import { ModalMouseEvent } from "../calendar-table/cells/Day";
+import { DATE_FORMATS, VIEW } from "../../constants/constants";
+import { SharedViewContext } from "../../Context";
+import { IEvent } from "../../redux/actions/events";
+import { ModalMouseEvent } from "../../calendar-table/cells/Day";
+
+import "./Event.css";
 
 export interface IEventState {
   showModal: boolean;
@@ -15,7 +16,7 @@ export interface IEventProps extends IEvent {
   color: string;
 }
 
-export default class Event extends React.Component<IEventProps, IEventState> {
+export class Event extends React.Component<IEventProps, IEventState> {
   state = { showModal: false };
 
   handleClose = (e: ModalMouseEvent) => {

@@ -1,0 +1,7 @@
+.week {
+  min-height: 6rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border-left: 0.25px solid #c2cad4;
+}

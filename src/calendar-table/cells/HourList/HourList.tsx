@@ -1,13 +1,14 @@
 import * as moment from "moment";
 import * as React from "react";
 
-import { DATE_FORMATS } from "../../constants/constants";
-import { formatDate, getDuration } from "../../getRenderedDateInfo";
-import { HourCell } from "./HourCell";
-import { ModalMouseEvent } from "./Day";
-import { CellHeader } from "./CellHeader";
-import "../../Styles/Cell.css";
-import RenderedEvents from "../../events/RenderedEvents";
+import { DATE_FORMATS } from "../../../constants/constants";
+import { formatDate, getDuration } from "../../../getRenderedDateInfo";
+import { HourCell } from "../HourCell";
+import { ModalMouseEvent } from "../Day";
+import { CellHeader } from "../CellHeader";
+import RenderedEvents from "../../../events/RenderedEvents";
+
+import "./HourList.css";
 
 export const HourList: React.SFC<{
   showModal: (e: ModalMouseEvent) => void;
@@ -58,7 +59,7 @@ export const HourList: React.SFC<{
         key={hour}
         onClick={showModal}
         hour={hour}
-        classes={hourClass}
+        hourClass={hourClass}
         ref={refValue}
       >
         <CellHeader headerInfo={hour} hour={hour} />

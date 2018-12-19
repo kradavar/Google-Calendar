@@ -1,0 +1,14 @@
+.hour:hover {
+  background-color: rgba(104, 170, 255, 0.6);
+}
+.hour {
+  border: 0.25px solid #c2cad4;
+  flex: 1;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.disabled {
+  pointer-events: none;
+  color: #8f9dad;
+}

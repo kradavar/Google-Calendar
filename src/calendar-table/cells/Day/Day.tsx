@@ -1,17 +1,18 @@
 import * as React from "react";
-import { CellHeader } from "../CellHeader";
-import "../../Styles/Cell.css";
-import RenderedEvents from "../../../events/RenderedEvents";
-import ModalWindow from "../../../modals/ModalWindow";
-import { DayWeekHeader } from "../../DayWeekHeader";
 import * as moment from "moment";
-import TimeLine from "../../timeline/TimeLine";
+import { findDOMNode } from "react-dom";
+
 import { formatDate, getDuration } from "../../../getRenderedDateInfo";
 import { DATE_FORMATS, VIEW } from "../../../constants/constants";
 import { SharedViewContext } from "../../../Context";
-import { findDOMNode } from "react-dom";
+import RenderedEvents from "../../../events/RenderedEvents";
+import ModalWindow from "../../../modals/ModalWindow";
+import TimeLine from "../../timeline";
 import { HourList } from "../HourList";
+import { DayWeekHeader } from "../../DayWeekHeader";
+import { CellHeader } from "../CellHeader";
 
+import "./Day.css";
 export interface IDayProps {
   dayDate: moment.Moment;
 }
@@ -29,7 +30,7 @@ export interface ModalMouseEvent extends React.MouseEvent<HTMLDivElement> {
   target: ModalValueEventTarget;
 }
 
-export default class Day extends React.Component<IDayProps, IDayState> {
+export class Day extends React.Component<IDayProps, IDayState> {
   constructor(props: IDayProps) {
     super(props);
     this.state = {

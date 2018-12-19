@@ -5,15 +5,15 @@ export interface IHourCell {
   children: Array<JSX.Element>;
   hour: string | number;
   onClick: (e: ModalMouseEvent) => void;
-  classes?: string;
+  hourClass?: string;
   ref?: React.RefObject<JSX.Element>;
 }
 
 export class HourCell extends React.Component<IHourCell> {
   render() {
-    const { classes, onClick, hour, children } = this.props;
+    const { hourClass, onClick, hour, children } = this.props;
     return (
-      <div className={"hour" + classes} onClick={onClick} data-hour={hour}>
+      <div className={"hour" + hourClass} onClick={onClick} data-hour={hour}>
         {children}
       </div>
     );

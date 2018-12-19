@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../../Styles/Cell.css";
+import "./CellHeader.css";
 
 export const CellHeader: React.SFC<{
   headerInfo: string | number;

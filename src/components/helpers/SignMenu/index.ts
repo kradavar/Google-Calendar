@@ -1,2 +1,1 @@
-import * as SignMenu from "./SignMenu";
-export default SignMenu;
+export { default as SignMenu } from "./SignMenu";

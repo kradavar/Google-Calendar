@@ -5,7 +5,7 @@ import { SIGN } from "../../../constants/constants";
 
 import "./SignMenu.css";
 
-const SignMenu: React.SFC<{
+const SignMenuComponent: React.SFC<{
   handleOpen: () => void;
   isSigned: boolean;
 }> = ({ handleOpen, isSigned }) => {
@@ -59,12 +59,12 @@ const mapStateToProps = state => {
   return { isSigned: userSelector(state) };
 };
 
-const SignMenuWithConnect = connect<
+const SignMenu = connect<
   { isSigned: boolean },
   {
     handleOpen: () => void;
     isSigned: boolean;
   }
->(mapStateToProps)(SignMenu);
+>(mapStateToProps)(SignMenuComponent);
 
-export default () => <SignMenuWithConnect />;
+export default SignMenu;

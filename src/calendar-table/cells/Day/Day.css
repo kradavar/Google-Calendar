@@ -1,6 +1,28 @@
-.cell:hover {
+.cell:hover,
+.hour:hover {
   background-color: rgba(104, 170, 255, 0.6);
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.day {
+  height: 7rem;
+  flex: 1;
+  border: 0.25px solid #c2cad4;
+  cursor: pointer;
+}
+
+.day-flex {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+}
+
 .current-day {
   background: #9cbdfb;
 }
@@ -12,27 +34,4 @@
 .disabled {
   pointer-events: none;
   color: #8f9dad;
-}
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.day-week-header {
-  height: 3rem;
-  width: 100%;
-  border: 0.25px solid #8f9dad;
-  background-color: #bdddff;
-  line-height: 3rem;
-  text-align: center;
-  font-weight: bold;
-}
-.day-flex {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  flex-basis: auto;
-}
-.hide {
-  z-index: auto;
 }

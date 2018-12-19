@@ -1,9 +1,12 @@
 import * as React from "react";
-import Event from "./Event";
-import "../Styles/Event.css";
-import { SharedViewContext } from "./../Context";
-import { VIEW } from "./../constants/constants";
-import { EventsComponent } from "./EventsComponent";
+import { Event } from "../Event";
+import { SharedViewContext } from "../../Context";
+import { VIEW } from "../../constants/constants";
+import { EventsComponent } from "../EventsComponent";
+
+import "./EventList.css";
+
+console.warn("Event", { Event });
 
 export interface IEventListProps {
   events: any;
@@ -50,7 +53,8 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
   };
 
   getRenderedList = (events: any, view: string) => {
-    return events.length < 3 || view !== VIEW.MONTH
+    return;
+    /*return events.length < 3 || view !== VIEW.MONTH
       ? events.map((event: any) => (
           <Event key={event.id} {...event} color={this.getUserColor(event)} />
         ))
@@ -58,7 +62,7 @@ class EventList extends React.Component<IEventListProps, IEventListState> {
           .slice(0, 2)
           .map((event: any) => (
             <Event key={event.id} {...event} color={this.getUserColor(event)} />
-          ));
+          ));*/
   };
   handleLinkClick = (e: any) => {
     e.stopPropagation();

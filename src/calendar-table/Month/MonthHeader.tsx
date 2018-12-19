@@ -1,5 +1,6 @@
 import * as React from "react";
-import "../Styles/Cell.css";
+
+import "./MonthHeader.css";
 
 export const MonthHeader: React.SFC<{}> = () => (
   <header className="month-header">
